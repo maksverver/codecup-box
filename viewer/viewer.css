@@ -1,0 +1,74 @@
+svg {
+  width: calc(20 * 40px);
+  height: calc(16 * 40px);
+  background: white;
+}
+
+text {
+  font: bold 6px sans-serif;
+  fill: black;
+  stroke: none;
+  user-select: none;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+text.coord {
+  fill: rgba(0, 0, 0, 0.5);
+}
+
+.tile-cell > text.label {
+  fill: rgba(0, 0, 0, 0.75);
+}
+
+rect.board-background {
+  fill: #303030;
+  stroke: #606060;
+  stroke-width: 2px;
+}
+
+rect.tile-background {
+  stroke: #202020;
+  stroke-width: 1px;
+  fill: black;
+  filter: drop-shadow(1px 1px 0.5px rgb(0, 0, 0.5));
+}
+
+rect.tile-border {
+  stroke: #202020;
+  stroke-width: 1px;
+  fill: none;
+}
+
+g.tile-cells {
+  /* Note: box() is nicer but doesn't work in Chromium. */
+  /* Keep 3px in sync with rx/ry values in viewer.js! */
+  clip-path: inset(0% 0% 0% 0% round 3px);
+}
+
+g.tile-cell.color-1 rect.cell-background { fill: #ff4040; }
+g.tile-cell.color-2 rect.cell-background { fill: #ffff00; }
+g.tile-cell.color-3 rect.cell-background { fill: #00ff00; }
+g.tile-cell.color-4 rect.cell-background { fill: #00ffff; }
+g.tile-cell.color-5 rect.cell-background { fill: #4040ff; }
+g.tile-cell.color-6 rect.cell-background { fill: #ff00ff; }
+
+.square rect.background {
+  fill: none;
+  stroke: black;
+  stroke-width: 4px;
+  filter: drop-shadow(1px 1px 0.5px rgb(0, 0, 0.5));
+}
+
+.square rect.foreground {
+  fill: none;
+  stroke: black;
+  stroke-width: 2px;
+}
+
+.square.color-1 rect.foreground { stroke: #ff4040; }
+.square.color-2 rect.foreground { stroke: #ffff00; }
+.square.color-3 rect.foreground { stroke: #00ff00; }
+.square.color-4 rect.foreground { stroke: #00ffff; }
+.square.color-5 rect.foreground { stroke: #4040ff; }
+.square.color-6 rect.foreground { stroke: #ff00ff; }
