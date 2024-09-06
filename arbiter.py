@@ -90,22 +90,25 @@ def MakeRandomTile():
   return tuple(tile)
 
 
+def MakeRandomSecretColors():
+  return random.sample(range(1, COLORS + 1), k=2)
+
+
 def IsHorizontal(dir):
   if dir == Direction.VERTICAL: return False
   if dir == Direction.HORIZONTAL: return True
   raise ValueError("dir must be HORIZONTAL or VERTICAL")
 
 
-class GameState:
+DEFAULT_START_PLACEMENT = (7, 7, Direction.HORIZONTAL)
 
-  def __init__(self):
+class BoardState:
+
+  def __init__(self, start_tile, start_placement=DEFAULT_START_PLACEMENT):
     self.grid = [[0]*WIDTH for _ in range(HEIGHT)]
-    self.secret_colors = random.sample(range(1, COLORS + 1), k=2)
-    self.start_tile = MakeRandomTile()
-    self.start_placement = (7, 7, Direction.HORIZONTAL)
-    self._remaining_moves = GameState._GenerateMoves()
+    self._remaining_moves = BoardState._GenerateMoves()
     self._current_move = next(self._remaining_moves)
-    self.Place(self.start_tile, self.start_placement)
+    self.Place(start_tile, start_placement)
 
   def CanPlace(self, placement):
     grid = self.grid
@@ -113,7 +116,7 @@ class GameState:
     r2 = r1 + (2 if IsHorizontal(dir) else COLORS)
     c2 = c1 + (COLORS if IsHorizontal(dir) else 2)
     if r1 < 0 or c1 < 0 or r2 > HEIGHT or c2 > WIDTH: return False
-    overlap = GameState._CountOverlap(grid, r1, c1, r2, c2)
+    overlap = BoardState._CountOverlap(grid, r1, c1, r2, c2)
     if overlap > 4: return False
     if overlap > 0: return True
     # Must touch at an edge:
@@ -161,7 +164,7 @@ class GameState:
   def _UpdateCurrentMove(self):
     while self._current_move is not None:
       r1, c1, r2, c2 = self._current_move
-      overlap = GameState._CountOverlap(self.grid, r1, c1, r2, c2)
+      overlap = BoardState._CountOverlap(self.grid, r1, c1, r2, c2)
       if overlap <= 4:
         return True
 
@@ -193,7 +196,10 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
   procs = [Launch(command1, logfile1), Launch(command2, logfile2)]
   times = [0.0, 0.0]
 
-  state = GameState()
+  start_tile = MakeRandomTile()
+  start_placement = DEFAULT_START_PLACEMENT
+  board = BoardState(start_tile, start_placement)
+  secret_colors = MakeRandomSecretColors()
   turn = 0
   last_tile = None
   last_placement = None
@@ -201,17 +207,17 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
   with (open(transcript, 'wt') if transcript is not None else nullcontext()) as transcript:
 
     if transcript:
-      print(*state.secret_colors, file=transcript)
-      print(FormatTilePlacement(state.start_tile, state.start_placement), file=transcript)
+      print(*secret_colors, file=transcript)
+      print(FormatTilePlacement(start_tile, start_placement), file=transcript)
 
-    while not state.IsGameOver():
+    while not board.IsGameOver():
       proc = procs[turn % 2]
 
       # Give player input
       try:
         if turn < 2:
-          proc.stdin.write(str(state.secret_colors[turn % 2]) + '\n')
-          proc.stdin.write(FormatTilePlacement(state.start_tile, state.start_placement) + '\n')
+          proc.stdin.write(str(secret_colors[turn % 2]) + '\n')
+          proc.stdin.write(FormatTilePlacement(start_tile, start_placement) + '\n')
         if turn == 0:
           proc.stdin.write('Start\n')
         else:
@@ -229,13 +235,13 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
 
       # Parse, validate move and execute move
       last_placement = ParsePlacement(line)
-      if not last_placement or not state.CanPlace(last_placement):
+      if not last_placement or not board.CanPlace(last_placement):
         if transcript:
           # Include invalid move in transcript (for debugging)
           print('# ' + line, file=transcript)
         break
 
-      state.Place(last_tile, last_placement)
+      board.Place(last_tile, last_placement)
       turn += 1
 
       if transcript:
