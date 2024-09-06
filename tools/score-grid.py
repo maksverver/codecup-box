@@ -30,8 +30,23 @@ def Main():
             else:
                 board.Place(tile, placement)
 
-        for row in board.grid:
-            print(*row)
+        if not sys.stdout.isatty():
+            for row in board.grid:
+                print(*row)
+        else:
+            RED  = "\033[1;41m"
+            BLUE = "\033[1;44m"
+            END  = "\033[0m"
+            for row in board.grid:
+                for i, val in enumerate(row):
+                    if i > 0: sys.stdout.write(' ')
+                    if val == secret_colors[0]:
+                        sys.stdout.write(RED + str(val) + END)
+                    elif val == secret_colors[1]:
+                        sys.stdout.write(BLUE + str(val) + END)
+                    else:
+                        sys.stdout.write(str(val))
+                sys.stdout.write('\n')
 
         print(board.CalculateScores(secret_colors))
 
