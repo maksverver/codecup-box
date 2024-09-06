@@ -48,11 +48,8 @@ def ParseTile(s):
   if len(digits) != len(set(digits)): return None
   return tuple(digits)
 
-# assert ParseTile("123654") == (1, 2, 3, 6, 5, 4)
-
 def FormatTile(tile):
   return ''.join(map(str, tile))
-
 
 def ParsePlacement(s):
   if len(s) != 3: return None
@@ -63,9 +60,6 @@ def ParsePlacement(s):
   if dir is None: return None
   return (r, c, dir)
 
-# assert ParsePlacement("Hiv") == (7, 8, Direction.VERTICAL)
-# assert ParsePlacement("Poh") == (15, 14, Direction.HORIZONTAL)
-
 def ParseTilePlacement(s):
   if len(s) < 3: return None
   placement = ParsePlacement(s[:2] + s[-1])
@@ -74,11 +68,20 @@ def ParseTilePlacement(s):
   if tile is None: return None
   return (tile, placement)
 
-# assert ParseTilePlacement("Fc326451h") == ((3, 2, 6, 4, 5, 1), (5, 2, Direction.HORIZONTAL))
-
 def FormatTilePlacement(tile, placement):
   r, c, dir = placement
   return ROW_COORDS[r] + COL_COORDS[c] + FormatTile(tile) + DIR_TO_CH[dir]
+
+
+def test_ParseTile():
+  assert ParseTile("123654") == (1, 2, 3, 6, 5, 4)
+
+def test_ParsePlacement():
+  assert ParsePlacement("Hiv") == (7, 8, Direction.VERTICAL)
+  assert ParsePlacement("Poh") == (15, 14, Direction.HORIZONTAL)
+
+def test_ParseTilePlacement():
+  assert ParseTilePlacement("Fc326451h") == ((3, 2, 6, 4, 5, 1), (5, 2, Direction.HORIZONTAL))
 
 
 def MakeRandomTile():
@@ -87,11 +90,62 @@ def MakeRandomTile():
   return tuple(tile)
 
 
+def IsHorizontal(dir):
+  if dir == Direction.VERTICAL: return False
+  if dir == Direction.HORIZONTAL: return True
+  raise ValueError("dir must be HORIZONTAL or VERTICAL")
+
+
+class GameState:
+
+  def __init__(self):
+    self.grid = [[0]*WIDTH for _ in range(HEIGHT)]
+    self.secret_colors = random.sample(range(1, COLORS + 1), k=2)
+    self.start_tile = MakeRandomTile()
+    self.start_placement = (7, 7, Direction.HORIZONTAL)
+    self.Place(self.start_tile, self.start_placement)
+
+  def CanPlace(self, placement):
+    grid = self.grid
+    r1, c1, dir = placement
+    r2 = r1 + (2 if IsHorizontal(dir) else COLORS)
+    c2 = c1 + (COLORS if IsHorizontal(dir) else 2)
+    if r1 < 0 or c1 < 0 or r2 > HEIGHT or c2 > WIDTH: return False
+    overlap = sum(grid[r][c] != 0 for r in range(r1, r2) for c in range(c1, c2))
+    if overlap > 4: return False
+    if overlap > 0: return True
+    # Must touch at an edge:
+    return (
+        (c1 > 0 and any(grid[r][c1 - 1] for r in range(r1, r2))) or
+        (c2 < WIDTH and any(grid[r][c2] for r in range(r1, r2))) or
+        (r1 > 0 and any(grid[r1 - 1][c] for c in range(c1, c2))) or
+        (r2 < HEIGHT and any(grid[r2][c] for c in range(c1, c2))))
+
+  def Place(self, tile, placement):
+    grid = self.grid
+    r, c, dir = placement
+    if IsHorizontal(dir):
+      for i, v in enumerate(tile):
+        grid[r][c + i] = grid[r + 1][c + len(tile) - 1 - i] = v
+    else:
+      for i, v in enumerate(tile):
+        grid[r + i][c + 1] = grid[r + len(tile) - 1 - i][c] = v
+
+  def IsGameOver(self):
+    # TODO: optimize this
+    for r in range(HEIGHT):
+      for c in range(WIDTH):
+        for dir in Direction:
+          if self.CanPlace((r, c, dir)):
+            return False
+    return True
+
+
 class Outcome(Enum):
-  WIN  = 0
-  LOSS = 1
-  TIE  = 2
-  FAIL = 3          # crash, invalid move, etc.
+  WIN  = 1
+  LOSS = 2
+  TIE  = 3
+  FAIL = 4  # crash, invalid move, etc.
 
 
 def Launch(command, logfile):
@@ -106,72 +160,27 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
   roles = ['First', 'Second']
   commands = [command1, command2]
   procs = [Launch(command1, logfile1), Launch(command2, logfile2)]
-
   times = [0.0, 0.0]
 
-  secret_colors = random.sample(range(1, COLORS + 1), k=2)
-  grid = [[0]*WIDTH for _ in range(HEIGHT)]
+  state = GameState()
   turn = 0
-
-  def CanPlace(tile, placement):
-    r1, c1, dir = placement
-    r2 = r1 + (2 if dir == Direction.HORIZONTAL else len(tile))
-    c2 = c1 + (2 if dir == Direction.VERTICAL else len(tile))
-    if r1 < 0 or c1 < 0 or r2 > HEIGHT or c2 > WIDTH: return False
-    overlap = sum(grid[r][c] != 0 for r in range(r1, r2) for c in range(c1, c2))
-    if overlap > 4: return False
-    if overlap > 0: return True
-    # Must touch at an edge:
-    return (
-        (c1 > 0 and any(grid[r][c1 - 1] for r in range(r1, r2))) or
-        (c2 < WIDTH and any(grid[r][c2] for r in range(r1, r2))) or
-        (r1 > 0 and any(grid[r1 - 1][c] for c in range(c1, c2))) or
-        (r2 < HEIGHT and any(grid[r2][c] for c in range(c1, c2))))
-
-  def Place(tile, placement):
-    r, c, dir = placement
-    if dir == Direction.HORIZONTAL:
-      for i, v in enumerate(tile):
-        grid[r][c + i] = grid[r + 1][c + len(tile) - 1 - i] = v
-    elif dir == Direction.VERTICAL:
-      for i, v in enumerate(tile):
-        grid[r + i][c + 1] = grid[r + len(tile) - 1 - i][c] = v
-    else:
-      assert False
-
-
-  def GameOver():
-    # TODO: optimize this
-    tile = MakeRandomTile()  # actually not used except for length
-    for r in range(HEIGHT):
-      for c in range(WIDTH):
-        for dir in Direction:
-          if CanPlace(tile, (r, c, dir)):
-            return False
-    return True
-
-  start_tile = MakeRandomTile()
-  start_placement = (7, 7, Direction.HORIZONTAL)
-  Place(start_tile, start_placement)
-
   last_tile = None
   last_placement = None
 
   with (open(transcript, 'wt') if transcript is not None else nullcontext()) as transcript:
 
     if transcript:
-      assert len(secret_colors) == 2
-      print(*secret_colors, file=transcript)
-      print(FormatTilePlacement(start_tile, start_placement), file=transcript)
+      print(*state.secret_colors, file=transcript)
+      print(FormatTilePlacement(state.start_tile, state.start_placement), file=transcript)
 
-    while not GameOver():
+    while not state.IsGameOver():
       proc = procs[turn % 2]
 
       # Give player input
       try:
         if turn < 2:
-          proc.stdin.write(str(secret_colors[turn % 2]) + '\n')
-          proc.stdin.write(FormatTilePlacement(start_tile, start_placement) + '\n')
+          proc.stdin.write(str(state.secret_colors[turn % 2]) + '\n')
+          proc.stdin.write(FormatTilePlacement(state.start_tile, state.start_placement) + '\n')
         if turn == 0:
           proc.stdin.write('Start\n')
         else:
@@ -187,26 +196,23 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
       line = proc.stdout.readline().strip()
       times[turn % 2] += time.monotonic() - start_time
 
-      # Parse and validate move
+      # Parse, validate move and execute move
       last_placement = ParsePlacement(line)
-      if not last_placement or not CanPlace(last_tile, last_placement):
+      if not last_placement or not state.CanPlace(last_placement):
         if transcript:
           # Include invalid move in transcript (for debugging)
           print('# ' + line, file=transcript)
         break
 
-      # Execute move
-      Place(last_tile, last_placement)
+      state.Place(last_tile, last_placement)
       turn += 1
 
       if transcript:
-        # Print move only:
         print(FormatTilePlacement(last_tile, last_placement), file=transcript)
-
 
   outcomes = [None, None]
   scores = [None, None]
-  if GameOver():
+  if state.IsGameOver():
     # Game ended regularly. Calculate scores.
     outcomes[0] = outcomes[1] = Outcome.TIE
     #
@@ -220,7 +226,8 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
     scores[turn % 2] = 0
     scores[1 - turn % 2] = 200
 
-  # Gracefully quit.
+  # Gracefully quit. (Do this after computing outcomes because a program can
+  # still fail if it doesn't exit cleanly, overriding the previous outcome.)
   for p in procs:
     if p.poll() is None:
       try:
