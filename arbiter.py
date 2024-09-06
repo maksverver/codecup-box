@@ -137,6 +137,9 @@ class BoardState:
   def IsGameOver(self):
     return self._current_move is None
 
+  def CalculateScores(self, secret_colors):
+    return [BoardState._CalculateScore(self.grid, c) for c in secret_colors]
+
   @staticmethod
   def _CountOverlap(grid, r1, c1, r2, c2):
     return sum(grid[r][c] != 0 for r in range(r1, r2) for c in range(c1, c2))
@@ -173,6 +176,21 @@ class BoardState:
       except StopIteration:
         self._current_move = None
         return False
+
+  @staticmethod
+  def _CalculateScore(grid, color):
+    score = 0
+    for r1 in range(HEIGHT):
+      for c1 in range(WIDTH):
+        if grid[r1][c1] == color:
+          r2 = r1 + 1
+          c2 = c1 + 1
+          while r2 < HEIGHT and c2 < WIDTH:
+            if color == grid[r1][c2] == grid[r2][c1] == grid[r2][c2]:
+              score += r2 - r1
+            r2 += 1
+            c2 += 1
+    return score
 
 
 class Outcome(Enum):
@@ -249,11 +267,23 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
 
   outcomes = [None, None]
   scores = [None, None]
-  if state.IsGameOver():
-    # Game ended regularly. Calculate scores.
-    outcomes[0] = outcomes[1] = Outcome.TIE
-    #
-    scores = [150, 150]  # TODO
+  if board.IsGameOver():
+    # Game ended regularly. Calculate scores. Note that we start with the game
+    # scores (the sum of sizes of squares for the secret colors) and use those
+    # to calculate CodeCup score, which is based on the difference between the
+    # player's scores, with a bonus for the winner.
+    game_scores = board.CalculateScores(secret_colors)
+    for p in range(2):
+      diff = game_scores[p] - game_scores[1 - p]
+      if diff > 0:
+        outcomes[p] = Outcome.WIN
+        scores[p] = 200 + diff
+      elif diff < 0:
+        outcomes[p] = Outcome.LOSS
+        scores[p] = 100 + diff
+      else:
+        outcomes[p] = Outcome.TIE
+        scores[p] = 150
   else:
     # Game ended irregularly, with the current player failing.
     outcomes[turn % 2] = Outcome.FAIL
