@@ -56,14 +56,14 @@ g.tile-cell.color-6 rect.cell-background { fill: #ff00ff; }
 .square rect.background {
   fill: none;
   stroke: black;
-  stroke-width: 4px;
-  filter: drop-shadow(1px 1px 0.5px rgb(0, 0, 0.5));
+  stroke-width: 2px;
+  filter: drop-shadow(1px 1px 0.5px rgba(0, 0, 0, 0.75));
 }
 
 .square rect.foreground {
   fill: none;
   stroke: black;
-  stroke-width: 2px;
+  stroke-width: 1px;
 }
 
 .square.color-1 rect.foreground { stroke: #ff4040; }

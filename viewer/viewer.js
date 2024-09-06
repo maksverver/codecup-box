@@ -129,10 +129,10 @@ for (const [r1, c1, r2, c2] of squares) {
 
   const squareG = createSvgElement(squaresG, 'g', ['square', 'color-' + color]);
   const rectAttributes = {
-    x: 10*c1,
-    y: 10*r1,
-    width: 10*size + 10,
-    height: 10*size + 10,
+    x: 10*c1 + 0.75,
+    y: 10*r1 + 0.75,
+    width: 10*size + 8.5,
+    height: 10*size + 8.5,
   };
   createSvgElement(squareG, 'rect', ['background'], rectAttributes);
   createSvgElement(squareG, 'rect', ['foreground'], rectAttributes);
