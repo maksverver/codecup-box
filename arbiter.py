@@ -103,6 +103,8 @@ class GameState:
     self.secret_colors = random.sample(range(1, COLORS + 1), k=2)
     self.start_tile = MakeRandomTile()
     self.start_placement = (7, 7, Direction.HORIZONTAL)
+    self._remaining_moves = GameState._GenerateMoves()
+    self._current_move = next(self._remaining_moves)
     self.Place(self.start_tile, self.start_placement)
 
   def CanPlace(self, placement):
@@ -111,7 +113,7 @@ class GameState:
     r2 = r1 + (2 if IsHorizontal(dir) else COLORS)
     c2 = c1 + (COLORS if IsHorizontal(dir) else 2)
     if r1 < 0 or c1 < 0 or r2 > HEIGHT or c2 > WIDTH: return False
-    overlap = sum(grid[r][c] != 0 for r in range(r1, r2) for c in range(c1, c2))
+    overlap = GameState._CountOverlap(grid, r1, c1, r2, c2)
     if overlap > 4: return False
     if overlap > 0: return True
     # Must touch at an edge:
@@ -121,8 +123,23 @@ class GameState:
         (r1 > 0 and any(grid[r1 - 1][c] for c in range(c1, c2))) or
         (r2 < HEIGHT and any(grid[r2][c] for c in range(c1, c2))))
 
+  # Place a tile on the grid, assuming the placement is valid.
+  #
+  # This method can be shown to have O(COLORS) amortized time complexity,
+  # including the call to _UpdateCurrentMove().
   def Place(self, tile, placement):
-    grid = self.grid
+    self._Overwrite(self.grid, tile, placement)
+    self._UpdateCurrentMove()
+
+  def IsGameOver(self):
+    return self._current_move is None
+
+  @staticmethod
+  def _CountOverlap(grid, r1, c1, r2, c2):
+    return sum(grid[r][c] != 0 for r in range(r1, r2) for c in range(c1, c2))
+
+  @staticmethod
+  def _Overwrite(grid, tile, placement):
     r, c, dir = placement
     if IsHorizontal(dir):
       for i, v in enumerate(tile):
@@ -131,14 +148,28 @@ class GameState:
       for i, v in enumerate(tile):
         grid[r + i][c + 1] = grid[r + len(tile) - 1 - i][c] = v
 
-  def IsGameOver(self):
-    # TODO: optimize this
-    for r in range(HEIGHT):
-      for c in range(WIDTH):
+  @staticmethod
+  def _GenerateMoves():
+    for r1 in range(HEIGHT):
+      for c1 in range(WIDTH):
         for dir in Direction:
-          if self.CanPlace((r, c, dir)):
-            return False
-    return True
+          r2 = r1 + (2 if IsHorizontal(dir) else COLORS)
+          c2 = c1 + (COLORS if IsHorizontal(dir) else 2)
+          if r2 <= HEIGHT and c2 <= WIDTH:
+            yield r1, c1, r2, c2
+
+  def _UpdateCurrentMove(self):
+    while self._current_move is not None:
+      r1, c1, r2, c2 = self._current_move
+      overlap = GameState._CountOverlap(self.grid, r1, c1, r2, c2)
+      if overlap <= 4:
+        return True
+
+      try:
+        self._current_move = next(self._remaining_moves)
+      except StopIteration:
+        self._current_move = None
+        return False
 
 
 class Outcome(Enum):
