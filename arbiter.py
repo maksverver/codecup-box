@@ -319,7 +319,7 @@ def MakeLogfilenames(logdir, name1, name2, game_index, game_count):
   if game_count > 1:
     prefix = 'game-%s-of-%s-%s' % (game_index + 1, game_count, prefix)
   return (os.path.join(logdir, '%s-%s.txt' % (prefix, role))
-      for role in ('transcript', 'first', 'second'))
+      for role in ('transcript', 'output-1', 'output-2'))
 
 
 class Tee:
