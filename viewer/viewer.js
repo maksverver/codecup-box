@@ -62,18 +62,20 @@ function parseMove(move) {
   };
 }
 
-function parseMoves(moves) {
-  const result = []
-  for (const move of moves) {
-    try {
-      result.push(parseMove(move));
-    } catch (e) {
-      console.error('Failed to parse move', move, e);
-      alert('Failed to parse move! (See console for details)');
-      break;
-    }
+function parseTranscript(text) {
+  const lines = text
+      .split(/[\r\n]+/)
+      .map(line => line.replace(/#.*/, '').trim())
+      .filter(x => x);
+
+  if (lines.length === 0) throw new Error('File is empty!');
+
+  if (!lines[0].match(/[1-6] [1-6]/)) {
+    throw new Error('Invalid secret colors!');
   }
-  return result;
+  const secretColors = lines[0].split(/\s+/).map((s) => parseInt(s, 10));
+  const moveStrings = lines.slice(1);
+  return {secretColors, moveStrings};
 }
 
 function detectSquares(grid) {
@@ -248,7 +250,7 @@ function calculateBoardState(moves) {
 }
 
 function initialize(playerNames, secretColors, moveStrings) {
-  const moves = parseMoves(moveStrings);
+  const moves = moveStrings.map(parseMove);
 
   function handleSelectedMoveChanged(i) {
     const boardState = calculateBoardState(moves.slice(0, i + 1));
@@ -261,11 +263,31 @@ function initialize(playerNames, secretColors, moveStrings) {
   repopulateMovesTable(moveStrings, moves.length - 1, handleSelectedMoveChanged);
 }
 
-initialize(
-  // player names
-  ["Player 1", "Player 2"],
-  // player colors
-  [3, 1],
-  // TODO: allow the user to upload transcript or input moves instead of hardcoding
-  ['Hh216345h', 'Df145632v', 'Jb613254h', 'Ff634521h', 'Ai124356v', 'Jf641235h', 'Dh362541h', 'Ai641235h', 'Bn632451h', 'Bp321546v', 'Jf536412v', 'Lb652413h', 'Na621453h', 'Db365124h', 'Ds123465v', 'Ac532614h', 'Jr435621v', 'Ga126453h', 'Ba136245h', 'Kj163542v', 'Lh645312h', 'Od234615h', 'Kp245631v', 'Io623154h', 'Kn256431v', 'Em341625v', 'Kl263145v'],
-);
+function loadTranscriptFile(file) {
+  if (file == null) return;  // nothing selected
+
+  // Try to infer filenames from filename ("foo-vs-bar-transcript.txt"):
+  const playerNames = ["Player 1", "Player 2"];
+  const match = file.name && file.name.match(/(.*)-vs-(.*)-transcript.txt/);
+  if (match) {
+    playerNames[0] = match[1];
+    playerNames[1] = match[2];
+  }
+
+  function loadFileContent(text) {
+    try {
+      const {secretColors, moveStrings} = parseTranscript(text);
+      initialize(playerNames, secretColors, moveStrings);
+      document.getElementById('setup-view').style.display = 'none';
+      document.getElementById('main-view').style.display = null;
+    } catch (e) {
+      console.error('Initialization failed!', e);
+      alert('Initialization failed! See Javascript console for details');
+    }
+  }
+
+  // Read file content.
+  var reader = new FileReader();
+  reader.onload = (e) => loadFileContent(e.target.result);
+  reader.readAsText(file);
+}

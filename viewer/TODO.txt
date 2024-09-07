@@ -3,3 +3,4 @@
  - board/squares table: highlight squares when hovering over them
  - moves table: show +/-
  - squares table: show which squares were removed/added in each turn
+ - store last loaded state in URL? (Need a way to clear.) Maybe make setup a separate page?
