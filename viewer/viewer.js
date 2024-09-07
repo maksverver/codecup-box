@@ -1,3 +1,5 @@
+'use strict';
+
 const HEIGHT = 16;
 const WIDTH  = 20;
 const COLORS =  6;
@@ -109,11 +111,24 @@ function updateScoresTable(playerNames, secretColors, scores) {
   document.getElementById('scores-table-score-2').textContent = scores[c2];
 }
 
-function repopulateMovesTable(table, moveStrings) {
-  table.replaceChildren();
+function repopulateMovesTable(moveStrings, selectedIndex, onSelectionChange) {
+  const rowElements = [];
+
+  function onRowClicked(i) {
+    if (i === selectedIndex) return;
+
+    if (Object.hasOwn(rowElements, selectedIndex)) {
+      rowElements[selectedIndex].classList.remove('selected');
+    }
+    rowElements[i].classList.add('selected');
+    selectedIndex = i;
+    onSelectionChange(i);
+  }
 
   function addMove(i, s) {
-    const tr = createElement(table, 'tr');
+    const tr = createElement(null, 'tr');
+    tr.classList.add('clickable');
+    tr.onclick = () => onRowClicked(i);
     const th = createElement(tr, 'th');
     th.appendChild(document.createTextNode(i));
     if (i > 0 && i % 2 == 0) createElement(tr, 'td');
@@ -122,13 +137,21 @@ function repopulateMovesTable(table, moveStrings) {
     if (i == 0) td.colSpan = 2;
     td.appendChild(document.createTextNode(s));
     if (i > 0 && i % 2 == 1) createElement(tr, 'td');  // needed for styling
+    return tr;
   }
 
-  if (moveStrings.length === 0) return;
-  addMove(0, moveStrings[0], 2);
-  for (let i = 1; i < moveStrings.length; ++i) {
-    addMove(i, moveStrings[i]);
+  if (moveStrings.length > 0) {
+    rowElements.push(addMove(0, moveStrings[0], 2));
+    for (let i = 1; i < moveStrings.length; ++i) {
+      rowElements.push(addMove(i, moveStrings[i]));
+    }
   }
+
+  if (Object.hasOwn(rowElements, selectedIndex)) {
+    rowElements[selectedIndex].classList.add('selected');
+  }
+
+  movesTbody.replaceChildren(...rowElements);
 }
 
 function repopulateSquaresTable(playerNames, secretColors, squares) {
@@ -189,10 +212,8 @@ function repopulateBoard(boardState) {
   // since large squares have larger outlines so they are more visible anyway).
   const sortedSquares = Array.from(squares);
   sortedSquares.sort((a, b) => b.size - a.size);
-  for (const {color, r1, c1, size} of sortedSquares) {
-    scores[color] += size;
-
-    const squareG = createSvgElement(squaresG, 'g', ['square', 'color-' + color]);
+  const squareGs = sortedSquares.map(({color, r1, c1, size}) => {
+    const squareG = createSvgElement(null, 'g', ['square', 'color-' + color]);
     const rectAttributes = {
       x: 10*c1 + 0.75,
       y: 10*r1 + 0.75,
@@ -201,7 +222,9 @@ function repopulateBoard(boardState) {
     };
     createSvgElement(squareG, 'rect', 'background', rectAttributes);
     createSvgElement(squareG, 'rect', 'foreground', rectAttributes);
-  }
+    return squareG;
+  });
+  squaresG.replaceChildren(...squareGs);
 }
 
 function calculateBoardState(moves) {
@@ -224,18 +247,25 @@ function calculateBoardState(moves) {
   return {grid, turns, squares, scores};
 }
 
-(function(){
-  // TODO: allow the user to upload transcript or input moves instead of hardcoding
-  const moveStrings = ['Hh216345h', 'Df145632v', 'Jb613254h', 'Ff634521h', 'Ai124356v', 'Jf641235h', 'Dh362541h', 'Ai641235h', 'Bn632451h', 'Bp321546v', 'Jf536412v', 'Lb652413h', 'Na621453h', 'Db365124h', 'Ds123465v', 'Ac532614h', 'Jr435621v', 'Ga126453h', 'Ba136245h', 'Kj163542v', 'Lh645312h', 'Od234615h', 'Kp245631v', 'Io623154h', 'Kn256431v', 'Em341625v', 'Kl263145v'];
+function initialize(playerNames, secretColors, moveStrings) {
   const moves = parseMoves(moveStrings);
-  const playerNames = ["Player 1", "Player 2"];
-  const secretColors = [3, 1];
 
-  repopulateMovesTable(movesTbody, moveStrings);
+  function handleSelectedMoveChanged(i) {
+    const boardState = calculateBoardState(moves.slice(0, i));
+    repopulateBoard(boardState);
+    updateScoresTable(playerNames, secretColors, boardState.scores);
+    repopulateSquaresTable(playerNames, secretColors, boardState.squares);
+  }
 
-  const boardState = calculateBoardState(moves);
+  handleSelectedMoveChanged(moves.length - 1);
+  repopulateMovesTable(moveStrings, moves.length - 1, handleSelectedMoveChanged);
+}
 
-  repopulateBoard(boardState);
-  updateScoresTable(playerNames, secretColors, boardState.scores);
-  repopulateSquaresTable(playerNames, secretColors, boardState.squares);
-})();
+initialize(
+  // player names
+  ["Player 1", "Player 2"],
+  // player colors
+  [3, 1],
+  // TODO: allow the user to upload transcript or input moves instead of hardcoding
+  ['Hh216345h', 'Df145632v', 'Jb613254h', 'Ff634521h', 'Ai124356v', 'Jf641235h', 'Dh362541h', 'Ai641235h', 'Bn632451h', 'Bp321546v', 'Jf536412v', 'Lb652413h', 'Na621453h', 'Db365124h', 'Ds123465v', 'Ac532614h', 'Jr435621v', 'Ga126453h', 'Ba136245h', 'Kj163542v', 'Lh645312h', 'Od234615h', 'Kp245631v', 'Io623154h', 'Kn256431v', 'Em341625v', 'Kl263145v'],
+);
