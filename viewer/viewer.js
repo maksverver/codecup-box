@@ -251,7 +251,7 @@ function initialize(playerNames, secretColors, moveStrings) {
   const moves = parseMoves(moveStrings);
 
   function handleSelectedMoveChanged(i) {
-    const boardState = calculateBoardState(moves.slice(0, i));
+    const boardState = calculateBoardState(moves.slice(0, i + 1));
     repopulateBoard(boardState);
     updateScoresTable(playerNames, secretColors, boardState.scores);
     repopulateSquaresTable(playerNames, secretColors, boardState.squares);
