@@ -91,6 +91,12 @@ function detectSquares(grid) {
   return squares;
 }
 
+function calculateScores(squares) {
+  const scores = Array(COLORS + 1).fill(0);
+  for (const {color, size} of squares) scores[color] += size;
+  return scores;
+}
+
 function updateScoresTable(playerNames, secretColors, scores) {
   const [c1, c2] = secretColors;
   document.getElementById('scores-table-player-1').textContent = playerNames[0];
@@ -143,90 +149,93 @@ function repopulateSquaresTable(playerNames, secretColors, squares) {
   squaresTBody.replaceChildren(...tableRows);
 }
 
-// TODO: allow the user to upload transcript or input moves instead of hardcoding
-const moveStrings = ['Hh216345h', 'Df145632v', 'Jb613254h', 'Ff634521h', 'Ai124356v', 'Jf641235h', 'Dh362541h', 'Ai641235h', 'Bn632451h', 'Bp321546v', 'Jf536412v', 'Lb652413h', 'Na621453h', 'Db365124h', 'Ds123465v', 'Ac532614h', 'Jr435621v', 'Ga126453h', 'Ba136245h', 'Kj163542v', 'Lh645312h', 'Od234615h', 'Kp245631v', 'Io623154h', 'Kn256431v', 'Em341625v', 'Kl263145v'];
-const moves = parseMoves(moveStrings);
-const playerNames = ["Player 1", "Player 2"];
-const secretColors = [3, 1];
+function repopulateBoard(boardState) {
+  const {turns, squares, scores} = boardState;
+  tilesG.replaceChildren();
+  for (const {move, digits} of turns) {
+    const {row, col, vert} = move;
+    const tileG = createSvgElement(tilesG, 'g', 'tile');
+    const borderProps = {
+      x: 10 * col,
+      y: 10 * row,
+      width: vert ? 20 : 60,
+      height: vert ? 60 : 20,
+      /* Keep 3px in sync with clip-path values in viewer.js! */
+      rx: 3,
+      ry: 3,
+    };
+    createSvgElement(tileG, 'rect', 'tile-background', borderProps);
 
-repopulateMovesTable(movesTbody, moveStrings);
+    const cellsG = createSvgElement(tileG, 'g', 'tile-cells');
 
-let grid = Array.from({length: HEIGHT}, () => Array.from({length: WIDTH}, () => 0));
-
-const turns = [];
-for (const move of moves) {
-  const {row, col, tile, vert} = move;
-  const digits = [];  // [r, c, digit] triples
-  for (let i = 0; i < 6; ++i) {
-    digits.push([row + (vert ? 5 - i : 0), col + (vert ? 0 : i), tile[i]]);
-    digits.push([row + (vert ? 5 - i : 1), col + (vert ? 1 : i), tile[5 - i]]);
-  }
-  for (const [r, c, digit] of digits) {
-    grid[r][c] = digit;
-  }
-  turns.push({move, digits});
-}
-
-for (const {move, digits} of turns) {
-  const {row, col, vert} = move;
-  const tileG = createSvgElement(tilesG, 'g', 'tile');
-  const borderProps = {
-    x: 10 * col,
-    y: 10 * row,
-    width: vert ? 20 : 60,
-    height: vert ? 60 : 20,
-    /* Keep 3px in sync with clip-path values in viewer.js! */
-    rx: 3,
-    ry: 3,
-  };
-  createSvgElement(tileG, 'rect', 'tile-background', borderProps);
-
-  const cellsG = createSvgElement(tileG, 'g', 'tile-cells');
-
-  for (const [r, c, digit] of digits) {
-    const cellG = createSvgElement(cellsG, 'g', ['tile-cell', 'color-' + digit]);
-    createSvgElement(cellG, 'rect', 'cell-background', {
-      x: 10 * c,
-      y: 10 * r,
-      width: 10,
-      height: 10,
-    });
-    createSvgElement(cellG, 'text', 'label', {
-      x: 10 * c + 5,
-      y: 10 * r + 6,
-    }).appendChild(document.createTextNode(String(digit)));
+    for (const [r, c, digit] of digits) {
+      const cellG = createSvgElement(cellsG, 'g', ['tile-cell', 'color-' + digit]);
+      createSvgElement(cellG, 'rect', 'cell-background', {
+        x: 10 * c,
+        y: 10 * r,
+        width: 10,
+        height: 10,
+      });
+      createSvgElement(cellG, 'text', 'label', {
+        x: 10 * c + 5,
+        y: 10 * r + 6,
+      }).appendChild(document.createTextNode(String(digit)));
+    }
+    createSvgElement(tileG, 'rect', 'tile-border', borderProps);
   }
 
-  createSvgElement(tileG, 'rect', 'tile-border', borderProps);
+  // Sort by size, descending. This tends to improve visualization because large
+  // squares don't overlap smaller squares (and the opposite is less of a problem
+  // since large squares have larger outlines so they are more visible anyway).
+  const sortedSquares = Array.from(squares);
+  sortedSquares.sort((a, b) => b.size - a.size);
+  for (const {color, r1, c1, size} of sortedSquares) {
+    scores[color] += size;
+
+    const squareG = createSvgElement(squaresG, 'g', ['square', 'color-' + color]);
+    const rectAttributes = {
+      x: 10*c1 + 0.75,
+      y: 10*r1 + 0.75,
+      width: 10*size + 8.5,
+      height: 10*size + 8.5,
+    };
+    createSvgElement(squareG, 'rect', 'background', rectAttributes);
+    createSvgElement(squareG, 'rect', 'foreground', rectAttributes);
+  }
 }
 
-function calculateScores(squares) {
-  const scores = Array(COLORS + 1).fill(0);
-  for (const {color, size} of squares) scores[color] += size;
-  return scores;
+function calculateBoardState(moves) {
+  let grid = Array.from({length: HEIGHT}, () => Array.from({length: WIDTH}, () => 0));
+  const turns = [];
+  for (const move of moves) {
+    const {row, col, tile, vert} = move;
+    const digits = [];  // [r, c, digit] triples
+    for (let i = 0; i < 6; ++i) {
+      digits.push([row + (vert ? 5 - i : 0), col + (vert ? 0 : i), tile[i]]);
+      digits.push([row + (vert ? 5 - i : 1), col + (vert ? 1 : i), tile[5 - i]]);
+    }
+    for (const [r, c, digit] of digits) {
+      grid[r][c] = digit;
+    }
+    turns.push({move, digits});
+  }
+  const squares = detectSquares(grid);
+  const scores = calculateScores(squares);
+  return {grid, turns, squares, scores};
 }
 
-const squares = detectSquares(grid);
-const scores = calculateScores(squares);
+(function(){
+  // TODO: allow the user to upload transcript or input moves instead of hardcoding
+  const moveStrings = ['Hh216345h', 'Df145632v', 'Jb613254h', 'Ff634521h', 'Ai124356v', 'Jf641235h', 'Dh362541h', 'Ai641235h', 'Bn632451h', 'Bp321546v', 'Jf536412v', 'Lb652413h', 'Na621453h', 'Db365124h', 'Ds123465v', 'Ac532614h', 'Jr435621v', 'Ga126453h', 'Ba136245h', 'Kj163542v', 'Lh645312h', 'Od234615h', 'Kp245631v', 'Io623154h', 'Kn256431v', 'Em341625v', 'Kl263145v'];
+  const moves = parseMoves(moveStrings);
+  const playerNames = ["Player 1", "Player 2"];
+  const secretColors = [3, 1];
 
-// Sort by size, descending. This tends to improve visualization because large
-// squares don't overlap smaller squares (and the opposite is less of a problem
-// since large squares have larger outlines so they are more visible anyway).
-const sortedSquares = Array.from(squares);
-sortedSquares.sort((a, b) => b.size - a.size);
-for (const {color, r1, c1, size} of sortedSquares) {
-  scores[color] += size;
+  repopulateMovesTable(movesTbody, moveStrings);
 
-  const squareG = createSvgElement(squaresG, 'g', ['square', 'color-' + color]);
-  const rectAttributes = {
-    x: 10*c1 + 0.75,
-    y: 10*r1 + 0.75,
-    width: 10*size + 8.5,
-    height: 10*size + 8.5,
-  };
-  createSvgElement(squareG, 'rect', 'background', rectAttributes);
-  createSvgElement(squareG, 'rect', 'foreground', rectAttributes);
-}
+  const boardState = calculateBoardState(moves);
 
-updateScoresTable(playerNames, secretColors, scores);
-repopulateSquaresTable(playerNames, secretColors, squares);
+  repopulateBoard(boardState);
+  updateScoresTable(playerNames, secretColors, boardState.scores);
+  repopulateSquaresTable(playerNames, secretColors, boardState.squares);
+})();
