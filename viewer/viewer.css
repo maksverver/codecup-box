@@ -1,3 +1,92 @@
+:root {
+  font: 12pt sans-serif;
+}
+
+table {
+  border: 1px solid lightgrey;
+  margin-bottom: 10px;
+}
+
+.moves-table {
+  border-collapse: collapse;
+}
+
+.moves-table tr:nth-child(even) {
+  background-color: #f0f0ff;
+}
+
+.moves-table th {
+  padding: 0 0.5em;
+}
+
+.moves-table td {
+  text-align: center;
+}
+
+.moves-table td.move {
+  font: 11pt monospace;
+  padding: 0em 1em;
+}
+
+.panels {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.scores-table, .squares-table {
+  border-spacing: 1em 0.25em;
+  padding: 0.5em 0;
+}
+
+.scores-table th,
+.scores-table td,
+.squares-table th,
+.squares-table td {
+}
+
+.scores-table th {
+  text-align: left;
+}
+
+.scores-table td {
+  text-align: right;
+}
+
+.squares-table .square-coords {
+  font: 11pt monospace;
+}
+
+.squares-table .square-size {
+  text-align: right;
+}
+
+td.center {
+  text-align: center;
+}
+
+:root {
+  --color-1: #ff4040;
+  --color-2: #ffff00;
+  --color-3: #00ff00;
+  --color-4: #00ffff;
+  --color-5: #4040ff;
+  --color-6: #ff00ff;
+}
+
+.background-color-1 { background-color: var(--color-1); }
+.background-color-2 { background-color: var(--color-2); }
+.background-color-3 { background-color: var(--color-3); }
+.background-color-4 { background-color: var(--color-4); }
+.background-color-5 { background-color: var(--color-5); }
+.background-color-6 { background-color: var(--color-6); }
+
+.squares-table th,
+.squares-table td {
+    text-align: center;
+}
+
 svg {
   width: calc(20 * 40px);
   height: calc(16 * 40px);
@@ -46,12 +135,12 @@ g.tile-cells {
   clip-path: inset(0% 0% 0% 0% round 3px);
 }
 
-g.tile-cell.color-1 rect.cell-background { fill: #ff4040; }
-g.tile-cell.color-2 rect.cell-background { fill: #ffff00; }
-g.tile-cell.color-3 rect.cell-background { fill: #00ff00; }
-g.tile-cell.color-4 rect.cell-background { fill: #00ffff; }
-g.tile-cell.color-5 rect.cell-background { fill: #4040ff; }
-g.tile-cell.color-6 rect.cell-background { fill: #ff00ff; }
+g.tile-cell.color-1 rect.cell-background { fill: var(--color-1); }
+g.tile-cell.color-2 rect.cell-background { fill: var(--color-2); }
+g.tile-cell.color-3 rect.cell-background { fill: var(--color-3); }
+g.tile-cell.color-4 rect.cell-background { fill: var(--color-4); }
+g.tile-cell.color-5 rect.cell-background { fill: var(--color-5); }
+g.tile-cell.color-6 rect.cell-background { fill: var(--color-6); }
 
 .square rect.background {
   fill: none;
@@ -66,9 +155,9 @@ g.tile-cell.color-6 rect.cell-background { fill: #ff00ff; }
   stroke-width: 1px;
 }
 
-.square.color-1 rect.foreground { stroke: #ff4040; }
-.square.color-2 rect.foreground { stroke: #ffff00; }
-.square.color-3 rect.foreground { stroke: #00ff00; }
-.square.color-4 rect.foreground { stroke: #00ffff; }
-.square.color-5 rect.foreground { stroke: #4040ff; }
-.square.color-6 rect.foreground { stroke: #ff00ff; }
+.square.color-1 rect.foreground { stroke: var(--color-1); }
+.square.color-2 rect.foreground { stroke: var(--color-2); }
+.square.color-3 rect.foreground { stroke: var(--color-3); }
+.square.color-4 rect.foreground { stroke: var(--color-4); }
+.square.color-5 rect.foreground { stroke: var(--color-5); }
+.square.color-6 rect.foreground { stroke: var(--color-6); }

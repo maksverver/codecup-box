@@ -6,86 +6,124 @@
     <script src="viewer.js" defer></script>
   </head>
   <body>
-    <svg viewBox="-10 -10 220 180" id="board">
-      <text class="coord" x="5" y="-5">a</text>
-      <text class="coord" x="15" y="-5">b</text>
-      <text class="coord" x="25" y="-5">c</text>
-      <text class="coord" x="35" y="-5">d</text>
-      <text class="coord" x="45" y="-5">e</text>
-      <text class="coord" x="55" y="-5">f</text>
-      <text class="coord" x="65" y="-5">g</text>
-      <text class="coord" x="75" y="-5">h</text>
-      <text class="coord" x="85" y="-5">i</text>
-      <text class="coord" x="95" y="-5">j</text>
-      <text class="coord" x="105" y="-5">k</text>
-      <text class="coord" x="115" y="-5">l</text>
-      <text class="coord" x="125" y="-5">m</text>
-      <text class="coord" x="135" y="-5">n</text>
-      <text class="coord" x="145" y="-5">o</text>
-      <text class="coord" x="155" y="-5">p</text>
-      <text class="coord" x="165" y="-5">q</text>
-      <text class="coord" x="175" y="-5">r</text>
-      <text class="coord" x="185" y="-5">s</text>
-      <text class="coord" x="195" y="-5">t</text>
+    <div class="panels">
+      <div class="board-panel">
+        <svg viewBox="-10 -10 220 180" id="board">
+          <text class="coord" x="5" y="-5">a</text>
+          <text class="coord" x="15" y="-5">b</text>
+          <text class="coord" x="25" y="-5">c</text>
+          <text class="coord" x="35" y="-5">d</text>
+          <text class="coord" x="45" y="-5">e</text>
+          <text class="coord" x="55" y="-5">f</text>
+          <text class="coord" x="65" y="-5">g</text>
+          <text class="coord" x="75" y="-5">h</text>
+          <text class="coord" x="85" y="-5">i</text>
+          <text class="coord" x="95" y="-5">j</text>
+          <text class="coord" x="105" y="-5">k</text>
+          <text class="coord" x="115" y="-5">l</text>
+          <text class="coord" x="125" y="-5">m</text>
+          <text class="coord" x="135" y="-5">n</text>
+          <text class="coord" x="145" y="-5">o</text>
+          <text class="coord" x="155" y="-5">p</text>
+          <text class="coord" x="165" y="-5">q</text>
+          <text class="coord" x="175" y="-5">r</text>
+          <text class="coord" x="185" y="-5">s</text>
+          <text class="coord" x="195" y="-5">t</text>
 
-      <text class="coord" x="5" y="165">0</text>
-      <text class="coord" x="15" y="165">1</text>
-      <text class="coord" x="25" y="165">2</text>
-      <text class="coord" x="35" y="165">3</text>
-      <text class="coord" x="45" y="165">4</text>
-      <text class="coord" x="55" y="165">5</text>
-      <text class="coord" x="65" y="165">6</text>
-      <text class="coord" x="75" y="165">7</text>
-      <text class="coord" x="85" y="165">8</text>
-      <text class="coord" x="95" y="165">9</text>
-      <text class="coord" x="105" y="165">10</text>
-      <text class="coord" x="115" y="165">11</text>
-      <text class="coord" x="125" y="165">12</text>
-      <text class="coord" x="135" y="165">13</text>
-      <text class="coord" x="145" y="165">14</text>
-      <text class="coord" x="155" y="165">15</text>
-      <text class="coord" x="165" y="165">16</text>
-      <text class="coord" x="175" y="165">17</text>
-      <text class="coord" x="185" y="165">18</text>
-      <text class="coord" x="195" y="165">19</text>
+          <text class="coord" x="5" y="165">0</text>
+          <text class="coord" x="15" y="165">1</text>
+          <text class="coord" x="25" y="165">2</text>
+          <text class="coord" x="35" y="165">3</text>
+          <text class="coord" x="45" y="165">4</text>
+          <text class="coord" x="55" y="165">5</text>
+          <text class="coord" x="65" y="165">6</text>
+          <text class="coord" x="75" y="165">7</text>
+          <text class="coord" x="85" y="165">8</text>
+          <text class="coord" x="95" y="165">9</text>
+          <text class="coord" x="105" y="165">10</text>
+          <text class="coord" x="115" y="165">11</text>
+          <text class="coord" x="125" y="165">12</text>
+          <text class="coord" x="135" y="165">13</text>
+          <text class="coord" x="145" y="165">14</text>
+          <text class="coord" x="155" y="165">15</text>
+          <text class="coord" x="165" y="165">16</text>
+          <text class="coord" x="175" y="165">17</text>
+          <text class="coord" x="185" y="165">18</text>
+          <text class="coord" x="195" y="165">19</text>
 
-      <text class="coord" x="-5" y="6">A</text>
-      <text class="coord" x="-5" y="16">B</text>
-      <text class="coord" x="-5" y="26">C</text>
-      <text class="coord" x="-5" y="36">D</text>
-      <text class="coord" x="-5" y="46">E</text>
-      <text class="coord" x="-5" y="56">F</text>
-      <text class="coord" x="-5" y="66">G</text>
-      <text class="coord" x="-5" y="76">H</text>
-      <text class="coord" x="-5" y="86">I</text>
-      <text class="coord" x="-5" y="96">J</text>
-      <text class="coord" x="-5" y="106">K</text>
-      <text class="coord" x="-5" y="116">L</text>
-      <text class="coord" x="-5" y="126">M</text>
-      <text class="coord" x="-5" y="136">N</text>
-      <text class="coord" x="-5" y="146">O</text>
-      <text class="coord" x="-5" y="156">P</text>
+          <text class="coord" x="-5" y="6">A</text>
+          <text class="coord" x="-5" y="16">B</text>
+          <text class="coord" x="-5" y="26">C</text>
+          <text class="coord" x="-5" y="36">D</text>
+          <text class="coord" x="-5" y="46">E</text>
+          <text class="coord" x="-5" y="56">F</text>
+          <text class="coord" x="-5" y="66">G</text>
+          <text class="coord" x="-5" y="76">H</text>
+          <text class="coord" x="-5" y="86">I</text>
+          <text class="coord" x="-5" y="96">J</text>
+          <text class="coord" x="-5" y="106">K</text>
+          <text class="coord" x="-5" y="116">L</text>
+          <text class="coord" x="-5" y="126">M</text>
+          <text class="coord" x="-5" y="136">N</text>
+          <text class="coord" x="-5" y="146">O</text>
+          <text class="coord" x="-5" y="156">P</text>
 
-      <text class="coord" x="205" y="6">0</text>
-      <text class="coord" x="205" y="16">1</text>
-      <text class="coord" x="205" y="26">2</text>
-      <text class="coord" x="205" y="36">3</text>
-      <text class="coord" x="205" y="46">4</text>
-      <text class="coord" x="205" y="56">5</text>
-      <text class="coord" x="205" y="66">6</text>
-      <text class="coord" x="205" y="76">7</text>
-      <text class="coord" x="205" y="86">8</text>
-      <text class="coord" x="205" y="96">9</text>
-      <text class="coord" x="205" y="106">10</text>
-      <text class="coord" x="205" y="116">11</text>
-      <text class="coord" x="205" y="126">12</text>
-      <text class="coord" x="205" y="136">13</text>
-      <text class="coord" x="205" y="146">14</text>
-      <text class="coord" x="205" y="156">15</text>
+          <text class="coord" x="205" y="6">0</text>
+          <text class="coord" x="205" y="16">1</text>
+          <text class="coord" x="205" y="26">2</text>
+          <text class="coord" x="205" y="36">3</text>
+          <text class="coord" x="205" y="46">4</text>
+          <text class="coord" x="205" y="56">5</text>
+          <text class="coord" x="205" y="66">6</text>
+          <text class="coord" x="205" y="76">7</text>
+          <text class="coord" x="205" y="86">8</text>
+          <text class="coord" x="205" y="96">9</text>
+          <text class="coord" x="205" y="106">10</text>
+          <text class="coord" x="205" y="116">11</text>
+          <text class="coord" x="205" y="126">12</text>
+          <text class="coord" x="205" y="136">13</text>
+          <text class="coord" x="205" y="146">14</text>
+          <text class="coord" x="205" y="156">15</text>
 
-      <rect class="board-background" x="0" y="0" width="200" height="160"></rect>
-      <g id="tiles"></g>
-      <g id="squares"></g>
-    </svg>
+          <rect class="board-background" x="0" y="0" width="200" height="160"></rect>
+          <g id="tiles"></g>
+          <g id="squares"></g>
+        </svg>
+      </div>
+      <div class="moves-panel">
+        <table class="moves-table">
+          <!-- Maybe add later: player names at top of moves table
+          <thead><td></td><th></th><th></th></thead>
+          -->
+          <tbody id="moves-tbody"></tbody>
+        </table>
+      </div>
+      <div class="squares-panel">
+        <table class="scores-table">
+          <tr>
+            <th>Player</th>
+            <td id="scores-table-player-1">1</td>
+            <td id="scores-table-player-2">2</td>
+          </tr>
+          <tr>
+            <th>Color</th>
+            <td id="scores-table-color-1">?</td>
+            <td id="scores-table-color-2">?</td>
+          </tr>
+          <tr>
+            <th>Score</th>
+            <td id="scores-table-score-1">0</td>
+            <td id="scores-table-score-2">0</td>
+          </tr>
+        </table>
+
+        <table class="squares-table">
+          <thead>
+            <tr><th>Player</th><th>Color</th><th>Coords</th><th>Size</th></tr>
+          </thead>
+          <tbody id="squares-tbody"></tbody>
+        </table>
+      </div>
+    </div>
   </body>
 </html>
