@@ -87,6 +87,15 @@ td.center {
   text-align: center;
 }
 
+.navigate-buttons {
+  text-align: center;
+}
+
+.navigate-buttons button {
+  width: 3em;
+  height: 2em;
+}
+
 :root {
   --color-1: #ff4040;
   --color-2: #ffff00;

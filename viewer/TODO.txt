@@ -1,4 +1,3 @@
- - navigation buttons (start, back, forward, end) + keyboard navigation for the same
  - board: highlight last tile placed
  - board/squares table: highlight squares when hovering over them
  - moves table: show +/-

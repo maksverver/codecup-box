@@ -97,18 +97,18 @@ function updateScoresTable(playerNames, secretColors, scores) {
   document.getElementById('scores-table-score-2').textContent = scores[c2];
 }
 
-function repopulateMovesTable(moveStrings, selectedIndex, onSelectionChange) {
+function repopulateMovesTable(moveStrings, onRowClicked) {
   const rowElements = [];
+  let selectedIndex = -1;
 
-  function onRowClicked(i) {
-    if (i === selectedIndex) return;
-
+  function setSelectedRow(i) {
     if (Object.hasOwn(rowElements, selectedIndex)) {
       rowElements[selectedIndex].classList.remove('selected');
     }
-    rowElements[i].classList.add('selected');
     selectedIndex = i;
-    onSelectionChange(i);
+    if (Object.hasOwn(rowElements, selectedIndex)) {
+      rowElements[selectedIndex].classList.add('selected');
+    }
   }
 
   function addMove(i, s) {
@@ -138,6 +138,7 @@ function repopulateMovesTable(moveStrings, selectedIndex, onSelectionChange) {
   }
 
   movesTbody.replaceChildren(...rowElements);
+  return {setSelectedRow};
 }
 
 function repopulateSquaresTable(playerNames, secretColors, squares) {
@@ -236,15 +237,48 @@ function calculateBoardState(moves) {
 function initialize(playerNames, secretColors, moveStrings) {
   const moves = moveStrings.map(parseMove);
 
-  function handleSelectedMoveChanged(i) {
+  const lastMoveIndex = moves.length - 1;
+  let selectedMoveIndex = -1;
+
+  const beginButton = document.getElementById('navigate-begin');
+  const endButton = document.getElementById('navigate-end');
+  const prevButton = document.getElementById('navigate-prev');
+  const nextButton = document.getElementById('navigate-next');
+  beginButton.onclick = () => setSelectedMoveIndex(0);
+  endButton.onclick = () => setSelectedMoveIndex(lastMoveIndex);
+  prevButton.onclick = () => adjustSelectedMoveIndex(-1);
+  nextButton.onclick = () => adjustSelectedMoveIndex(+1);
+
+  document.onkeydown = (e) => {
+    switch (e.key) {
+      case 'ArrowLeft': adjustSelectedMoveIndex(-1); break;
+      case 'ArrowRight': adjustSelectedMoveIndex(+1); break;
+      case 'ArrowUp': adjustSelectedMoveIndex(-2); break;
+      case 'ArrowDown': adjustSelectedMoveIndex(+2); break;
+      case 'Home': setSelectedMoveIndex(0); break;
+      case 'End': setSelectedMoveIndex(lastMoveIndex); break;
+    }
+  };
+
+  function adjustSelectedMoveIndex(delta) {
+    if (selectedMoveIndex < 0) return;
+    setSelectedMoveIndex(Math.max(0, Math.min(lastMoveIndex, selectedMoveIndex + delta)));
+  }
+
+  function setSelectedMoveIndex(i) {
+    if (i === selectedMoveIndex) return;
     const boardState = calculateBoardState(moves.slice(0, i + 1));
     repopulateBoard(boardState);
     updateScoresTable(playerNames, secretColors, boardState.scores);
     repopulateSquaresTable(playerNames, secretColors, boardState.squares);
+    selectedMoveIndex = i;
+    setSelectedRow(i);
+    beginButton.disabled = prevButton.disabled = i <= 0;
+    endButton.disabled = nextButton.disabled = i >= lastMoveIndex;
   }
 
-  handleSelectedMoveChanged(moves.length - 1);
-  repopulateMovesTable(moveStrings, moves.length - 1, handleSelectedMoveChanged);
+  const {setSelectedRow} = repopulateMovesTable(moveStrings, setSelectedMoveIndex);
+  setSelectedMoveIndex(lastMoveIndex);
 }
 
 (function() {
