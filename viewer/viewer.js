@@ -162,9 +162,10 @@ function repopulateSquaresTable(playerNames, secretColors, squares) {
 function repopulateBoard(boardState) {
   const {turns, squares} = boardState;
   tilesG.replaceChildren();
+  let lastTileG = undefined;
   for (const {move, digits} of turns) {
     const {row, col, vert} = move;
-    const tileG = createSvgElement(tilesG, 'g', 'tile');
+    const tileG = lastTileG = createSvgElement(tilesG, 'g', 'tile');
     const borderProps = {
       x: 10 * col,
       y: 10 * row,
@@ -192,6 +193,10 @@ function repopulateBoard(boardState) {
       }).appendChild(document.createTextNode(String(digit)));
     }
     createSvgElement(tileG, 'rect', 'tile-border', borderProps);
+  }
+
+  if (lastTileG) {
+    lastTileG.classList.add('last-move');
   }
 
   // Sort by size, descending. This tends to improve visualization because large

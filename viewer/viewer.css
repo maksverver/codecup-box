@@ -159,6 +159,19 @@ rect.tile-border {
   fill: none;
 }
 
+g.tile.last-move rect.tile-background {
+  filter:
+    drop-shadow( 2px  2px 1px rgba(255, 255, 255, 0.5))
+    drop-shadow(-2px  2px 1px rgba(255, 255, 255, 0.5))
+    drop-shadow( 2px -2px 1px rgba(255, 255, 255, 0.5))
+    drop-shadow(-2px -2px 1px rgba(255, 255, 255, 0.5));
+}
+
+g.tile.last-move rect.tile-border {
+  stroke: white;
+  stroke-width: 2px;
+}
+
 g.tile-cells {
   /* Note: box() is nicer but doesn't work in Chromium. */
   /* Keep 3px in sync with rx/ry values in viewer.js! */
