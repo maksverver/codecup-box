@@ -41,7 +41,7 @@ function loadTranscriptFile(file) {
   if (file == null) return;  // nothing selected
 
   // Try to infer filenames from filename ("foo-vs-bar-transcript.txt"):
-  const match = file.name && file.name.match(/(.*)-vs-(.*)-transcript.txt/);
+  const match = file.name && file.name.match(/([^-]*)-vs-([^-]*)-transcript.txt/);
   const playerNames = match ? [match[1], match[2]] : undefined;
 
   function loadFileContent(text) {
