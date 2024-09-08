@@ -62,22 +62,6 @@ function parseMove(move) {
   };
 }
 
-function parseTranscript(text) {
-  const lines = text
-      .split(/[\r\n]+/)
-      .map(line => line.replace(/#.*/, '').trim())
-      .filter(x => x);
-
-  if (lines.length === 0) throw new Error('File is empty!');
-
-  if (!lines[0].match(/[1-6] [1-6]/)) {
-    throw new Error('Invalid secret colors!');
-  }
-  const secretColors = lines[0].split(/\s+/).map((s) => parseInt(s, 10));
-  const moveStrings = lines.slice(1);
-  return {secretColors, moveStrings};
-}
-
 function detectSquares(grid) {
   const squares = [];
   for (let r1 = 0; r1 < HEIGHT; ++r1) {
@@ -263,31 +247,38 @@ function initialize(playerNames, secretColors, moveStrings) {
   repopulateMovesTable(moveStrings, moves.length - 1, handleSelectedMoveChanged);
 }
 
-function loadTranscriptFile(file) {
-  if (file == null) return;  // nothing selected
-
-  // Try to infer filenames from filename ("foo-vs-bar-transcript.txt"):
-  const playerNames = ["Player 1", "Player 2"];
-  const match = file.name && file.name.match(/(.*)-vs-(.*)-transcript.txt/);
-  if (match) {
-    playerNames[0] = match[1];
-    playerNames[1] = match[2];
+(function() {
+  const hash = window.location.hash;
+  const sep = hash.indexOf('?');
+  if (sep < 0) {
+    console.warn('Missing hash parameters');
+    return;
   }
-
-  function loadFileContent(text) {
-    try {
-      const {secretColors, moveStrings} = parseTranscript(text);
-      initialize(playerNames, secretColors, moveStrings);
-      document.getElementById('setup-view').style.display = 'none';
-      document.getElementById('main-view').style.display = null;
-    } catch (e) {
-      console.error('Initialization failed!', e);
-      alert('Initialization failed! See Javascript console for details');
+  let secretColors = [0, 0];
+  let moveStrings = [];
+  let playerNames = ['Player 1', 'Player 2'];
+  for (const part of hash.substring(sep + 1).split('&')) {
+    const sep = part.indexOf('=');
+    if (sep < 0) {
+      console.warn('Ignoring hash parameter without equals sign');
+      continue;
+    }
+    const key = decodeURIComponent(part.substring(0, sep));
+    const value = part.substring(sep + 1);
+    switch (key) {
+      case 'secretColors':
+        secretColors = value.split(',').map((s) => parseInt(s, 10));
+        break;
+      case 'moveStrings':
+        moveStrings = value.split(',').map(decodeURIComponent);
+        break;
+      case 'playerNames':
+        playerNames = value.split(',').map(decodeURIComponent);
+        break;
+      default:
+        console.warn('Ignoring hash parameter with unkown key', key);
+        break;
     }
   }
-
-  // Read file content.
-  var reader = new FileReader();
-  reader.onload = (e) => loadFileContent(e.target.result);
-  reader.readAsText(file);
-}
+  initialize(playerNames, secretColors, moveStrings);
+})();

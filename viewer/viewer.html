@@ -6,12 +6,7 @@
     <script src="viewer.js" defer></script>
   </head>
   <body>
-    <div id="setup-view">
-      <h1>Box transcript viewer</h1>
-      <h4>Select transcript to view</h4>
-      <input type="file" id="file-input" onchange="loadTranscriptFile(this.files[0])">
-    </div>
-    <div class="panels" id="main-view" style="display:none">
+    <div class="panels">
       <div class="board-panel">
         <svg viewBox="-10 -10 220 180" id="board">
           <text class="coord" x="5" y="-5">a</text>
