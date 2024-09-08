@@ -160,7 +160,7 @@ function repopulateSquaresTable(playerNames, secretColors, squares) {
 }
 
 function repopulateBoard(boardState) {
-  const {turns, squares, scores} = boardState;
+  const {turns, squares} = boardState;
   tilesG.replaceChildren();
   for (const {move, digits} of turns) {
     const {row, col, vert} = move;
