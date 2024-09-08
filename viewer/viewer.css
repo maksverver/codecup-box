@@ -150,7 +150,7 @@ rect.tile-background {
   stroke: #202020;
   stroke-width: 1px;
   fill: black;
-  filter: drop-shadow(1px 1px 0.5px rgb(0, 0, 0.5));
+  filter: drop-shadow(1px 1px 0.5px rgba(0, 0, 0, 0.75));
 }
 
 rect.tile-border {
