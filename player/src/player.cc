@@ -130,7 +130,7 @@ std::optional<Move> ParseMove(std::string_view s) {
   std::optional<Orientation> ori = ParseOrientation(s.back());
   if (!row || !col || !tile || !ori) return std::nullopt;
   Placement placement = {*row, *col, *ori};
-  if (!placement.IsValid()) return {};
+  if (!placement.IsInBounds()) return {};
   return Move{*tile, placement};
 }
 
@@ -175,6 +175,26 @@ void WriteOutputLine(std::string_view s) {
   std::cout << s << std::endl;
 }
 
+std::vector<Placement> GeneratePlacements(const grid_t &grid) {
+  std::vector<Placement> placements;
+  for (coord_t row = 0; row < HEIGHT; ++row) {
+    for (coord_t col = 0; col < WIDTH; ++col) {
+      for (Orientation ori : ORIENTATIONS) {
+        Placement placement = {row, col, ori};
+        if (placement.IsValid(grid)) {
+          placements.push_back(placement);
+        }
+      }
+    }
+  }
+  return placements;
+}
+
+// Returns a random valid placement. Assumes the game is not over.
+Placement RandomPlacement(const grid_t &grid, rng_t &rng) {
+  return RandomSample(GeneratePlacements(grid), rng);
+}
+
 void PlayGame(rng_t &rng) {
   Timer timer(false);
 
@@ -184,15 +204,14 @@ void PlayGame(rng_t &rng) {
   // Second line of input contains the first tile placed in the center.
   Move start_move = ReadMove();
   grid_t grid = {};
-  Place(grid, start_move);
+  start_move.Execute(grid);
 
   // Third line of input contains either "Start" if I play first, or else the
   // first move played by the opponent.
   std::string input = ReadInputLine();
   const int my_player = (input == "Start" ? 0 : 1);
 
-  // TODO: detect end of game
-  for (int turn = 0; ; ++turn) {
+  for (int turn = 0; !IsGameOver(grid); ++turn) {
     if (turn % 2 == my_player) {
       // My turn!
       tile_t tile = ReadTile();
@@ -200,10 +219,10 @@ void PlayGame(rng_t &rng) {
       auto pause_duration = timer.Resume();
       LogPause(pause_duration, timer.Elapsed(false));
 
-      Placement placement = {};  // TODO! calculate somehow
+      Placement placement = RandomPlacement(grid, rng);
       Move move = {tile, placement};
       assert(move.IsValid(grid));
-      Place(grid, move);
+      move.Execute(grid);
 
       // Note: we should pause the timer just before writing the output line,
       // since the referee may suspend our process immediately after.
@@ -220,7 +239,7 @@ void PlayGame(rng_t &rng) {
         LogError() << "Opponent's move is invalid: " << input;
         exit(1);
       } else {
-        Place(grid, *move);
+        move->Execute(grid);
       }
     }
   }
