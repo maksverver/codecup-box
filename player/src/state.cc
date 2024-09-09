@@ -49,23 +49,29 @@ bool Placement::IsValid(const grid_t &grid) const {
 }
 
 // The game is over if and only if there is no 6x2 rectangular area of the grid
-// (either horizontally or vertically) that contains no colored cells. Not all
-// of these rectangular areas are valid moves (since new tiles must be placed
-// adjacent to colored cells) but at least one of them must be.
+// (either horizontally or vertically) that contains at most 4 colored cells.
+// Not all of these rectangular areas are valid moves (since new tiles must be
+// placed adjacent to colored cells) but at least one of them must be.
 bool IsGameOver(const grid_t &grid) {
   // TODO: speed this up?
   for (int r = 0; r <= HEIGHT - 2; ++r) {
     for (int c = 0; c <= WIDTH - COLORS; ++c) {
+      int overlap = 0;
       for (int i = 0; i < 6; ++i) {
-        if (grid[r][c + i] != 0 || grid[r + 1][c + i] != 0) return false;
+        overlap += grid[r][c + i] != 0;
+        overlap += grid[r + 1][c + i] != 0;
       }
+      if (overlap <= 4) return false;
     }
   }
   for (int r = 0; r <= HEIGHT - COLORS; ++r) {
     for (int c = 0; c <= WIDTH - 2; ++c) {
+      int overlap = 0;
       for (int i = 0; i < 6; ++i) {
-        if (grid[r + i][c] != 0 || grid[r + i][c + 1] != 0) return false;
+        overlap += grid[r + i][c] != 0;
+        overlap += grid[r + i][c + 1] != 0;
       }
+      if (overlap <= 4) return false;
     }
   }
   return true;
