@@ -48,19 +48,6 @@ bool Placement::IsValid(const grid_t &grid) const {
   return IsAdjacent(grid, row, col, ori);
 }
 
-void Move::Execute(grid_t &grid) {
-  auto [row, col, ori] = placement;
-  if (IsHorizontal(ori)) {
-    for (int i = 0; i < COLORS; ++i) {
-      grid[row][col + i] = grid[row + 1][col + COLORS - 1 - i] = tile[i];
-    }
-  } else {
-    for (int i = 0; i < COLORS; ++i) {
-      grid[row + COLORS - 1 - i][col] = grid[row + i][col + 1] = tile[i];
-    }
-  }
-}
-
 // The game is over if and only if there is no 6x2 rectangular area of the grid
 // (either horizontally or vertically) that contains no colored cells. Not all
 // of these rectangular areas are valid moves (since new tiles must be placed
@@ -82,4 +69,17 @@ bool IsGameOver(const grid_t &grid) {
     }
   }
   return true;
+}
+
+void ExecuteMove(grid_t &grid, const tile_t &tile, const Placement &placement) {
+  auto [row, col, ori] = placement;
+  if (IsHorizontal(ori)) {
+    for (int i = 0; i < COLORS; ++i) {
+      grid[row][col + i] = grid[row + 1][col + COLORS - 1 - i] = tile[i];
+    }
+  } else {
+    for (int i = 0; i < COLORS; ++i) {
+      grid[row + COLORS - 1 - i][col] = grid[row + i][col + 1] = tile[i];
+    }
+  }
 }

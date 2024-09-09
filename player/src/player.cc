@@ -7,6 +7,7 @@
 #include <chrono>
 #include <cstdlib>
 #include <iostream>
+#include <limits>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -190,9 +191,58 @@ std::vector<Placement> GeneratePlacements(const grid_t &grid) {
   return placements;
 }
 
-// Returns a random valid placement. Assumes the game is not over.
-Placement RandomPlacement(const grid_t &grid, rng_t &rng) {
-  return RandomSample(GeneratePlacements(grid), rng);
+void EvaluateAllColors(const grid_t &grid, std::array<int, COLORS> &scores) {
+  scores = {};
+  for (int r1 = 0; r1 < HEIGHT; ++r1) {
+    for (int c1 = 0; c1 < WIDTH; ++c1) {
+      int color = grid[r1][c1];
+      if (color == 0) continue;
+      int score = 1;
+      for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
+        int size = r2 - r1;
+        int corners = (grid[r2][c1] == color) + (grid[r1][c2] == color) + (grid[r2][c2] == color);
+        if (corners == 1) {
+          score += 10 + size;
+        } else if (corners == 2) {
+          // maybe: assign different scores to two opposite and two adjacent corners?
+          score += 100 + 10*size;
+        } else if (corners == 3) {
+          score += 1000 + 100*size;
+        }
+      }
+      scores[color - 1] += score;
+    }
+  }
+}
+
+Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, rng_t &rng) {
+  int best_score = std::numeric_limits<int>::min();
+  std::vector<Placement> best_placements;
+  for (Placement placement : GeneratePlacements(grid)) {
+    grid_t copy = grid;
+    ExecuteMove(copy, tile, placement);
+    std::array<int, COLORS> scores = {};
+    EvaluateAllColors(copy, scores);
+
+    int my_score = scores[my_color - 1];
+    int max_other_score = 0;
+    for (int c = 1; c <= COLORS; ++c) {
+      if (c != my_color && scores[c - 1] > max_other_score) {
+        max_other_score = scores[c - 1];
+      }
+    }
+
+    int score = my_score - max_other_score;
+
+    if (score > best_score) {
+      best_placements.clear();
+      best_score = score;
+    }
+    if (score == best_score) {
+      best_placements.push_back(placement);
+    }
+  }
+  return RandomSample(best_placements, rng);
 }
 
 void PlayGame(rng_t &rng) {
@@ -219,7 +269,7 @@ void PlayGame(rng_t &rng) {
       auto pause_duration = timer.Resume();
       LogPause(pause_duration, timer.Elapsed(false));
 
-      Placement placement = RandomPlacement(grid, rng);
+      Placement placement = GreedyPlacement(my_secret_color, grid, tile, rng);
       Move move = {tile, placement};
       assert(move.IsValid(grid));
       move.Execute(grid);

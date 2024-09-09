@@ -61,14 +61,21 @@ struct Placement {
   bool IsValid(const grid_t &grid) const;
 };
 
+// Checks if the game is over.
+//
+// Currently this function is slow, so only suitable for calling in the outer
+// game loop. (TODO: optimize this if it matters.)
+bool IsGameOver(const grid_t &grid);
+
+// Places a tile on the grid, overwriting the previous digits.
+void ExecuteMove(grid_t &grid, const tile_t &tile, const Placement &placement);
+
 struct Move {
   tile_t tile;
   Placement placement;
 
   bool IsValid(const grid_t &grid) const { return placement.IsValid(grid); }
-  void Execute(grid_t &grid);
+  void Execute(grid_t &grid) { return ExecuteMove(grid, tile, placement); }
 };
-
-bool IsGameOver(const grid_t &grid);
 
 #endif // ndef STATE_H_INCLUDED
