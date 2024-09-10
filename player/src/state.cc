@@ -77,6 +77,46 @@ bool IsGameOver(const grid_t &grid) {
   return true;
 }
 
+grid_t CalcFixed(const grid_t &grid) {
+  grid_t fixed;
+  for (int r = 0; r < HEIGHT; ++r) {
+    for (int c = 0; c < WIDTH; ++c) {
+      fixed[r][c] = 1;
+    }
+  }
+
+  // TODO: speed this up?
+  for (int r = 0; r <= HEIGHT - 2; ++r) {
+    for (int c = 0; c <= WIDTH - COLORS; ++c) {
+      int overlap = 0;
+      for (int i = 0; i < 6; ++i) {
+        overlap += grid[r][c + i] != 0;
+        overlap += grid[r + 1][c + i] != 0;
+      }
+      if (overlap <= 4) {
+        for (int i = 0; i < 6; ++i) {
+          fixed[r][c + i] = fixed[r + 1][c + i] = 0;
+        }
+      }
+    }
+  }
+  for (int r = 0; r <= HEIGHT - COLORS; ++r) {
+    for (int c = 0; c <= WIDTH - 2; ++c) {
+      int overlap = 0;
+      for (int i = 0; i < 6; ++i) {
+        overlap += grid[r + i][c] != 0;
+        overlap += grid[r + i][c + 1] != 0;
+      }
+      if (overlap <= 4) {
+        for (int i = 0; i < 6; ++i) {
+          fixed[r + i][c] = fixed[r + i][c + 1] = 0;
+        }
+      }
+    }
+  }
+  return fixed;
+}
+
 void ExecuteMove(grid_t &grid, const tile_t &tile, const Placement &placement) {
   auto [row, col, ori] = placement;
   if (IsHorizontal(ori)) {

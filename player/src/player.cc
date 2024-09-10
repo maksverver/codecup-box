@@ -191,23 +191,41 @@ std::vector<Placement> GeneratePlacements(const grid_t &grid) {
   return placements;
 }
 
-void EvaluateAllColors(const grid_t &grid, std::array<int, COLORS> &scores) {
+void EvaluateAllColors(const grid_t &grid, const grid_t &fixed, std::array<int, COLORS> &scores) {
   scores = {};
   for (int r1 = 0; r1 < HEIGHT; ++r1) {
     for (int c1 = 0; c1 < WIDTH; ++c1) {
       int color = grid[r1][c1];
       if (color == 0) continue;
       int score = 1;
+      //  a  b
+      //  c  d
+      bool fa = fixed[r1][c1];
       for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
         int size = r2 - r1;
-        int corners = (grid[r2][c1] == color) + (grid[r1][c2] == color) + (grid[r2][c2] == color);
-        if (corners == 1) {
-          score += 10 + size;
-        } else if (corners == 2) {
-          // maybe: assign different scores to two opposite and two adjacent corners?
-          score += 100 + 10*size;
-        } else if (corners == 3) {
-          score += 1000 + 100*size;
+        bool b = grid[r1][c2] == color;
+        bool c = grid[r2][c1] == color;
+        bool d = grid[r2][c2] == color;
+        bool fb = fixed[r1][c2];
+        bool fc = fixed[r2][c1];
+        bool fd = fixed[r2][c2];
+        int num_fixed = fa + fb + fc + fd;
+        if (b && c && d) {
+          // Square!
+          score += 1000 + 100*num_fixed + 100*size;
+        } else if (
+              (b && c && !fd) ||
+              (b && d && !fc) ||
+              (c && d && !fb)) {
+          // One cell short of a square.
+          score += 100 + 10*num_fixed + 10*size;
+        } else if (
+            (b && !fc && !fd) ||
+            (c && !fb && !fd) ||
+            (d && !fb && !fc)) {
+          // Two points aligned horizontally, vertically, or diagonally.
+          // Maybe: assign a different score for the diagonal version?
+          score += 10 + 1*num_fixed + 1*size;
         }
       }
       scores[color - 1] += score;
@@ -223,7 +241,8 @@ Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, 
     grid_t copy = grid;
     ExecuteMove(copy, tile, placement);
     std::array<int, COLORS> scores = {};
-    EvaluateAllColors(copy, scores);
+    grid_t fixed = CalcFixed(copy);
+    EvaluateAllColors(copy, fixed, scores);
 
     int my_score = scores[my_color - 1];
     int max_other_score = 0;

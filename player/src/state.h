@@ -70,6 +70,10 @@ bool IsGameOver(const grid_t &grid);
 // Places a tile on the grid, overwriting the previous digits.
 void ExecuteMove(grid_t &grid, const tile_t &tile, const Placement &placement);
 
+// Returns a boolean grid where cells are 0 if they could still be changed by
+// a future move, or 1 if they are fixed, because no valid move overlaps.
+grid_t CalcFixed(const grid_t &grid);
+
 struct Move {
   tile_t tile;
   Placement placement;
