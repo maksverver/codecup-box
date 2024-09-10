@@ -111,7 +111,12 @@ inline void LogTime(log_duration_t total) {
 // Log the time spend paused.
 // This is an upper bound on the time spent by the opponent.
 inline void LogPause(log_duration_t interval, log_duration_t total) {
-  LogStream("PAUSE") << interval << " " << total;
+  LogStream("PAUSE") << interval << ' ' << total;
+}
+
+// Logs the number of possible moves.
+inline void LogMoveCount(int total, int best) {
+  LogStream("MOVES") << total << ' ' << best;
 }
 
 #endif  // ndef LOGGING_H_INCLUDED

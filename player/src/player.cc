@@ -217,8 +217,9 @@ void EvaluateAllColors(const grid_t &grid, std::array<int, COLORS> &scores) {
 
 Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, rng_t &rng) {
   int best_score = std::numeric_limits<int>::min();
+  std::vector<Placement> all_placements = GeneratePlacements(grid);
   std::vector<Placement> best_placements;
-  for (Placement placement : GeneratePlacements(grid)) {
+  for (Placement placement : all_placements) {
     grid_t copy = grid;
     ExecuteMove(copy, tile, placement);
     std::array<int, COLORS> scores = {};
@@ -242,6 +243,7 @@ Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, 
       best_placements.push_back(placement);
     }
   }
+  LogMoveCount(all_placements.size(), best_placements.size());
   return RandomSample(best_placements, rng);
 }
 
