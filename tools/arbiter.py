@@ -26,9 +26,10 @@ class Outcome(Enum):
 
 
 class PlayerResult:
-    def __init__(self, outcome, score, time):
+    def __init__(self, outcome, game_score, competition_score, time):
         self.outcome = outcome
-        self.score = score
+        self.game_score = game_score
+        self.competition_score = competition_score
         self.time = time
 
 def Launch(command, logfile):
@@ -97,24 +98,24 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
                 print(box.FormatTilePlacement(last_tile, last_placement), file=transcript)
 
     results = [None, None]
+    game_scores = board.CalculateScores(secret_colors)
     if board.IsGameOver():
         # Game ended regularly. Calculate scores. Note that we start with the game
         # scores (the sum of sizes of squares for the secret colors) and use those
         # to calculate CodeCup score, which is based on the difference between the
         # player's scores, with a bonus for the winner.
-        game_scores = board.CalculateScores(secret_colors)
         for p in range(2):
             diff = game_scores[p] - game_scores[1 - p]
             if diff > 0:
                 outcome = Outcome.WIN
-                score = 200 + diff
+                competition_score = 200 + diff
             elif diff < 0:
                 outcome = Outcome.LOSS
-                score = 100 + diff
+                competition_score = 100 + diff
             else:
                 outcome = Outcome.TIE
-                score = 150
-            results[p] = PlayerResult(outcome, score, times[p])
+                competition_score = 150
+            results[p] = PlayerResult(outcome, game_scores[p], competition_score, times[p])
     else:
         # Game ended irregularly, with the current player failing.
         #
@@ -122,8 +123,8 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
         # CodeCup rules where the game is finished with the arbiter playing randomly)
         failer = turn % 2
         winner = 1 - failer
-        results[failer] = PlayerResult(Outcome.FAIL, 0, times[failer])
-        results[winner] = PlayerResult(Outcome.WIN, 200, times[winner])
+        results[failer] = PlayerResult(Outcome.FAIL, game_scores[failer],   0, times[failer])
+        results[winner] = PlayerResult(Outcome.WIN,  game_scores[winner], 200, times[winner])
 
     # Gracefully quit. (Do this after computing outcomes because a program can
     # still fail if it doesn't exit cleanly, overriding the previous outcome.)
@@ -199,8 +200,8 @@ def RunGames(commands, names, rounds, logdir, executor=None):
         player_time_max[j] = max(player_time_max[j], results[1].time)
         player_outcomes[i][results[0].outcome] += 1
         player_outcomes[j][results[1].outcome] += 1
-        player_scores[i] += results[0].score
-        player_scores[j] += results[1].score
+        player_scores[i] += results[0].competition_score
+        player_scores[j] += results[1].competition_score
 
     futures = []
 
@@ -220,19 +221,22 @@ def RunGames(commands, names, rounds, logdir, executor=None):
     with (Tee(open(os.path.join(logdir, 'results.txt'), 'wt'))
                 if logdir and len(pairings) > 1 else nullcontext()) as f:
 
-        print('Game Player 1           Player 2           Outc1 Outc2 Pts1 Pts2 Time 1 Time 2', file=f)
-        print('---- ------------------ ------------------ ----- ----- ---- ---- ------ ------', file=f)
+        print('Game Player 1           Player 2           Sc1 Sc2 Outc1 Outc2 Pts1 Pts2 Time 1 Time 2', file=f)
+        print('---- ------------------ ------------------ --- --- ----- ----- ---- ---- ------ ------', file=f)
 
         def PrintRowStart(game_index, name1, name2):
             print('%4d %-18s %-18s ' % (game_index + 1, name1, name2), end='', file=f)
         def PrintRowFinish(results):
-            print('%-5s %-5s %4d %4d %6.2f %6.2f' % (
-                results[0].outcome.name,
-                results[1].outcome.name,
-                results[0].score,
-                results[1].score,
-                results[0].time,
-                results[1].time), file=f)
+            p1, p2 = results
+            print('%3d %3d %-5s %-5s %4d %4d %6.2f %6.2f' % (
+                p1.game_score,
+                p2.game_score,
+                p1.outcome.name,
+                p2.outcome.name,
+                p1.competition_score,
+                p2.competition_score,
+                p1.time,
+                p2.time), file=f)
 
         for game_index in range(len(pairings)):
             i, j = pairings[game_index]
@@ -272,7 +276,7 @@ def RunGames(commands, names, rounds, logdir, executor=None):
             PrintRowStart(game_index, names[i], names[j])
             PrintRowFinish(results)
 
-        print('---- ------------------ ------------------ ----- ----- ---- ---- ------ ------', file=f)
+        print('---- ------------------ ------------------ ----- ----- ----- ----- ---- ---- ------ ------', file=f)
 
     # Print summary of players.
     if len(pairings) > 1:
