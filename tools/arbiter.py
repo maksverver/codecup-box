@@ -25,6 +25,12 @@ class Outcome(Enum):
     FAIL = 4  # crash, invalid move, etc.
 
 
+class PlayerResult:
+    def __init__(self, outcome, score, time):
+        self.outcome = outcome
+        self.score = score
+        self.time = time
+
 def Launch(command, logfile):
     if logfile is None:
         stderr = DEVNULL
@@ -90,8 +96,7 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
             if transcript:
                 print(box.FormatTilePlacement(last_tile, last_placement), file=transcript)
 
-    outcomes = [None, None]
-    scores = [None, None]
+    results = [None, None]
     if board.IsGameOver():
         # Game ended regularly. Calculate scores. Note that we start with the game
         # scores (the sum of sizes of squares for the secret colors) and use those
@@ -101,22 +106,24 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
         for p in range(2):
             diff = game_scores[p] - game_scores[1 - p]
             if diff > 0:
-                outcomes[p] = Outcome.WIN
-                scores[p] = 200 + diff
+                outcome = Outcome.WIN
+                score = 200 + diff
             elif diff < 0:
-                outcomes[p] = Outcome.LOSS
-                scores[p] = 100 + diff
+                outcome = Outcome.LOSS
+                score = 100 + diff
             else:
-                outcomes[p] = Outcome.TIE
-                scores[p] = 150
+                outcome = Outcome.TIE
+                score = 150
+            results[p] = PlayerResult(outcome, score, times[p])
     else:
         # Game ended irregularly, with the current player failing.
-        outcomes[turn % 2] = Outcome.FAIL
-        outcomes[1 - turn % 2] = Outcome.WIN
+        #
         # Assign a token score to the winner (note: this is different from the
         # CodeCup rules where the game is finished with the arbiter playing randomly)
-        scores[turn % 2] = 0
-        scores[1 - turn % 2] = 200
+        failer = turn % 2
+        winner = 1 - failer
+        results[failer] = PlayerResult(Outcome.FAIL, 0, times[failer])
+        results[winner] = PlayerResult(Outcome.WIN, 200, times[winner])
 
     # Gracefully quit. (Do this after computing outcomes because a program can
     # still fail if it doesn't exit cleanly, overriding the previous outcome.)
@@ -132,9 +139,9 @@ def RunGame(command1, command2, transcript, logfile1, logfile2):
         status = p.wait()
         if status != 0:
             print('%s command exited with nonzero status %d: %s' % (roles[i], status, commands[i]), file=sys.stderr)
-            outcomes[i] = Outcome.FAIL
+            results[i].outcome = Outcome.FAIL
 
-    return outcomes, scores, times
+    return results
 
 
 def MakeLogfilenames(logdir, name1, name2, game_index, game_count):
@@ -185,15 +192,15 @@ def RunGames(commands, names, rounds, logdir, executor=None):
     player_outcomes   = [defaultdict(lambda: 0) for _ in range(P)]
     player_scores     = [0]*P
 
-    def AddStatistics(i, j, outcomes, scores, times):
-        player_time_total[i] += times[0]
-        player_time_total[j] += times[1]
-        player_time_max[i] = max(player_time_max[i], times[0])
-        player_time_max[j] = max(player_time_max[j], times[1])
-        player_outcomes[i][outcomes[0]] += 1
-        player_outcomes[j][outcomes[1]] += 1
-        player_scores[i] += scores[0]
-        player_scores[j] += scores[1]
+    def AddStatistics(i, j, results):
+        player_time_total[i] += results[0].time
+        player_time_total[j] += results[1].time
+        player_time_max[i] = max(player_time_max[i], results[0].time)
+        player_time_max[j] = max(player_time_max[j], results[1].time)
+        player_outcomes[i][results[0].outcome] += 1
+        player_outcomes[j][results[1].outcome] += 1
+        player_scores[i] += results[0].score
+        player_scores[j] += results[1].score
 
     futures = []
 
@@ -218,8 +225,14 @@ def RunGames(commands, names, rounds, logdir, executor=None):
 
         def PrintRowStart(game_index, name1, name2):
             print('%4d %-18s %-18s ' % (game_index + 1, name1, name2), end='', file=f)
-        def PrintRowFinish(outcomes, scores, times):
-            print('%-5s %-5s %4d %4d %6.2f %6.2f' % (outcomes[0].name, outcomes[1].name, scores[0], scores[1], times[0], times[1]), file=f)
+        def PrintRowFinish(results):
+            print('%-5s %-5s %4d %4d %6.2f %6.2f' % (
+                results[0].outcome.name,
+                results[1].outcome.name,
+                results[0].score,
+                results[1].score,
+                results[0].time,
+                results[1].time), file=f)
 
         for game_index in range(len(pairings)):
             i, j = pairings[game_index]
@@ -239,9 +252,9 @@ def RunGames(commands, names, rounds, logdir, executor=None):
                 # are competing while the game is in progress.
                 PrintRowStart(game_index, name1, name2)
                 sys.stdout.flush()
-                outcomes, scores, times = run()
-                PrintRowFinish(outcomes, scores, times)
-                AddStatistics(i, j, outcomes, scores, times)
+                results = run()
+                PrintRowFinish(results)
+                AddStatistics(i, j, results)
             else:
                 # Start the game on a background thread.
                 future = executor.submit(run)
@@ -254,10 +267,10 @@ def RunGames(commands, names, rounds, logdir, executor=None):
         # of order.
         for game_index, future in enumerate(futures):
             i, j = pairings[game_index]
-            outcomes, scores, times = future.result()
-            AddStatistics(i, j, outcomes, scores, times)
+            results = future.result()
+            AddStatistics(i, j, results)
             PrintRowStart(game_index, names[i], names[j])
-            PrintRowFinish(outcomes, scores, times)
+            PrintRowFinish(results)
 
         print('---- ------------------ ------------------ ----- ----- ---- ---- ------ ------', file=f)
 
