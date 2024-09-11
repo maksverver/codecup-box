@@ -239,7 +239,46 @@ function calculateBoardState(moves) {
   return {grid, turns, squares, scores};
 }
 
-function initialize(playerNames, secretColors, moveStrings) {
+// 'foo=123&bar=456&baz' => [['foo', '123'], ['bar', '456], ['baz']]
+function decodeHashParams(s) {
+  if (s == '') return [];
+  return s.split('&').map(s => s.split('=', 2).map(decodeURIComponent));
+}
+
+// [['foo', '123'], ['bar', '456], ['baz']] => 'foo=123&bar=456&baz'
+function encodeHashParams(a) {
+  function encode(s) {
+    // Hack: decode commas for improved readability.
+    return encodeURIComponent(s).replace(/%2C/g, ',');
+  }
+  return a.map(e => e.map(encode).join('=')).join('&');
+}
+
+function getHashParams() {
+  let hash = window.location.hash;
+  return decodeHashParams(hash.substring(hash.indexOf('?') + 1));
+}
+
+function updateHashParams(updates) {
+  let hash = window.location.hash;
+  if (!hash.startsWith('#')) {
+    hash = '#' + hash;
+  }
+  let sep = hash.indexOf('?');
+  if (sep < 0) {
+    sep = hash.length;
+    hash += '?';
+  }
+  window.location.hash =
+      hash.substring(0, sep + 1) +
+      encodeHashParams(
+          Object.entries({
+              ...Object.fromEntries(decodeHashParams(hash.substring(sep + 1))),
+              ...updates})
+          .filter(([_, v]) => v !== undefined));
+}
+
+function initialize(playerNames, secretColors, moveStrings, initialSelectedMoveIndex) {
   const moves = moveStrings.map(parseMove);
 
   const lastMoveIndex = moves.length - 1;
@@ -277,33 +316,24 @@ function initialize(playerNames, secretColors, moveStrings) {
     updateScoresTable(playerNames, secretColors, boardState.scores);
     repopulateSquaresTable(playerNames, secretColors, boardState.squares);
     selectedMoveIndex = i;
+    updateHashParams({selected: i});
     setSelectedRow(i);
     beginButton.disabled = prevButton.disabled = i <= 0;
     endButton.disabled = nextButton.disabled = i >= lastMoveIndex;
   }
 
   const {setSelectedRow} = repopulateMovesTable(moveStrings, setSelectedMoveIndex);
-  setSelectedMoveIndex(lastMoveIndex);
+  setSelectedMoveIndex(
+    initialSelectedMoveIndex >= 0 && initialSelectedMoveIndex < lastMoveIndex
+        ? initialSelectedMoveIndex : lastMoveIndex);
 }
 
 (function() {
-  const hash = window.location.hash;
-  const sep = hash.indexOf('?');
-  if (sep < 0) {
-    console.warn('Missing hash parameters');
-    return;
-  }
+  let selected = -1;
   let secretColors = [0, 0];
   let moveStrings = [];
   let playerNames = ['Player 1', 'Player 2'];
-  for (const part of hash.substring(sep + 1).split('&')) {
-    const sep = part.indexOf('=');
-    if (sep < 0) {
-      console.warn('Ignoring hash parameter without equals sign');
-      continue;
-    }
-    const key = decodeURIComponent(part.substring(0, sep));
-    const value = part.substring(sep + 1);
+  for (const [key, value] of getHashParams()) {
     switch (key) {
       case 'secretColors':
         secretColors = value.split(',').map((s) => parseInt(s, 10));
@@ -314,10 +344,13 @@ function initialize(playerNames, secretColors, moveStrings) {
       case 'playerNames':
         playerNames = value.split(',').map(decodeURIComponent);
         break;
+      case 'selected':
+        selected = parseInt(value, 10);
+        break;
       default:
-        console.warn('Ignoring hash parameter with unkown key', key);
+        console.warn('Ignoring hash parameter with unkown key:', key);
         break;
     }
   }
-  initialize(playerNames, secretColors, moveStrings);
+  initialize(playerNames, secretColors, moveStrings, selected);
 })();
