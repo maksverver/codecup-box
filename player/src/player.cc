@@ -96,10 +96,10 @@ std::optional<coord_t> ParseCol(char ch) {
 }
 
 std::string FormatPlacement(Placement placement) {
-  std::string s;
-  s.push_back('A' + placement.row);
-  s.push_back('a' + placement.col);
-  s.push_back(placement.ori == Orientation::HORIZONTAL ? 'h' : 'v');
+  std::string s(3, '\0');
+  s[0] = 'A' + placement.row;
+  s[1] = 'a' + placement.col;
+  s[2] = IsHorizontal(placement.ori) ? 'h' : 'v';
   return s;
 }
 
