@@ -102,10 +102,9 @@ inline void LogReceived(std::string_view s) {
   LogStream("IO") << "RCVD [" << s << "]";
 }
 
-// Log the time taken this turn.
-// total >= enumerate + analyze
-inline void LogTime(log_duration_t total) {
-  LogStream("TIME") << total;
+// Log the time taken this turn, and in total.
+inline void LogTime(log_duration_t turn, log_duration_t total) {
+  LogStream("TIME") << turn << ' ' << total;
 }
 
 // Log the time spend paused.

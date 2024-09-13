@@ -171,11 +171,6 @@ Move ReadMove() {
   exit(1);
 }
 
-void WriteOutputLine(std::string_view s) {
-  LogSending(s);
-  std::cout << s << std::endl;
-}
-
 std::vector<Placement> GeneratePlacements(const grid_t &grid) {
   std::vector<Placement> placements;
   for (coord_t row = 0; row < HEIGHT; ++row) {
@@ -284,21 +279,25 @@ void PlayGame(rng_t &rng) {
 
   for (int turn = 0; !IsGameOver(grid); ++turn) {
     if (turn % 2 == my_player) {
-      // My turn!
+      // My turn! Read input.
       tile_t tile = ReadTile();
-
       auto pause_duration = timer.Resume();
       LogPause(pause_duration, timer.Elapsed(false));
 
+      // Calculate my move.
       Placement placement = GreedyPlacement(my_secret_color, grid, tile, rng);
       Move move = {tile, placement};
       assert(move.IsValid(grid));
       move.Execute(grid);
 
-      // Note: we should pause the timer just before writing the output line,
-      // since the referee may suspend our process immediately after.
-      LogTime(timer.Pause());
-      WriteOutputLine(FormatPlacement(placement));  // TODO
+      // Write output.
+      std::string output = FormatPlacement(placement);
+      LogSending(output);
+      // Pause the timer just before writing the output line, since the referee
+      // may suspend our process immediately after.
+      auto turn_duration = timer.Pause();
+      LogTime(turn_duration, timer.Elapsed(true));
+      std::cout << output << std::endl;
     } else {
       // Opponent's turn.
       if (turn > 0) input = ReadInputLine();
