@@ -1,0 +1,35 @@
+GAME NOTES
+
+Game states have between 100 and 200 possible tile placements per turn, except
+close to the beginning or end of the game. More than 260 seems rare in practice.
+(Theoretical upper limit?)
+
+Number of turns per game seems closely centered around 30 including the first
+neutral placement, so about 15 turns per player:
+
+  turns percent
+     26 3
+     27 8
+     28 23
+     29 21
+     30 21
+     31 15
+     32 7
+     33 2
+
+TODO: compare this with competition results.
+
+My current player is quite good at spoiling the opponent's squares, keeping
+scores very low for both players.
+
+
+
+RELEASE INSTRUCTIONS
+
+  1. `git status` # Make sure all changes are commited!
+  2. `make clean`; `make -j4 all combined`
+  3. Use arbiter.py to run a competition with the new and previous players
+  4. Check player logs for unexpected warnings/errors.
+  5. Submit to CodeCup.
+  6. `git tag submission-#-id-#`
+  7. Make a backup: `cp -r output/ backups/$(git rev-parse --short HEAD)`
