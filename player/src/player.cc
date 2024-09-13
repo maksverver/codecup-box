@@ -18,7 +18,7 @@
 
 namespace {
 
-const std::string player_name = "TODO";
+const std::string player_name = "L7";
 
 DECLARE_OPTION(bool, arg_help, false, "help",
     "show usage information");
