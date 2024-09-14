@@ -334,7 +334,7 @@ bool InitializeSeed(rng_seed_t &seed, std::string_view hex_string) {
 } // namespace
 
 int main(int argc, char *argv[]) {
-  LogId(player_name);
+  LogId('R', player_name);
 
   if (!ParseOptions(argc, argv) || arg_help) {
     std::ostream &os = arg_help ? std::cout : std::clog;

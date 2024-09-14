@@ -66,8 +66,20 @@ inline LogStream LogWarning() { return LogStream("WARNING"); }
 inline LogStream LogError() { return LogStream("ERROR"); }
 
 // Log the player ID, usually once at the start of the program.
-inline void LogId(std::string_view player_name) {
-  LogStream("ID") << player_name
+//
+// caia_type is a character indicating the type of program. One of:
+//
+//  'R' random player
+//  'S' ??
+//  'T' ??
+//  'D' deterministic / default
+//
+// These strings are interpreted by the CAIA competition manager (the
+// "competition" binary invoked by "caiaio -m competition"), which will play
+// 50 matches between a pair of players if either of them are randomized, or
+// just 1 match if both players are deterministic.
+inline void LogId(char caia_type, std::string_view player_name) {
+  std::cerr << caia_type << ' '<< player_name
       << " (" << std::numeric_limits<size_t>::digits << " bit)"
 
 #ifdef __VERSION__
@@ -85,7 +97,7 @@ inline void LogId(std::string_view player_name) {
 #if LOCAL_BUILD
     << " (local)"
 #endif
-  ;
+    << std::endl;
 }
 
 inline void LogSeed(const rng_seed_t &seed) {
