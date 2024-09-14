@@ -2,7 +2,9 @@ GAME NOTES
 
 Game states have between 100 and 200 possible tile placements per turn, except
 close to the beginning or end of the game. More than 260 seems rare in practice.
-(Theoretical upper limit?)
+
+An upper bound is (16-2+1)*(20-6+1) + (16-6+1)*(20-2+1) == 434 based on grid
+coordinates. (Actual upper limit?)
 
 Number of turns per game seems closely centered around 30 including the first
 neutral placement, so about 15 turns per player:
@@ -17,7 +19,12 @@ neutral placement, so about 15 turns per player:
      32 7
      33 2
 
-TODO: compare this with competition results.
+Theoretical upper limit: 39 turns, including the starting turn, so 19 per
+player. Logic: there are 16*20 = 320 fields. The first tile covers 12 cells,
+leaving 308 fields empty. Each next tile can overlap at most 4 cells (per the
+rules) and thus covers at least 8 empty fields. 308 / 8 = 38.5, so at most 38
+additional moves are possible. (Is this possible in practice?)
+
 
 My current player is quite good at spoiling the opponent's squares, keeping
 scores very low for both players.
