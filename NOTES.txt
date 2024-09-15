@@ -40,3 +40,13 @@ RELEASE INSTRUCTIONS
   5. Submit to CodeCup.
   6. `git tag submission-#-id-#`
   7. Make a backup: `cp -r output/ backups/$(git rev-parse --short HEAD)`
+
+
+AFTER THE COMPETITION
+
+  - Download competition.csv and place in competition-results/
+  - export SSL_CERT_FILE=tools/codecup.pem  # fix SSL certificate issue
+  - tools/fetch-competition-playerlogs.sh test-X-competition-YYY 'Maks Verver'
+  - tools/fetch-competition-transcripts.py tmp/cache/ \
+      competition-results/test-X-competition-YYY.csv \
+      competition-results/test-X-competition-YYY-transcripts.csv
