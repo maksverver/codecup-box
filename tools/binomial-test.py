@@ -57,23 +57,24 @@ def CalcCI(wins, games, confidence=0.95):
 def Main(wins1, wins2):
     confidence = 0.95
     name1, name2 = 'Player 1', 'Player 2'
-    if wins1 == wins2:
-        print('Players are tied')
-    else:
-        if wins1 < wins2:
-            wins1, wins2 = wins2, wins1
-            name1, name2 = name2, name1
-        games = wins1 + wins2
-        p = CalcProb(wins1, games, 0.5)
-        CalcCI(wins1, games)
-        ci_lo, ci_hi = CalcCI(wins1, games, confidence)
-        print('%s is better than %s (p=%g, winrate=%f, n=%d, %d%% CI=[%.3f,%.3f])' %
-            (name1, name2, p, wins1 / games, games, confidence * 100, ci_lo, ci_hi))
+    if wins1 < wins2:
+        wins1, wins2 = wins2, wins1
+        name1, name2 = name2, name1
+    games = wins1 + wins2
+    p = CalcProb(wins1, games, 0.5)
+    CalcCI(wins1, games)
+    ci_lo, ci_hi = CalcCI(wins1, games, confidence)
+    verdict = 'is better than' if wins1 != wins2 else 'is tied with'
+    print(
+        '%s %s %s' % (name1, verdict, name2),
+        '(p=%g, winrate=%f, n=%d, %d%% CI=[%.3f,%.3f])' %
+            (p, wins1 / games, games, confidence * 100, ci_lo, ci_hi))
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print('Usage', sys.argv[0], '<wins1>', '<wins2>')
         sys.exit(1)
 
-    a, b = map(int, sys.argv[1:])
-    Main(a, b)
+    sys.setrecursionlimit(25000)
+    wins1, wins2 = map(int, sys.argv[1:])
+    Main(wins1, wins2)
