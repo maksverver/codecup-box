@@ -1,6 +1,10 @@
 from enum import Enum
 import random
 
+# Just to make sure there is absolutely no detectable pattern in the random
+# numbers, use SystemRandom to get high-quality entropy instead of a PRNG.
+rng = random.SystemRandom()
+
 HEIGHT=16
 WIDTH=20
 COLORS=6
@@ -70,12 +74,12 @@ def test_ParseTilePlacement():
 
 def MakeRandomTile():
     tile = list(range(1, COLORS + 1))
-    random.shuffle(tile)
+    rng.shuffle(tile)
     return tuple(tile)
 
 
 def MakeRandomSecretColors():
-    return random.sample(range(1, COLORS + 1), k=2)
+    return rng.sample(range(1, COLORS + 1), k=2)
 
 
 def IsHorizontal(dir):
