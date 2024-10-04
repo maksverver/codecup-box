@@ -339,10 +339,10 @@ function initialize(playerNames, secretColors, moveStrings, initialSelectedMoveI
         secretColors = value.split(',').map((s) => parseInt(s, 10));
         break;
       case 'moveStrings':
-        moveStrings = value.split(',').map(decodeURIComponent);
+        moveStrings = value.split(',');
         break;
       case 'playerNames':
-        playerNames = value.split(',').map(decodeURIComponent);
+        playerNames = value.split(',');
         break;
       case 'selected':
         selected = parseInt(value, 10);
