@@ -59,6 +59,22 @@ struct Placement {
   // Verifies that a tile can be placed on the grid so that it is adjacent to
   // an existing colored cell and its overlap doesn't exceed MAX_OVERLAP.
   bool IsValid(const grid_t &grid) const;
+
+  static Placement Horizontal(int row, int col) {
+    return Placement{
+        .row = static_cast<coord_t>(row),
+        .col = static_cast<coord_t>(col),
+        .ori = Orientation::HORIZONTAL};
+  }
+
+  static Placement Vertical(int row, int col) {
+    return Placement{
+        .row = static_cast<coord_t>(row),
+        .col = static_cast<coord_t>(col),
+        .ori = Orientation::VERTICAL};
+  }
+
+  auto operator<=>(const Placement&) const = default;
 };
 
 // Checks if the game is over.
@@ -81,5 +97,7 @@ struct Move {
   bool IsValid(const grid_t &grid) const { return placement.IsValid(grid); }
   void Execute(grid_t &grid) { return ExecuteMove(grid, tile, placement); }
 };
+
+void DebugDumpGrid(grid_t grid);
 
 #endif // ndef STATE_H_INCLUDED

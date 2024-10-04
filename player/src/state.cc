@@ -129,3 +129,13 @@ void ExecuteMove(grid_t &grid, const tile_t &tile, const Placement &placement) {
     }
   }
 }
+
+void DebugDumpGrid(grid_t grid) {
+  for (int r = 0; r < HEIGHT; ++r) {
+    for (int c = 0; c < WIDTH; ++c) {
+      std::clog << (grid[r][c] ? static_cast<char>('0' + grid[r][c]) : '.');
+    }
+    std::clog << '\n';
+  }
+  std::clog << std::endl;
+}
