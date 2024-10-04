@@ -257,7 +257,7 @@ Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, 
       best_placements.push_back(placement);
     }
   }
-  LogMoveCount(all_placements.size(), best_placements.size());
+  LogMoveCount(all_placements.size(), best_placements.size(), best_score);
   return RandomSample(best_placements, rng);
 }
 
