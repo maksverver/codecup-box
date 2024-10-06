@@ -1,0 +1,2777 @@
+Game,Round,IsSwiss,Player,User,Score,Status
+263549,1,swiss,"Player 1","Alvaro Begue",97,LOSE
+263549,1,swiss,"Player 2","Niklas Een",203,WIN
+263550,1,swiss,"Player 1","Niklas Een",220,WIN
+263550,1,swiss,"Player 2","Alvaro Begue",80,LOSE
+263551,1,swiss,"Player 1","Bart Mol",98,LOSE
+263551,1,swiss,"Player 2","Wouter van der Meer",202,WIN
+263552,1,swiss,"Player 1","Wouter van der Meer",212,WIN
+263552,1,swiss,"Player 2","Bart Mol",88,LOSE
+263553,1,swiss,"Player 1","Rens van der Avoird",92,LOSE
+263553,1,swiss,"Player 2","Thijs Marinussen",208,WIN
+263554,1,swiss,"Player 1","Thijs Marinussen",93,LOSE
+263554,1,swiss,"Player 2","Rens van der Avoird",207,WIN
+263555,1,swiss,"Player 1","Ad van der Hoeven",225,WIN
+263555,1,swiss,"Player 2","Henk Koops",75,LOSE
+263556,1,swiss,"Player 1","Henk Koops",70,LOSE
+263556,1,swiss,"Player 2","Ad van der Hoeven",230,WIN
+263557,1,swiss,"Player 1","Frank Meert",249,WIN
+263557,1,swiss,"Player 2","Nikita Kurgin",51,LOSE
+263558,1,swiss,"Player 1","Nikita Kurgin",92,LOSE
+263558,1,swiss,"Player 2","Frank Meert",208,WIN
+263559,1,swiss,"Player 1","Test Player A",70,LOSE
+263559,1,swiss,"Player 2","Jelmer Firet",230,WIN
+263560,1,swiss,"Player 1","Jelmer Firet",234,WIN
+263560,1,swiss,"Player 2","Test Player A",66,LOSE
+263561,1,swiss,"Player 1","Matthijs Tijink",214,WIN
+263561,1,swiss,"Player 2","Marcel Vlastuin",86,LOSE
+263562,1,swiss,"Player 1","Marcel Vlastuin",150,DRAW
+263562,1,swiss,"Player 2","Matthijs Tijink",150,DRAW
+263563,1,swiss,"Player 1","Ludo Pulles",55,LOSE
+263563,1,swiss,"Player 2","Alvaro Carrera",245,WIN
+263564,1,swiss,"Player 1","Alvaro Carrera",251,WIN
+263564,1,swiss,"Player 2","Ludo Pulles",49,LOSE
+263565,1,swiss,"Player 1","Jan Nunnink",211,WIN
+263565,1,swiss,"Player 2","Jorn Hoofwijk",89,LOSE
+263566,1,swiss,"Player 1","Jorn Hoofwijk",96,LOSE
+263566,1,swiss,"Player 2","Jan Nunnink",204,WIN
+263567,1,swiss,"Player 1","Pepijn Overbeeke",77,LOSE
+263567,1,swiss,"Player 2","Fakih Karademir",223,WIN
+263568,1,swiss,"Player 1","Fakih Karademir",70,LOSE
+263568,1,swiss,"Player 2","Pepijn Overbeeke",230,WIN
+263569,1,swiss,"Player 1","Tapani Utriainen",212,WIN
+263569,1,swiss,"Player 2","Marc Oldenhof",88,LOSE
+263570,1,swiss,"Player 1","Marc Oldenhof",93,LOSE
+263570,1,swiss,"Player 2","Tapani Utriainen",207,WIN
+263571,1,swiss,"Player 1","Kirk Brown",72,LOSE
+263571,1,swiss,"Player 2","Boris de Wilde",228,WIN
+263572,1,swiss,"Player 1","Boris de Wilde",233,WIN
+263572,1,swiss,"Player 2","Kirk Brown",67,LOSE
+263573,1,swiss,"Player 1","R4N4R4M4 ",67,LOSE
+263573,1,swiss,"Player 2","Vasilii Kuporosov",233,WIN
+263574,1,swiss,"Player 1","Vasilii Kuporosov",234,WIN
+263574,1,swiss,"Player 2","R4N4R4M4 ",66,LOSE
+263575,1,swiss,"Player 1","Leopold Tschanter",93,LOSE
+263575,1,swiss,"Player 2","Mark ter Brugge",207,WIN
+263576,1,swiss,"Player 1","Mark ter Brugge",98,LOSE
+263576,1,swiss,"Player 2","Leopold Tschanter",202,WIN
+263577,1,swiss,"Player 1","Jelle van der Drift",71,LOSE
+263577,1,swiss,"Player 2","Abdessamad El Kasimi",229,WIN
+263578,1,swiss,"Player 1","Abdessamad El Kasimi",89,LOSE
+263578,1,swiss,"Player 2","Jelle van der Drift",211,WIN
+263579,1,swiss,"Player 1","Maks Verver",215,WIN
+263579,1,swiss,"Player 2","Matthias Gelbmann",85,LOSE
+263580,1,swiss,"Player 1","Matthias Gelbmann",91,LOSE
+263580,1,swiss,"Player 2","Maks Verver",209,WIN
+263581,1,swiss,"Player 1","Jeremy Sawicki",90,LOSE
+263581,1,swiss,"Player 2","Pardhav Maradani",210,WIN
+263582,1,swiss,"Player 1","Pardhav Maradani",201,WIN
+263582,1,swiss,"Player 2","Jeremy Sawicki",99,LOSE
+263583,1,swiss,"Player 1","Tomek Czajka",222,WIN
+263583,1,swiss,"Player 2","Sergei Budkov",0,TIMEOUT
+263584,1,swiss,"Player 1","Sergei Budkov",78,LOSE
+263584,1,swiss,"Player 2","Tomek Czajka",222,WIN
+263585,1,swiss,"Player 1","Louis Verhaard",246,WIN
+263585,1,swiss,"Player 2","Léo Jean",54,LOSE
+263586,1,swiss,"Player 1","Léo Jean",203,WIN
+263586,1,swiss,"Player 2","Louis Verhaard",97,LOSE
+263587,2,swiss,"Player 1","Alvaro Carrera",204,WIN
+263587,2,swiss,"Player 2","Vasilii Kuporosov",96,LOSE
+263588,2,swiss,"Player 1","Vasilii Kuporosov",89,LOSE
+263588,2,swiss,"Player 2","Alvaro Carrera",211,WIN
+263589,2,swiss,"Player 1","Jelmer Firet",93,LOSE
+263589,2,swiss,"Player 2","Boris de Wilde",207,WIN
+263590,2,swiss,"Player 1","Boris de Wilde",80,LOSE
+263590,2,swiss,"Player 2","Jelmer Firet",220,WIN
+263591,2,swiss,"Player 1","Frank Meert",150,DRAW
+263591,2,swiss,"Player 2","Ad van der Hoeven",150,DRAW
+263592,2,swiss,"Player 1","Ad van der Hoeven",99,LOSE
+263592,2,swiss,"Player 2","Frank Meert",201,WIN
+263593,2,swiss,"Player 1","Tomek Czajka",88,LOSE
+263593,2,swiss,"Player 2","Maks Verver",212,WIN
+263594,2,swiss,"Player 1","Maks Verver",96,LOSE
+263594,2,swiss,"Player 2","Tomek Czajka",204,WIN
+263595,2,swiss,"Player 1","Niklas Een",204,WIN
+263595,2,swiss,"Player 2","Tapani Utriainen",96,LOSE
+263596,2,swiss,"Player 1","Tapani Utriainen",204,WIN
+263596,2,swiss,"Player 2","Niklas Een",96,LOSE
+263597,2,swiss,"Player 1","Jan Nunnink",210,WIN
+263597,2,swiss,"Player 2","Wouter van der Meer",90,LOSE
+263598,2,swiss,"Player 1","Wouter van der Meer",85,LOSE
+263598,2,swiss,"Player 2","Jan Nunnink",215,WIN
+263599,2,swiss,"Player 1","Pardhav Maradani",203,WIN
+263599,2,swiss,"Player 2","Matthijs Tijink",97,LOSE
+263600,2,swiss,"Player 1","Matthijs Tijink",205,WIN
+263600,2,swiss,"Player 2","Pardhav Maradani",95,LOSE
+263601,2,swiss,"Player 1","Louis Verhaard",217,WIN
+263601,2,swiss,"Player 2","Abdessamad El Kasimi",83,LOSE
+263602,2,swiss,"Player 1","Abdessamad El Kasimi",96,LOSE
+263602,2,swiss,"Player 2","Louis Verhaard",204,WIN
+263603,2,swiss,"Player 1","Pepijn Overbeeke",203,WIN
+263603,2,swiss,"Player 2","Mark ter Brugge",97,LOSE
+263604,2,swiss,"Player 1","Mark ter Brugge",207,WIN
+263604,2,swiss,"Player 2","Pepijn Overbeeke",93,LOSE
+263605,2,swiss,"Player 1","Thijs Marinussen",95,LOSE
+263605,2,swiss,"Player 2","Leopold Tschanter",205,WIN
+263606,2,swiss,"Player 1","Rens van der Avoird",210,WIN
+263606,2,swiss,"Player 2","Fakih Karademir",90,LOSE
+263607,2,swiss,"Player 1","Leopold Tschanter",91,LOSE
+263607,2,swiss,"Player 2","Thijs Marinussen",209,WIN
+263608,2,swiss,"Player 1","Fakih Karademir",150,DRAW
+263608,2,swiss,"Player 2","Rens van der Avoird",150,DRAW
+263609,2,swiss,"Player 1","Jelle van der Drift",222,WIN
+263609,2,swiss,"Player 2","Léo Jean",78,LOSE
+263610,2,swiss,"Player 1","Léo Jean",81,LOSE
+263610,2,swiss,"Player 2","Jelle van der Drift",219,WIN
+263611,2,swiss,"Player 1","Marcel Vlastuin",90,LOSE
+263611,2,swiss,"Player 2","Jeremy Sawicki",210,WIN
+263612,2,swiss,"Player 1","Jeremy Sawicki",212,WIN
+263612,2,swiss,"Player 2","Marcel Vlastuin",88,LOSE
+263613,2,swiss,"Player 1","Bart Mol",79,LOSE
+263613,2,swiss,"Player 2","Jorn Hoofwijk",221,WIN
+263614,2,swiss,"Player 1","Jorn Hoofwijk",220,WIN
+263614,2,swiss,"Player 2","Bart Mol",80,LOSE
+263615,2,swiss,"Player 1","Marc Oldenhof",207,WIN
+263615,2,swiss,"Player 2","Alvaro Begue",93,LOSE
+263616,2,swiss,"Player 1","Alvaro Begue",206,WIN
+263616,2,swiss,"Player 2","Marc Oldenhof",94,LOSE
+263617,2,swiss,"Player 1","Matthias Gelbmann",97,LOSE
+263617,2,swiss,"Player 2","Henk Koops",203,WIN
+263618,2,swiss,"Player 1","Henk Koops",90,LOSE
+263618,2,swiss,"Player 2","Matthias Gelbmann",210,WIN
+263619,2,swiss,"Player 1","Nikita Kurgin",91,LOSE
+263619,2,swiss,"Player 2","Kirk Brown",209,WIN
+263620,2,swiss,"Player 1","Kirk Brown",150,DRAW
+263620,2,swiss,"Player 2","Nikita Kurgin",150,DRAW
+263621,2,swiss,"Player 1","Test Player A",92,LOSE
+263621,2,swiss,"Player 2","R4N4R4M4 ",208,WIN
+263622,2,swiss,"Player 1","R4N4R4M4 ",91,LOSE
+263622,2,swiss,"Player 2","Test Player A",209,WIN
+263623,2,swiss,"Player 1","Ludo Pulles",150,DRAW
+263623,2,swiss,"Player 2","Sergei Budkov",150,DRAW
+263624,2,swiss,"Player 1","Sergei Budkov",150,DRAW
+263624,2,swiss,"Player 2","Ludo Pulles",150,DRAW
+263625,3,swiss,"Player 1","Alvaro Carrera",208,WIN
+263625,3,swiss,"Player 2","Jan Nunnink",92,LOSE
+263626,3,swiss,"Player 1","Jan Nunnink",97,LOSE
+263626,3,swiss,"Player 2","Alvaro Carrera",203,WIN
+263627,3,swiss,"Player 1","Frank Meert",88,LOSE
+263627,3,swiss,"Player 2","Jelmer Firet",212,WIN
+263628,3,swiss,"Player 1","Jelmer Firet",220,WIN
+263628,3,swiss,"Player 2","Frank Meert",80,LOSE
+263629,3,swiss,"Player 1","Louis Verhaard",227,WIN
+263629,3,swiss,"Player 2","Boris de Wilde",73,LOSE
+263630,3,swiss,"Player 1","Boris de Wilde",88,LOSE
+263630,3,swiss,"Player 2","Louis Verhaard",212,WIN
+263631,3,swiss,"Player 1","Tomek Czajka",150,DRAW
+263631,3,swiss,"Player 2","Niklas Een",150,DRAW
+263632,3,swiss,"Player 1","Maks Verver",212,WIN
+263632,3,swiss,"Player 2","Jelle van der Drift",88,LOSE
+263633,3,swiss,"Player 1","Niklas Een",202,WIN
+263633,3,swiss,"Player 2","Tomek Czajka",98,LOSE
+263634,3,swiss,"Player 1","Jelle van der Drift",83,LOSE
+263634,3,swiss,"Player 2","Maks Verver",217,WIN
+263635,3,swiss,"Player 1","Tapani Utriainen",202,WIN
+263635,3,swiss,"Player 2","Pardhav Maradani",98,LOSE
+263636,3,swiss,"Player 1","Pardhav Maradani",97,LOSE
+263636,3,swiss,"Player 2","Tapani Utriainen",203,WIN
+263637,3,swiss,"Player 1","Ad van der Hoeven",96,LOSE
+263637,3,swiss,"Player 2","Matthijs Tijink",204,WIN
+263638,3,swiss,"Player 1","Matthijs Tijink",210,WIN
+263638,3,swiss,"Player 2","Ad van der Hoeven",90,LOSE
+263639,3,swiss,"Player 1","Rens van der Avoird",78,LOSE
+263639,3,swiss,"Player 2","Vasilii Kuporosov",222,WIN
+263640,3,swiss,"Player 1","Vasilii Kuporosov",208,WIN
+263640,3,swiss,"Player 2","Rens van der Avoird",92,LOSE
+263641,3,swiss,"Player 1","Jorn Hoofwijk",92,LOSE
+263641,3,swiss,"Player 2","Jeremy Sawicki",208,WIN
+263642,3,swiss,"Player 1","Jeremy Sawicki",212,WIN
+263642,3,swiss,"Player 2","Jorn Hoofwijk",88,LOSE
+263643,3,swiss,"Player 1","Mark ter Brugge",97,LOSE
+263643,3,swiss,"Player 2","Thijs Marinussen",203,WIN
+263644,3,swiss,"Player 1","Thijs Marinussen",213,WIN
+263644,3,swiss,"Player 2","Mark ter Brugge",87,LOSE
+263645,3,swiss,"Player 1","Pepijn Overbeeke",87,LOSE
+263645,3,swiss,"Player 2","Leopold Tschanter",213,WIN
+263646,3,swiss,"Player 1","Leopold Tschanter",204,WIN
+263646,3,swiss,"Player 2","Pepijn Overbeeke",96,LOSE
+263647,3,swiss,"Player 1","Wouter van der Meer",90,LOSE
+263647,3,swiss,"Player 2","Fakih Karademir",210,WIN
+263648,3,swiss,"Player 1","Fakih Karademir",90,LOSE
+263648,3,swiss,"Player 2","Wouter van der Meer",210,WIN
+263649,3,swiss,"Player 1","Kirk Brown",73,LOSE
+263649,3,swiss,"Player 2","Abdessamad El Kasimi",227,WIN
+263650,3,swiss,"Player 1","Abdessamad El Kasimi",228,WIN
+263650,3,swiss,"Player 2","Kirk Brown",72,LOSE
+263651,3,swiss,"Player 1","Matthias Gelbmann",90,LOSE
+263651,3,swiss,"Player 2","Marc Oldenhof",210,WIN
+263652,3,swiss,"Player 1","Marc Oldenhof",150,DRAW
+263652,3,swiss,"Player 2","Matthias Gelbmann",150,DRAW
+263653,3,swiss,"Player 1","Alvaro Begue",221,WIN
+263653,3,swiss,"Player 2","Henk Koops",79,LOSE
+263654,3,swiss,"Player 1","Henk Koops",83,LOSE
+263654,3,swiss,"Player 2","Alvaro Begue",217,WIN
+263655,3,swiss,"Player 1","Test Player A",77,LOSE
+263655,3,swiss,"Player 2","Léo Jean",223,WIN
+263656,3,swiss,"Player 1","R4N4R4M4 ",46,LOSE
+263656,3,swiss,"Player 2","Marcel Vlastuin",254,WIN
+263657,3,swiss,"Player 1","Léo Jean",98,LOSE
+263657,3,swiss,"Player 2","Test Player A",202,WIN
+263658,3,swiss,"Player 1","Marcel Vlastuin",214,WIN
+263658,3,swiss,"Player 2","R4N4R4M4 ",86,LOSE
+263659,3,swiss,"Player 1","Ludo Pulles",211,WIN
+263659,3,swiss,"Player 2","Nikita Kurgin",89,LOSE
+263660,3,swiss,"Player 1","Nikita Kurgin",205,WIN
+263660,3,swiss,"Player 2","Ludo Pulles",95,LOSE
+263661,3,swiss,"Player 1","Sergei Budkov",150,DRAW
+263661,3,swiss,"Player 2","Bart Mol",150,DRAW
+263662,3,swiss,"Player 1","Bart Mol",206,WIN
+263662,3,swiss,"Player 2","Sergei Budkov",94,LOSE
+263663,4,swiss,"Player 1","Alvaro Carrera",209,WIN
+263663,4,swiss,"Player 2","Jelmer Firet",91,LOSE
+263664,4,swiss,"Player 1","Jelmer Firet",87,LOSE
+263664,4,swiss,"Player 2","Alvaro Carrera",213,WIN
+263665,4,swiss,"Player 1","Louis Verhaard",97,LOSE
+263665,4,swiss,"Player 2","Maks Verver",203,WIN
+263666,4,swiss,"Player 1","Maks Verver",89,LOSE
+263666,4,swiss,"Player 2","Louis Verhaard",211,WIN
+263667,4,swiss,"Player 1","Tapani Utriainen",221,WIN
+263667,4,swiss,"Player 2","Vasilii Kuporosov",79,LOSE
+263668,4,swiss,"Player 1","Vasilii Kuporosov",92,LOSE
+263668,4,swiss,"Player 2","Tapani Utriainen",208,WIN
+263669,4,swiss,"Player 1","Matthijs Tijink",209,WIN
+263669,4,swiss,"Player 2","Niklas Een",91,LOSE
+263670,4,swiss,"Player 1","Niklas Een",96,LOSE
+263670,4,swiss,"Player 2","Matthijs Tijink",204,WIN
+263671,4,swiss,"Player 1","Jeremy Sawicki",213,WIN
+263671,4,swiss,"Player 2","Jan Nunnink",87,LOSE
+263672,4,swiss,"Player 1","Jan Nunnink",99,LOSE
+263672,4,swiss,"Player 2","Jeremy Sawicki",201,WIN
+263673,4,swiss,"Player 1","Thijs Marinussen",213,WIN
+263673,4,swiss,"Player 2","Tomek Czajka",87,LOSE
+263674,4,swiss,"Player 1","Leopold Tschanter",215,WIN
+263674,4,swiss,"Player 2","Frank Meert",85,LOSE
+263675,4,swiss,"Player 1","Tomek Czajka",97,LOSE
+263675,4,swiss,"Player 2","Thijs Marinussen",203,WIN
+263676,4,swiss,"Player 1","Frank Meert",76,LOSE
+263676,4,swiss,"Player 2","Leopold Tschanter",224,WIN
+263677,4,swiss,"Player 1","Abdessamad El Kasimi",95,LOSE
+263677,4,swiss,"Player 2","Alvaro Begue",205,WIN
+263678,4,swiss,"Player 1","Alvaro Begue",202,WIN
+263678,4,swiss,"Player 2","Abdessamad El Kasimi",98,LOSE
+263679,4,swiss,"Player 1","Boris de Wilde",83,LOSE
+263679,4,swiss,"Player 2","Pardhav Maradani",217,WIN
+263680,4,swiss,"Player 1","Pardhav Maradani",150,DRAW
+263680,4,swiss,"Player 2","Boris de Wilde",150,DRAW
+263681,4,swiss,"Player 1","Jelle van der Drift",212,WIN
+263681,4,swiss,"Player 2","Ad van der Hoeven",88,LOSE
+263682,4,swiss,"Player 1","Ad van der Hoeven",94,LOSE
+263682,4,swiss,"Player 2","Jelle van der Drift",206,WIN
+263683,4,swiss,"Player 1","Wouter van der Meer",150,DRAW
+263683,4,swiss,"Player 2","Marcel Vlastuin",150,DRAW
+263684,4,swiss,"Player 1","Marcel Vlastuin",226,WIN
+263684,4,swiss,"Player 2","Wouter van der Meer",74,LOSE
+263685,4,swiss,"Player 1","Marc Oldenhof",206,WIN
+263685,4,swiss,"Player 2","Fakih Karademir",94,LOSE
+263686,4,swiss,"Player 1","Fakih Karademir",217,WIN
+263686,4,swiss,"Player 2","Marc Oldenhof",83,LOSE
+263687,4,swiss,"Player 1","Rens van der Avoird",233,WIN
+263687,4,swiss,"Player 2","Jorn Hoofwijk",67,LOSE
+263688,4,swiss,"Player 1","Jorn Hoofwijk",95,LOSE
+263688,4,swiss,"Player 2","Rens van der Avoird",205,WIN
+263689,4,swiss,"Player 1","Mark ter Brugge",221,WIN
+263689,4,swiss,"Player 2","Léo Jean",79,LOSE
+263690,4,swiss,"Player 1","Pepijn Overbeeke",217,WIN
+263690,4,swiss,"Player 2","Matthias Gelbmann",83,LOSE
+263691,4,swiss,"Player 1","Léo Jean",77,LOSE
+263691,4,swiss,"Player 2","Mark ter Brugge",223,WIN
+263692,4,swiss,"Player 1","Matthias Gelbmann",95,LOSE
+263692,4,swiss,"Player 2","Pepijn Overbeeke",205,WIN
+263693,4,swiss,"Player 1","Test Player A",213,WIN
+263693,4,swiss,"Player 2","Ludo Pulles",87,LOSE
+263694,4,swiss,"Player 1","Ludo Pulles",204,WIN
+263694,4,swiss,"Player 2","Test Player A",96,LOSE
+263695,4,swiss,"Player 1","Bart Mol",150,DRAW
+263695,4,swiss,"Player 2","Nikita Kurgin",150,DRAW
+263696,4,swiss,"Player 1","Nikita Kurgin",92,LOSE
+263696,4,swiss,"Player 2","Bart Mol",208,WIN
+263697,4,swiss,"Player 1","Kirk Brown",208,WIN
+263697,4,swiss,"Player 2","Sergei Budkov",0,TIMEOUT
+263698,4,swiss,"Player 1","Sergei Budkov",0,TIMEOUT
+263698,4,swiss,"Player 2","Kirk Brown",150,DRAW
+263699,4,swiss,"Player 1","Henk Koops",150,DRAW
+263699,4,swiss,"Player 2","R4N4R4M4 ",150,DRAW
+263700,4,swiss,"Player 1","R4N4R4M4 ",207,WIN
+263700,4,swiss,"Player 2","Henk Koops",93,LOSE
+263701,5,swiss,"Player 1","Alvaro Carrera",99,LOSE
+263701,5,swiss,"Player 2","Tapani Utriainen",201,WIN
+263702,5,swiss,"Player 1","Tapani Utriainen",212,WIN
+263702,5,swiss,"Player 2","Alvaro Carrera",88,LOSE
+263703,5,swiss,"Player 1","Louis Verhaard",97,LOSE
+263703,5,swiss,"Player 2","Matthijs Tijink",203,WIN
+263704,5,swiss,"Player 1","Matthijs Tijink",90,LOSE
+263704,5,swiss,"Player 2","Louis Verhaard",210,WIN
+263705,5,swiss,"Player 1","Maks Verver",90,LOSE
+263705,5,swiss,"Player 2","Leopold Tschanter",210,WIN
+263706,5,swiss,"Player 1","Leopold Tschanter",96,LOSE
+263706,5,swiss,"Player 2","Maks Verver",204,WIN
+263707,5,swiss,"Player 1","Jeremy Sawicki",99,LOSE
+263707,5,swiss,"Player 2","Thijs Marinussen",201,WIN
+263708,5,swiss,"Player 1","Thijs Marinussen",150,DRAW
+263708,5,swiss,"Player 2","Jeremy Sawicki",150,DRAW
+263709,5,swiss,"Player 1","Jelmer Firet",97,LOSE
+263709,5,swiss,"Player 2","Alvaro Begue",203,WIN
+263710,5,swiss,"Player 1","Alvaro Begue",201,WIN
+263710,5,swiss,"Player 2","Jelmer Firet",99,LOSE
+263711,5,swiss,"Player 1","Jelle van der Drift",150,DRAW
+263711,5,swiss,"Player 2","Pardhav Maradani",150,DRAW
+263712,5,swiss,"Player 1","Pardhav Maradani",208,WIN
+263712,5,swiss,"Player 2","Jelle van der Drift",92,LOSE
+263713,5,swiss,"Player 1","Rens van der Avoird",88,LOSE
+263713,5,swiss,"Player 2","Niklas Een",212,WIN
+263714,5,swiss,"Player 1","Niklas Een",211,WIN
+263714,5,swiss,"Player 2","Rens van der Avoird",89,LOSE
+263715,5,swiss,"Player 1","Marcel Vlastuin",218,WIN
+263715,5,swiss,"Player 2","Vasilii Kuporosov",82,LOSE
+263716,5,swiss,"Player 1","Vasilii Kuporosov",95,LOSE
+263716,5,swiss,"Player 2","Marcel Vlastuin",205,WIN
+263717,5,swiss,"Player 1","Mark ter Brugge",92,LOSE
+263717,5,swiss,"Player 2","Jan Nunnink",208,WIN
+263718,5,swiss,"Player 1","Jan Nunnink",205,WIN
+263718,5,swiss,"Player 2","Mark ter Brugge",95,LOSE
+263719,5,swiss,"Player 1","Pepijn Overbeeke",79,LOSE
+263719,5,swiss,"Player 2","Tomek Czajka",221,WIN
+263720,5,swiss,"Player 1","Tomek Czajka",211,WIN
+263720,5,swiss,"Player 2","Pepijn Overbeeke",89,LOSE
+263721,5,swiss,"Player 1","Abdessamad El Kasimi",85,LOSE
+263721,5,swiss,"Player 2","Fakih Karademir",215,WIN
+263722,5,swiss,"Player 1","Fakih Karademir",87,LOSE
+263722,5,swiss,"Player 2","Abdessamad El Kasimi",213,WIN
+263723,5,swiss,"Player 1","Boris de Wilde",201,WIN
+263723,5,swiss,"Player 2","Frank Meert",99,LOSE
+263724,5,swiss,"Player 1","Frank Meert",208,WIN
+263724,5,swiss,"Player 2","Boris de Wilde",92,LOSE
+263725,5,swiss,"Player 1","Marc Oldenhof",219,WIN
+263725,5,swiss,"Player 2","Wouter van der Meer",81,LOSE
+263726,5,swiss,"Player 1","Wouter van der Meer",88,LOSE
+263726,5,swiss,"Player 2","Marc Oldenhof",212,WIN
+263727,5,swiss,"Player 1","Ad van der Hoeven",230,WIN
+263727,5,swiss,"Player 2","Bart Mol",70,LOSE
+263728,5,swiss,"Player 1","Bart Mol",77,LOSE
+263728,5,swiss,"Player 2","Ad van der Hoeven",223,WIN
+263729,5,swiss,"Player 1","Test Player A",150,DRAW
+263729,5,swiss,"Player 2","Kirk Brown",150,DRAW
+263730,5,swiss,"Player 1","Ludo Pulles",74,LOSE
+263730,5,swiss,"Player 2","Jorn Hoofwijk",226,WIN
+263731,5,swiss,"Player 1","Kirk Brown",150,DRAW
+263731,5,swiss,"Player 2","Test Player A",150,DRAW
+263732,5,swiss,"Player 1","Jorn Hoofwijk",221,WIN
+263732,5,swiss,"Player 2","Ludo Pulles",79,LOSE
+263733,5,swiss,"Player 1","R4N4R4M4 ",90,LOSE
+263733,5,swiss,"Player 2","Nikita Kurgin",210,WIN
+263734,5,swiss,"Player 1","Nikita Kurgin",150,DRAW
+263734,5,swiss,"Player 2","R4N4R4M4 ",150,DRAW
+263735,5,swiss,"Player 1","Matthias Gelbmann",98,LOSE
+263735,5,swiss,"Player 2","Léo Jean",202,WIN
+263736,5,swiss,"Player 1","Léo Jean",88,LOSE
+263736,5,swiss,"Player 2","Matthias Gelbmann",212,WIN
+263737,5,swiss,"Player 1","Henk Koops",211,WIN
+263737,5,swiss,"Player 2","Sergei Budkov",0,TIMEOUT
+263738,5,swiss,"Player 1","Sergei Budkov",0,TIMEOUT
+263738,5,swiss,"Player 2","Henk Koops",150,DRAW
+263739,6,swiss,"Player 1","Tapani Utriainen",205,WIN
+263739,6,swiss,"Player 2","Louis Verhaard",95,LOSE
+263740,6,swiss,"Player 1","Alvaro Carrera",209,WIN
+263740,6,swiss,"Player 2","Thijs Marinussen",91,LOSE
+263741,6,swiss,"Player 1","Louis Verhaard",98,LOSE
+263741,6,swiss,"Player 2","Tapani Utriainen",202,WIN
+263742,6,swiss,"Player 1","Thijs Marinussen",150,DRAW
+263742,6,swiss,"Player 2","Alvaro Carrera",150,DRAW
+263743,6,swiss,"Player 1","Matthijs Tijink",206,WIN
+263743,6,swiss,"Player 2","Leopold Tschanter",94,LOSE
+263744,6,swiss,"Player 1","Leopold Tschanter",150,DRAW
+263744,6,swiss,"Player 2","Matthijs Tijink",150,DRAW
+263745,6,swiss,"Player 1","Maks Verver",209,WIN
+263745,6,swiss,"Player 2","Alvaro Begue",91,LOSE
+263746,6,swiss,"Player 1","Alvaro Begue",93,LOSE
+263746,6,swiss,"Player 2","Maks Verver",207,WIN
+263747,6,swiss,"Player 1","Jeremy Sawicki",95,LOSE
+263747,6,swiss,"Player 2","Niklas Een",205,WIN
+263748,6,swiss,"Player 1","Niklas Een",92,LOSE
+263748,6,swiss,"Player 2","Jeremy Sawicki",208,WIN
+263749,6,swiss,"Player 1","Marcel Vlastuin",150,DRAW
+263749,6,swiss,"Player 2","Pardhav Maradani",150,DRAW
+263750,6,swiss,"Player 1","Pardhav Maradani",212,WIN
+263750,6,swiss,"Player 2","Marcel Vlastuin",88,LOSE
+263751,6,swiss,"Player 1","Jan Nunnink",204,WIN
+263751,6,swiss,"Player 2","Tomek Czajka",96,LOSE
+263752,6,swiss,"Player 1","Tomek Czajka",95,LOSE
+263752,6,swiss,"Player 2","Jan Nunnink",205,WIN
+263753,6,swiss,"Player 1","Jelmer Firet",78,LOSE
+263753,6,swiss,"Player 2","Marc Oldenhof",222,WIN
+263754,6,swiss,"Player 1","Marc Oldenhof",201,WIN
+263754,6,swiss,"Player 2","Jelmer Firet",99,LOSE
+263755,6,swiss,"Player 1","Jelle van der Drift",203,WIN
+263755,6,swiss,"Player 2","Fakih Karademir",97,LOSE
+263756,6,swiss,"Player 1","Ad van der Hoeven",92,LOSE
+263756,6,swiss,"Player 2","Rens van der Avoird",208,WIN
+263757,6,swiss,"Player 1","Fakih Karademir",74,LOSE
+263757,6,swiss,"Player 2","Jelle van der Drift",226,WIN
+263758,6,swiss,"Player 1","Rens van der Avoird",203,WIN
+263758,6,swiss,"Player 2","Ad van der Hoeven",97,LOSE
+263759,6,swiss,"Player 1","Frank Meert",89,LOSE
+263759,6,swiss,"Player 2","Abdessamad El Kasimi",211,WIN
+263760,6,swiss,"Player 1","Abdessamad El Kasimi",210,WIN
+263760,6,swiss,"Player 2","Frank Meert",90,LOSE
+263761,6,swiss,"Player 1","Boris de Wilde",85,LOSE
+263761,6,swiss,"Player 2","Vasilii Kuporosov",215,WIN
+263762,6,swiss,"Player 1","Vasilii Kuporosov",203,WIN
+263762,6,swiss,"Player 2","Boris de Wilde",97,LOSE
+263763,6,swiss,"Player 1","Mark ter Brugge",92,LOSE
+263763,6,swiss,"Player 2","Jorn Hoofwijk",208,WIN
+263764,6,swiss,"Player 1","Jorn Hoofwijk",93,LOSE
+263764,6,swiss,"Player 2","Mark ter Brugge",207,WIN
+263765,6,swiss,"Player 1","Pepijn Overbeeke",221,WIN
+263765,6,swiss,"Player 2","Test Player A",79,LOSE
+263766,6,swiss,"Player 1","Test Player A",63,LOSE
+263766,6,swiss,"Player 2","Pepijn Overbeeke",237,WIN
+263767,6,swiss,"Player 1","Kirk Brown",50,LOSE
+263767,6,swiss,"Player 2","Wouter van der Meer",250,WIN
+263768,6,swiss,"Player 1","Wouter van der Meer",217,WIN
+263768,6,swiss,"Player 2","Kirk Brown",83,LOSE
+263769,6,swiss,"Player 1","Nikita Kurgin",88,LOSE
+263769,6,swiss,"Player 2","Matthias Gelbmann",212,WIN
+263770,6,swiss,"Player 1","Matthias Gelbmann",220,WIN
+263770,6,swiss,"Player 2","Nikita Kurgin",80,LOSE
+263771,6,swiss,"Player 1","Bart Mol",0,EXIT
+263771,6,swiss,"Player 2","Henk Koops",205,WIN
+263772,6,swiss,"Player 1","Henk Koops",150,DRAW
+263772,6,swiss,"Player 2","Bart Mol",0,EXIT
+263773,6,swiss,"Player 1","Léo Jean",205,WIN
+263773,6,swiss,"Player 2","Ludo Pulles",95,LOSE
+263774,6,swiss,"Player 1","R4N4R4M4 ",99,LOSE
+263774,6,swiss,"Player 2","Sergei Budkov",201,WIN
+263775,6,swiss,"Player 1","Ludo Pulles",99,LOSE
+263775,6,swiss,"Player 2","Léo Jean",201,WIN
+263776,6,swiss,"Player 1","Sergei Budkov",0,TIMEOUT
+263776,6,swiss,"Player 2","R4N4R4M4 ",84,LOSE
+263777,7,swiss,"Player 1","Tapani Utriainen",215,WIN
+263777,7,swiss,"Player 2","Maks Verver",85,LOSE
+263778,7,swiss,"Player 1","Alvaro Carrera",94,LOSE
+263778,7,swiss,"Player 2","Matthijs Tijink",206,WIN
+263779,7,swiss,"Player 1","Maks Verver",92,LOSE
+263779,7,swiss,"Player 2","Tapani Utriainen",208,WIN
+263780,7,swiss,"Player 1","Matthijs Tijink",202,WIN
+263780,7,swiss,"Player 2","Alvaro Carrera",98,LOSE
+263781,7,swiss,"Player 1","Jan Nunnink",95,LOSE
+263781,7,swiss,"Player 2","Thijs Marinussen",205,WIN
+263782,7,swiss,"Player 1","Thijs Marinussen",150,DRAW
+263782,7,swiss,"Player 2","Jan Nunnink",150,DRAW
+263783,7,swiss,"Player 1","Louis Verhaard",201,WIN
+263783,7,swiss,"Player 2","Leopold Tschanter",99,LOSE
+263784,7,swiss,"Player 1","Leopold Tschanter",216,WIN
+263784,7,swiss,"Player 2","Louis Verhaard",84,LOSE
+263785,7,swiss,"Player 1","Jeremy Sawicki",203,WIN
+263785,7,swiss,"Player 2","Marc Oldenhof",97,LOSE
+263786,7,swiss,"Player 1","Pardhav Maradani",90,LOSE
+263786,7,swiss,"Player 2","Niklas Een",210,WIN
+263787,7,swiss,"Player 1","Marc Oldenhof",93,LOSE
+263787,7,swiss,"Player 2","Jeremy Sawicki",207,WIN
+263788,7,swiss,"Player 1","Jelle van der Drift",210,WIN
+263788,7,swiss,"Player 2","Marcel Vlastuin",90,LOSE
+263789,7,swiss,"Player 1","Niklas Een",213,WIN
+263789,7,swiss,"Player 2","Pardhav Maradani",87,LOSE
+263790,7,swiss,"Player 1","Marcel Vlastuin",97,LOSE
+263790,7,swiss,"Player 2","Jelle van der Drift",203,WIN
+263791,7,swiss,"Player 1","Alvaro Begue",92,LOSE
+263791,7,swiss,"Player 2","Rens van der Avoird",208,WIN
+263792,7,swiss,"Player 1","Abdessamad El Kasimi",82,LOSE
+263792,7,swiss,"Player 2","Vasilii Kuporosov",218,WIN
+263793,7,swiss,"Player 1","Rens van der Avoird",206,WIN
+263793,7,swiss,"Player 2","Alvaro Begue",94,LOSE
+263794,7,swiss,"Player 1","Vasilii Kuporosov",208,WIN
+263794,7,swiss,"Player 2","Abdessamad El Kasimi",92,LOSE
+263795,7,swiss,"Player 1","Pepijn Overbeeke",204,WIN
+263795,7,swiss,"Player 2","Jelmer Firet",96,LOSE
+263796,7,swiss,"Player 1","Tomek Czajka",203,WIN
+263796,7,swiss,"Player 2","Wouter van der Meer",97,LOSE
+263797,7,swiss,"Player 1","Jelmer Firet",201,WIN
+263797,7,swiss,"Player 2","Pepijn Overbeeke",99,LOSE
+263798,7,swiss,"Player 1","Wouter van der Meer",94,LOSE
+263798,7,swiss,"Player 2","Tomek Czajka",206,WIN
+263799,7,swiss,"Player 1","Mark ter Brugge",207,WIN
+263799,7,swiss,"Player 2","Ad van der Hoeven",93,LOSE
+263800,7,swiss,"Player 1","Jorn Hoofwijk",215,WIN
+263800,7,swiss,"Player 2","Matthias Gelbmann",85,LOSE
+263801,7,swiss,"Player 1","Ad van der Hoeven",150,DRAW
+263801,7,swiss,"Player 2","Mark ter Brugge",150,DRAW
+263802,7,swiss,"Player 1","Matthias Gelbmann",90,LOSE
+263802,7,swiss,"Player 2","Jorn Hoofwijk",210,WIN
+263803,7,swiss,"Player 1","Frank Meert",71,LOSE
+263803,7,swiss,"Player 2","Fakih Karademir",229,WIN
+263804,7,swiss,"Player 1","Fakih Karademir",150,DRAW
+263804,7,swiss,"Player 2","Frank Meert",150,DRAW
+263805,7,swiss,"Player 1","Boris de Wilde",211,WIN
+263805,7,swiss,"Player 2","Léo Jean",89,LOSE
+263806,7,swiss,"Player 1","Léo Jean",76,LOSE
+263806,7,swiss,"Player 2","Boris de Wilde",224,WIN
+263807,7,swiss,"Player 1","Henk Koops",89,LOSE
+263807,7,swiss,"Player 2","Test Player A",211,WIN
+263808,7,swiss,"Player 1","Test Player A",150,DRAW
+263808,7,swiss,"Player 2","Henk Koops",150,DRAW
+263809,7,swiss,"Player 1","Nikita Kurgin",150,DRAW
+263809,7,swiss,"Player 2","Sergei Budkov",150,DRAW
+263810,7,swiss,"Player 1","Kirk Brown",96,LOSE
+263810,7,swiss,"Player 2","Ludo Pulles",204,WIN
+263811,7,swiss,"Player 1","Ludo Pulles",150,DRAW
+263811,7,swiss,"Player 2","Kirk Brown",150,DRAW
+263812,7,swiss,"Player 1","R4N4R4M4 ",150,DRAW
+263812,7,swiss,"Player 2","Bart Mol",150,DRAW
+263813,7,swiss,"Player 1","Bart Mol",98,LOSE
+263813,7,swiss,"Player 2","R4N4R4M4 ",202,WIN
+263814,7,swiss,"Player 1","Sergei Budkov",150,DRAW
+263814,7,swiss,"Player 2","Nikita Kurgin",150,DRAW
+263815,8,final,"Player 1","Tapani Utriainen",235,WIN
+263815,8,final,"Player 2","R4N4R4M4 ",65,LOSE
+263816,8,final,"Player 1","R4N4R4M4 ",72,LOSE
+263816,8,final,"Player 2","Tapani Utriainen",228,WIN
+263817,8,final,"Player 1","Matthijs Tijink",232,WIN
+263817,8,final,"Player 2","Ludo Pulles",68,LOSE
+263818,8,final,"Player 1","Ludo Pulles",53,LOSE
+263818,8,final,"Player 2","Matthijs Tijink",247,WIN
+263819,8,final,"Player 1","Alvaro Carrera",239,WIN
+263819,8,final,"Player 2","Nikita Kurgin",61,LOSE
+263820,8,final,"Player 1","Nikita Kurgin",71,LOSE
+263820,8,final,"Player 2","Alvaro Carrera",229,WIN
+263821,8,final,"Player 1","Jeremy Sawicki",233,WIN
+263821,8,final,"Player 2","Léo Jean",67,LOSE
+263822,8,final,"Player 1","Léo Jean",91,LOSE
+263822,8,final,"Player 2","Jeremy Sawicki",209,WIN
+263823,8,final,"Player 1","Niklas Een",234,WIN
+263823,8,final,"Player 2","Henk Koops",66,LOSE
+263824,8,final,"Player 1","Henk Koops",65,LOSE
+263824,8,final,"Player 2","Niklas Een",235,WIN
+263825,8,final,"Player 1","Jelle van der Drift",220,WIN
+263825,8,final,"Player 2","Matthias Gelbmann",80,LOSE
+263826,8,final,"Player 1","Matthias Gelbmann",99,LOSE
+263826,8,final,"Player 2","Jelle van der Drift",201,WIN
+263827,8,final,"Player 1","Thijs Marinussen",233,WIN
+263827,8,final,"Player 2","Frank Meert",67,LOSE
+263828,8,final,"Player 1","Frank Meert",150,DRAW
+263828,8,final,"Player 2","Thijs Marinussen",150,DRAW
+263829,8,final,"Player 1","Maks Verver",206,WIN
+263829,8,final,"Player 2","Wouter van der Meer",94,LOSE
+263830,8,final,"Player 1","Wouter van der Meer",94,LOSE
+263830,8,final,"Player 2","Maks Verver",206,WIN
+263831,8,final,"Player 1","Leopold Tschanter",95,LOSE
+263831,8,final,"Player 2","Ad van der Hoeven",205,WIN
+263832,8,final,"Player 1","Ad van der Hoeven",88,LOSE
+263832,8,final,"Player 2","Leopold Tschanter",212,WIN
+263833,8,final,"Player 1","Louis Verhaard",228,WIN
+263833,8,final,"Player 2","Fakih Karademir",72,LOSE
+263834,8,final,"Player 1","Fakih Karademir",88,LOSE
+263834,8,final,"Player 2","Louis Verhaard",212,WIN
+263835,8,final,"Player 1","Jan Nunnink",225,WIN
+263835,8,final,"Player 2","Abdessamad El Kasimi",75,LOSE
+263836,8,final,"Player 1","Abdessamad El Kasimi",78,LOSE
+263836,8,final,"Player 2","Jan Nunnink",222,WIN
+263837,8,final,"Player 1","Vasilii Kuporosov",98,LOSE
+263837,8,final,"Player 2","Boris de Wilde",202,WIN
+263838,8,final,"Player 1","Boris de Wilde",94,LOSE
+263838,8,final,"Player 2","Vasilii Kuporosov",206,WIN
+263839,8,final,"Player 1","Rens van der Avoird",205,WIN
+263839,8,final,"Player 2","Jelmer Firet",95,LOSE
+263840,8,final,"Player 1","Jelmer Firet",95,LOSE
+263840,8,final,"Player 2","Rens van der Avoird",205,WIN
+263841,8,final,"Player 1","Tomek Czajka",89,LOSE
+263841,8,final,"Player 2","Mark ter Brugge",211,WIN
+263842,8,final,"Player 1","Mark ter Brugge",92,LOSE
+263842,8,final,"Player 2","Tomek Czajka",208,WIN
+263843,8,final,"Player 1","Marc Oldenhof",96,LOSE
+263843,8,final,"Player 2","Alvaro Begue",204,WIN
+263844,8,final,"Player 1","Alvaro Begue",204,WIN
+263844,8,final,"Player 2","Marc Oldenhof",96,LOSE
+263845,8,final,"Player 1","Pardhav Maradani",217,WIN
+263845,8,final,"Player 2","Marcel Vlastuin",83,LOSE
+263846,8,final,"Player 1","Marcel Vlastuin",96,LOSE
+263846,8,final,"Player 2","Pardhav Maradani",204,WIN
+263847,8,final,"Player 1","Jorn Hoofwijk",93,LOSE
+263847,8,final,"Player 2","Pepijn Overbeeke",207,WIN
+263848,8,final,"Player 1","Pepijn Overbeeke",89,LOSE
+263848,8,final,"Player 2","Jorn Hoofwijk",211,WIN
+263849,9,final,"Player 1","Tapani Utriainen",229,WIN
+263849,9,final,"Player 2","Ludo Pulles",71,LOSE
+263850,9,final,"Player 1","Ludo Pulles",64,LOSE
+263850,9,final,"Player 2","Tapani Utriainen",236,WIN
+263851,9,final,"Player 1","R4N4R4M4 ",97,LOSE
+263851,9,final,"Player 2","Nikita Kurgin",203,WIN
+263852,9,final,"Player 1","Nikita Kurgin",150,DRAW
+263852,9,final,"Player 2","R4N4R4M4 ",150,DRAW
+263853,9,final,"Player 1","Matthijs Tijink",231,WIN
+263853,9,final,"Player 2","Léo Jean",69,LOSE
+263854,9,final,"Player 1","Léo Jean",85,LOSE
+263854,9,final,"Player 2","Matthijs Tijink",215,WIN
+263855,9,final,"Player 1","Alvaro Carrera",250,WIN
+263855,9,final,"Player 2","Henk Koops",50,LOSE
+263856,9,final,"Player 1","Henk Koops",72,LOSE
+263856,9,final,"Player 2","Alvaro Carrera",228,WIN
+263857,9,final,"Player 1","Jeremy Sawicki",234,WIN
+263857,9,final,"Player 2","Matthias Gelbmann",66,LOSE
+263858,9,final,"Player 1","Matthias Gelbmann",88,LOSE
+263858,9,final,"Player 2","Jeremy Sawicki",212,WIN
+263859,9,final,"Player 1","Niklas Een",150,DRAW
+263859,9,final,"Player 2","Frank Meert",150,DRAW
+263860,9,final,"Player 1","Frank Meert",90,LOSE
+263860,9,final,"Player 2","Niklas Een",210,WIN
+263861,9,final,"Player 1","Jelle van der Drift",99,LOSE
+263861,9,final,"Player 2","Wouter van der Meer",201,WIN
+263862,9,final,"Player 1","Wouter van der Meer",99,LOSE
+263862,9,final,"Player 2","Jelle van der Drift",201,WIN
+263863,9,final,"Player 1","Thijs Marinussen",204,WIN
+263863,9,final,"Player 2","Ad van der Hoeven",96,LOSE
+263864,9,final,"Player 1","Ad van der Hoeven",97,LOSE
+263864,9,final,"Player 2","Thijs Marinussen",203,WIN
+263865,9,final,"Player 1","Maks Verver",214,WIN
+263865,9,final,"Player 2","Fakih Karademir",86,LOSE
+263866,9,final,"Player 1","Fakih Karademir",81,LOSE
+263866,9,final,"Player 2","Maks Verver",219,WIN
+263867,9,final,"Player 1","Leopold Tschanter",218,WIN
+263867,9,final,"Player 2","Abdessamad El Kasimi",82,LOSE
+263868,9,final,"Player 1","Abdessamad El Kasimi",74,LOSE
+263868,9,final,"Player 2","Leopold Tschanter",226,WIN
+263869,9,final,"Player 1","Louis Verhaard",217,WIN
+263869,9,final,"Player 2","Boris de Wilde",83,LOSE
+263870,9,final,"Player 1","Boris de Wilde",95,LOSE
+263870,9,final,"Player 2","Louis Verhaard",205,WIN
+263871,9,final,"Player 1","Jan Nunnink",96,LOSE
+263871,9,final,"Player 2","Jelmer Firet",204,WIN
+263872,9,final,"Player 1","Jelmer Firet",76,LOSE
+263872,9,final,"Player 2","Jan Nunnink",224,WIN
+263873,9,final,"Player 1","Vasilii Kuporosov",201,WIN
+263873,9,final,"Player 2","Mark ter Brugge",99,LOSE
+263874,9,final,"Player 1","Mark ter Brugge",208,WIN
+263874,9,final,"Player 2","Vasilii Kuporosov",92,LOSE
+263875,9,final,"Player 1","Rens van der Avoird",215,WIN
+263875,9,final,"Player 2","Alvaro Begue",85,LOSE
+263876,9,final,"Player 1","Alvaro Begue",99,LOSE
+263876,9,final,"Player 2","Rens van der Avoird",201,WIN
+263877,9,final,"Player 1","Tomek Czajka",210,WIN
+263877,9,final,"Player 2","Marcel Vlastuin",90,LOSE
+263878,9,final,"Player 1","Marcel Vlastuin",203,WIN
+263878,9,final,"Player 2","Tomek Czajka",97,LOSE
+263879,9,final,"Player 1","Marc Oldenhof",209,WIN
+263879,9,final,"Player 2","Pepijn Overbeeke",91,LOSE
+263880,9,final,"Player 1","Pepijn Overbeeke",95,LOSE
+263880,9,final,"Player 2","Marc Oldenhof",205,WIN
+263881,9,final,"Player 1","Pardhav Maradani",150,DRAW
+263881,9,final,"Player 2","Jorn Hoofwijk",150,DRAW
+263882,9,final,"Player 1","Jorn Hoofwijk",207,WIN
+263882,9,final,"Player 2","Pardhav Maradani",93,LOSE
+263883,10,final,"Player 1","Tapani Utriainen",226,WIN
+263883,10,final,"Player 2","Nikita Kurgin",74,LOSE
+263884,10,final,"Player 1","Nikita Kurgin",74,LOSE
+263884,10,final,"Player 2","Tapani Utriainen",226,WIN
+263885,10,final,"Player 1","Ludo Pulles",79,LOSE
+263885,10,final,"Player 2","Léo Jean",221,WIN
+263886,10,final,"Player 1","Léo Jean",212,WIN
+263886,10,final,"Player 2","Ludo Pulles",88,LOSE
+263887,10,final,"Player 1","R4N4R4M4 ",150,DRAW
+263887,10,final,"Player 2","Henk Koops",150,DRAW
+263888,10,final,"Player 1","Henk Koops",93,LOSE
+263888,10,final,"Player 2","R4N4R4M4 ",207,WIN
+263889,10,final,"Player 1","Matthijs Tijink",204,WIN
+263889,10,final,"Player 2","Matthias Gelbmann",96,LOSE
+263890,10,final,"Player 1","Matthias Gelbmann",68,LOSE
+263890,10,final,"Player 2","Matthijs Tijink",232,WIN
+263891,10,final,"Player 1","Alvaro Carrera",218,WIN
+263891,10,final,"Player 2","Frank Meert",82,LOSE
+263892,10,final,"Player 1","Frank Meert",90,LOSE
+263892,10,final,"Player 2","Alvaro Carrera",210,WIN
+263893,10,final,"Player 1","Jeremy Sawicki",211,WIN
+263893,10,final,"Player 2","Wouter van der Meer",89,LOSE
+263894,10,final,"Player 1","Wouter van der Meer",59,LOSE
+263894,10,final,"Player 2","Jeremy Sawicki",241,WIN
+263895,10,final,"Player 1","Niklas Een",210,WIN
+263895,10,final,"Player 2","Ad van der Hoeven",90,LOSE
+263896,10,final,"Player 1","Ad van der Hoeven",96,LOSE
+263896,10,final,"Player 2","Niklas Een",204,WIN
+263897,10,final,"Player 1","Jelle van der Drift",150,DRAW
+263897,10,final,"Player 2","Fakih Karademir",150,DRAW
+263898,10,final,"Player 1","Fakih Karademir",99,LOSE
+263898,10,final,"Player 2","Jelle van der Drift",201,WIN
+263899,10,final,"Player 1","Thijs Marinussen",150,DRAW
+263899,10,final,"Player 2","Abdessamad El Kasimi",150,DRAW
+263900,10,final,"Player 1","Abdessamad El Kasimi",84,LOSE
+263900,10,final,"Player 2","Thijs Marinussen",216,WIN
+263901,10,final,"Player 1","Maks Verver",150,DRAW
+263901,10,final,"Player 2","Boris de Wilde",150,DRAW
+263902,10,final,"Player 1","Boris de Wilde",90,LOSE
+263902,10,final,"Player 2","Maks Verver",210,WIN
+263903,10,final,"Player 1","Leopold Tschanter",92,LOSE
+263903,10,final,"Player 2","Jelmer Firet",208,WIN
+263904,10,final,"Player 1","Jelmer Firet",210,WIN
+263904,10,final,"Player 2","Leopold Tschanter",90,LOSE
+263905,10,final,"Player 1","Louis Verhaard",215,WIN
+263905,10,final,"Player 2","Mark ter Brugge",85,LOSE
+263906,10,final,"Player 1","Mark ter Brugge",93,LOSE
+263906,10,final,"Player 2","Louis Verhaard",207,WIN
+263907,10,final,"Player 1","Jan Nunnink",209,WIN
+263907,10,final,"Player 2","Alvaro Begue",91,LOSE
+263908,10,final,"Player 1","Alvaro Begue",202,WIN
+263908,10,final,"Player 2","Jan Nunnink",98,LOSE
+263909,10,final,"Player 1","Vasilii Kuporosov",87,LOSE
+263909,10,final,"Player 2","Marcel Vlastuin",213,WIN
+263910,10,final,"Player 1","Marcel Vlastuin",207,WIN
+263910,10,final,"Player 2","Vasilii Kuporosov",93,LOSE
+263911,10,final,"Player 1","Rens van der Avoird",221,WIN
+263911,10,final,"Player 2","Pepijn Overbeeke",79,LOSE
+263912,10,final,"Player 1","Pepijn Overbeeke",81,LOSE
+263912,10,final,"Player 2","Rens van der Avoird",219,WIN
+263913,10,final,"Player 1","Tomek Czajka",204,WIN
+263913,10,final,"Player 2","Jorn Hoofwijk",96,LOSE
+263914,10,final,"Player 1","Jorn Hoofwijk",211,WIN
+263914,10,final,"Player 2","Tomek Czajka",89,LOSE
+263915,10,final,"Player 1","Marc Oldenhof",150,DRAW
+263915,10,final,"Player 2","Pardhav Maradani",150,DRAW
+263916,10,final,"Player 1","Pardhav Maradani",203,WIN
+263916,10,final,"Player 2","Marc Oldenhof",97,LOSE
+263917,11,final,"Player 1","Tapani Utriainen",217,WIN
+263917,11,final,"Player 2","Léo Jean",83,LOSE
+263918,11,final,"Player 1","Léo Jean",92,LOSE
+263918,11,final,"Player 2","Tapani Utriainen",208,WIN
+263919,11,final,"Player 1","Nikita Kurgin",150,DRAW
+263919,11,final,"Player 2","Henk Koops",150,DRAW
+263920,11,final,"Player 1","Henk Koops",150,DRAW
+263920,11,final,"Player 2","Nikita Kurgin",150,DRAW
+263921,11,final,"Player 1","Ludo Pulles",94,LOSE
+263921,11,final,"Player 2","Matthias Gelbmann",206,WIN
+263922,11,final,"Player 1","Matthias Gelbmann",222,WIN
+263922,11,final,"Player 2","Ludo Pulles",78,LOSE
+263923,11,final,"Player 1","R4N4R4M4 ",68,LOSE
+263923,11,final,"Player 2","Frank Meert",232,WIN
+263924,11,final,"Player 1","Frank Meert",222,WIN
+263924,11,final,"Player 2","R4N4R4M4 ",78,LOSE
+263925,11,final,"Player 1","Matthijs Tijink",226,WIN
+263925,11,final,"Player 2","Wouter van der Meer",74,LOSE
+263926,11,final,"Player 1","Wouter van der Meer",82,LOSE
+263926,11,final,"Player 2","Matthijs Tijink",218,WIN
+263927,11,final,"Player 1","Alvaro Carrera",223,WIN
+263927,11,final,"Player 2","Ad van der Hoeven",77,LOSE
+263928,11,final,"Player 1","Ad van der Hoeven",89,LOSE
+263928,11,final,"Player 2","Alvaro Carrera",211,WIN
+263929,11,final,"Player 1","Jeremy Sawicki",210,WIN
+263929,11,final,"Player 2","Fakih Karademir",90,LOSE
+263930,11,final,"Player 1","Fakih Karademir",85,LOSE
+263930,11,final,"Player 2","Jeremy Sawicki",215,WIN
+263931,11,final,"Player 1","Niklas Een",210,WIN
+263931,11,final,"Player 2","Abdessamad El Kasimi",90,LOSE
+263932,11,final,"Player 1","Abdessamad El Kasimi",81,LOSE
+263932,11,final,"Player 2","Niklas Een",219,WIN
+263933,11,final,"Player 1","Jelle van der Drift",209,WIN
+263933,11,final,"Player 2","Boris de Wilde",91,LOSE
+263934,11,final,"Player 1","Boris de Wilde",92,LOSE
+263934,11,final,"Player 2","Jelle van der Drift",208,WIN
+263935,11,final,"Player 1","Thijs Marinussen",201,WIN
+263935,11,final,"Player 2","Jelmer Firet",99,LOSE
+263936,11,final,"Player 1","Jelmer Firet",84,LOSE
+263936,11,final,"Player 2","Thijs Marinussen",216,WIN
+263937,11,final,"Player 1","Maks Verver",207,WIN
+263937,11,final,"Player 2","Mark ter Brugge",93,LOSE
+263938,11,final,"Player 1","Mark ter Brugge",94,LOSE
+263938,11,final,"Player 2","Maks Verver",206,WIN
+263939,11,final,"Player 1","Leopold Tschanter",79,LOSE
+263939,11,final,"Player 2","Alvaro Begue",221,WIN
+263940,11,final,"Player 1","Alvaro Begue",76,LOSE
+263940,11,final,"Player 2","Leopold Tschanter",224,WIN
+263941,11,final,"Player 1","Louis Verhaard",211,WIN
+263941,11,final,"Player 2","Marcel Vlastuin",89,LOSE
+263942,11,final,"Player 1","Marcel Vlastuin",98,LOSE
+263942,11,final,"Player 2","Louis Verhaard",202,WIN
+263943,11,final,"Player 1","Jan Nunnink",223,WIN
+263943,11,final,"Player 2","Pepijn Overbeeke",77,LOSE
+263944,11,final,"Player 1","Pepijn Overbeeke",93,LOSE
+263944,11,final,"Player 2","Jan Nunnink",207,WIN
+263945,11,final,"Player 1","Vasilii Kuporosov",205,WIN
+263945,11,final,"Player 2","Jorn Hoofwijk",95,LOSE
+263946,11,final,"Player 1","Jorn Hoofwijk",87,LOSE
+263946,11,final,"Player 2","Vasilii Kuporosov",213,WIN
+263947,11,final,"Player 1","Rens van der Avoird",96,LOSE
+263947,11,final,"Player 2","Pardhav Maradani",204,WIN
+263948,11,final,"Player 1","Pardhav Maradani",86,LOSE
+263948,11,final,"Player 2","Rens van der Avoird",214,WIN
+263949,11,final,"Player 1","Tomek Czajka",96,LOSE
+263949,11,final,"Player 2","Marc Oldenhof",204,WIN
+263950,11,final,"Player 1","Marc Oldenhof",97,LOSE
+263950,11,final,"Player 2","Tomek Czajka",203,WIN
+263951,12,final,"Player 1","Tapani Utriainen",231,WIN
+263951,12,final,"Player 2","Henk Koops",69,LOSE
+263952,12,final,"Player 1","Henk Koops",84,LOSE
+263952,12,final,"Player 2","Tapani Utriainen",216,WIN
+263953,12,final,"Player 1","Léo Jean",150,DRAW
+263953,12,final,"Player 2","Matthias Gelbmann",150,DRAW
+263954,12,final,"Player 1","Matthias Gelbmann",243,WIN
+263954,12,final,"Player 2","Léo Jean",57,LOSE
+263955,12,final,"Player 1","Nikita Kurgin",86,LOSE
+263955,12,final,"Player 2","Frank Meert",214,WIN
+263956,12,final,"Player 1","Frank Meert",228,WIN
+263956,12,final,"Player 2","Nikita Kurgin",72,LOSE
+263957,12,final,"Player 1","Ludo Pulles",69,LOSE
+263957,12,final,"Player 2","Wouter van der Meer",231,WIN
+263958,12,final,"Player 1","Wouter van der Meer",233,WIN
+263958,12,final,"Player 2","Ludo Pulles",67,LOSE
+263959,12,final,"Player 1","R4N4R4M4 ",86,LOSE
+263959,12,final,"Player 2","Ad van der Hoeven",214,WIN
+263960,12,final,"Player 1","Ad van der Hoeven",229,WIN
+263960,12,final,"Player 2","R4N4R4M4 ",71,LOSE
+263961,12,final,"Player 1","Matthijs Tijink",215,WIN
+263961,12,final,"Player 2","Fakih Karademir",85,LOSE
+263962,12,final,"Player 1","Fakih Karademir",91,LOSE
+263962,12,final,"Player 2","Matthijs Tijink",209,WIN
+263963,12,final,"Player 1","Alvaro Carrera",211,WIN
+263963,12,final,"Player 2","Abdessamad El Kasimi",89,LOSE
+263964,12,final,"Player 1","Abdessamad El Kasimi",81,LOSE
+263964,12,final,"Player 2","Alvaro Carrera",219,WIN
+263965,12,final,"Player 1","Jeremy Sawicki",207,WIN
+263965,12,final,"Player 2","Boris de Wilde",93,LOSE
+263966,12,final,"Player 1","Boris de Wilde",202,WIN
+263966,12,final,"Player 2","Jeremy Sawicki",98,LOSE
+263967,12,final,"Player 1","Niklas Een",210,WIN
+263967,12,final,"Player 2","Jelmer Firet",90,LOSE
+263968,12,final,"Player 1","Jelmer Firet",95,LOSE
+263968,12,final,"Player 2","Niklas Een",205,WIN
+263969,12,final,"Player 1","Jelle van der Drift",95,LOSE
+263969,12,final,"Player 2","Mark ter Brugge",205,WIN
+263970,12,final,"Player 1","Mark ter Brugge",98,LOSE
+263970,12,final,"Player 2","Jelle van der Drift",202,WIN
+263971,12,final,"Player 1","Thijs Marinussen",206,WIN
+263971,12,final,"Player 2","Alvaro Begue",94,LOSE
+263972,12,final,"Player 1","Alvaro Begue",208,WIN
+263972,12,final,"Player 2","Thijs Marinussen",92,LOSE
+263973,12,final,"Player 1","Maks Verver",92,LOSE
+263973,12,final,"Player 2","Marcel Vlastuin",208,WIN
+263974,12,final,"Player 1","Marcel Vlastuin",83,LOSE
+263974,12,final,"Player 2","Maks Verver",217,WIN
+263975,12,final,"Player 1","Leopold Tschanter",202,WIN
+263975,12,final,"Player 2","Pepijn Overbeeke",98,LOSE
+263976,12,final,"Player 1","Pepijn Overbeeke",75,LOSE
+263976,12,final,"Player 2","Leopold Tschanter",225,WIN
+263977,12,final,"Player 1","Louis Verhaard",206,WIN
+263977,12,final,"Player 2","Jorn Hoofwijk",94,LOSE
+263978,12,final,"Player 1","Jorn Hoofwijk",201,WIN
+263978,12,final,"Player 2","Louis Verhaard",99,LOSE
+263979,12,final,"Player 1","Jan Nunnink",206,WIN
+263979,12,final,"Player 2","Pardhav Maradani",94,LOSE
+263980,12,final,"Player 1","Pardhav Maradani",204,WIN
+263980,12,final,"Player 2","Jan Nunnink",96,LOSE
+263981,12,final,"Player 1","Vasilii Kuporosov",208,WIN
+263981,12,final,"Player 2","Marc Oldenhof",92,LOSE
+263982,12,final,"Player 1","Marc Oldenhof",89,LOSE
+263982,12,final,"Player 2","Vasilii Kuporosov",211,WIN
+263983,12,final,"Player 1","Rens van der Avoird",98,LOSE
+263983,12,final,"Player 2","Tomek Czajka",202,WIN
+263984,12,final,"Player 1","Tomek Czajka",207,WIN
+263984,12,final,"Player 2","Rens van der Avoird",93,LOSE
+263985,13,final,"Player 1","Tapani Utriainen",209,WIN
+263985,13,final,"Player 2","Matthias Gelbmann",91,LOSE
+263986,13,final,"Player 1","Matthias Gelbmann",89,LOSE
+263986,13,final,"Player 2","Tapani Utriainen",211,WIN
+263987,13,final,"Player 1","Henk Koops",65,LOSE
+263987,13,final,"Player 2","Frank Meert",235,WIN
+263988,13,final,"Player 1","Frank Meert",233,WIN
+263988,13,final,"Player 2","Henk Koops",67,LOSE
+263989,13,final,"Player 1","Léo Jean",81,LOSE
+263989,13,final,"Player 2","Wouter van der Meer",219,WIN
+263990,13,final,"Player 1","Wouter van der Meer",209,WIN
+263990,13,final,"Player 2","Léo Jean",91,LOSE
+263991,13,final,"Player 1","Nikita Kurgin",81,LOSE
+263991,13,final,"Player 2","Ad van der Hoeven",219,WIN
+263992,13,final,"Player 1","Ad van der Hoeven",219,WIN
+263992,13,final,"Player 2","Nikita Kurgin",81,LOSE
+263993,13,final,"Player 1","Ludo Pulles",68,LOSE
+263993,13,final,"Player 2","Fakih Karademir",232,WIN
+263994,13,final,"Player 1","Fakih Karademir",211,WIN
+263994,13,final,"Player 2","Ludo Pulles",89,LOSE
+263995,13,final,"Player 1","R4N4R4M4 ",89,LOSE
+263995,13,final,"Player 2","Abdessamad El Kasimi",211,WIN
+263996,13,final,"Player 1","Abdessamad El Kasimi",230,WIN
+263996,13,final,"Player 2","R4N4R4M4 ",70,LOSE
+263997,13,final,"Player 1","Matthijs Tijink",201,WIN
+263997,13,final,"Player 2","Boris de Wilde",99,LOSE
+263998,13,final,"Player 1","Boris de Wilde",98,LOSE
+263998,13,final,"Player 2","Matthijs Tijink",202,WIN
+263999,13,final,"Player 1","Alvaro Carrera",217,WIN
+263999,13,final,"Player 2","Jelmer Firet",83,LOSE
+264000,13,final,"Player 1","Jelmer Firet",82,LOSE
+264000,13,final,"Player 2","Alvaro Carrera",218,WIN
+264001,13,final,"Player 1","Jeremy Sawicki",150,DRAW
+264001,13,final,"Player 2","Mark ter Brugge",150,DRAW
+264002,13,final,"Player 1","Mark ter Brugge",90,LOSE
+264002,13,final,"Player 2","Jeremy Sawicki",210,WIN
+264003,13,final,"Player 1","Niklas Een",201,WIN
+264003,13,final,"Player 2","Alvaro Begue",99,LOSE
+264004,13,final,"Player 1","Alvaro Begue",97,LOSE
+264004,13,final,"Player 2","Niklas Een",203,WIN
+264005,13,final,"Player 1","Jelle van der Drift",204,WIN
+264005,13,final,"Player 2","Marcel Vlastuin",96,LOSE
+264006,13,final,"Player 1","Marcel Vlastuin",205,WIN
+264006,13,final,"Player 2","Jelle van der Drift",95,LOSE
+264007,13,final,"Player 1","Thijs Marinussen",223,WIN
+264007,13,final,"Player 2","Pepijn Overbeeke",77,LOSE
+264008,13,final,"Player 1","Pepijn Overbeeke",82,LOSE
+264008,13,final,"Player 2","Thijs Marinussen",218,WIN
+264009,13,final,"Player 1","Maks Verver",216,WIN
+264009,13,final,"Player 2","Jorn Hoofwijk",84,LOSE
+264010,13,final,"Player 1","Jorn Hoofwijk",78,LOSE
+264010,13,final,"Player 2","Maks Verver",222,WIN
+264011,13,final,"Player 1","Leopold Tschanter",93,LOSE
+264011,13,final,"Player 2","Pardhav Maradani",207,WIN
+264012,13,final,"Player 1","Pardhav Maradani",91,LOSE
+264012,13,final,"Player 2","Leopold Tschanter",209,WIN
+264013,13,final,"Player 1","Louis Verhaard",96,LOSE
+264013,13,final,"Player 2","Marc Oldenhof",204,WIN
+264014,13,final,"Player 1","Marc Oldenhof",99,LOSE
+264014,13,final,"Player 2","Louis Verhaard",201,WIN
+264015,13,final,"Player 1","Jan Nunnink",216,WIN
+264015,13,final,"Player 2","Tomek Czajka",84,LOSE
+264016,13,final,"Player 1","Tomek Czajka",93,LOSE
+264016,13,final,"Player 2","Jan Nunnink",207,WIN
+264017,13,final,"Player 1","Vasilii Kuporosov",204,WIN
+264017,13,final,"Player 2","Rens van der Avoird",96,LOSE
+264018,13,final,"Player 1","Rens van der Avoird",203,WIN
+264018,13,final,"Player 2","Vasilii Kuporosov",97,LOSE
+264019,14,final,"Player 1","Tapani Utriainen",225,WIN
+264019,14,final,"Player 2","Frank Meert",75,LOSE
+264020,14,final,"Player 1","Frank Meert",96,LOSE
+264020,14,final,"Player 2","Tapani Utriainen",204,WIN
+264021,14,final,"Player 1","Matthias Gelbmann",89,LOSE
+264021,14,final,"Player 2","Wouter van der Meer",211,WIN
+264022,14,final,"Player 1","Wouter van der Meer",75,LOSE
+264022,14,final,"Player 2","Matthias Gelbmann",225,WIN
+264023,14,final,"Player 1","Henk Koops",74,LOSE
+264023,14,final,"Player 2","Ad van der Hoeven",226,WIN
+264024,14,final,"Player 1","Ad van der Hoeven",226,WIN
+264024,14,final,"Player 2","Henk Koops",74,LOSE
+264025,14,final,"Player 1","Léo Jean",69,LOSE
+264025,14,final,"Player 2","Fakih Karademir",231,WIN
+264026,14,final,"Player 1","Fakih Karademir",228,WIN
+264026,14,final,"Player 2","Léo Jean",72,LOSE
+264027,14,final,"Player 1","Nikita Kurgin",56,LOSE
+264027,14,final,"Player 2","Abdessamad El Kasimi",244,WIN
+264028,14,final,"Player 1","Abdessamad El Kasimi",219,WIN
+264028,14,final,"Player 2","Nikita Kurgin",81,LOSE
+264029,14,final,"Player 1","Ludo Pulles",80,LOSE
+264029,14,final,"Player 2","Boris de Wilde",220,WIN
+264030,14,final,"Player 1","Boris de Wilde",228,WIN
+264030,14,final,"Player 2","Ludo Pulles",72,LOSE
+264031,14,final,"Player 1","R4N4R4M4 ",73,LOSE
+264031,14,final,"Player 2","Jelmer Firet",227,WIN
+264032,14,final,"Player 1","Jelmer Firet",235,WIN
+264032,14,final,"Player 2","R4N4R4M4 ",65,LOSE
+264033,14,final,"Player 1","Matthijs Tijink",211,WIN
+264033,14,final,"Player 2","Mark ter Brugge",89,LOSE
+264034,14,final,"Player 1","Mark ter Brugge",88,LOSE
+264034,14,final,"Player 2","Matthijs Tijink",212,WIN
+264035,14,final,"Player 1","Alvaro Carrera",201,WIN
+264035,14,final,"Player 2","Alvaro Begue",99,LOSE
+264036,14,final,"Player 1","Alvaro Begue",89,LOSE
+264036,14,final,"Player 2","Alvaro Carrera",211,WIN
+264037,14,final,"Player 1","Jeremy Sawicki",201,WIN
+264037,14,final,"Player 2","Marcel Vlastuin",99,LOSE
+264038,14,final,"Player 1","Marcel Vlastuin",98,LOSE
+264038,14,final,"Player 2","Jeremy Sawicki",202,WIN
+264039,14,final,"Player 1","Niklas Een",228,WIN
+264039,14,final,"Player 2","Pepijn Overbeeke",72,LOSE
+264040,14,final,"Player 1","Pepijn Overbeeke",90,LOSE
+264040,14,final,"Player 2","Niklas Een",210,WIN
+264041,14,final,"Player 1","Jelle van der Drift",212,WIN
+264041,14,final,"Player 2","Jorn Hoofwijk",88,LOSE
+264042,14,final,"Player 1","Jorn Hoofwijk",201,WIN
+264042,14,final,"Player 2","Jelle van der Drift",99,LOSE
+264043,14,final,"Player 1","Thijs Marinussen",204,WIN
+264043,14,final,"Player 2","Pardhav Maradani",96,LOSE
+264044,14,final,"Player 1","Pardhav Maradani",89,LOSE
+264044,14,final,"Player 2","Thijs Marinussen",211,WIN
+264045,14,final,"Player 1","Maks Verver",212,WIN
+264045,14,final,"Player 2","Marc Oldenhof",88,LOSE
+264046,14,final,"Player 1","Marc Oldenhof",99,LOSE
+264046,14,final,"Player 2","Maks Verver",201,WIN
+264047,14,final,"Player 1","Leopold Tschanter",150,DRAW
+264047,14,final,"Player 2","Tomek Czajka",150,DRAW
+264048,14,final,"Player 1","Tomek Czajka",88,LOSE
+264048,14,final,"Player 2","Leopold Tschanter",212,WIN
+264049,14,final,"Player 1","Louis Verhaard",221,WIN
+264049,14,final,"Player 2","Rens van der Avoird",79,LOSE
+264050,14,final,"Player 1","Rens van der Avoird",88,LOSE
+264050,14,final,"Player 2","Louis Verhaard",212,WIN
+264051,14,final,"Player 1","Jan Nunnink",212,WIN
+264051,14,final,"Player 2","Vasilii Kuporosov",88,LOSE
+264052,14,final,"Player 1","Vasilii Kuporosov",94,LOSE
+264052,14,final,"Player 2","Jan Nunnink",206,WIN
+264053,15,final,"Player 1","Tapani Utriainen",238,WIN
+264053,15,final,"Player 2","Wouter van der Meer",62,LOSE
+264054,15,final,"Player 1","Wouter van der Meer",83,LOSE
+264054,15,final,"Player 2","Tapani Utriainen",217,WIN
+264055,15,final,"Player 1","Frank Meert",202,WIN
+264055,15,final,"Player 2","Ad van der Hoeven",98,LOSE
+264056,15,final,"Player 1","Ad van der Hoeven",94,LOSE
+264056,15,final,"Player 2","Frank Meert",206,WIN
+264057,15,final,"Player 1","Matthias Gelbmann",80,LOSE
+264057,15,final,"Player 2","Fakih Karademir",220,WIN
+264058,15,final,"Player 1","Fakih Karademir",231,WIN
+264058,15,final,"Player 2","Matthias Gelbmann",69,LOSE
+264059,15,final,"Player 1","Henk Koops",50,LOSE
+264059,15,final,"Player 2","Abdessamad El Kasimi",250,WIN
+264060,15,final,"Player 1","Abdessamad El Kasimi",263,WIN
+264060,15,final,"Player 2","Henk Koops",37,LOSE
+264061,15,final,"Player 1","Léo Jean",94,LOSE
+264061,15,final,"Player 2","Boris de Wilde",206,WIN
+264062,15,final,"Player 1","Boris de Wilde",217,WIN
+264062,15,final,"Player 2","Léo Jean",83,LOSE
+264063,15,final,"Player 1","Nikita Kurgin",67,LOSE
+264063,15,final,"Player 2","Jelmer Firet",233,WIN
+264064,15,final,"Player 1","Jelmer Firet",239,WIN
+264064,15,final,"Player 2","Nikita Kurgin",61,LOSE
+264065,15,final,"Player 1","Ludo Pulles",80,LOSE
+264065,15,final,"Player 2","Mark ter Brugge",220,WIN
+264066,15,final,"Player 1","Mark ter Brugge",230,WIN
+264066,15,final,"Player 2","Ludo Pulles",70,LOSE
+264067,15,final,"Player 1","R4N4R4M4 ",79,LOSE
+264067,15,final,"Player 2","Alvaro Begue",221,WIN
+264068,15,final,"Player 1","Alvaro Begue",232,WIN
+264068,15,final,"Player 2","R4N4R4M4 ",68,LOSE
+264069,15,final,"Player 1","Matthijs Tijink",202,WIN
+264069,15,final,"Player 2","Marcel Vlastuin",98,LOSE
+264070,15,final,"Player 1","Marcel Vlastuin",93,LOSE
+264070,15,final,"Player 2","Matthijs Tijink",207,WIN
+264071,15,final,"Player 1","Alvaro Carrera",99,LOSE
+264071,15,final,"Player 2","Pepijn Overbeeke",201,WIN
+264072,15,final,"Player 1","Pepijn Overbeeke",85,LOSE
+264072,15,final,"Player 2","Alvaro Carrera",215,WIN
+264073,15,final,"Player 1","Jeremy Sawicki",218,WIN
+264073,15,final,"Player 2","Jorn Hoofwijk",82,LOSE
+264074,15,final,"Player 1","Jorn Hoofwijk",95,LOSE
+264074,15,final,"Player 2","Jeremy Sawicki",205,WIN
+264075,15,final,"Player 1","Niklas Een",217,WIN
+264075,15,final,"Player 2","Pardhav Maradani",83,LOSE
+264076,15,final,"Player 1","Pardhav Maradani",92,LOSE
+264076,15,final,"Player 2","Niklas Een",208,WIN
+264077,15,final,"Player 1","Jelle van der Drift",203,WIN
+264077,15,final,"Player 2","Marc Oldenhof",97,LOSE
+264078,15,final,"Player 1","Marc Oldenhof",88,LOSE
+264078,15,final,"Player 2","Jelle van der Drift",212,WIN
+264079,15,final,"Player 1","Thijs Marinussen",201,WIN
+264079,15,final,"Player 2","Tomek Czajka",99,LOSE
+264080,15,final,"Player 1","Tomek Czajka",85,LOSE
+264080,15,final,"Player 2","Thijs Marinussen",215,WIN
+264081,15,final,"Player 1","Maks Verver",99,LOSE
+264081,15,final,"Player 2","Rens van der Avoird",201,WIN
+264082,15,final,"Player 1","Rens van der Avoird",95,LOSE
+264082,15,final,"Player 2","Maks Verver",205,WIN
+264083,15,final,"Player 1","Leopold Tschanter",205,WIN
+264083,15,final,"Player 2","Vasilii Kuporosov",95,LOSE
+264084,15,final,"Player 1","Vasilii Kuporosov",99,LOSE
+264084,15,final,"Player 2","Leopold Tschanter",201,WIN
+264085,15,final,"Player 1","Louis Verhaard",96,LOSE
+264085,15,final,"Player 2","Jan Nunnink",204,WIN
+264086,15,final,"Player 1","Jan Nunnink",94,LOSE
+264086,15,final,"Player 2","Louis Verhaard",206,WIN
+264087,16,final,"Player 1","Tapani Utriainen",218,WIN
+264087,16,final,"Player 2","Ad van der Hoeven",82,LOSE
+264088,16,final,"Player 1","Ad van der Hoeven",90,LOSE
+264088,16,final,"Player 2","Tapani Utriainen",210,WIN
+264089,16,final,"Player 1","Wouter van der Meer",96,LOSE
+264089,16,final,"Player 2","Fakih Karademir",204,WIN
+264090,16,final,"Player 1","Fakih Karademir",206,WIN
+264090,16,final,"Player 2","Wouter van der Meer",94,LOSE
+264091,16,final,"Player 1","Frank Meert",89,LOSE
+264091,16,final,"Player 2","Abdessamad El Kasimi",211,WIN
+264092,16,final,"Player 1","Abdessamad El Kasimi",209,WIN
+264092,16,final,"Player 2","Frank Meert",91,LOSE
+264093,16,final,"Player 1","Matthias Gelbmann",83,LOSE
+264093,16,final,"Player 2","Boris de Wilde",217,WIN
+264094,16,final,"Player 1","Boris de Wilde",99,LOSE
+264094,16,final,"Player 2","Matthias Gelbmann",201,WIN
+264095,16,final,"Player 1","Henk Koops",63,LOSE
+264095,16,final,"Player 2","Jelmer Firet",237,WIN
+264096,16,final,"Player 1","Jelmer Firet",243,WIN
+264096,16,final,"Player 2","Henk Koops",57,LOSE
+264097,16,final,"Player 1","Léo Jean",74,LOSE
+264097,16,final,"Player 2","Mark ter Brugge",226,WIN
+264098,16,final,"Player 1","Mark ter Brugge",231,WIN
+264098,16,final,"Player 2","Léo Jean",69,LOSE
+264099,16,final,"Player 1","Nikita Kurgin",47,LOSE
+264099,16,final,"Player 2","Alvaro Begue",253,WIN
+264100,16,final,"Player 1","Alvaro Begue",208,WIN
+264100,16,final,"Player 2","Nikita Kurgin",92,LOSE
+264101,16,final,"Player 1","Ludo Pulles",57,LOSE
+264101,16,final,"Player 2","Marcel Vlastuin",243,WIN
+264102,16,final,"Player 1","Marcel Vlastuin",245,WIN
+264102,16,final,"Player 2","Ludo Pulles",55,LOSE
+264103,16,final,"Player 1","R4N4R4M4 ",76,LOSE
+264103,16,final,"Player 2","Pepijn Overbeeke",224,WIN
+264104,16,final,"Player 1","Pepijn Overbeeke",242,WIN
+264104,16,final,"Player 2","R4N4R4M4 ",58,LOSE
+264105,16,final,"Player 1","Matthijs Tijink",150,DRAW
+264105,16,final,"Player 2","Jorn Hoofwijk",150,DRAW
+264106,16,final,"Player 1","Jorn Hoofwijk",96,LOSE
+264106,16,final,"Player 2","Matthijs Tijink",204,WIN
+264107,16,final,"Player 1","Alvaro Carrera",207,WIN
+264107,16,final,"Player 2","Pardhav Maradani",93,LOSE
+264108,16,final,"Player 1","Pardhav Maradani",90,LOSE
+264108,16,final,"Player 2","Alvaro Carrera",210,WIN
+264109,16,final,"Player 1","Jeremy Sawicki",209,WIN
+264109,16,final,"Player 2","Marc Oldenhof",91,LOSE
+264110,16,final,"Player 1","Marc Oldenhof",207,WIN
+264110,16,final,"Player 2","Jeremy Sawicki",93,LOSE
+264111,16,final,"Player 1","Niklas Een",223,WIN
+264111,16,final,"Player 2","Tomek Czajka",77,LOSE
+264112,16,final,"Player 1","Tomek Czajka",94,LOSE
+264112,16,final,"Player 2","Niklas Een",206,WIN
+264113,16,final,"Player 1","Jelle van der Drift",93,LOSE
+264113,16,final,"Player 2","Rens van der Avoird",207,WIN
+264114,16,final,"Player 1","Rens van der Avoird",85,LOSE
+264114,16,final,"Player 2","Jelle van der Drift",215,WIN
+264115,16,final,"Player 1","Thijs Marinussen",99,LOSE
+264115,16,final,"Player 2","Vasilii Kuporosov",201,WIN
+264116,16,final,"Player 1","Vasilii Kuporosov",85,LOSE
+264116,16,final,"Player 2","Thijs Marinussen",215,WIN
+264117,16,final,"Player 1","Maks Verver",90,LOSE
+264117,16,final,"Player 2","Jan Nunnink",210,WIN
+264118,16,final,"Player 1","Jan Nunnink",206,WIN
+264118,16,final,"Player 2","Maks Verver",94,LOSE
+264119,16,final,"Player 1","Leopold Tschanter",201,WIN
+264119,16,final,"Player 2","Louis Verhaard",99,LOSE
+264120,16,final,"Player 1","Louis Verhaard",209,WIN
+264120,16,final,"Player 2","Leopold Tschanter",91,LOSE
+264121,17,final,"Player 1","Tapani Utriainen",207,WIN
+264121,17,final,"Player 2","Fakih Karademir",93,LOSE
+264122,17,final,"Player 1","Fakih Karademir",81,LOSE
+264122,17,final,"Player 2","Tapani Utriainen",219,WIN
+264123,17,final,"Player 1","Ad van der Hoeven",221,WIN
+264123,17,final,"Player 2","Abdessamad El Kasimi",79,LOSE
+264124,17,final,"Player 1","Abdessamad El Kasimi",150,DRAW
+264124,17,final,"Player 2","Ad van der Hoeven",150,DRAW
+264125,17,final,"Player 1","Wouter van der Meer",83,LOSE
+264125,17,final,"Player 2","Boris de Wilde",217,WIN
+264126,17,final,"Player 1","Boris de Wilde",217,WIN
+264126,17,final,"Player 2","Wouter van der Meer",83,LOSE
+264127,17,final,"Player 1","Frank Meert",86,LOSE
+264127,17,final,"Player 2","Jelmer Firet",214,WIN
+264128,17,final,"Player 1","Jelmer Firet",212,WIN
+264128,17,final,"Player 2","Frank Meert",88,LOSE
+264129,17,final,"Player 1","Matthias Gelbmann",74,LOSE
+264129,17,final,"Player 2","Mark ter Brugge",226,WIN
+264130,17,final,"Player 1","Mark ter Brugge",235,WIN
+264130,17,final,"Player 2","Matthias Gelbmann",65,LOSE
+264131,17,final,"Player 1","Henk Koops",50,LOSE
+264131,17,final,"Player 2","Alvaro Begue",250,WIN
+264132,17,final,"Player 1","Alvaro Begue",222,WIN
+264132,17,final,"Player 2","Henk Koops",78,LOSE
+264133,17,final,"Player 1","Léo Jean",86,LOSE
+264133,17,final,"Player 2","Marcel Vlastuin",214,WIN
+264134,17,final,"Player 1","Marcel Vlastuin",220,WIN
+264134,17,final,"Player 2","Léo Jean",80,LOSE
+264135,17,final,"Player 1","Nikita Kurgin",54,LOSE
+264135,17,final,"Player 2","Pepijn Overbeeke",246,WIN
+264136,17,final,"Player 1","Pepijn Overbeeke",221,WIN
+264136,17,final,"Player 2","Nikita Kurgin",79,LOSE
+264137,17,final,"Player 1","Ludo Pulles",73,LOSE
+264137,17,final,"Player 2","Jorn Hoofwijk",227,WIN
+264138,17,final,"Player 1","Jorn Hoofwijk",218,WIN
+264138,17,final,"Player 2","Ludo Pulles",82,LOSE
+264139,17,final,"Player 1","R4N4R4M4 ",61,LOSE
+264139,17,final,"Player 2","Pardhav Maradani",239,WIN
+264140,17,final,"Player 1","Pardhav Maradani",233,WIN
+264140,17,final,"Player 2","R4N4R4M4 ",67,LOSE
+264141,17,final,"Player 1","Matthijs Tijink",98,LOSE
+264141,17,final,"Player 2","Marc Oldenhof",202,WIN
+264142,17,final,"Player 1","Marc Oldenhof",88,LOSE
+264142,17,final,"Player 2","Matthijs Tijink",212,WIN
+264143,17,final,"Player 1","Alvaro Carrera",217,WIN
+264143,17,final,"Player 2","Tomek Czajka",83,LOSE
+264144,17,final,"Player 1","Tomek Czajka",203,WIN
+264144,17,final,"Player 2","Alvaro Carrera",97,LOSE
+264145,17,final,"Player 1","Jeremy Sawicki",204,WIN
+264145,17,final,"Player 2","Rens van der Avoird",96,LOSE
+264146,17,final,"Player 1","Rens van der Avoird",86,LOSE
+264146,17,final,"Player 2","Jeremy Sawicki",214,WIN
+264147,17,final,"Player 1","Niklas Een",207,WIN
+264147,17,final,"Player 2","Vasilii Kuporosov",93,LOSE
+264148,17,final,"Player 1","Vasilii Kuporosov",80,LOSE
+264148,17,final,"Player 2","Niklas Een",220,WIN
+264149,17,final,"Player 1","Jelle van der Drift",93,LOSE
+264149,17,final,"Player 2","Jan Nunnink",207,WIN
+264150,17,final,"Player 1","Jan Nunnink",208,WIN
+264150,17,final,"Player 2","Jelle van der Drift",92,LOSE
+264151,17,final,"Player 1","Thijs Marinussen",92,LOSE
+264151,17,final,"Player 2","Louis Verhaard",208,WIN
+264152,17,final,"Player 1","Louis Verhaard",203,WIN
+264152,17,final,"Player 2","Thijs Marinussen",97,LOSE
+264153,17,final,"Player 1","Maks Verver",202,WIN
+264153,17,final,"Player 2","Leopold Tschanter",98,LOSE
+264154,17,final,"Player 1","Leopold Tschanter",209,WIN
+264154,17,final,"Player 2","Maks Verver",91,LOSE
+264155,18,final,"Player 1","Tapani Utriainen",220,WIN
+264155,18,final,"Player 2","Abdessamad El Kasimi",80,LOSE
+264156,18,final,"Player 1","Abdessamad El Kasimi",78,LOSE
+264156,18,final,"Player 2","Tapani Utriainen",222,WIN
+264157,18,final,"Player 1","Fakih Karademir",85,LOSE
+264157,18,final,"Player 2","Boris de Wilde",215,WIN
+264158,18,final,"Player 1","Boris de Wilde",150,DRAW
+264158,18,final,"Player 2","Fakih Karademir",150,DRAW
+264159,18,final,"Player 1","Ad van der Hoeven",213,WIN
+264159,18,final,"Player 2","Jelmer Firet",87,LOSE
+264160,18,final,"Player 1","Jelmer Firet",205,WIN
+264160,18,final,"Player 2","Ad van der Hoeven",95,LOSE
+264161,18,final,"Player 1","Wouter van der Meer",64,LOSE
+264161,18,final,"Player 2","Mark ter Brugge",236,WIN
+264162,18,final,"Player 1","Mark ter Brugge",210,WIN
+264162,18,final,"Player 2","Wouter van der Meer",90,LOSE
+264163,18,final,"Player 1","Frank Meert",95,LOSE
+264163,18,final,"Player 2","Alvaro Begue",205,WIN
+264164,18,final,"Player 1","Alvaro Begue",234,WIN
+264164,18,final,"Player 2","Frank Meert",66,LOSE
+264165,18,final,"Player 1","Matthias Gelbmann",201,WIN
+264165,18,final,"Player 2","Marcel Vlastuin",99,LOSE
+264166,18,final,"Player 1","Marcel Vlastuin",225,WIN
+264166,18,final,"Player 2","Matthias Gelbmann",75,LOSE
+264167,18,final,"Player 1","Henk Koops",66,LOSE
+264167,18,final,"Player 2","Pepijn Overbeeke",234,WIN
+264168,18,final,"Player 1","Pepijn Overbeeke",238,WIN
+264168,18,final,"Player 2","Henk Koops",62,LOSE
+264169,18,final,"Player 1","Léo Jean",83,LOSE
+264169,18,final,"Player 2","Jorn Hoofwijk",217,WIN
+264170,18,final,"Player 1","Jorn Hoofwijk",221,WIN
+264170,18,final,"Player 2","Léo Jean",79,LOSE
+264171,18,final,"Player 1","Nikita Kurgin",69,LOSE
+264171,18,final,"Player 2","Pardhav Maradani",231,WIN
+264172,18,final,"Player 1","Pardhav Maradani",225,WIN
+264172,18,final,"Player 2","Nikita Kurgin",75,LOSE
+264173,18,final,"Player 1","Ludo Pulles",74,LOSE
+264173,18,final,"Player 2","Marc Oldenhof",226,WIN
+264174,18,final,"Player 1","Marc Oldenhof",233,WIN
+264174,18,final,"Player 2","Ludo Pulles",67,LOSE
+264175,18,final,"Player 1","R4N4R4M4 ",73,LOSE
+264175,18,final,"Player 2","Tomek Czajka",227,WIN
+264176,18,final,"Player 1","Tomek Czajka",219,WIN
+264176,18,final,"Player 2","R4N4R4M4 ",81,LOSE
+264177,18,final,"Player 1","Matthijs Tijink",93,LOSE
+264177,18,final,"Player 2","Rens van der Avoird",207,WIN
+264178,18,final,"Player 1","Rens van der Avoird",204,WIN
+264178,18,final,"Player 2","Matthijs Tijink",96,LOSE
+264179,18,final,"Player 1","Alvaro Carrera",224,WIN
+264179,18,final,"Player 2","Vasilii Kuporosov",76,LOSE
+264180,18,final,"Player 1","Vasilii Kuporosov",83,LOSE
+264180,18,final,"Player 2","Alvaro Carrera",217,WIN
+264181,18,final,"Player 1","Jeremy Sawicki",226,WIN
+264181,18,final,"Player 2","Jan Nunnink",74,LOSE
+264182,18,final,"Player 1","Jan Nunnink",98,LOSE
+264182,18,final,"Player 2","Jeremy Sawicki",202,WIN
+264183,18,final,"Player 1","Niklas Een",150,DRAW
+264183,18,final,"Player 2","Louis Verhaard",150,DRAW
+264184,18,final,"Player 1","Louis Verhaard",97,LOSE
+264184,18,final,"Player 2","Niklas Een",203,WIN
+264185,18,final,"Player 1","Jelle van der Drift",97,LOSE
+264185,18,final,"Player 2","Leopold Tschanter",203,WIN
+264186,18,final,"Player 1","Leopold Tschanter",99,LOSE
+264186,18,final,"Player 2","Jelle van der Drift",201,WIN
+264187,18,final,"Player 1","Thijs Marinussen",203,WIN
+264187,18,final,"Player 2","Maks Verver",97,LOSE
+264188,18,final,"Player 1","Maks Verver",201,WIN
+264188,18,final,"Player 2","Thijs Marinussen",99,LOSE
+264189,19,final,"Player 1","Tapani Utriainen",214,WIN
+264189,19,final,"Player 2","Boris de Wilde",86,LOSE
+264190,19,final,"Player 1","Boris de Wilde",96,LOSE
+264190,19,final,"Player 2","Tapani Utriainen",204,WIN
+264191,19,final,"Player 1","Abdessamad El Kasimi",233,WIN
+264191,19,final,"Player 2","Jelmer Firet",67,LOSE
+264192,19,final,"Player 1","Jelmer Firet",77,LOSE
+264192,19,final,"Player 2","Abdessamad El Kasimi",223,WIN
+264193,19,final,"Player 1","Fakih Karademir",209,WIN
+264193,19,final,"Player 2","Mark ter Brugge",91,LOSE
+264194,19,final,"Player 1","Mark ter Brugge",211,WIN
+264194,19,final,"Player 2","Fakih Karademir",89,LOSE
+264195,19,final,"Player 1","Ad van der Hoeven",204,WIN
+264195,19,final,"Player 2","Alvaro Begue",96,LOSE
+264196,19,final,"Player 1","Alvaro Begue",204,WIN
+264196,19,final,"Player 2","Ad van der Hoeven",96,LOSE
+264197,19,final,"Player 1","Wouter van der Meer",85,LOSE
+264197,19,final,"Player 2","Marcel Vlastuin",215,WIN
+264198,19,final,"Player 1","Marcel Vlastuin",203,WIN
+264198,19,final,"Player 2","Wouter van der Meer",97,LOSE
+264199,19,final,"Player 1","Frank Meert",91,LOSE
+264199,19,final,"Player 2","Pepijn Overbeeke",209,WIN
+264200,19,final,"Player 1","Pepijn Overbeeke",212,WIN
+264200,19,final,"Player 2","Frank Meert",88,LOSE
+264201,19,final,"Player 1","Matthias Gelbmann",76,LOSE
+264201,19,final,"Player 2","Jorn Hoofwijk",224,WIN
+264202,19,final,"Player 1","Jorn Hoofwijk",205,WIN
+264202,19,final,"Player 2","Matthias Gelbmann",95,LOSE
+264203,19,final,"Player 1","Henk Koops",66,LOSE
+264203,19,final,"Player 2","Pardhav Maradani",234,WIN
+264204,19,final,"Player 1","Pardhav Maradani",230,WIN
+264204,19,final,"Player 2","Henk Koops",70,LOSE
+264205,19,final,"Player 1","Léo Jean",210,WIN
+264205,19,final,"Player 2","Marc Oldenhof",90,LOSE
+264206,19,final,"Player 1","Marc Oldenhof",214,WIN
+264206,19,final,"Player 2","Léo Jean",86,LOSE
+264207,19,final,"Player 1","Nikita Kurgin",47,LOSE
+264207,19,final,"Player 2","Tomek Czajka",253,WIN
+264208,19,final,"Player 1","Tomek Czajka",227,WIN
+264208,19,final,"Player 2","Nikita Kurgin",73,LOSE
+264209,19,final,"Player 1","Ludo Pulles",71,LOSE
+264209,19,final,"Player 2","Rens van der Avoird",229,WIN
+264210,19,final,"Player 1","Rens van der Avoird",249,WIN
+264210,19,final,"Player 2","Ludo Pulles",51,LOSE
+264211,19,final,"Player 1","R4N4R4M4 ",80,LOSE
+264211,19,final,"Player 2","Vasilii Kuporosov",220,WIN
+264212,19,final,"Player 1","Vasilii Kuporosov",221,WIN
+264212,19,final,"Player 2","R4N4R4M4 ",79,LOSE
+264213,19,final,"Player 1","Matthijs Tijink",203,WIN
+264213,19,final,"Player 2","Jan Nunnink",97,LOSE
+264214,19,final,"Player 1","Jan Nunnink",80,LOSE
+264214,19,final,"Player 2","Matthijs Tijink",220,WIN
+264215,19,final,"Player 1","Alvaro Carrera",94,LOSE
+264215,19,final,"Player 2","Louis Verhaard",206,WIN
+264216,19,final,"Player 1","Louis Verhaard",202,WIN
+264216,19,final,"Player 2","Alvaro Carrera",98,LOSE
+264217,19,final,"Player 1","Jeremy Sawicki",94,LOSE
+264217,19,final,"Player 2","Leopold Tschanter",206,WIN
+264218,19,final,"Player 1","Leopold Tschanter",87,LOSE
+264218,19,final,"Player 2","Jeremy Sawicki",213,WIN
+264219,19,final,"Player 1","Niklas Een",203,WIN
+264219,19,final,"Player 2","Maks Verver",97,LOSE
+264220,19,final,"Player 1","Maks Verver",206,WIN
+264220,19,final,"Player 2","Niklas Een",94,LOSE
+264221,19,final,"Player 1","Jelle van der Drift",92,LOSE
+264221,19,final,"Player 2","Thijs Marinussen",208,WIN
+264222,19,final,"Player 1","Thijs Marinussen",206,WIN
+264222,19,final,"Player 2","Jelle van der Drift",94,LOSE
+264223,20,final,"Player 1","Tapani Utriainen",208,WIN
+264223,20,final,"Player 2","Jelmer Firet",92,LOSE
+264224,20,final,"Player 1","Jelmer Firet",77,LOSE
+264224,20,final,"Player 2","Tapani Utriainen",223,WIN
+264225,20,final,"Player 1","Boris de Wilde",90,LOSE
+264225,20,final,"Player 2","Mark ter Brugge",210,WIN
+264226,20,final,"Player 1","Mark ter Brugge",99,LOSE
+264226,20,final,"Player 2","Boris de Wilde",201,WIN
+264227,20,final,"Player 1","Abdessamad El Kasimi",95,LOSE
+264227,20,final,"Player 2","Alvaro Begue",205,WIN
+264228,20,final,"Player 1","Alvaro Begue",206,WIN
+264228,20,final,"Player 2","Abdessamad El Kasimi",94,LOSE
+264229,20,final,"Player 1","Fakih Karademir",77,LOSE
+264229,20,final,"Player 2","Marcel Vlastuin",223,WIN
+264230,20,final,"Player 1","Marcel Vlastuin",217,WIN
+264230,20,final,"Player 2","Fakih Karademir",83,LOSE
+264231,20,final,"Player 1","Ad van der Hoeven",90,LOSE
+264231,20,final,"Player 2","Pepijn Overbeeke",210,WIN
+264232,20,final,"Player 1","Pepijn Overbeeke",81,LOSE
+264232,20,final,"Player 2","Ad van der Hoeven",219,WIN
+264233,20,final,"Player 1","Wouter van der Meer",84,LOSE
+264233,20,final,"Player 2","Jorn Hoofwijk",216,WIN
+264234,20,final,"Player 1","Jorn Hoofwijk",97,LOSE
+264234,20,final,"Player 2","Wouter van der Meer",203,WIN
+264235,20,final,"Player 1","Frank Meert",91,LOSE
+264235,20,final,"Player 2","Pardhav Maradani",209,WIN
+264236,20,final,"Player 1","Pardhav Maradani",218,WIN
+264236,20,final,"Player 2","Frank Meert",82,LOSE
+264237,20,final,"Player 1","Matthias Gelbmann",98,LOSE
+264237,20,final,"Player 2","Marc Oldenhof",202,WIN
+264238,20,final,"Player 1","Marc Oldenhof",226,WIN
+264238,20,final,"Player 2","Matthias Gelbmann",74,LOSE
+264239,20,final,"Player 1","Henk Koops",71,LOSE
+264239,20,final,"Player 2","Tomek Czajka",229,WIN
+264240,20,final,"Player 1","Tomek Czajka",233,WIN
+264240,20,final,"Player 2","Henk Koops",67,LOSE
+264241,20,final,"Player 1","Léo Jean",86,LOSE
+264241,20,final,"Player 2","Rens van der Avoird",214,WIN
+264242,20,final,"Player 1","Rens van der Avoird",224,WIN
+264242,20,final,"Player 2","Léo Jean",76,LOSE
+264243,20,final,"Player 1","Nikita Kurgin",59,LOSE
+264243,20,final,"Player 2","Vasilii Kuporosov",241,WIN
+264244,20,final,"Player 1","Vasilii Kuporosov",226,WIN
+264244,20,final,"Player 2","Nikita Kurgin",74,LOSE
+264245,20,final,"Player 1","Ludo Pulles",67,LOSE
+264245,20,final,"Player 2","Jan Nunnink",233,WIN
+264246,20,final,"Player 1","Jan Nunnink",249,WIN
+264246,20,final,"Player 2","Ludo Pulles",51,LOSE
+264247,20,final,"Player 1","R4N4R4M4 ",73,LOSE
+264247,20,final,"Player 2","Louis Verhaard",227,WIN
+264248,20,final,"Player 1","Louis Verhaard",248,WIN
+264248,20,final,"Player 2","R4N4R4M4 ",52,LOSE
+264249,20,final,"Player 1","Matthijs Tijink",208,WIN
+264249,20,final,"Player 2","Leopold Tschanter",92,LOSE
+264250,20,final,"Player 1","Leopold Tschanter",97,LOSE
+264250,20,final,"Player 2","Matthijs Tijink",203,WIN
+264251,20,final,"Player 1","Alvaro Carrera",93,LOSE
+264251,20,final,"Player 2","Maks Verver",207,WIN
+264252,20,final,"Player 1","Maks Verver",84,LOSE
+264252,20,final,"Player 2","Alvaro Carrera",216,WIN
+264253,20,final,"Player 1","Jeremy Sawicki",82,LOSE
+264253,20,final,"Player 2","Thijs Marinussen",218,WIN
+264254,20,final,"Player 1","Thijs Marinussen",205,WIN
+264254,20,final,"Player 2","Jeremy Sawicki",95,LOSE
+264255,20,final,"Player 1","Niklas Een",215,WIN
+264255,20,final,"Player 2","Jelle van der Drift",85,LOSE
+264256,20,final,"Player 1","Jelle van der Drift",96,LOSE
+264256,20,final,"Player 2","Niklas Een",204,WIN
+264257,21,final,"Player 1","Tapani Utriainen",218,WIN
+264257,21,final,"Player 2","Mark ter Brugge",82,LOSE
+264258,21,final,"Player 1","Mark ter Brugge",96,LOSE
+264258,21,final,"Player 2","Tapani Utriainen",204,WIN
+264259,21,final,"Player 1","Jelmer Firet",71,LOSE
+264259,21,final,"Player 2","Alvaro Begue",229,WIN
+264260,21,final,"Player 1","Alvaro Begue",205,WIN
+264260,21,final,"Player 2","Jelmer Firet",95,LOSE
+264261,21,final,"Player 1","Boris de Wilde",99,LOSE
+264261,21,final,"Player 2","Marcel Vlastuin",201,WIN
+264262,21,final,"Player 1","Marcel Vlastuin",208,WIN
+264262,21,final,"Player 2","Boris de Wilde",92,LOSE
+264263,21,final,"Player 1","Abdessamad El Kasimi",212,WIN
+264263,21,final,"Player 2","Pepijn Overbeeke",88,LOSE
+264264,21,final,"Player 1","Pepijn Overbeeke",87,LOSE
+264264,21,final,"Player 2","Abdessamad El Kasimi",213,WIN
+264265,21,final,"Player 1","Fakih Karademir",90,LOSE
+264265,21,final,"Player 2","Jorn Hoofwijk",210,WIN
+264266,21,final,"Player 1","Jorn Hoofwijk",150,DRAW
+264266,21,final,"Player 2","Fakih Karademir",150,DRAW
+264267,21,final,"Player 1","Ad van der Hoeven",97,LOSE
+264267,21,final,"Player 2","Pardhav Maradani",203,WIN
+264268,21,final,"Player 1","Pardhav Maradani",91,LOSE
+264268,21,final,"Player 2","Ad van der Hoeven",209,WIN
+264269,21,final,"Player 1","Wouter van der Meer",80,LOSE
+264269,21,final,"Player 2","Marc Oldenhof",220,WIN
+264270,21,final,"Player 1","Marc Oldenhof",97,LOSE
+264270,21,final,"Player 2","Wouter van der Meer",203,WIN
+264271,21,final,"Player 1","Frank Meert",90,LOSE
+264271,21,final,"Player 2","Tomek Czajka",210,WIN
+264272,21,final,"Player 1","Tomek Czajka",98,LOSE
+264272,21,final,"Player 2","Frank Meert",202,WIN
+264273,21,final,"Player 1","Matthias Gelbmann",78,LOSE
+264273,21,final,"Player 2","Rens van der Avoird",222,WIN
+264274,21,final,"Player 1","Rens van der Avoird",219,WIN
+264274,21,final,"Player 2","Matthias Gelbmann",81,LOSE
+264275,21,final,"Player 1","Henk Koops",57,LOSE
+264275,21,final,"Player 2","Vasilii Kuporosov",243,WIN
+264276,21,final,"Player 1","Vasilii Kuporosov",235,WIN
+264276,21,final,"Player 2","Henk Koops",65,LOSE
+264277,21,final,"Player 1","Léo Jean",58,LOSE
+264277,21,final,"Player 2","Jan Nunnink",242,WIN
+264278,21,final,"Player 1","Jan Nunnink",225,WIN
+264278,21,final,"Player 2","Léo Jean",75,LOSE
+264279,21,final,"Player 1","Nikita Kurgin",82,LOSE
+264279,21,final,"Player 2","Louis Verhaard",218,WIN
+264280,21,final,"Player 1","Louis Verhaard",219,WIN
+264280,21,final,"Player 2","Nikita Kurgin",81,LOSE
+264281,21,final,"Player 1","Ludo Pulles",70,LOSE
+264281,21,final,"Player 2","Leopold Tschanter",230,WIN
+264282,21,final,"Player 1","Leopold Tschanter",219,WIN
+264282,21,final,"Player 2","Ludo Pulles",81,LOSE
+264283,21,final,"Player 1","R4N4R4M4 ",74,LOSE
+264283,21,final,"Player 2","Maks Verver",226,WIN
+264284,21,final,"Player 1","Maks Verver",238,WIN
+264284,21,final,"Player 2","R4N4R4M4 ",62,LOSE
+264285,21,final,"Player 1","Matthijs Tijink",205,WIN
+264285,21,final,"Player 2","Thijs Marinussen",95,LOSE
+264286,21,final,"Player 1","Thijs Marinussen",150,DRAW
+264286,21,final,"Player 2","Matthijs Tijink",150,DRAW
+264287,21,final,"Player 1","Alvaro Carrera",211,WIN
+264287,21,final,"Player 2","Jelle van der Drift",89,LOSE
+264288,21,final,"Player 1","Jelle van der Drift",75,LOSE
+264288,21,final,"Player 2","Alvaro Carrera",225,WIN
+264289,21,final,"Player 1","Jeremy Sawicki",92,LOSE
+264289,21,final,"Player 2","Niklas Een",208,WIN
+264290,21,final,"Player 1","Niklas Een",209,WIN
+264290,21,final,"Player 2","Jeremy Sawicki",91,LOSE
+264291,22,final,"Player 1","Tapani Utriainen",212,WIN
+264291,22,final,"Player 2","Alvaro Begue",88,LOSE
+264292,22,final,"Player 1","Alvaro Begue",84,LOSE
+264292,22,final,"Player 2","Tapani Utriainen",216,WIN
+264293,22,final,"Player 1","Mark ter Brugge",94,LOSE
+264293,22,final,"Player 2","Marcel Vlastuin",206,WIN
+264294,22,final,"Player 1","Marcel Vlastuin",86,LOSE
+264294,22,final,"Player 2","Mark ter Brugge",214,WIN
+264295,22,final,"Player 1","Jelmer Firet",211,WIN
+264295,22,final,"Player 2","Pepijn Overbeeke",89,LOSE
+264296,22,final,"Player 1","Pepijn Overbeeke",211,WIN
+264296,22,final,"Player 2","Jelmer Firet",89,LOSE
+264297,22,final,"Player 1","Boris de Wilde",227,WIN
+264297,22,final,"Player 2","Jorn Hoofwijk",73,LOSE
+264298,22,final,"Player 1","Jorn Hoofwijk",87,LOSE
+264298,22,final,"Player 2","Boris de Wilde",213,WIN
+264299,22,final,"Player 1","Abdessamad El Kasimi",150,DRAW
+264299,22,final,"Player 2","Pardhav Maradani",150,DRAW
+264300,22,final,"Player 1","Pardhav Maradani",150,DRAW
+264300,22,final,"Player 2","Abdessamad El Kasimi",150,DRAW
+264301,22,final,"Player 1","Fakih Karademir",205,WIN
+264301,22,final,"Player 2","Marc Oldenhof",95,LOSE
+264302,22,final,"Player 1","Marc Oldenhof",150,DRAW
+264302,22,final,"Player 2","Fakih Karademir",150,DRAW
+264303,22,final,"Player 1","Ad van der Hoeven",92,LOSE
+264303,22,final,"Player 2","Tomek Czajka",208,WIN
+264304,22,final,"Player 1","Tomek Czajka",201,WIN
+264304,22,final,"Player 2","Ad van der Hoeven",99,LOSE
+264305,22,final,"Player 1","Wouter van der Meer",91,LOSE
+264305,22,final,"Player 2","Rens van der Avoird",209,WIN
+264306,22,final,"Player 1","Rens van der Avoird",211,WIN
+264306,22,final,"Player 2","Wouter van der Meer",89,LOSE
+264307,22,final,"Player 1","Frank Meert",78,LOSE
+264307,22,final,"Player 2","Vasilii Kuporosov",222,WIN
+264308,22,final,"Player 1","Vasilii Kuporosov",150,DRAW
+264308,22,final,"Player 2","Frank Meert",150,DRAW
+264309,22,final,"Player 1","Matthias Gelbmann",95,LOSE
+264309,22,final,"Player 2","Jan Nunnink",205,WIN
+264310,22,final,"Player 1","Jan Nunnink",222,WIN
+264310,22,final,"Player 2","Matthias Gelbmann",78,LOSE
+264311,22,final,"Player 1","Henk Koops",73,LOSE
+264311,22,final,"Player 2","Louis Verhaard",227,WIN
+264312,22,final,"Player 1","Louis Verhaard",243,WIN
+264312,22,final,"Player 2","Henk Koops",57,LOSE
+264313,22,final,"Player 1","Léo Jean",62,LOSE
+264313,22,final,"Player 2","Leopold Tschanter",238,WIN
+264314,22,final,"Player 1","Leopold Tschanter",99,LOSE
+264314,22,final,"Player 2","Léo Jean",201,WIN
+264315,22,final,"Player 1","Nikita Kurgin",80,LOSE
+264315,22,final,"Player 2","Maks Verver",220,WIN
+264316,22,final,"Player 1","Maks Verver",255,WIN
+264316,22,final,"Player 2","Nikita Kurgin",45,LOSE
+264317,22,final,"Player 1","Ludo Pulles",65,LOSE
+264317,22,final,"Player 2","Thijs Marinussen",235,WIN
+264318,22,final,"Player 1","Thijs Marinussen",203,WIN
+264318,22,final,"Player 2","Ludo Pulles",97,LOSE
+264319,22,final,"Player 1","R4N4R4M4 ",71,LOSE
+264319,22,final,"Player 2","Jelle van der Drift",229,WIN
+264320,22,final,"Player 1","Jelle van der Drift",222,WIN
+264320,22,final,"Player 2","R4N4R4M4 ",78,LOSE
+264321,22,final,"Player 1","Matthijs Tijink",203,WIN
+264321,22,final,"Player 2","Niklas Een",97,LOSE
+264322,22,final,"Player 1","Niklas Een",94,LOSE
+264322,22,final,"Player 2","Matthijs Tijink",206,WIN
+264323,22,final,"Player 1","Alvaro Carrera",87,LOSE
+264323,22,final,"Player 2","Jeremy Sawicki",213,WIN
+264324,22,final,"Player 1","Jeremy Sawicki",150,DRAW
+264324,22,final,"Player 2","Alvaro Carrera",150,DRAW
+264325,23,final,"Player 1","Tapani Utriainen",90,LOSE
+264325,23,final,"Player 2","Marcel Vlastuin",210,WIN
+264326,23,final,"Player 1","Marcel Vlastuin",90,LOSE
+264326,23,final,"Player 2","Tapani Utriainen",210,WIN
+264327,23,final,"Player 1","Alvaro Begue",226,WIN
+264327,23,final,"Player 2","Pepijn Overbeeke",74,LOSE
+264328,23,final,"Player 1","Pepijn Overbeeke",83,LOSE
+264328,23,final,"Player 2","Alvaro Begue",217,WIN
+264329,23,final,"Player 1","Mark ter Brugge",219,WIN
+264329,23,final,"Player 2","Jorn Hoofwijk",81,LOSE
+264330,23,final,"Player 1","Jorn Hoofwijk",201,WIN
+264330,23,final,"Player 2","Mark ter Brugge",99,LOSE
+264331,23,final,"Player 1","Jelmer Firet",205,WIN
+264331,23,final,"Player 2","Pardhav Maradani",95,LOSE
+264332,23,final,"Player 1","Pardhav Maradani",94,LOSE
+264332,23,final,"Player 2","Jelmer Firet",206,WIN
+264333,23,final,"Player 1","Boris de Wilde",93,LOSE
+264333,23,final,"Player 2","Marc Oldenhof",207,WIN
+264334,23,final,"Player 1","Marc Oldenhof",223,WIN
+264334,23,final,"Player 2","Boris de Wilde",77,LOSE
+264335,23,final,"Player 1","Abdessamad El Kasimi",94,LOSE
+264335,23,final,"Player 2","Tomek Czajka",206,WIN
+264336,23,final,"Player 1","Tomek Czajka",99,LOSE
+264336,23,final,"Player 2","Abdessamad El Kasimi",201,WIN
+264337,23,final,"Player 1","Fakih Karademir",208,WIN
+264337,23,final,"Player 2","Rens van der Avoird",92,LOSE
+264338,23,final,"Player 1","Rens van der Avoird",84,LOSE
+264338,23,final,"Player 2","Fakih Karademir",216,WIN
+264339,23,final,"Player 1","Ad van der Hoeven",202,WIN
+264339,23,final,"Player 2","Vasilii Kuporosov",98,LOSE
+264340,23,final,"Player 1","Vasilii Kuporosov",93,LOSE
+264340,23,final,"Player 2","Ad van der Hoeven",207,WIN
+264341,23,final,"Player 1","Wouter van der Meer",62,LOSE
+264341,23,final,"Player 2","Jan Nunnink",238,WIN
+264342,23,final,"Player 1","Jan Nunnink",235,WIN
+264342,23,final,"Player 2","Wouter van der Meer",65,LOSE
+264343,23,final,"Player 1","Frank Meert",70,LOSE
+264343,23,final,"Player 2","Louis Verhaard",230,WIN
+264344,23,final,"Player 1","Louis Verhaard",99,LOSE
+264344,23,final,"Player 2","Frank Meert",201,WIN
+264345,23,final,"Player 1","Matthias Gelbmann",94,LOSE
+264345,23,final,"Player 2","Leopold Tschanter",206,WIN
+264346,23,final,"Player 1","Leopold Tschanter",220,WIN
+264346,23,final,"Player 2","Matthias Gelbmann",80,LOSE
+264347,23,final,"Player 1","Henk Koops",51,LOSE
+264347,23,final,"Player 2","Maks Verver",249,WIN
+264348,23,final,"Player 1","Maks Verver",242,WIN
+264348,23,final,"Player 2","Henk Koops",58,LOSE
+264349,23,final,"Player 1","Léo Jean",71,LOSE
+264349,23,final,"Player 2","Thijs Marinussen",229,WIN
+264350,23,final,"Player 1","Thijs Marinussen",224,WIN
+264350,23,final,"Player 2","Léo Jean",76,LOSE
+264351,23,final,"Player 1","Nikita Kurgin",90,LOSE
+264351,23,final,"Player 2","Jelle van der Drift",210,WIN
+264352,23,final,"Player 1","Jelle van der Drift",219,WIN
+264352,23,final,"Player 2","Nikita Kurgin",81,LOSE
+264353,23,final,"Player 1","Ludo Pulles",80,LOSE
+264353,23,final,"Player 2","Niklas Een",220,WIN
+264354,23,final,"Player 1","Niklas Een",219,WIN
+264354,23,final,"Player 2","Ludo Pulles",81,LOSE
+264355,23,final,"Player 1","R4N4R4M4 ",70,LOSE
+264355,23,final,"Player 2","Jeremy Sawicki",230,WIN
+264356,23,final,"Player 1","Jeremy Sawicki",219,WIN
+264356,23,final,"Player 2","R4N4R4M4 ",81,LOSE
+264357,23,final,"Player 1","Matthijs Tijink",202,WIN
+264357,23,final,"Player 2","Alvaro Carrera",98,LOSE
+264358,23,final,"Player 1","Alvaro Carrera",150,DRAW
+264358,23,final,"Player 2","Matthijs Tijink",150,DRAW
+264359,24,final,"Player 1","Tapani Utriainen",92,LOSE
+264359,24,final,"Player 2","Pepijn Overbeeke",208,WIN
+264360,24,final,"Player 1","Pepijn Overbeeke",88,LOSE
+264360,24,final,"Player 2","Tapani Utriainen",212,WIN
+264361,24,final,"Player 1","Marcel Vlastuin",98,LOSE
+264361,24,final,"Player 2","Jorn Hoofwijk",202,WIN
+264362,24,final,"Player 1","Jorn Hoofwijk",150,DRAW
+264362,24,final,"Player 2","Marcel Vlastuin",150,DRAW
+264363,24,final,"Player 1","Alvaro Begue",94,LOSE
+264363,24,final,"Player 2","Pardhav Maradani",206,WIN
+264364,24,final,"Player 1","Pardhav Maradani",211,WIN
+264364,24,final,"Player 2","Alvaro Begue",89,LOSE
+264365,24,final,"Player 1","Mark ter Brugge",208,WIN
+264365,24,final,"Player 2","Marc Oldenhof",92,LOSE
+264366,24,final,"Player 1","Marc Oldenhof",201,WIN
+264366,24,final,"Player 2","Mark ter Brugge",99,LOSE
+264367,24,final,"Player 1","Jelmer Firet",63,LOSE
+264367,24,final,"Player 2","Tomek Czajka",237,WIN
+264368,24,final,"Player 1","Tomek Czajka",216,WIN
+264368,24,final,"Player 2","Jelmer Firet",84,LOSE
+264369,24,final,"Player 1","Boris de Wilde",79,LOSE
+264369,24,final,"Player 2","Rens van der Avoird",221,WIN
+264370,24,final,"Player 1","Rens van der Avoird",218,WIN
+264370,24,final,"Player 2","Boris de Wilde",82,LOSE
+264371,24,final,"Player 1","Abdessamad El Kasimi",204,WIN
+264371,24,final,"Player 2","Vasilii Kuporosov",96,LOSE
+264372,24,final,"Player 1","Vasilii Kuporosov",205,WIN
+264372,24,final,"Player 2","Abdessamad El Kasimi",95,LOSE
+264373,24,final,"Player 1","Fakih Karademir",83,LOSE
+264373,24,final,"Player 2","Jan Nunnink",217,WIN
+264374,24,final,"Player 1","Jan Nunnink",150,DRAW
+264374,24,final,"Player 2","Fakih Karademir",150,DRAW
+264375,24,final,"Player 1","Ad van der Hoeven",73,LOSE
+264375,24,final,"Player 2","Louis Verhaard",227,WIN
+264376,24,final,"Player 1","Louis Verhaard",226,WIN
+264376,24,final,"Player 2","Ad van der Hoeven",74,LOSE
+264377,24,final,"Player 1","Wouter van der Meer",91,LOSE
+264377,24,final,"Player 2","Leopold Tschanter",209,WIN
+264378,24,final,"Player 1","Leopold Tschanter",217,WIN
+264378,24,final,"Player 2","Wouter van der Meer",83,LOSE
+264379,24,final,"Player 1","Frank Meert",94,LOSE
+264379,24,final,"Player 2","Maks Verver",206,WIN
+264380,24,final,"Player 1","Maks Verver",99,LOSE
+264380,24,final,"Player 2","Frank Meert",201,WIN
+264381,24,final,"Player 1","Matthias Gelbmann",60,LOSE
+264381,24,final,"Player 2","Thijs Marinussen",240,WIN
+264382,24,final,"Player 1","Thijs Marinussen",220,WIN
+264382,24,final,"Player 2","Matthias Gelbmann",80,LOSE
+264383,24,final,"Player 1","Henk Koops",60,LOSE
+264383,24,final,"Player 2","Jelle van der Drift",240,WIN
+264384,24,final,"Player 1","Jelle van der Drift",220,WIN
+264384,24,final,"Player 2","Henk Koops",80,LOSE
+264385,24,final,"Player 1","Léo Jean",80,LOSE
+264385,24,final,"Player 2","Niklas Een",220,WIN
+264386,24,final,"Player 1","Niklas Een",230,WIN
+264386,24,final,"Player 2","Léo Jean",70,LOSE
+264387,24,final,"Player 1","Nikita Kurgin",72,LOSE
+264387,24,final,"Player 2","Jeremy Sawicki",228,WIN
+264388,24,final,"Player 1","Jeremy Sawicki",238,WIN
+264388,24,final,"Player 2","Nikita Kurgin",62,LOSE
+264389,24,final,"Player 1","Ludo Pulles",66,LOSE
+264389,24,final,"Player 2","Alvaro Carrera",234,WIN
+264390,24,final,"Player 1","Alvaro Carrera",222,WIN
+264390,24,final,"Player 2","Ludo Pulles",78,LOSE
+264391,24,final,"Player 1","R4N4R4M4 ",65,LOSE
+264391,24,final,"Player 2","Matthijs Tijink",235,WIN
+264392,24,final,"Player 1","Matthijs Tijink",246,WIN
+264392,24,final,"Player 2","R4N4R4M4 ",54,LOSE
+264393,25,final,"Player 1","Tapani Utriainen",217,WIN
+264393,25,final,"Player 2","Jorn Hoofwijk",83,LOSE
+264394,25,final,"Player 1","Jorn Hoofwijk",99,LOSE
+264394,25,final,"Player 2","Tapani Utriainen",201,WIN
+264395,25,final,"Player 1","Pepijn Overbeeke",89,LOSE
+264395,25,final,"Player 2","Pardhav Maradani",211,WIN
+264396,25,final,"Player 1","Pardhav Maradani",224,WIN
+264396,25,final,"Player 2","Pepijn Overbeeke",76,LOSE
+264397,25,final,"Player 1","Marcel Vlastuin",207,WIN
+264397,25,final,"Player 2","Marc Oldenhof",93,LOSE
+264398,25,final,"Player 1","Marc Oldenhof",94,LOSE
+264398,25,final,"Player 2","Marcel Vlastuin",206,WIN
+264399,25,final,"Player 1","Alvaro Begue",206,WIN
+264399,25,final,"Player 2","Tomek Czajka",94,LOSE
+264400,25,final,"Player 1","Tomek Czajka",206,WIN
+264400,25,final,"Player 2","Alvaro Begue",94,LOSE
+264401,25,final,"Player 1","Mark ter Brugge",96,LOSE
+264401,25,final,"Player 2","Rens van der Avoird",204,WIN
+264402,25,final,"Player 1","Rens van der Avoird",150,DRAW
+264402,25,final,"Player 2","Mark ter Brugge",150,DRAW
+264403,25,final,"Player 1","Jelmer Firet",99,LOSE
+264403,25,final,"Player 2","Vasilii Kuporosov",201,WIN
+264404,25,final,"Player 1","Vasilii Kuporosov",209,WIN
+264404,25,final,"Player 2","Jelmer Firet",91,LOSE
+264405,25,final,"Player 1","Boris de Wilde",91,LOSE
+264405,25,final,"Player 2","Jan Nunnink",209,WIN
+264406,25,final,"Player 1","Jan Nunnink",219,WIN
+264406,25,final,"Player 2","Boris de Wilde",81,LOSE
+264407,25,final,"Player 1","Abdessamad El Kasimi",84,LOSE
+264407,25,final,"Player 2","Louis Verhaard",216,WIN
+264408,25,final,"Player 1","Louis Verhaard",223,WIN
+264408,25,final,"Player 2","Abdessamad El Kasimi",77,LOSE
+264409,25,final,"Player 1","Fakih Karademir",80,LOSE
+264409,25,final,"Player 2","Leopold Tschanter",220,WIN
+264410,25,final,"Player 1","Leopold Tschanter",98,LOSE
+264410,25,final,"Player 2","Fakih Karademir",202,WIN
+264411,25,final,"Player 1","Ad van der Hoeven",209,WIN
+264411,25,final,"Player 2","Maks Verver",91,LOSE
+264412,25,final,"Player 1","Maks Verver",150,DRAW
+264412,25,final,"Player 2","Ad van der Hoeven",150,DRAW
+264413,25,final,"Player 1","Wouter van der Meer",76,LOSE
+264413,25,final,"Player 2","Thijs Marinussen",224,WIN
+264414,25,final,"Player 1","Thijs Marinussen",218,WIN
+264414,25,final,"Player 2","Wouter van der Meer",82,LOSE
+264415,25,final,"Player 1","Frank Meert",98,LOSE
+264415,25,final,"Player 2","Jelle van der Drift",202,WIN
+264416,25,final,"Player 1","Jelle van der Drift",215,WIN
+264416,25,final,"Player 2","Frank Meert",85,LOSE
+264417,25,final,"Player 1","Matthias Gelbmann",70,LOSE
+264417,25,final,"Player 2","Niklas Een",230,WIN
+264418,25,final,"Player 1","Niklas Een",213,WIN
+264418,25,final,"Player 2","Matthias Gelbmann",87,LOSE
+264419,25,final,"Player 1","Henk Koops",67,LOSE
+264419,25,final,"Player 2","Jeremy Sawicki",233,WIN
+264420,25,final,"Player 1","Jeremy Sawicki",243,WIN
+264420,25,final,"Player 2","Henk Koops",57,LOSE
+264421,25,final,"Player 1","Léo Jean",73,LOSE
+264421,25,final,"Player 2","Alvaro Carrera",227,WIN
+264422,25,final,"Player 1","Alvaro Carrera",231,WIN
+264422,25,final,"Player 2","Léo Jean",69,LOSE
+264423,25,final,"Player 1","Nikita Kurgin",55,LOSE
+264423,25,final,"Player 2","Matthijs Tijink",245,WIN
+264424,25,final,"Player 1","Matthijs Tijink",230,WIN
+264424,25,final,"Player 2","Nikita Kurgin",70,LOSE
+264425,25,final,"Player 1","Ludo Pulles",93,LOSE
+264425,25,final,"Player 2","R4N4R4M4 ",207,WIN
+264426,25,final,"Player 1","R4N4R4M4 ",93,LOSE
+264426,25,final,"Player 2","Ludo Pulles",207,WIN
+264427,26,final,"Player 1","Tapani Utriainen",150,DRAW
+264427,26,final,"Player 2","Pardhav Maradani",150,DRAW
+264428,26,final,"Player 1","Pardhav Maradani",94,LOSE
+264428,26,final,"Player 2","Tapani Utriainen",206,WIN
+264429,26,final,"Player 1","Jorn Hoofwijk",208,WIN
+264429,26,final,"Player 2","Marc Oldenhof",92,LOSE
+264430,26,final,"Player 1","Marc Oldenhof",97,LOSE
+264430,26,final,"Player 2","Jorn Hoofwijk",203,WIN
+264431,26,final,"Player 1","Pepijn Overbeeke",98,LOSE
+264431,26,final,"Player 2","Tomek Czajka",202,WIN
+264432,26,final,"Player 1","Tomek Czajka",204,WIN
+264432,26,final,"Player 2","Pepijn Overbeeke",96,LOSE
+264433,26,final,"Player 1","Marcel Vlastuin",206,WIN
+264433,26,final,"Player 2","Rens van der Avoird",94,LOSE
+264434,26,final,"Player 1","Rens van der Avoird",209,WIN
+264434,26,final,"Player 2","Marcel Vlastuin",91,LOSE
+264435,26,final,"Player 1","Alvaro Begue",203,WIN
+264435,26,final,"Player 2","Vasilii Kuporosov",97,LOSE
+264436,26,final,"Player 1","Vasilii Kuporosov",150,DRAW
+264436,26,final,"Player 2","Alvaro Begue",150,DRAW
+264437,26,final,"Player 1","Mark ter Brugge",90,LOSE
+264437,26,final,"Player 2","Jan Nunnink",210,WIN
+264438,26,final,"Player 1","Jan Nunnink",210,WIN
+264438,26,final,"Player 2","Mark ter Brugge",90,LOSE
+264439,26,final,"Player 1","Jelmer Firet",95,LOSE
+264439,26,final,"Player 2","Louis Verhaard",205,WIN
+264440,26,final,"Player 1","Louis Verhaard",229,WIN
+264440,26,final,"Player 2","Jelmer Firet",71,LOSE
+264441,26,final,"Player 1","Boris de Wilde",91,LOSE
+264441,26,final,"Player 2","Leopold Tschanter",209,WIN
+264442,26,final,"Player 1","Leopold Tschanter",207,WIN
+264442,26,final,"Player 2","Boris de Wilde",93,LOSE
+264443,26,final,"Player 1","Abdessamad El Kasimi",201,WIN
+264443,26,final,"Player 2","Maks Verver",99,LOSE
+264444,26,final,"Player 1","Maks Verver",220,WIN
+264444,26,final,"Player 2","Abdessamad El Kasimi",80,LOSE
+264445,26,final,"Player 1","Fakih Karademir",97,LOSE
+264445,26,final,"Player 2","Thijs Marinussen",203,WIN
+264446,26,final,"Player 1","Thijs Marinussen",204,WIN
+264446,26,final,"Player 2","Fakih Karademir",96,LOSE
+264447,26,final,"Player 1","Ad van der Hoeven",93,LOSE
+264447,26,final,"Player 2","Jelle van der Drift",207,WIN
+264448,26,final,"Player 1","Jelle van der Drift",210,WIN
+264448,26,final,"Player 2","Ad van der Hoeven",90,LOSE
+264449,26,final,"Player 1","Wouter van der Meer",71,LOSE
+264449,26,final,"Player 2","Niklas Een",229,WIN
+264450,26,final,"Player 1","Niklas Een",237,WIN
+264450,26,final,"Player 2","Wouter van der Meer",63,LOSE
+264451,26,final,"Player 1","Frank Meert",94,LOSE
+264451,26,final,"Player 2","Jeremy Sawicki",206,WIN
+264452,26,final,"Player 1","Jeremy Sawicki",94,LOSE
+264452,26,final,"Player 2","Frank Meert",206,WIN
+264453,26,final,"Player 1","Matthias Gelbmann",86,LOSE
+264453,26,final,"Player 2","Alvaro Carrera",214,WIN
+264454,26,final,"Player 1","Alvaro Carrera",209,WIN
+264454,26,final,"Player 2","Matthias Gelbmann",91,LOSE
+264455,26,final,"Player 1","Henk Koops",61,LOSE
+264455,26,final,"Player 2","Matthijs Tijink",239,WIN
+264456,26,final,"Player 1","Matthijs Tijink",245,WIN
+264456,26,final,"Player 2","Henk Koops",55,LOSE
+264457,26,final,"Player 1","Léo Jean",150,DRAW
+264457,26,final,"Player 2","R4N4R4M4 ",150,DRAW
+264458,26,final,"Player 1","R4N4R4M4 ",90,LOSE
+264458,26,final,"Player 2","Léo Jean",210,WIN
+264459,26,final,"Player 1","Nikita Kurgin",212,WIN
+264459,26,final,"Player 2","Ludo Pulles",88,LOSE
+264460,26,final,"Player 1","Ludo Pulles",150,DRAW
+264460,26,final,"Player 2","Nikita Kurgin",150,DRAW
+264461,27,final,"Player 1","Tapani Utriainen",219,WIN
+264461,27,final,"Player 2","Marc Oldenhof",81,LOSE
+264462,27,final,"Player 1","Marc Oldenhof",93,LOSE
+264462,27,final,"Player 2","Tapani Utriainen",207,WIN
+264463,27,final,"Player 1","Pardhav Maradani",206,WIN
+264463,27,final,"Player 2","Tomek Czajka",94,LOSE
+264464,27,final,"Player 1","Tomek Czajka",92,LOSE
+264464,27,final,"Player 2","Pardhav Maradani",208,WIN
+264465,27,final,"Player 1","Jorn Hoofwijk",85,LOSE
+264465,27,final,"Player 2","Rens van der Avoird",215,WIN
+264466,27,final,"Player 1","Rens van der Avoird",203,WIN
+264466,27,final,"Player 2","Jorn Hoofwijk",97,LOSE
+264467,27,final,"Player 1","Pepijn Overbeeke",94,LOSE
+264467,27,final,"Player 2","Vasilii Kuporosov",206,WIN
+264468,27,final,"Player 1","Vasilii Kuporosov",232,WIN
+264468,27,final,"Player 2","Pepijn Overbeeke",68,LOSE
+264469,27,final,"Player 1","Marcel Vlastuin",204,WIN
+264469,27,final,"Player 2","Jan Nunnink",96,LOSE
+264470,27,final,"Player 1","Jan Nunnink",213,WIN
+264470,27,final,"Player 2","Marcel Vlastuin",87,LOSE
+264471,27,final,"Player 1","Alvaro Begue",89,LOSE
+264471,27,final,"Player 2","Louis Verhaard",211,WIN
+264472,27,final,"Player 1","Louis Verhaard",203,WIN
+264472,27,final,"Player 2","Alvaro Begue",97,LOSE
+264473,27,final,"Player 1","Mark ter Brugge",210,WIN
+264473,27,final,"Player 2","Leopold Tschanter",90,LOSE
+264474,27,final,"Player 1","Leopold Tschanter",217,WIN
+264474,27,final,"Player 2","Mark ter Brugge",83,LOSE
+264475,27,final,"Player 1","Jelmer Firet",80,LOSE
+264475,27,final,"Player 2","Maks Verver",220,WIN
+264476,27,final,"Player 1","Maks Verver",217,WIN
+264476,27,final,"Player 2","Jelmer Firet",83,LOSE
+264477,27,final,"Player 1","Boris de Wilde",76,LOSE
+264477,27,final,"Player 2","Thijs Marinussen",224,WIN
+264478,27,final,"Player 1","Thijs Marinussen",213,WIN
+264478,27,final,"Player 2","Boris de Wilde",87,LOSE
+264479,27,final,"Player 1","Abdessamad El Kasimi",95,LOSE
+264479,27,final,"Player 2","Jelle van der Drift",205,WIN
+264480,27,final,"Player 1","Jelle van der Drift",203,WIN
+264480,27,final,"Player 2","Abdessamad El Kasimi",97,LOSE
+264481,27,final,"Player 1","Fakih Karademir",73,LOSE
+264481,27,final,"Player 2","Niklas Een",227,WIN
+264482,27,final,"Player 1","Niklas Een",208,WIN
+264482,27,final,"Player 2","Fakih Karademir",92,LOSE
+264483,27,final,"Player 1","Ad van der Hoeven",74,LOSE
+264483,27,final,"Player 2","Jeremy Sawicki",226,WIN
+264484,27,final,"Player 1","Jeremy Sawicki",216,WIN
+264484,27,final,"Player 2","Ad van der Hoeven",84,LOSE
+264485,27,final,"Player 1","Wouter van der Meer",201,WIN
+264485,27,final,"Player 2","Alvaro Carrera",99,LOSE
+264486,27,final,"Player 1","Alvaro Carrera",213,WIN
+264486,27,final,"Player 2","Wouter van der Meer",87,LOSE
+264487,27,final,"Player 1","Frank Meert",201,WIN
+264487,27,final,"Player 2","Matthijs Tijink",99,LOSE
+264488,27,final,"Player 1","Matthijs Tijink",202,WIN
+264488,27,final,"Player 2","Frank Meert",98,LOSE
+264489,27,final,"Player 1","Matthias Gelbmann",213,WIN
+264489,27,final,"Player 2","R4N4R4M4 ",87,LOSE
+264490,27,final,"Player 1","R4N4R4M4 ",81,LOSE
+264490,27,final,"Player 2","Matthias Gelbmann",219,WIN
+264491,27,final,"Player 1","Henk Koops",94,LOSE
+264491,27,final,"Player 2","Ludo Pulles",206,WIN
+264492,27,final,"Player 1","Ludo Pulles",205,WIN
+264492,27,final,"Player 2","Henk Koops",95,LOSE
+264493,27,final,"Player 1","Léo Jean",218,WIN
+264493,27,final,"Player 2","Nikita Kurgin",82,LOSE
+264494,27,final,"Player 1","Nikita Kurgin",92,LOSE
+264494,27,final,"Player 2","Léo Jean",208,WIN
+264495,28,final,"Player 1","Tapani Utriainen",217,WIN
+264495,28,final,"Player 2","Tomek Czajka",83,LOSE
+264496,28,final,"Player 1","Tomek Czajka",86,LOSE
+264496,28,final,"Player 2","Tapani Utriainen",214,WIN
+264497,28,final,"Player 1","Marc Oldenhof",94,LOSE
+264497,28,final,"Player 2","Rens van der Avoird",206,WIN
+264498,28,final,"Player 1","Rens van der Avoird",96,LOSE
+264498,28,final,"Player 2","Marc Oldenhof",204,WIN
+264499,28,final,"Player 1","Pardhav Maradani",94,LOSE
+264499,28,final,"Player 2","Vasilii Kuporosov",206,WIN
+264500,28,final,"Player 1","Vasilii Kuporosov",219,WIN
+264500,28,final,"Player 2","Pardhav Maradani",81,LOSE
+264501,28,final,"Player 1","Jorn Hoofwijk",89,LOSE
+264501,28,final,"Player 2","Jan Nunnink",211,WIN
+264502,28,final,"Player 1","Jan Nunnink",231,WIN
+264502,28,final,"Player 2","Jorn Hoofwijk",69,LOSE
+264503,28,final,"Player 1","Pepijn Overbeeke",93,LOSE
+264503,28,final,"Player 2","Louis Verhaard",207,WIN
+264504,28,final,"Player 1","Louis Verhaard",208,WIN
+264504,28,final,"Player 2","Pepijn Overbeeke",92,LOSE
+264505,28,final,"Player 1","Marcel Vlastuin",223,WIN
+264505,28,final,"Player 2","Leopold Tschanter",77,LOSE
+264506,28,final,"Player 1","Leopold Tschanter",204,WIN
+264506,28,final,"Player 2","Marcel Vlastuin",96,LOSE
+264507,28,final,"Player 1","Alvaro Begue",95,LOSE
+264507,28,final,"Player 2","Maks Verver",205,WIN
+264508,28,final,"Player 1","Maks Verver",211,WIN
+264508,28,final,"Player 2","Alvaro Begue",89,LOSE
+264509,28,final,"Player 1","Mark ter Brugge",96,LOSE
+264509,28,final,"Player 2","Thijs Marinussen",204,WIN
+264510,28,final,"Player 1","Thijs Marinussen",212,WIN
+264510,28,final,"Player 2","Mark ter Brugge",88,LOSE
+264511,28,final,"Player 1","Jelmer Firet",89,LOSE
+264511,28,final,"Player 2","Jelle van der Drift",211,WIN
+264512,28,final,"Player 1","Jelle van der Drift",203,WIN
+264512,28,final,"Player 2","Jelmer Firet",97,LOSE
+264513,28,final,"Player 1","Boris de Wilde",92,LOSE
+264513,28,final,"Player 2","Niklas Een",208,WIN
+264514,28,final,"Player 1","Niklas Een",97,LOSE
+264514,28,final,"Player 2","Boris de Wilde",203,WIN
+264515,28,final,"Player 1","Abdessamad El Kasimi",96,LOSE
+264515,28,final,"Player 2","Jeremy Sawicki",204,WIN
+264516,28,final,"Player 1","Jeremy Sawicki",211,WIN
+264516,28,final,"Player 2","Abdessamad El Kasimi",89,LOSE
+264517,28,final,"Player 1","Fakih Karademir",87,LOSE
+264517,28,final,"Player 2","Alvaro Carrera",213,WIN
+264518,28,final,"Player 1","Alvaro Carrera",226,WIN
+264518,28,final,"Player 2","Fakih Karademir",74,LOSE
+264519,28,final,"Player 1","Ad van der Hoeven",84,LOSE
+264519,28,final,"Player 2","Matthijs Tijink",216,WIN
+264520,28,final,"Player 1","Matthijs Tijink",203,WIN
+264520,28,final,"Player 2","Ad van der Hoeven",97,LOSE
+264521,28,final,"Player 1","Wouter van der Meer",236,WIN
+264521,28,final,"Player 2","R4N4R4M4 ",64,LOSE
+264522,28,final,"Player 1","R4N4R4M4 ",74,LOSE
+264522,28,final,"Player 2","Wouter van der Meer",226,WIN
+264523,28,final,"Player 1","Frank Meert",241,WIN
+264523,28,final,"Player 2","Ludo Pulles",59,LOSE
+264524,28,final,"Player 1","Ludo Pulles",73,LOSE
+264524,28,final,"Player 2","Frank Meert",227,WIN
+264525,28,final,"Player 1","Matthias Gelbmann",231,WIN
+264525,28,final,"Player 2","Nikita Kurgin",69,LOSE
+264526,28,final,"Player 1","Nikita Kurgin",85,LOSE
+264526,28,final,"Player 2","Matthias Gelbmann",215,WIN
+264527,28,final,"Player 1","Henk Koops",84,LOSE
+264527,28,final,"Player 2","Léo Jean",216,WIN
+264528,28,final,"Player 1","Léo Jean",223,WIN
+264528,28,final,"Player 2","Henk Koops",77,LOSE
+264529,29,final,"Player 1","Tapani Utriainen",217,WIN
+264529,29,final,"Player 2","Rens van der Avoird",83,LOSE
+264530,29,final,"Player 1","Rens van der Avoird",205,WIN
+264530,29,final,"Player 2","Tapani Utriainen",95,LOSE
+264531,29,final,"Player 1","Tomek Czajka",212,WIN
+264531,29,final,"Player 2","Vasilii Kuporosov",88,LOSE
+264532,29,final,"Player 1","Vasilii Kuporosov",203,WIN
+264532,29,final,"Player 2","Tomek Czajka",97,LOSE
+264533,29,final,"Player 1","Marc Oldenhof",82,LOSE
+264533,29,final,"Player 2","Jan Nunnink",218,WIN
+264534,29,final,"Player 1","Jan Nunnink",214,WIN
+264534,29,final,"Player 2","Marc Oldenhof",86,LOSE
+264535,29,final,"Player 1","Pardhav Maradani",94,LOSE
+264535,29,final,"Player 2","Louis Verhaard",206,WIN
+264536,29,final,"Player 1","Louis Verhaard",207,WIN
+264536,29,final,"Player 2","Pardhav Maradani",93,LOSE
+264537,29,final,"Player 1","Jorn Hoofwijk",94,LOSE
+264537,29,final,"Player 2","Leopold Tschanter",206,WIN
+264538,29,final,"Player 1","Leopold Tschanter",216,WIN
+264538,29,final,"Player 2","Jorn Hoofwijk",84,LOSE
+264539,29,final,"Player 1","Pepijn Overbeeke",150,DRAW
+264539,29,final,"Player 2","Maks Verver",150,DRAW
+264540,29,final,"Player 1","Maks Verver",215,WIN
+264540,29,final,"Player 2","Pepijn Overbeeke",85,LOSE
+264541,29,final,"Player 1","Marcel Vlastuin",88,LOSE
+264541,29,final,"Player 2","Thijs Marinussen",212,WIN
+264542,29,final,"Player 1","Thijs Marinussen",91,LOSE
+264542,29,final,"Player 2","Marcel Vlastuin",209,WIN
+264543,29,final,"Player 1","Alvaro Begue",88,LOSE
+264543,29,final,"Player 2","Jelle van der Drift",212,WIN
+264544,29,final,"Player 1","Jelle van der Drift",210,WIN
+264544,29,final,"Player 2","Alvaro Begue",90,LOSE
+264545,29,final,"Player 1","Mark ter Brugge",95,LOSE
+264545,29,final,"Player 2","Niklas Een",205,WIN
+264546,29,final,"Player 1","Niklas Een",202,WIN
+264546,29,final,"Player 2","Mark ter Brugge",98,LOSE
+264547,29,final,"Player 1","Jelmer Firet",77,LOSE
+264547,29,final,"Player 2","Jeremy Sawicki",223,WIN
+264548,29,final,"Player 1","Jeremy Sawicki",215,WIN
+264548,29,final,"Player 2","Jelmer Firet",85,LOSE
+264549,29,final,"Player 1","Boris de Wilde",80,LOSE
+264549,29,final,"Player 2","Alvaro Carrera",220,WIN
+264550,29,final,"Player 1","Alvaro Carrera",227,WIN
+264550,29,final,"Player 2","Boris de Wilde",73,LOSE
+264551,29,final,"Player 1","Abdessamad El Kasimi",150,DRAW
+264551,29,final,"Player 2","Matthijs Tijink",150,DRAW
+264552,29,final,"Player 1","Matthijs Tijink",150,DRAW
+264552,29,final,"Player 2","Abdessamad El Kasimi",150,DRAW
+264553,29,final,"Player 1","Fakih Karademir",209,WIN
+264553,29,final,"Player 2","R4N4R4M4 ",91,LOSE
+264554,29,final,"Player 1","R4N4R4M4 ",88,LOSE
+264554,29,final,"Player 2","Fakih Karademir",212,WIN
+264555,29,final,"Player 1","Ad van der Hoeven",220,WIN
+264555,29,final,"Player 2","Ludo Pulles",80,LOSE
+264556,29,final,"Player 1","Ludo Pulles",97,LOSE
+264556,29,final,"Player 2","Ad van der Hoeven",203,WIN
+264557,29,final,"Player 1","Wouter van der Meer",228,WIN
+264557,29,final,"Player 2","Nikita Kurgin",72,LOSE
+264558,29,final,"Player 1","Nikita Kurgin",86,LOSE
+264558,29,final,"Player 2","Wouter van der Meer",214,WIN
+264559,29,final,"Player 1","Frank Meert",223,WIN
+264559,29,final,"Player 2","Léo Jean",77,LOSE
+264560,29,final,"Player 1","Léo Jean",76,LOSE
+264560,29,final,"Player 2","Frank Meert",224,WIN
+264561,29,final,"Player 1","Matthias Gelbmann",203,WIN
+264561,29,final,"Player 2","Henk Koops",97,LOSE
+264562,29,final,"Player 1","Henk Koops",83,LOSE
+264562,29,final,"Player 2","Matthias Gelbmann",217,WIN
+264563,30,final,"Player 1","Tapani Utriainen",99,LOSE
+264563,30,final,"Player 2","Vasilii Kuporosov",201,WIN
+264564,30,final,"Player 1","Vasilii Kuporosov",79,LOSE
+264564,30,final,"Player 2","Tapani Utriainen",221,WIN
+264565,30,final,"Player 1","Rens van der Avoird",88,LOSE
+264565,30,final,"Player 2","Jan Nunnink",212,WIN
+264566,30,final,"Player 1","Jan Nunnink",91,LOSE
+264566,30,final,"Player 2","Rens van der Avoird",209,WIN
+264567,30,final,"Player 1","Tomek Czajka",201,WIN
+264567,30,final,"Player 2","Louis Verhaard",99,LOSE
+264568,30,final,"Player 1","Louis Verhaard",225,WIN
+264568,30,final,"Player 2","Tomek Czajka",75,LOSE
+264569,30,final,"Player 1","Marc Oldenhof",201,WIN
+264569,30,final,"Player 2","Leopold Tschanter",99,LOSE
+264570,30,final,"Player 1","Leopold Tschanter",150,DRAW
+264570,30,final,"Player 2","Marc Oldenhof",150,DRAW
+264571,30,final,"Player 1","Pardhav Maradani",81,LOSE
+264571,30,final,"Player 2","Maks Verver",219,WIN
+264572,30,final,"Player 1","Maks Verver",209,WIN
+264572,30,final,"Player 2","Pardhav Maradani",91,LOSE
+264573,30,final,"Player 1","Jorn Hoofwijk",95,LOSE
+264573,30,final,"Player 2","Thijs Marinussen",205,WIN
+264574,30,final,"Player 1","Thijs Marinussen",205,WIN
+264574,30,final,"Player 2","Jorn Hoofwijk",95,LOSE
+264575,30,final,"Player 1","Pepijn Overbeeke",206,WIN
+264575,30,final,"Player 2","Jelle van der Drift",94,LOSE
+264576,30,final,"Player 1","Jelle van der Drift",215,WIN
+264576,30,final,"Player 2","Pepijn Overbeeke",85,LOSE
+264577,30,final,"Player 1","Marcel Vlastuin",89,LOSE
+264577,30,final,"Player 2","Niklas Een",211,WIN
+264578,30,final,"Player 1","Niklas Een",217,WIN
+264578,30,final,"Player 2","Marcel Vlastuin",83,LOSE
+264579,30,final,"Player 1","Alvaro Begue",90,LOSE
+264579,30,final,"Player 2","Jeremy Sawicki",210,WIN
+264580,30,final,"Player 1","Jeremy Sawicki",90,LOSE
+264580,30,final,"Player 2","Alvaro Begue",210,WIN
+264581,30,final,"Player 1","Mark ter Brugge",208,WIN
+264581,30,final,"Player 2","Alvaro Carrera",92,LOSE
+264582,30,final,"Player 1","Alvaro Carrera",98,LOSE
+264582,30,final,"Player 2","Mark ter Brugge",202,WIN
+264583,30,final,"Player 1","Jelmer Firet",79,LOSE
+264583,30,final,"Player 2","Matthijs Tijink",221,WIN
+264584,30,final,"Player 1","Matthijs Tijink",227,WIN
+264584,30,final,"Player 2","Jelmer Firet",73,LOSE
+264585,30,final,"Player 1","Boris de Wilde",209,WIN
+264585,30,final,"Player 2","R4N4R4M4 ",91,LOSE
+264586,30,final,"Player 1","R4N4R4M4 ",82,LOSE
+264586,30,final,"Player 2","Boris de Wilde",218,WIN
+264587,30,final,"Player 1","Abdessamad El Kasimi",217,WIN
+264587,30,final,"Player 2","Ludo Pulles",83,LOSE
+264588,30,final,"Player 1","Ludo Pulles",72,LOSE
+264588,30,final,"Player 2","Abdessamad El Kasimi",228,WIN
+264589,30,final,"Player 1","Fakih Karademir",231,WIN
+264589,30,final,"Player 2","Nikita Kurgin",69,LOSE
+264590,30,final,"Player 1","Nikita Kurgin",65,LOSE
+264590,30,final,"Player 2","Fakih Karademir",235,WIN
+264591,30,final,"Player 1","Ad van der Hoeven",217,WIN
+264591,30,final,"Player 2","Léo Jean",83,LOSE
+264592,30,final,"Player 1","Léo Jean",150,DRAW
+264592,30,final,"Player 2","Ad van der Hoeven",150,DRAW
+264593,30,final,"Player 1","Wouter van der Meer",227,WIN
+264593,30,final,"Player 2","Henk Koops",73,LOSE
+264594,30,final,"Player 1","Henk Koops",81,LOSE
+264594,30,final,"Player 2","Wouter van der Meer",219,WIN
+264595,30,final,"Player 1","Frank Meert",224,WIN
+264595,30,final,"Player 2","Matthias Gelbmann",76,LOSE
+264596,30,final,"Player 1","Matthias Gelbmann",96,LOSE
+264596,30,final,"Player 2","Frank Meert",204,WIN
+264597,31,final,"Player 1","Tapani Utriainen",201,WIN
+264597,31,final,"Player 2","Jan Nunnink",99,LOSE
+264598,31,final,"Player 1","Jan Nunnink",92,LOSE
+264598,31,final,"Player 2","Tapani Utriainen",208,WIN
+264599,31,final,"Player 1","Vasilii Kuporosov",89,LOSE
+264599,31,final,"Player 2","Louis Verhaard",211,WIN
+264600,31,final,"Player 1","Louis Verhaard",215,WIN
+264600,31,final,"Player 2","Vasilii Kuporosov",85,LOSE
+264601,31,final,"Player 1","Rens van der Avoird",93,LOSE
+264601,31,final,"Player 2","Leopold Tschanter",207,WIN
+264602,31,final,"Player 1","Leopold Tschanter",202,WIN
+264602,31,final,"Player 2","Rens van der Avoird",98,LOSE
+264603,31,final,"Player 1","Tomek Czajka",203,WIN
+264603,31,final,"Player 2","Maks Verver",97,LOSE
+264604,31,final,"Player 1","Maks Verver",90,LOSE
+264604,31,final,"Player 2","Tomek Czajka",210,WIN
+264605,31,final,"Player 1","Marc Oldenhof",95,LOSE
+264605,31,final,"Player 2","Thijs Marinussen",205,WIN
+264606,31,final,"Player 1","Thijs Marinussen",214,WIN
+264606,31,final,"Player 2","Marc Oldenhof",86,LOSE
+264607,31,final,"Player 1","Pardhav Maradani",213,WIN
+264607,31,final,"Player 2","Jelle van der Drift",87,LOSE
+264608,31,final,"Player 1","Jelle van der Drift",204,WIN
+264608,31,final,"Player 2","Pardhav Maradani",96,LOSE
+264609,31,final,"Player 1","Jorn Hoofwijk",77,LOSE
+264609,31,final,"Player 2","Niklas Een",223,WIN
+264610,31,final,"Player 1","Niklas Een",219,WIN
+264610,31,final,"Player 2","Jorn Hoofwijk",81,LOSE
+264611,31,final,"Player 1","Pepijn Overbeeke",90,LOSE
+264611,31,final,"Player 2","Jeremy Sawicki",210,WIN
+264612,31,final,"Player 1","Jeremy Sawicki",228,WIN
+264612,31,final,"Player 2","Pepijn Overbeeke",72,LOSE
+264613,31,final,"Player 1","Marcel Vlastuin",96,LOSE
+264613,31,final,"Player 2","Alvaro Carrera",204,WIN
+264614,31,final,"Player 1","Alvaro Carrera",91,LOSE
+264614,31,final,"Player 2","Marcel Vlastuin",209,WIN
+264615,31,final,"Player 1","Alvaro Begue",150,DRAW
+264615,31,final,"Player 2","Matthijs Tijink",150,DRAW
+264616,31,final,"Player 1","Matthijs Tijink",202,WIN
+264616,31,final,"Player 2","Alvaro Begue",98,LOSE
+264617,31,final,"Player 1","Mark ter Brugge",238,WIN
+264617,31,final,"Player 2","R4N4R4M4 ",62,LOSE
+264618,31,final,"Player 1","R4N4R4M4 ",82,LOSE
+264618,31,final,"Player 2","Mark ter Brugge",218,WIN
+264619,31,final,"Player 1","Jelmer Firet",238,WIN
+264619,31,final,"Player 2","Ludo Pulles",62,LOSE
+264620,31,final,"Player 1","Ludo Pulles",76,LOSE
+264620,31,final,"Player 2","Jelmer Firet",224,WIN
+264621,31,final,"Player 1","Boris de Wilde",227,WIN
+264621,31,final,"Player 2","Nikita Kurgin",73,LOSE
+264622,31,final,"Player 1","Nikita Kurgin",70,LOSE
+264622,31,final,"Player 2","Boris de Wilde",230,WIN
+264623,31,final,"Player 1","Abdessamad El Kasimi",240,WIN
+264623,31,final,"Player 2","Léo Jean",60,LOSE
+264624,31,final,"Player 1","Léo Jean",77,LOSE
+264624,31,final,"Player 2","Abdessamad El Kasimi",223,WIN
+264625,31,final,"Player 1","Fakih Karademir",215,WIN
+264625,31,final,"Player 2","Henk Koops",85,LOSE
+264626,31,final,"Player 1","Henk Koops",82,LOSE
+264626,31,final,"Player 2","Fakih Karademir",218,WIN
+264627,31,final,"Player 1","Ad van der Hoeven",203,WIN
+264627,31,final,"Player 2","Matthias Gelbmann",97,LOSE
+264628,31,final,"Player 1","Matthias Gelbmann",99,LOSE
+264628,31,final,"Player 2","Ad van der Hoeven",201,WIN
+264629,31,final,"Player 1","Wouter van der Meer",98,LOSE
+264629,31,final,"Player 2","Frank Meert",202,WIN
+264630,31,final,"Player 1","Frank Meert",79,LOSE
+264630,31,final,"Player 2","Wouter van der Meer",221,WIN
+264631,32,final,"Player 1","Tapani Utriainen",97,LOSE
+264631,32,final,"Player 2","Louis Verhaard",203,WIN
+264632,32,final,"Player 1","Louis Verhaard",95,LOSE
+264632,32,final,"Player 2","Tapani Utriainen",205,WIN
+264633,32,final,"Player 1","Jan Nunnink",99,LOSE
+264633,32,final,"Player 2","Leopold Tschanter",201,WIN
+264634,32,final,"Player 1","Leopold Tschanter",201,WIN
+264634,32,final,"Player 2","Jan Nunnink",99,LOSE
+264635,32,final,"Player 1","Vasilii Kuporosov",99,LOSE
+264635,32,final,"Player 2","Maks Verver",201,WIN
+264636,32,final,"Player 1","Maks Verver",94,LOSE
+264636,32,final,"Player 2","Vasilii Kuporosov",206,WIN
+264637,32,final,"Player 1","Rens van der Avoird",88,LOSE
+264637,32,final,"Player 2","Thijs Marinussen",212,WIN
+264638,32,final,"Player 1","Thijs Marinussen",213,WIN
+264638,32,final,"Player 2","Rens van der Avoird",87,LOSE
+264639,32,final,"Player 1","Tomek Czajka",87,LOSE
+264639,32,final,"Player 2","Jelle van der Drift",213,WIN
+264640,32,final,"Player 1","Jelle van der Drift",219,WIN
+264640,32,final,"Player 2","Tomek Czajka",81,LOSE
+264641,32,final,"Player 1","Marc Oldenhof",85,LOSE
+264641,32,final,"Player 2","Niklas Een",215,WIN
+264642,32,final,"Player 1","Niklas Een",212,WIN
+264642,32,final,"Player 2","Marc Oldenhof",88,LOSE
+264643,32,final,"Player 1","Pardhav Maradani",91,LOSE
+264643,32,final,"Player 2","Jeremy Sawicki",209,WIN
+264644,32,final,"Player 1","Jeremy Sawicki",204,WIN
+264644,32,final,"Player 2","Pardhav Maradani",96,LOSE
+264645,32,final,"Player 1","Jorn Hoofwijk",73,LOSE
+264645,32,final,"Player 2","Alvaro Carrera",227,WIN
+264646,32,final,"Player 1","Alvaro Carrera",215,WIN
+264646,32,final,"Player 2","Jorn Hoofwijk",85,LOSE
+264647,32,final,"Player 1","Pepijn Overbeeke",72,LOSE
+264647,32,final,"Player 2","Matthijs Tijink",228,WIN
+264648,32,final,"Player 1","Matthijs Tijink",207,WIN
+264648,32,final,"Player 2","Pepijn Overbeeke",93,LOSE
+264649,32,final,"Player 1","Marcel Vlastuin",251,WIN
+264649,32,final,"Player 2","R4N4R4M4 ",49,LOSE
+264650,32,final,"Player 1","R4N4R4M4 ",75,LOSE
+264650,32,final,"Player 2","Marcel Vlastuin",225,WIN
+264651,32,final,"Player 1","Alvaro Begue",237,WIN
+264651,32,final,"Player 2","Ludo Pulles",63,LOSE
+264652,32,final,"Player 1","Ludo Pulles",61,LOSE
+264652,32,final,"Player 2","Alvaro Begue",239,WIN
+264653,32,final,"Player 1","Mark ter Brugge",261,WIN
+264653,32,final,"Player 2","Nikita Kurgin",39,LOSE
+264654,32,final,"Player 1","Nikita Kurgin",53,LOSE
+264654,32,final,"Player 2","Mark ter Brugge",247,WIN
+264655,32,final,"Player 1","Jelmer Firet",73,LOSE
+264655,32,final,"Player 2","Léo Jean",227,WIN
+264656,32,final,"Player 1","Léo Jean",59,LOSE
+264656,32,final,"Player 2","Jelmer Firet",241,WIN
+264657,32,final,"Player 1","Boris de Wilde",225,WIN
+264657,32,final,"Player 2","Henk Koops",75,LOSE
+264658,32,final,"Player 1","Henk Koops",59,LOSE
+264658,32,final,"Player 2","Boris de Wilde",241,WIN
+264659,32,final,"Player 1","Abdessamad El Kasimi",207,WIN
+264659,32,final,"Player 2","Matthias Gelbmann",93,LOSE
+264660,32,final,"Player 1","Matthias Gelbmann",93,LOSE
+264660,32,final,"Player 2","Abdessamad El Kasimi",207,WIN
+264661,32,final,"Player 1","Fakih Karademir",207,WIN
+264661,32,final,"Player 2","Frank Meert",93,LOSE
+264662,32,final,"Player 1","Frank Meert",203,WIN
+264662,32,final,"Player 2","Fakih Karademir",97,LOSE
+264663,32,final,"Player 1","Ad van der Hoeven",213,WIN
+264663,32,final,"Player 2","Wouter van der Meer",87,LOSE
+264664,32,final,"Player 1","Wouter van der Meer",206,WIN
+264664,32,final,"Player 2","Ad van der Hoeven",94,LOSE
+264665,33,final,"Player 1","Tapani Utriainen",206,WIN
+264665,33,final,"Player 2","Leopold Tschanter",94,LOSE
+264666,33,final,"Player 1","Leopold Tschanter",91,LOSE
+264666,33,final,"Player 2","Tapani Utriainen",209,WIN
+264667,33,final,"Player 1","Louis Verhaard",216,WIN
+264667,33,final,"Player 2","Maks Verver",84,LOSE
+264668,33,final,"Player 1","Maks Verver",96,LOSE
+264668,33,final,"Player 2","Louis Verhaard",204,WIN
+264669,33,final,"Player 1","Jan Nunnink",206,WIN
+264669,33,final,"Player 2","Thijs Marinussen",94,LOSE
+264670,33,final,"Player 1","Thijs Marinussen",150,DRAW
+264670,33,final,"Player 2","Jan Nunnink",150,DRAW
+264671,33,final,"Player 1","Vasilii Kuporosov",210,WIN
+264671,33,final,"Player 2","Jelle van der Drift",90,LOSE
+264672,33,final,"Player 1","Jelle van der Drift",206,WIN
+264672,33,final,"Player 2","Vasilii Kuporosov",94,LOSE
+264673,33,final,"Player 1","Rens van der Avoird",96,LOSE
+264673,33,final,"Player 2","Niklas Een",204,WIN
+264674,33,final,"Player 1","Niklas Een",219,WIN
+264674,33,final,"Player 2","Rens van der Avoird",81,LOSE
+264675,33,final,"Player 1","Tomek Czajka",92,LOSE
+264675,33,final,"Player 2","Jeremy Sawicki",208,WIN
+264676,33,final,"Player 1","Jeremy Sawicki",210,WIN
+264676,33,final,"Player 2","Tomek Czajka",90,LOSE
+264677,33,final,"Player 1","Marc Oldenhof",90,LOSE
+264677,33,final,"Player 2","Alvaro Carrera",210,WIN
+264678,33,final,"Player 1","Alvaro Carrera",206,WIN
+264678,33,final,"Player 2","Marc Oldenhof",94,LOSE
+264679,33,final,"Player 1","Pardhav Maradani",201,WIN
+264679,33,final,"Player 2","Matthijs Tijink",99,LOSE
+264680,33,final,"Player 1","Matthijs Tijink",89,LOSE
+264680,33,final,"Player 2","Pardhav Maradani",211,WIN
+264681,33,final,"Player 1","Jorn Hoofwijk",236,WIN
+264681,33,final,"Player 2","R4N4R4M4 ",64,LOSE
+264682,33,final,"Player 1","R4N4R4M4 ",77,LOSE
+264682,33,final,"Player 2","Jorn Hoofwijk",223,WIN
+264683,33,final,"Player 1","Pepijn Overbeeke",230,WIN
+264683,33,final,"Player 2","Ludo Pulles",70,LOSE
+264684,33,final,"Player 1","Ludo Pulles",62,LOSE
+264684,33,final,"Player 2","Pepijn Overbeeke",238,WIN
+264685,33,final,"Player 1","Marcel Vlastuin",215,WIN
+264685,33,final,"Player 2","Nikita Kurgin",85,LOSE
+264686,33,final,"Player 1","Nikita Kurgin",90,LOSE
+264686,33,final,"Player 2","Marcel Vlastuin",210,WIN
+264687,33,final,"Player 1","Alvaro Begue",205,WIN
+264687,33,final,"Player 2","Léo Jean",95,LOSE
+264688,33,final,"Player 1","Léo Jean",83,LOSE
+264688,33,final,"Player 2","Alvaro Begue",217,WIN
+264689,33,final,"Player 1","Mark ter Brugge",241,WIN
+264689,33,final,"Player 2","Henk Koops",59,LOSE
+264690,33,final,"Player 1","Henk Koops",62,LOSE
+264690,33,final,"Player 2","Mark ter Brugge",238,WIN
+264691,33,final,"Player 1","Jelmer Firet",231,WIN
+264691,33,final,"Player 2","Matthias Gelbmann",69,LOSE
+264692,33,final,"Player 1","Matthias Gelbmann",90,LOSE
+264692,33,final,"Player 2","Jelmer Firet",210,WIN
+264693,33,final,"Player 1","Boris de Wilde",213,WIN
+264693,33,final,"Player 2","Frank Meert",87,LOSE
+264694,33,final,"Player 1","Frank Meert",99,LOSE
+264694,33,final,"Player 2","Boris de Wilde",201,WIN
+264695,33,final,"Player 1","Abdessamad El Kasimi",205,WIN
+264695,33,final,"Player 2","Wouter van der Meer",95,LOSE
+264696,33,final,"Player 1","Wouter van der Meer",82,LOSE
+264696,33,final,"Player 2","Abdessamad El Kasimi",218,WIN
+264697,33,final,"Player 1","Fakih Karademir",208,WIN
+264697,33,final,"Player 2","Ad van der Hoeven",92,LOSE
+264698,33,final,"Player 1","Ad van der Hoeven",204,WIN
+264698,33,final,"Player 2","Fakih Karademir",96,LOSE
+264699,34,final,"Player 1","Tapani Utriainen",216,WIN
+264699,34,final,"Player 2","Maks Verver",84,LOSE
+264700,34,final,"Player 1","Maks Verver",88,LOSE
+264700,34,final,"Player 2","Tapani Utriainen",212,WIN
+264701,34,final,"Player 1","Leopold Tschanter",87,LOSE
+264701,34,final,"Player 2","Thijs Marinussen",213,WIN
+264702,34,final,"Player 1","Thijs Marinussen",207,WIN
+264702,34,final,"Player 2","Leopold Tschanter",93,LOSE
+264703,34,final,"Player 1","Louis Verhaard",212,WIN
+264703,34,final,"Player 2","Jelle van der Drift",88,LOSE
+264704,34,final,"Player 1","Jelle van der Drift",82,LOSE
+264704,34,final,"Player 2","Louis Verhaard",218,WIN
+264705,34,final,"Player 1","Jan Nunnink",204,WIN
+264705,34,final,"Player 2","Niklas Een",96,LOSE
+264706,34,final,"Player 1","Niklas Een",212,WIN
+264706,34,final,"Player 2","Jan Nunnink",88,LOSE
+264707,34,final,"Player 1","Vasilii Kuporosov",90,LOSE
+264707,34,final,"Player 2","Jeremy Sawicki",210,WIN
+264708,34,final,"Player 1","Jeremy Sawicki",203,WIN
+264708,34,final,"Player 2","Vasilii Kuporosov",97,LOSE
+264709,34,final,"Player 1","Rens van der Avoird",79,LOSE
+264709,34,final,"Player 2","Alvaro Carrera",221,WIN
+264710,34,final,"Player 1","Alvaro Carrera",92,LOSE
+264710,34,final,"Player 2","Rens van der Avoird",208,WIN
+264711,34,final,"Player 1","Tomek Czajka",95,LOSE
+264711,34,final,"Player 2","Matthijs Tijink",205,WIN
+264712,34,final,"Player 1","Matthijs Tijink",202,WIN
+264712,34,final,"Player 2","Tomek Czajka",98,LOSE
+264713,34,final,"Player 1","Marc Oldenhof",234,WIN
+264713,34,final,"Player 2","R4N4R4M4 ",66,LOSE
+264714,34,final,"Player 1","R4N4R4M4 ",78,LOSE
+264714,34,final,"Player 2","Marc Oldenhof",222,WIN
+264715,34,final,"Player 1","Pardhav Maradani",231,WIN
+264715,34,final,"Player 2","Ludo Pulles",69,LOSE
+264716,34,final,"Player 1","Ludo Pulles",76,LOSE
+264716,34,final,"Player 2","Pardhav Maradani",224,WIN
+264717,34,final,"Player 1","Jorn Hoofwijk",222,WIN
+264717,34,final,"Player 2","Nikita Kurgin",78,LOSE
+264718,34,final,"Player 1","Nikita Kurgin",74,LOSE
+264718,34,final,"Player 2","Jorn Hoofwijk",226,WIN
+264719,34,final,"Player 1","Pepijn Overbeeke",227,WIN
+264719,34,final,"Player 2","Léo Jean",73,LOSE
+264720,34,final,"Player 1","Léo Jean",77,LOSE
+264720,34,final,"Player 2","Pepijn Overbeeke",223,WIN
+264721,34,final,"Player 1","Marcel Vlastuin",226,WIN
+264721,34,final,"Player 2","Henk Koops",74,LOSE
+264722,34,final,"Player 1","Henk Koops",65,LOSE
+264722,34,final,"Player 2","Marcel Vlastuin",235,WIN
+264723,34,final,"Player 1","Alvaro Begue",212,WIN
+264723,34,final,"Player 2","Matthias Gelbmann",88,LOSE
+264724,34,final,"Player 1","Matthias Gelbmann",92,LOSE
+264724,34,final,"Player 2","Alvaro Begue",208,WIN
+264725,34,final,"Player 1","Mark ter Brugge",212,WIN
+264725,34,final,"Player 2","Frank Meert",88,LOSE
+264726,34,final,"Player 1","Frank Meert",205,WIN
+264726,34,final,"Player 2","Mark ter Brugge",95,LOSE
+264727,34,final,"Player 1","Jelmer Firet",96,LOSE
+264727,34,final,"Player 2","Wouter van der Meer",204,WIN
+264728,34,final,"Player 1","Wouter van der Meer",89,LOSE
+264728,34,final,"Player 2","Jelmer Firet",211,WIN
+264729,34,final,"Player 1","Boris de Wilde",204,WIN
+264729,34,final,"Player 2","Ad van der Hoeven",96,LOSE
+264730,34,final,"Player 1","Ad van der Hoeven",205,WIN
+264730,34,final,"Player 2","Boris de Wilde",95,LOSE
+264731,34,final,"Player 1","Abdessamad El Kasimi",150,DRAW
+264731,34,final,"Player 2","Fakih Karademir",150,DRAW
+264732,34,final,"Player 1","Fakih Karademir",96,LOSE
+264732,34,final,"Player 2","Abdessamad El Kasimi",204,WIN
+264733,35,final,"Player 1","Tapani Utriainen",150,DRAW
+264733,35,final,"Player 2","Thijs Marinussen",150,DRAW
+264734,35,final,"Player 1","Thijs Marinussen",150,DRAW
+264734,35,final,"Player 2","Tapani Utriainen",150,DRAW
+264735,35,final,"Player 1","Maks Verver",99,LOSE
+264735,35,final,"Player 2","Jelle van der Drift",201,WIN
+264736,35,final,"Player 1","Jelle van der Drift",201,WIN
+264736,35,final,"Player 2","Maks Verver",99,LOSE
+264737,35,final,"Player 1","Leopold Tschanter",201,WIN
+264737,35,final,"Player 2","Niklas Een",99,LOSE
+264738,35,final,"Player 1","Niklas Een",89,LOSE
+264738,35,final,"Player 2","Leopold Tschanter",211,WIN
+264739,35,final,"Player 1","Louis Verhaard",212,WIN
+264739,35,final,"Player 2","Jeremy Sawicki",88,LOSE
+264740,35,final,"Player 1","Jeremy Sawicki",210,WIN
+264740,35,final,"Player 2","Louis Verhaard",90,LOSE
+264741,35,final,"Player 1","Jan Nunnink",150,DRAW
+264741,35,final,"Player 2","Alvaro Carrera",150,DRAW
+264742,35,final,"Player 1","Alvaro Carrera",95,LOSE
+264742,35,final,"Player 2","Jan Nunnink",205,WIN
+264743,35,final,"Player 1","Vasilii Kuporosov",88,LOSE
+264743,35,final,"Player 2","Matthijs Tijink",212,WIN
+264744,35,final,"Player 1","Matthijs Tijink",212,WIN
+264744,35,final,"Player 2","Vasilii Kuporosov",88,LOSE
+264745,35,final,"Player 1","Rens van der Avoird",249,WIN
+264745,35,final,"Player 2","R4N4R4M4 ",51,LOSE
+264746,35,final,"Player 1","R4N4R4M4 ",56,LOSE
+264746,35,final,"Player 2","Rens van der Avoird",244,WIN
+264747,35,final,"Player 1","Tomek Czajka",240,WIN
+264747,35,final,"Player 2","Ludo Pulles",60,LOSE
+264748,35,final,"Player 1","Ludo Pulles",67,LOSE
+264748,35,final,"Player 2","Tomek Czajka",233,WIN
+264749,35,final,"Player 1","Marc Oldenhof",246,WIN
+264749,35,final,"Player 2","Nikita Kurgin",54,LOSE
+264750,35,final,"Player 1","Nikita Kurgin",68,LOSE
+264750,35,final,"Player 2","Marc Oldenhof",232,WIN
+264751,35,final,"Player 1","Pardhav Maradani",229,WIN
+264751,35,final,"Player 2","Léo Jean",71,LOSE
+264752,35,final,"Player 1","Léo Jean",69,LOSE
+264752,35,final,"Player 2","Pardhav Maradani",231,WIN
+264753,35,final,"Player 1","Jorn Hoofwijk",220,WIN
+264753,35,final,"Player 2","Henk Koops",80,LOSE
+264754,35,final,"Player 1","Henk Koops",70,LOSE
+264754,35,final,"Player 2","Jorn Hoofwijk",230,WIN
+264755,35,final,"Player 1","Pepijn Overbeeke",91,LOSE
+264755,35,final,"Player 2","Matthias Gelbmann",209,WIN
+264756,35,final,"Player 1","Matthias Gelbmann",83,LOSE
+264756,35,final,"Player 2","Pepijn Overbeeke",217,WIN
+264757,35,final,"Player 1","Marcel Vlastuin",206,WIN
+264757,35,final,"Player 2","Frank Meert",94,LOSE
+264758,35,final,"Player 1","Frank Meert",94,LOSE
+264758,35,final,"Player 2","Marcel Vlastuin",206,WIN
+264759,35,final,"Player 1","Alvaro Begue",213,WIN
+264759,35,final,"Player 2","Wouter van der Meer",87,LOSE
+264760,35,final,"Player 1","Wouter van der Meer",89,LOSE
+264760,35,final,"Player 2","Alvaro Begue",211,WIN
+264761,35,final,"Player 1","Mark ter Brugge",214,WIN
+264761,35,final,"Player 2","Ad van der Hoeven",86,LOSE
+264762,35,final,"Player 1","Ad van der Hoeven",202,WIN
+264762,35,final,"Player 2","Mark ter Brugge",98,LOSE
+264763,35,final,"Player 1","Jelmer Firet",209,WIN
+264763,35,final,"Player 2","Fakih Karademir",91,LOSE
+264764,35,final,"Player 1","Fakih Karademir",97,LOSE
+264764,35,final,"Player 2","Jelmer Firet",203,WIN
+264765,35,final,"Player 1","Boris de Wilde",205,WIN
+264765,35,final,"Player 2","Abdessamad El Kasimi",95,LOSE
+264766,35,final,"Player 1","Abdessamad El Kasimi",90,LOSE
+264766,35,final,"Player 2","Boris de Wilde",210,WIN
+264767,36,final,"Player 1","Tapani Utriainen",203,WIN
+264767,36,final,"Player 2","Jelle van der Drift",97,LOSE
+264768,36,final,"Player 1","Jelle van der Drift",97,LOSE
+264768,36,final,"Player 2","Tapani Utriainen",203,WIN
+264769,36,final,"Player 1","Thijs Marinussen",96,LOSE
+264769,36,final,"Player 2","Niklas Een",204,WIN
+264770,36,final,"Player 1","Niklas Een",213,WIN
+264770,36,final,"Player 2","Thijs Marinussen",87,LOSE
+264771,36,final,"Player 1","Maks Verver",95,LOSE
+264771,36,final,"Player 2","Jeremy Sawicki",205,WIN
+264772,36,final,"Player 1","Jeremy Sawicki",97,LOSE
+264772,36,final,"Player 2","Maks Verver",203,WIN
+264773,36,final,"Player 1","Leopold Tschanter",150,DRAW
+264773,36,final,"Player 2","Alvaro Carrera",150,DRAW
+264774,36,final,"Player 1","Alvaro Carrera",210,WIN
+264774,36,final,"Player 2","Leopold Tschanter",90,LOSE
+264775,36,final,"Player 1","Louis Verhaard",150,DRAW
+264775,36,final,"Player 2","Matthijs Tijink",150,DRAW
+264776,36,final,"Player 1","Matthijs Tijink",96,LOSE
+264776,36,final,"Player 2","Louis Verhaard",204,WIN
+264777,36,final,"Player 1","Jan Nunnink",222,WIN
+264777,36,final,"Player 2","R4N4R4M4 ",78,LOSE
+264778,36,final,"Player 1","R4N4R4M4 ",77,LOSE
+264778,36,final,"Player 2","Jan Nunnink",223,WIN
+264779,36,final,"Player 1","Vasilii Kuporosov",240,WIN
+264779,36,final,"Player 2","Ludo Pulles",60,LOSE
+264780,36,final,"Player 1","Ludo Pulles",51,LOSE
+264780,36,final,"Player 2","Vasilii Kuporosov",249,WIN
+264781,36,final,"Player 1","Rens van der Avoird",244,WIN
+264781,36,final,"Player 2","Nikita Kurgin",56,LOSE
+264782,36,final,"Player 1","Nikita Kurgin",68,LOSE
+264782,36,final,"Player 2","Rens van der Avoird",232,WIN
+264783,36,final,"Player 1","Tomek Czajka",259,WIN
+264783,36,final,"Player 2","Léo Jean",41,LOSE
+264784,36,final,"Player 1","Léo Jean",77,LOSE
+264784,36,final,"Player 2","Tomek Czajka",223,WIN
+264785,36,final,"Player 1","Marc Oldenhof",242,WIN
+264785,36,final,"Player 2","Henk Koops",58,LOSE
+264786,36,final,"Player 1","Henk Koops",56,LOSE
+264786,36,final,"Player 2","Marc Oldenhof",244,WIN
+264787,36,final,"Player 1","Pardhav Maradani",229,WIN
+264787,36,final,"Player 2","Matthias Gelbmann",71,LOSE
+264788,36,final,"Player 1","Matthias Gelbmann",94,LOSE
+264788,36,final,"Player 2","Pardhav Maradani",206,WIN
+264789,36,final,"Player 1","Jorn Hoofwijk",203,WIN
+264789,36,final,"Player 2","Frank Meert",97,LOSE
+264790,36,final,"Player 1","Frank Meert",84,LOSE
+264790,36,final,"Player 2","Jorn Hoofwijk",216,WIN
+264791,36,final,"Player 1","Pepijn Overbeeke",205,WIN
+264791,36,final,"Player 2","Wouter van der Meer",95,LOSE
+264792,36,final,"Player 1","Wouter van der Meer",215,WIN
+264792,36,final,"Player 2","Pepijn Overbeeke",85,LOSE
+264793,36,final,"Player 1","Marcel Vlastuin",99,LOSE
+264793,36,final,"Player 2","Ad van der Hoeven",201,WIN
+264794,36,final,"Player 1","Ad van der Hoeven",207,WIN
+264794,36,final,"Player 2","Marcel Vlastuin",93,LOSE
+264795,36,final,"Player 1","Alvaro Begue",232,WIN
+264795,36,final,"Player 2","Fakih Karademir",68,LOSE
+264796,36,final,"Player 1","Fakih Karademir",150,DRAW
+264796,36,final,"Player 2","Alvaro Begue",150,DRAW
+264797,36,final,"Player 1","Mark ter Brugge",99,LOSE
+264797,36,final,"Player 2","Abdessamad El Kasimi",201,WIN
+264798,36,final,"Player 1","Abdessamad El Kasimi",88,LOSE
+264798,36,final,"Player 2","Mark ter Brugge",212,WIN
+264799,36,final,"Player 1","Jelmer Firet",74,LOSE
+264799,36,final,"Player 2","Boris de Wilde",226,WIN
+264800,36,final,"Player 1","Boris de Wilde",214,WIN
+264800,36,final,"Player 2","Jelmer Firet",86,LOSE
+264801,37,final,"Player 1","Tapani Utriainen",202,WIN
+264801,37,final,"Player 2","Niklas Een",98,LOSE
+264802,37,final,"Player 1","Niklas Een",97,LOSE
+264802,37,final,"Player 2","Tapani Utriainen",203,WIN
+264803,37,final,"Player 1","Jelle van der Drift",202,WIN
+264803,37,final,"Player 2","Jeremy Sawicki",98,LOSE
+264804,37,final,"Player 1","Jeremy Sawicki",213,WIN
+264804,37,final,"Player 2","Jelle van der Drift",87,LOSE
+264805,37,final,"Player 1","Thijs Marinussen",94,LOSE
+264805,37,final,"Player 2","Alvaro Carrera",206,WIN
+264806,37,final,"Player 1","Alvaro Carrera",99,LOSE
+264806,37,final,"Player 2","Thijs Marinussen",201,WIN
+264807,37,final,"Player 1","Maks Verver",96,LOSE
+264807,37,final,"Player 2","Matthijs Tijink",204,WIN
+264808,37,final,"Player 1","Matthijs Tijink",207,WIN
+264808,37,final,"Player 2","Maks Verver",93,LOSE
+264809,37,final,"Player 1","Leopold Tschanter",229,WIN
+264809,37,final,"Player 2","R4N4R4M4 ",71,LOSE
+264810,37,final,"Player 1","R4N4R4M4 ",65,LOSE
+264810,37,final,"Player 2","Leopold Tschanter",235,WIN
+264811,37,final,"Player 1","Louis Verhaard",264,WIN
+264811,37,final,"Player 2","Ludo Pulles",36,LOSE
+264812,37,final,"Player 1","Ludo Pulles",68,LOSE
+264812,37,final,"Player 2","Louis Verhaard",232,WIN
+264813,37,final,"Player 1","Jan Nunnink",229,WIN
+264813,37,final,"Player 2","Nikita Kurgin",71,LOSE
+264814,37,final,"Player 1","Nikita Kurgin",67,LOSE
+264814,37,final,"Player 2","Jan Nunnink",233,WIN
+264815,37,final,"Player 1","Vasilii Kuporosov",208,WIN
+264815,37,final,"Player 2","Léo Jean",92,LOSE
+264816,37,final,"Player 1","Léo Jean",73,LOSE
+264816,37,final,"Player 2","Vasilii Kuporosov",227,WIN
+264817,37,final,"Player 1","Rens van der Avoird",235,WIN
+264817,37,final,"Player 2","Henk Koops",65,LOSE
+264818,37,final,"Player 1","Henk Koops",54,LOSE
+264818,37,final,"Player 2","Rens van der Avoird",246,WIN
+264819,37,final,"Player 1","Tomek Czajka",214,WIN
+264819,37,final,"Player 2","Matthias Gelbmann",86,LOSE
+264820,37,final,"Player 1","Matthias Gelbmann",71,LOSE
+264820,37,final,"Player 2","Tomek Czajka",229,WIN
+264821,37,final,"Player 1","Marc Oldenhof",221,WIN
+264821,37,final,"Player 2","Frank Meert",79,LOSE
+264822,37,final,"Player 1","Frank Meert",96,LOSE
+264822,37,final,"Player 2","Marc Oldenhof",204,WIN
+264823,37,final,"Player 1","Pardhav Maradani",219,WIN
+264823,37,final,"Player 2","Wouter van der Meer",81,LOSE
+264824,37,final,"Player 1","Wouter van der Meer",81,LOSE
+264824,37,final,"Player 2","Pardhav Maradani",219,WIN
+264825,37,final,"Player 1","Jorn Hoofwijk",150,DRAW
+264825,37,final,"Player 2","Ad van der Hoeven",150,DRAW
+264826,37,final,"Player 1","Ad van der Hoeven",232,WIN
+264826,37,final,"Player 2","Jorn Hoofwijk",68,LOSE
+264827,37,final,"Player 1","Pepijn Overbeeke",81,LOSE
+264827,37,final,"Player 2","Fakih Karademir",219,WIN
+264828,37,final,"Player 1","Fakih Karademir",78,LOSE
+264828,37,final,"Player 2","Pepijn Overbeeke",222,WIN
+264829,37,final,"Player 1","Marcel Vlastuin",218,WIN
+264829,37,final,"Player 2","Abdessamad El Kasimi",82,LOSE
+264830,37,final,"Player 1","Abdessamad El Kasimi",92,LOSE
+264830,37,final,"Player 2","Marcel Vlastuin",208,WIN
+264831,37,final,"Player 1","Alvaro Begue",218,WIN
+264831,37,final,"Player 2","Boris de Wilde",82,LOSE
+264832,37,final,"Player 1","Boris de Wilde",89,LOSE
+264832,37,final,"Player 2","Alvaro Begue",211,WIN
+264833,37,final,"Player 1","Mark ter Brugge",217,WIN
+264833,37,final,"Player 2","Jelmer Firet",83,LOSE
+264834,37,final,"Player 1","Jelmer Firet",65,LOSE
+264834,37,final,"Player 2","Mark ter Brugge",235,WIN
+264835,38,final,"Player 1","Tapani Utriainen",207,WIN
+264835,38,final,"Player 2","Jeremy Sawicki",93,LOSE
+264836,38,final,"Player 1","Jeremy Sawicki",99,LOSE
+264836,38,final,"Player 2","Tapani Utriainen",201,WIN
+264837,38,final,"Player 1","Niklas Een",90,LOSE
+264837,38,final,"Player 2","Alvaro Carrera",210,WIN
+264838,38,final,"Player 1","Alvaro Carrera",150,DRAW
+264838,38,final,"Player 2","Niklas Een",150,DRAW
+264839,38,final,"Player 1","Jelle van der Drift",150,DRAW
+264839,38,final,"Player 2","Matthijs Tijink",150,DRAW
+264840,38,final,"Player 1","Matthijs Tijink",218,WIN
+264840,38,final,"Player 2","Jelle van der Drift",82,LOSE
+264841,38,final,"Player 1","Thijs Marinussen",216,WIN
+264841,38,final,"Player 2","R4N4R4M4 ",84,LOSE
+264842,38,final,"Player 1","R4N4R4M4 ",65,LOSE
+264842,38,final,"Player 2","Thijs Marinussen",235,WIN
+264843,38,final,"Player 1","Maks Verver",236,WIN
+264843,38,final,"Player 2","Ludo Pulles",64,LOSE
+264844,38,final,"Player 1","Ludo Pulles",63,LOSE
+264844,38,final,"Player 2","Maks Verver",237,WIN
+264845,38,final,"Player 1","Leopold Tschanter",234,WIN
+264845,38,final,"Player 2","Nikita Kurgin",66,LOSE
+264846,38,final,"Player 1","Nikita Kurgin",46,LOSE
+264846,38,final,"Player 2","Leopold Tschanter",254,WIN
+264847,38,final,"Player 1","Louis Verhaard",217,WIN
+264847,38,final,"Player 2","Léo Jean",83,LOSE
+264848,38,final,"Player 1","Léo Jean",74,LOSE
+264848,38,final,"Player 2","Louis Verhaard",226,WIN
+264849,38,final,"Player 1","Jan Nunnink",238,WIN
+264849,38,final,"Player 2","Henk Koops",62,LOSE
+264850,38,final,"Player 1","Henk Koops",43,LOSE
+264850,38,final,"Player 2","Jan Nunnink",257,WIN
+264851,38,final,"Player 1","Vasilii Kuporosov",99,LOSE
+264851,38,final,"Player 2","Matthias Gelbmann",201,WIN
+264852,38,final,"Player 1","Matthias Gelbmann",98,LOSE
+264852,38,final,"Player 2","Vasilii Kuporosov",202,WIN
+264853,38,final,"Player 1","Rens van der Avoird",213,WIN
+264853,38,final,"Player 2","Frank Meert",87,LOSE
+264854,38,final,"Player 1","Frank Meert",95,LOSE
+264854,38,final,"Player 2","Rens van der Avoird",205,WIN
+264855,38,final,"Player 1","Tomek Czajka",221,WIN
+264855,38,final,"Player 2","Wouter van der Meer",79,LOSE
+264856,38,final,"Player 1","Wouter van der Meer",82,LOSE
+264856,38,final,"Player 2","Tomek Czajka",218,WIN
+264857,38,final,"Player 1","Marc Oldenhof",210,WIN
+264857,38,final,"Player 2","Ad van der Hoeven",90,LOSE
+264858,38,final,"Player 1","Ad van der Hoeven",150,DRAW
+264858,38,final,"Player 2","Marc Oldenhof",150,DRAW
+264859,38,final,"Player 1","Pardhav Maradani",212,WIN
+264859,38,final,"Player 2","Fakih Karademir",88,LOSE
+264860,38,final,"Player 1","Fakih Karademir",205,WIN
+264860,38,final,"Player 2","Pardhav Maradani",95,LOSE
+264861,38,final,"Player 1","Jorn Hoofwijk",202,WIN
+264861,38,final,"Player 2","Abdessamad El Kasimi",98,LOSE
+264862,38,final,"Player 1","Abdessamad El Kasimi",98,LOSE
+264862,38,final,"Player 2","Jorn Hoofwijk",202,WIN
+264863,38,final,"Player 1","Pepijn Overbeeke",213,WIN
+264863,38,final,"Player 2","Boris de Wilde",87,LOSE
+264864,38,final,"Player 1","Boris de Wilde",225,WIN
+264864,38,final,"Player 2","Pepijn Overbeeke",75,LOSE
+264865,38,final,"Player 1","Marcel Vlastuin",202,WIN
+264865,38,final,"Player 2","Jelmer Firet",98,LOSE
+264866,38,final,"Player 1","Jelmer Firet",86,LOSE
+264866,38,final,"Player 2","Marcel Vlastuin",214,WIN
+264867,38,final,"Player 1","Alvaro Begue",98,LOSE
+264867,38,final,"Player 2","Mark ter Brugge",202,WIN
+264868,38,final,"Player 1","Mark ter Brugge",150,DRAW
+264868,38,final,"Player 2","Alvaro Begue",150,DRAW
+264869,39,final,"Player 1","Tapani Utriainen",201,WIN
+264869,39,final,"Player 2","Alvaro Carrera",99,LOSE
+264870,39,final,"Player 1","Alvaro Carrera",204,WIN
+264870,39,final,"Player 2","Tapani Utriainen",96,LOSE
+264871,39,final,"Player 1","Jeremy Sawicki",89,LOSE
+264871,39,final,"Player 2","Matthijs Tijink",211,WIN
+264872,39,final,"Player 1","Matthijs Tijink",201,WIN
+264872,39,final,"Player 2","Jeremy Sawicki",99,LOSE
+264873,39,final,"Player 1","Niklas Een",215,WIN
+264873,39,final,"Player 2","R4N4R4M4 ",85,LOSE
+264874,39,final,"Player 1","R4N4R4M4 ",75,LOSE
+264874,39,final,"Player 2","Niklas Een",225,WIN
+264875,39,final,"Player 1","Jelle van der Drift",227,WIN
+264875,39,final,"Player 2","Ludo Pulles",73,LOSE
+264876,39,final,"Player 1","Ludo Pulles",68,LOSE
+264876,39,final,"Player 2","Jelle van der Drift",232,WIN
+264877,39,final,"Player 1","Thijs Marinussen",221,WIN
+264877,39,final,"Player 2","Nikita Kurgin",79,LOSE
+264878,39,final,"Player 1","Nikita Kurgin",92,LOSE
+264878,39,final,"Player 2","Thijs Marinussen",208,WIN
+264879,39,final,"Player 1","Maks Verver",235,WIN
+264879,39,final,"Player 2","Léo Jean",65,LOSE
+264880,39,final,"Player 1","Léo Jean",66,LOSE
+264880,39,final,"Player 2","Maks Verver",234,WIN
+264881,39,final,"Player 1","Leopold Tschanter",227,WIN
+264881,39,final,"Player 2","Henk Koops",73,LOSE
+264882,39,final,"Player 1","Henk Koops",67,LOSE
+264882,39,final,"Player 2","Leopold Tschanter",233,WIN
+264883,39,final,"Player 1","Louis Verhaard",212,WIN
+264883,39,final,"Player 2","Matthias Gelbmann",88,LOSE
+264884,39,final,"Player 1","Matthias Gelbmann",75,LOSE
+264884,39,final,"Player 2","Louis Verhaard",225,WIN
+264885,39,final,"Player 1","Jan Nunnink",214,WIN
+264885,39,final,"Player 2","Frank Meert",86,LOSE
+264886,39,final,"Player 1","Frank Meert",80,LOSE
+264886,39,final,"Player 2","Jan Nunnink",220,WIN
+264887,39,final,"Player 1","Vasilii Kuporosov",215,WIN
+264887,39,final,"Player 2","Wouter van der Meer",85,LOSE
+264888,39,final,"Player 1","Wouter van der Meer",70,LOSE
+264888,39,final,"Player 2","Vasilii Kuporosov",230,WIN
+264889,39,final,"Player 1","Rens van der Avoird",99,LOSE
+264889,39,final,"Player 2","Ad van der Hoeven",201,WIN
+264890,39,final,"Player 1","Ad van der Hoeven",95,LOSE
+264890,39,final,"Player 2","Rens van der Avoird",205,WIN
+264891,39,final,"Player 1","Tomek Czajka",202,WIN
+264891,39,final,"Player 2","Fakih Karademir",98,LOSE
+264892,39,final,"Player 1","Fakih Karademir",230,WIN
+264892,39,final,"Player 2","Tomek Czajka",70,LOSE
+264893,39,final,"Player 1","Marc Oldenhof",207,WIN
+264893,39,final,"Player 2","Abdessamad El Kasimi",93,LOSE
+264894,39,final,"Player 1","Abdessamad El Kasimi",88,LOSE
+264894,39,final,"Player 2","Marc Oldenhof",212,WIN
+264895,39,final,"Player 1","Pardhav Maradani",93,LOSE
+264895,39,final,"Player 2","Boris de Wilde",207,WIN
+264896,39,final,"Player 1","Boris de Wilde",150,DRAW
+264896,39,final,"Player 2","Pardhav Maradani",150,DRAW
+264897,39,final,"Player 1","Jorn Hoofwijk",97,LOSE
+264897,39,final,"Player 2","Jelmer Firet",203,WIN
+264898,39,final,"Player 1","Jelmer Firet",68,LOSE
+264898,39,final,"Player 2","Jorn Hoofwijk",232,WIN
+264899,39,final,"Player 1","Pepijn Overbeeke",73,LOSE
+264899,39,final,"Player 2","Mark ter Brugge",227,WIN
+264900,39,final,"Player 1","Mark ter Brugge",229,WIN
+264900,39,final,"Player 2","Pepijn Overbeeke",71,LOSE
+264901,39,final,"Player 1","Marcel Vlastuin",92,LOSE
+264901,39,final,"Player 2","Alvaro Begue",208,WIN
+264902,39,final,"Player 1","Alvaro Begue",206,WIN
+264902,39,final,"Player 2","Marcel Vlastuin",94,LOSE
+264903,40,final,"Player 1","Tapani Utriainen",150,DRAW
+264903,40,final,"Player 2","Matthijs Tijink",150,DRAW
+264904,40,final,"Player 1","Matthijs Tijink",95,LOSE
+264904,40,final,"Player 2","Tapani Utriainen",205,WIN
+264905,40,final,"Player 1","Alvaro Carrera",230,WIN
+264905,40,final,"Player 2","R4N4R4M4 ",70,LOSE
+264906,40,final,"Player 1","R4N4R4M4 ",76,LOSE
+264906,40,final,"Player 2","Alvaro Carrera",224,WIN
+264907,40,final,"Player 1","Jeremy Sawicki",225,WIN
+264907,40,final,"Player 2","Ludo Pulles",75,LOSE
+264908,40,final,"Player 1","Ludo Pulles",74,LOSE
+264908,40,final,"Player 2","Jeremy Sawicki",226,WIN
+264909,40,final,"Player 1","Niklas Een",219,WIN
+264909,40,final,"Player 2","Nikita Kurgin",81,LOSE
+264910,40,final,"Player 1","Nikita Kurgin",63,LOSE
+264910,40,final,"Player 2","Niklas Een",237,WIN
+264911,40,final,"Player 1","Jelle van der Drift",208,WIN
+264911,40,final,"Player 2","Léo Jean",92,LOSE
+264912,40,final,"Player 1","Léo Jean",92,LOSE
+264912,40,final,"Player 2","Jelle van der Drift",208,WIN
+264913,40,final,"Player 1","Thijs Marinussen",229,WIN
+264913,40,final,"Player 2","Henk Koops",71,LOSE
+264914,40,final,"Player 1","Henk Koops",87,LOSE
+264914,40,final,"Player 2","Thijs Marinussen",213,WIN
+264915,40,final,"Player 1","Maks Verver",216,WIN
+264915,40,final,"Player 2","Matthias Gelbmann",84,LOSE
+264916,40,final,"Player 1","Matthias Gelbmann",78,LOSE
+264916,40,final,"Player 2","Maks Verver",222,WIN
+264917,40,final,"Player 1","Leopold Tschanter",95,LOSE
+264917,40,final,"Player 2","Frank Meert",205,WIN
+264918,40,final,"Player 1","Frank Meert",91,LOSE
+264918,40,final,"Player 2","Leopold Tschanter",209,WIN
+264919,40,final,"Player 1","Louis Verhaard",229,WIN
+264919,40,final,"Player 2","Wouter van der Meer",71,LOSE
+264920,40,final,"Player 1","Wouter van der Meer",83,LOSE
+264920,40,final,"Player 2","Louis Verhaard",217,WIN
+264921,40,final,"Player 1","Jan Nunnink",94,LOSE
+264921,40,final,"Player 2","Ad van der Hoeven",206,WIN
+264922,40,final,"Player 1","Ad van der Hoeven",87,LOSE
+264922,40,final,"Player 2","Jan Nunnink",213,WIN
+264923,40,final,"Player 1","Vasilii Kuporosov",96,LOSE
+264923,40,final,"Player 2","Fakih Karademir",204,WIN
+264924,40,final,"Player 1","Fakih Karademir",99,LOSE
+264924,40,final,"Player 2","Vasilii Kuporosov",201,WIN
+264925,40,final,"Player 1","Rens van der Avoird",210,WIN
+264925,40,final,"Player 2","Abdessamad El Kasimi",90,LOSE
+264926,40,final,"Player 1","Abdessamad El Kasimi",85,LOSE
+264926,40,final,"Player 2","Rens van der Avoird",215,WIN
+264927,40,final,"Player 1","Tomek Czajka",208,WIN
+264927,40,final,"Player 2","Boris de Wilde",92,LOSE
+264928,40,final,"Player 1","Boris de Wilde",76,LOSE
+264928,40,final,"Player 2","Tomek Czajka",224,WIN
+264929,40,final,"Player 1","Marc Oldenhof",93,LOSE
+264929,40,final,"Player 2","Jelmer Firet",207,WIN
+264930,40,final,"Player 1","Jelmer Firet",90,LOSE
+264930,40,final,"Player 2","Marc Oldenhof",210,WIN
+264931,40,final,"Player 1","Pardhav Maradani",209,WIN
+264931,40,final,"Player 2","Mark ter Brugge",91,LOSE
+264932,40,final,"Player 1","Mark ter Brugge",85,LOSE
+264932,40,final,"Player 2","Pardhav Maradani",215,WIN
+264933,40,final,"Player 1","Jorn Hoofwijk",204,WIN
+264933,40,final,"Player 2","Alvaro Begue",96,LOSE
+264934,40,final,"Player 1","Alvaro Begue",78,LOSE
+264934,40,final,"Player 2","Jorn Hoofwijk",222,WIN
+264935,40,final,"Player 1","Pepijn Overbeeke",205,WIN
+264935,40,final,"Player 2","Marcel Vlastuin",95,LOSE
+264936,40,final,"Player 1","Marcel Vlastuin",99,LOSE
+264936,40,final,"Player 2","Pepijn Overbeeke",201,WIN
