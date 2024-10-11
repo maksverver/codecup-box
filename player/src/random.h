@@ -8,8 +8,9 @@
 #include <string_view>
 #include <vector>
 
-#if 1
+#if 0
 
+// Use a 32-bit RNG implementation for simplicity. (Less performant on 64-bit systems!)
 using rng_t = std::mt19937;
 
 #else
@@ -17,18 +18,15 @@ using rng_t = std::mt19937;
 // Select the RNG implementation based on whether we are running in 32-bit or
 // 64-bit mode. std::mt19937_64 may be up to twice as fast as std::mt19937 on
 // 64-bit architectures.
-//
-// This is currently disabled to keep things simple, since player performance
-// isn't very dependent on the RNG speed.
-namespace random::internal {
+namespace random_internal {
 
 template<int> struct RngSelector {};
 template<> struct RngSelector<32> { using rng_t = std::mt19937; };
 template<> struct RngSelector<64> { using rng_t = std::mt19937_64; };
 
-}  // namespace random::internal
+}  // namespace random_internal
 
-using rng_t = internal::RngSelector<std::numeric_limits<size_t>::digits>::rng_t;
+using rng_t = random_internal::RngSelector<std::numeric_limits<size_t>::digits>::rng_t;
 
 static_assert(sizeof(rng_t::result_type) == sizeof(size_t));
 
