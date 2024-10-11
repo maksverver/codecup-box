@@ -24,4 +24,8 @@ int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int
 // doesn't distinguish between fixed and non-fixed cells.
 void EvaluateFinalScore(const grid_t &grid, std::array<int, COLORS> &scores);
 
+// Evaluates the score for all colors.
+void EvaluateAllColorsX(const grid_t &grid, const grid_t &movecount, std::array<int, COLORS> &scores);
+int EvaluateTwoColorsX(const grid_t &grid, const grid_t &fmovecount, int my_color, int his_color);
+
 #endif // ndef ANALYSIS_H_DEFINED

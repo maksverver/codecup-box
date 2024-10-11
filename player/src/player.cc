@@ -2,8 +2,10 @@
 #include "options.h"
 #include "logging.h"
 #include "random.h"
+#include "fat-state.h"
 #include "state.h"
 
+#include <algorithm>
 #include <cassert>
 #include <chrono>
 #include <cstdlib>
@@ -24,8 +26,10 @@ const std::string player_name = "L7";
 DECLARE_OPTION(bool, arg_help, false, "help",
     "show usage information");
 
+/*
 DECLARE_OPTION(bool, arg_deep, false, "deep",
     "Search deeper (2 ply instead of default 1)");
+*/
 
 DECLARE_OPTION(std::string, arg_seed, "", "seed",
     "Random seed in hexadecimal format. If empty, pick randomly. "
@@ -116,6 +120,8 @@ Move ReadMove() {
   LogError() << "Could not parse move: " << s;
   exit(1);
 }
+
+/*
 
 int Evaluate(int my_color, const grid_t &grid) {
   std::array<int, COLORS> scores = {};
@@ -221,6 +227,90 @@ Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, 
   return RandomSample(best_placements, rng);
 }
 
+*/
+
+int EvaluateGreedy(int my_color, int his_color, const FatState &state) {
+  return EvaluateTwoColorsX(state.grid, state.movecount, my_color, his_color);
+}
+
+int EvaluateSecondPly(int my_color, int his_color, FatState &state) {
+  if (state.first_active == -1) {
+    // No more moves.
+    return 6 * 5 * EvaluateGreedy(my_color, his_color, state);
+  }
+
+  int total_score = 0;
+  for (int i = 0; i < 6; ++i) {
+    for (int j = 0; j < 6; ++j) {
+      if (i == j) continue;
+      // TODO: simply set other cells to COLORS+1? Then exclude this when
+      // calculating scores for a speedup
+      int next_color = 1;
+      while (next_color == my_color || next_color == his_color) ++next_color;
+      tile_t tile;
+      for (int k = 0; k < 6; ++k) {
+        if (k == i) {
+          tile[k] = my_color;
+        } else if (k == j) {
+          tile[k] = his_color;
+        } else {
+          tile[k] = next_color++;
+          while (next_color == my_color || next_color == his_color) ++next_color;
+        }
+      }
+      assert(next_color == 7);
+
+      int best_score = std::numeric_limits<int>::max();
+      for (int i = state.first_active; i != -1; i = state.all_placements[i].next) {
+        old_tile_t old_tile;
+        state.Place(tile, i, old_tile);
+        best_score = std::min(best_score, EvaluateGreedy(my_color, his_color, state));
+        state.Unplace(old_tile, i);
+      }
+      total_score += best_score;
+    }
+  }
+  return total_score;
+}
+
+Placement CalculateBestPlacement2(int my_color, FatState &state, const tile_t &tile, rng_t &rng) {
+  assert(state.first_active != -1);
+  std::vector<Placement> best_placements;
+  int max_score = std::numeric_limits<int>::min();
+  int total_moves = 0;
+  for (int i = state.first_active; i != -1; i = state.all_placements[i].next) {
+LogInfo() << "i=" << i;
+    old_tile_t old_tile;
+    state.Place(tile, i, old_tile);
+    int worst_score = std::numeric_limits<int>::max();
+    //int total_score = 0;
+    for (int his_color = 1; his_color <= 6; ++his_color) {
+      if (his_color == my_color) continue;
+      worst_score = std::min(worst_score, EvaluateSecondPly(my_color, his_color, state));
+      //worst_score = std::min(worst_score, EvaluateGreedy(my_color, his_color, state));
+      //total_score += EvaluateSecondPly(my_color, his_color, copy);
+    }
+    if (worst_score > max_score) {
+      best_placements.clear();
+      max_score = worst_score;
+    }
+    if (worst_score == max_score) {
+      best_placements.push_back(state.all_placements[i].place);
+    }
+    state.Unplace(old_tile, i);
+    ++total_moves;
+  }
+  LogMoveCount(total_moves, best_placements.size(), max_score);
+  return RandomSample(best_placements, rng);
+}
+
+void Execute(FatState &state, const Move &move) {
+  old_tile_t dummy;
+  int i = state.FindActivePlaceIndex(move.placement);
+  assert(i >= 0);
+  state.Place(move.tile, i, dummy);
+}
+
 void PlayGame(rng_t &rng) {
   Timer timer(false);
 
@@ -229,8 +319,11 @@ void PlayGame(rng_t &rng) {
 
   // Second line of input contains the first tile placed in the center.
   Move start_move = ReadMove();
-  grid_t grid = {};
+  grid_t grid = {};  // TODO: remove this in favor of using FatState?
   start_move.Execute(grid);
+
+  FatState fat_state = {};
+  Execute(fat_state, start_move);
 
   // Third line of input contains either "Start" if I play first, or else the
   // first move played by the opponent.
@@ -245,10 +338,11 @@ void PlayGame(rng_t &rng) {
       LogPause(pause_duration, timer.Elapsed(false));
 
       // Calculate my move.
-      Placement placement = GreedyPlacement(my_secret_color, grid, tile, rng);
+      Placement placement = CalculateBestPlacement2(my_secret_color, fat_state, tile, rng);
       Move move = {tile, placement};
       assert(move.IsValid(grid));
       move.Execute(grid);
+      Execute(fat_state, move);
 
       // Write output.
       std::string output = FormatPlacement(placement);
@@ -270,6 +364,7 @@ void PlayGame(rng_t &rng) {
         exit(1);
       } else {
         move->Execute(grid);
+        Execute(fat_state, *move);
       }
     }
   }

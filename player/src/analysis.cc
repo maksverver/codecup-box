@@ -184,10 +184,143 @@ int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int
           }
         }
       }
-     }
-   }
-   return res;
- }
+    }
+  }
+  return res;
+}
+
+static int EvaluateRectangleX(const grid_t &grid, const grid_t &movecount, color_t color, int r1, int c1, int r2, int c2) {
+  //  a  b
+  //  c  d
+  bool a = grid[r1][c1] == color;
+  bool b = grid[r1][c2] == color;
+  bool c = grid[r2][c1] == color;
+  bool d = grid[r2][c2] == color;
+  bool fa = !movecount[r1][c1];
+  bool fb = !movecount[r1][c2];
+  bool fc = !movecount[r2][c1];
+  bool fd = !movecount[r2][c2];
+  int size = r2 - r1;
+  int num_fixed = fa + fb + fc + fd;
+  int score = 0;
+  if (a && b && c && d) {
+    // Square!
+    score += 1000 + 100*num_fixed + 100*size;
+  } else if (
+        (a && b && c && !fd) ||
+        (a && b && d && !fc) ||
+        (a && c && d && !fb) ||
+        (b && c && d && !fa)) {
+    // One cell short of a square.
+    score += 100 + 10*num_fixed + 10*size;
+  } else if (
+      (a && b && !fc && !fd) ||
+      (a && c && !fb && !fd) ||
+      (a && d && !fb && !fc) ||
+      (b && c && !fa && !fd) ||
+      (b && d && !fa && !fc) ||
+      (c && d && !fa && !fb)) {
+    // Two points aligned horizontally, vertically, or diagonally.
+    // Maybe: assign a different score for the diagonal version?
+    score += 10 + 1*num_fixed + 1*size;
+  }
+  return score;
+}
+
+void EvaluateAllColorsX(const grid_t &grid, const grid_t &movecount, std::array<int, COLORS> &scores) {
+  scores = {};
+  for (int color = 1; color <= COLORS; ++color) {
+    int score = 0;
+    for (int r1 = 0; r1 < HEIGHT; ++r1) {
+      for (int c1 = 0; c1 < WIDTH; ++c1) {
+        if (grid[r1][c1] == color) {
+          // Always assign a point to each cell.
+          score += 1;
+        }
+        for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
+          int s = EvaluateRectangleX(grid, movecount, color, r1, c1, r2, c2);
+          score += s;
+        }
+      }
+    }
+    scores[color - 1] += score;
+  }
+}
+
+int EvaluateTwoColorsX(const grid_t &grid, const grid_t &movecount, int my_color, int his_color) {
+  int res = 0;
+  for (int r = 0; r < HEIGHT; ++r) {
+    for (int c = 0; c < WIDTH; ++c) {
+      if (grid[r][c] == my_color) {
+        ++res;
+      } else if (grid[r][c] == his_color) {
+        --res;
+      }
+    }
+  }
+  for (int r1 = 0; r1 < HEIGHT; ++r1) {
+    for (int c1 = 0; c1 < WIDTH; ++c1) {
+      if (grid[r1][c1] == my_color) {
+        //  xx  x.   x.
+        //  ..  x.   .x
+        //
+        //  xx  x.   xx
+        //  x.  xx   .x
+        //
+        for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
+          res += EvaluateRectangleX(grid, movecount, my_color, r1, c1, r2, c2);
+        }
+        //  .x ..
+        //  x. xx
+        //
+        //  .x
+        //  xx
+        //
+        for (int r2 = r1 - 1, c2 = c1 + 1; r2 >= 0 && c2 < WIDTH; --r2, ++c2) {
+          if (grid[r2][c1] != my_color) {
+            res += EvaluateRectangleX(grid, movecount, my_color, r2, c1, r1, c2);
+          }
+        }
+        //  .x
+        //  .x
+        for (int r2 = r1 - 1, c2 = c1 - 1; r2 >= 0 && c2 >=0; --r2, --c2) {
+          if (grid[r1][c2] != my_color && grid[r2][c2] != my_color) {
+            res += EvaluateRectangleX(grid, movecount, my_color, r2, c2, r1, c1);
+          }
+        }
+      } else if (grid[r1][c1] == his_color) {
+        //  xx  x.   x.
+        //  ..  x.   .x
+        //
+        //  xx  x.   xx
+        //  x.  xx   .x
+        //
+        for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
+          res -= EvaluateRectangleX(grid, movecount, his_color, r1, c1, r2, c2);
+        }
+        //  .x  ..
+        //  x.  xx
+        //
+        //  .x
+        //  xx
+        //
+        for (int r2 = r1 - 1, c2 = c1 + 1; r2 >= 0 && c2 < WIDTH; --r2, ++c2) {
+          if (grid[r2][c1] != his_color) {
+            res -= EvaluateRectangleX(grid, movecount, his_color, r2, c1, r1, c2);
+          }
+        }
+        //  .x
+        //  .x
+        for (int r2 = r1 - 1, c2 = c1 - 1; r2 >= 0 && c2 >=0; --r2, --c2) {
+          if (grid[r1][c2] != his_color && grid[r2][c2] != his_color) {
+            res -= EvaluateRectangleX(grid, movecount, his_color, r2, c2, r1, c1);
+          }
+        }
+      }
+    }
+  }
+  return res;
+}
 
 void EvaluateFinalScore(const grid_t &grid, std::array<int, COLORS> &scores) {
   scores = {};

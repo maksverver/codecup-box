@@ -4,9 +4,9 @@
 
 BINARIES=$(BIN)analyzer $(BIN)player
 
-COMMON_HDRS=$(SRC)analysis.h $(SRC)logging.h $(SRC)options.h $(SRC)random.h $(SRC)state.h
-COMMON_SRCS=$(SRC)analysis.cc $(SRC)options.h $(SRC)random.cc $(SRC)state.cc
-COMMON_OBJS=$(OBJ)analysis.o $(OBJ)options.o $(OBJ)random.o $(OBJ)state.o
+COMMON_HDRS=$(SRC)analysis.h $(SRC)logging.h $(SRC)fat-state.h $(SRC)options.h $(SRC)random.h $(SRC)state.h
+COMMON_SRCS=$(SRC)analysis.cc $(SRC)fat-state.cc $(SRC)options.h $(SRC)random.cc $(SRC)state.cc
+COMMON_OBJS=$(OBJ)analysis.o $(OBJ)fat-state.o $(OBJ)options.o $(OBJ)random.o $(OBJ)state.o
 ANALYZER_OBJS=$(OBJ)analyzer.o $(COMMON_OBJS)
 PLAYER_OBJS=$(OBJ)player.o $(COMMON_OBJS)
 
@@ -15,6 +15,7 @@ COMBINED_SRCS=\
 	$(SRC)options.h $(SRC)options.cc \
 	$(SRC)random.h $(SRC)random.cc \
 	$(SRC)state.h $(SRC)state.cc \
+	$(SRC)fat-state.h $(SRC)fat-state.cc \
 	$(SRC)logging.h \
   $(SRC)analysis.h $(SRC)analysis.cc \
 	$(SRC)player.cc
@@ -25,6 +26,9 @@ $(OBJ)analysis.o: $(SRC)analysis.cc $(SRC)analysis.h $(SRC)state.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ)options.o: $(SRC)options.cc $(SRC)options.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJ)fat-state.o: $(SRC)fat-state.cc $(SRC)fat-state.h $(SRC)state.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ)random.o: $(SRC)random.cc $(SRC)random.h
