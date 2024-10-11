@@ -1,3 +1,4 @@
+#include "analysis.h"
 #include "options.h"
 #include "logging.h"
 #include "random.h"
@@ -77,64 +78,6 @@ private:
   clock_t::duration elapsed[2] = {clock_t::duration{0}, clock_t::duration{0}};
 };
 
-std::optional<color_t> ParseColor(char ch) {
-  int color = ch - '0';
-  if (color < 1 || color > 6) return std::nullopt;
-  return color;
-}
-
-std::optional<coord_t> ParseRow(char ch) {
-  int row = ch - 'A';
-  if (row < 0 || row >= HEIGHT) return std::nullopt;
-  return row;
-}
-
-std::optional<coord_t> ParseCol(char ch) {
-  int col = ch - 'a';
-  if (col < 0 || col >= WIDTH) return std::nullopt;
-  return col;
-}
-
-std::string FormatPlacement(Placement placement) {
-  std::string s(3, '\0');
-  s[0] = 'A' + placement.row;
-  s[1] = 'a' + placement.col;
-  s[2] = IsHorizontal(placement.ori) ? 'h' : 'v';
-  return s;
-}
-
-std::optional<Orientation> ParseOrientation(char ch) {
-  switch (ch) {
-    case 'h': return Orientation::HORIZONTAL;
-    case 'v': return Orientation::VERTICAL;
-    default: return std::nullopt;
-  }
-}
-
-std::optional<tile_t> ParseTile(std::string_view s) {
-  if (s.size() != COLORS) return std::nullopt;
-  tile_t tile = {};
-  for (int i = 0; i < COLORS; ++i) {
-    std::optional<color_t> color = ParseColor(s[i]);
-    if (!color) return std::nullopt;
-    if (std::find(&tile[0], &tile[i], *color) != &tile[i]) return std::nullopt;
-    tile[i] = *color;
-  }
-  return tile;
-}
-
-std::optional<Move> ParseMove(std::string_view s) {
-  if (s.size() != COLORS + 3) return std::nullopt;
-  std::optional<coord_t> row = ParseRow(s[0]);
-  std::optional<coord_t> col = ParseCol(s[1]);
-  std::optional<tile_t> tile = ParseTile(s.substr(2, COLORS));
-  std::optional<Orientation> ori = ParseOrientation(s.back());
-  if (!row || !col || !tile || !ori) return std::nullopt;
-  Placement placement = {*row, *col, *ori};
-  if (!placement.IsInBounds()) return {};
-  return Move{*tile, placement};
-}
-
 std::string ReadInputLine() {
   std::string s;
   if (!std::getline(std::cin, s)) {
@@ -169,72 +112,6 @@ Move ReadMove() {
   if (std::optional<Move> move = ParseMove(s)) return *move;
   LogError() << "Could not parse move: " << s;
   exit(1);
-}
-
-std::vector<Placement> GeneratePlacements(const grid_t &grid) {
-  std::vector<Placement> placements;
-  for (coord_t row = 0; row < HEIGHT; ++row) {
-    for (coord_t col = 0; col < WIDTH; ++col) {
-      for (Orientation ori : ORIENTATIONS) {
-        Placement placement = {row, col, ori};
-        if (placement.IsValid(grid)) {
-          placements.push_back(placement);
-        }
-      }
-    }
-  }
-  return placements;
-}
-
-void EvaluateAllColors(const grid_t &grid, const grid_t &fixed, std::array<int, COLORS> &scores) {
-  scores = {};
-  for (int color = 1; color <= COLORS; ++color) {
-    int score = 0;
-    for (int r1 = 0; r1 < HEIGHT; ++r1) {
-      for (int c1 = 0; c1 < WIDTH; ++c1) {
-        //  a  b
-        //  c  d
-        bool a = grid[r1][c1] == color;
-        bool fa = fixed[r1][c1];
-        if (a) {
-          // Always assign a point to each cell.
-          score += 1;
-        }
-        for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
-          int size = r2 - r1;
-          bool b = grid[r1][c2] == color;
-          bool c = grid[r2][c1] == color;
-          bool d = grid[r2][c2] == color;
-          bool fb = fixed[r1][c2];
-          bool fc = fixed[r2][c1];
-          bool fd = fixed[r2][c2];
-          int num_fixed = fa + fb + fc + fd;
-          if (a && b && c && d) {
-            // Square!
-            score += 1000 + 100*num_fixed + 100*size;
-          } else if (
-                (a && b && c && !fd) ||
-                (a && b && d && !fc) ||
-                (a && c && d && !fb) ||
-                (b && c && d && !fa)) {
-            // One cell short of a square.
-            score += 100 + 10*num_fixed + 10*size;
-          } else if (
-              (a && b && !fc && !fd) ||
-              (a && c && !fb && !fd) ||
-              (a && d && !fb && !fc) ||
-              (b && c && !fa && !fd) ||
-              (b && d && !fa && !fc) ||
-              (c && d && !fa && !fb)) {
-            // Two points aligned horizontally, vertically, or diagonally.
-            // Maybe: assign a different score for the diagonal version?
-            score += 10 + 1*num_fixed + 1*size;
-          }
-        }
-      }
-    }
-    scores[color - 1] += score;
-  }
 }
 
 Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, rng_t &rng) {

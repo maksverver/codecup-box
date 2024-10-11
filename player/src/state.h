@@ -98,6 +98,23 @@ struct Move {
   void Execute(grid_t &grid) { return ExecuteMove(grid, tile, placement); }
 };
 
-void DebugDumpGrid(grid_t grid);
+// I/O support
+
+void DebugDumpGrid(grid_t grid, std::ostream &os = std::clog);
+
+std::optional<color_t> ParseColor(char ch);
+std::optional<coord_t> ParseRow(char ch);
+std::optional<coord_t> ParseCol(char ch);
+std::optional<Orientation> ParseOrientation(char ch);
+std::optional<tile_t> ParseTile(std::string_view s);
+std::optional<Move> ParseMove(std::string_view s);
+
+std::string FormatPlacement(Placement placement);
+std::string FormatTile(tile_t tile);
+std::string FormatMove(Move move);
+
+std::ostream &operator<<(std::ostream &os, Placement placement);
+std::ostream &operator<<(std::ostream &os, tile_t tile);
+std::ostream &operator<<(std::ostream &os, Move move);
 
 #endif // ndef STATE_H_INCLUDED

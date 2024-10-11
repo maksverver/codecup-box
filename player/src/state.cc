@@ -77,46 +77,6 @@ bool IsGameOver(const grid_t &grid) {
   return true;
 }
 
-grid_t CalcFixed(const grid_t &grid) {
-  grid_t fixed;
-  for (int r = 0; r < HEIGHT; ++r) {
-    for (int c = 0; c < WIDTH; ++c) {
-      fixed[r][c] = 1;
-    }
-  }
-
-  // TODO: speed this up?
-  for (int r = 0; r <= HEIGHT - 2; ++r) {
-    for (int c = 0; c <= WIDTH - COLORS; ++c) {
-      int overlap = 0;
-      for (int i = 0; i < 6; ++i) {
-        overlap += grid[r][c + i] != 0;
-        overlap += grid[r + 1][c + i] != 0;
-      }
-      if (overlap <= 4) {
-        for (int i = 0; i < 6; ++i) {
-          fixed[r][c + i] = fixed[r + 1][c + i] = 0;
-        }
-      }
-    }
-  }
-  for (int r = 0; r <= HEIGHT - COLORS; ++r) {
-    for (int c = 0; c <= WIDTH - 2; ++c) {
-      int overlap = 0;
-      for (int i = 0; i < 6; ++i) {
-        overlap += grid[r + i][c] != 0;
-        overlap += grid[r + i][c + 1] != 0;
-      }
-      if (overlap <= 4) {
-        for (int i = 0; i < 6; ++i) {
-          fixed[r + i][c] = fixed[r + i][c + 1] = 0;
-        }
-      }
-    }
-  }
-  return fixed;
-}
-
 void ExecuteMove(grid_t &grid, const tile_t &tile, const Placement &placement) {
   auto [row, col, ori] = placement;
   if (IsHorizontal(ori)) {
@@ -130,12 +90,107 @@ void ExecuteMove(grid_t &grid, const tile_t &tile, const Placement &placement) {
   }
 }
 
-void DebugDumpGrid(grid_t grid) {
+std::optional<color_t> ParseColor(char ch) {
+  int color = ch - '0';
+  if (color < 1 || color > 6) return std::nullopt;
+  return color;
+}
+
+std::optional<coord_t> ParseRow(char ch) {
+  int row = ch - 'A';
+  if (row < 0 || row >= HEIGHT) return std::nullopt;
+  return row;
+}
+
+std::optional<coord_t> ParseCol(char ch) {
+  int col = ch - 'a';
+  if (col < 0 || col >= WIDTH) return std::nullopt;
+  return col;
+}
+
+std::optional<Orientation> ParseOrientation(char ch) {
+  switch (ch) {
+    case 'h': return Orientation::HORIZONTAL;
+    case 'v': return Orientation::VERTICAL;
+    default: return std::nullopt;
+  }
+}
+
+std::optional<tile_t> ParseTile(std::string_view s) {
+  if (s.size() != COLORS) return std::nullopt;
+  tile_t tile = {};
+  for (int i = 0; i < COLORS; ++i) {
+    std::optional<color_t> color = ParseColor(s[i]);
+    if (!color) return std::nullopt;
+    if (std::find(&tile[0], &tile[i], *color) != &tile[i]) return std::nullopt;
+    tile[i] = *color;
+  }
+  return tile;
+}
+
+std::optional<Move> ParseMove(std::string_view s) {
+  if (s.size() != COLORS + 3) return std::nullopt;
+  std::optional<coord_t> row = ParseRow(s[0]);
+  std::optional<coord_t> col = ParseCol(s[1]);
+  std::optional<tile_t> tile = ParseTile(s.substr(2, COLORS));
+  std::optional<Orientation> ori = ParseOrientation(s.back());
+  if (!row || !col || !tile || !ori) return std::nullopt;
+  Placement placement = {*row, *col, *ori};
+  if (!placement.IsInBounds()) return {};
+  return Move{*tile, placement};
+}
+
+std::string FormatPlacement(Placement placement) {
+  std::string s(3, '\0');
+  s[0] = 'A' + placement.row;
+  s[1] = 'a' + placement.col;
+  s[2] = IsHorizontal(placement.ori) ? 'h' : 'v';
+  return s;
+}
+
+std::string FormatTile(tile_t tile) {
+  std::string s(tile.size(), '\0');
+  for (size_t i = 0; i < tile.size(); ++i) s[i] = '0' + tile[i];
+  return s;
+}
+
+std::string FormatMove(Move move) {
+  std::string s(COLORS + 3, '\0');
+  s[0] = 'A' + move.placement.row;
+  s[1] = 'a' + move.placement.col;
+  for (int i = 0; i < COLORS; ++i) s[i + 2]  = '0' + move.tile[i];
+  s[COLORS + 2] = IsHorizontal(move.placement.ori) ? 'h' : 'v';
+  return s;
+}
+
+std::ostream &operator<<(std::ostream &os, Placement placement) {
+  return os
+      << static_cast<char>('A' + placement.row)
+      << static_cast<char>('a' + placement.col)
+      << (IsHorizontal(placement.ori) ? 'h' : 'v');
+}
+
+std::ostream &operator<<(std::ostream &os, tile_t tile) {
+  for (size_t i = 0; i < tile.size(); ++i) {
+    if (!(os << static_cast<char>('0' + tile[i]))) break;
+  }
+  return os;
+}
+
+std::ostream &operator<<(std::ostream &os, Move move) {
+  return os
+      << static_cast<char>('A' + move.placement.row)
+      << static_cast<char>('a' + move.placement.col)
+      << move.tile
+      << (IsHorizontal(move.placement.ori) ? 'h' : 'v');
+}
+
+void DebugDumpGrid(grid_t grid, std::ostream &os) {
   for (int r = 0; r < HEIGHT; ++r) {
     for (int c = 0; c < WIDTH; ++c) {
-      std::clog << (grid[r][c] ? static_cast<char>('0' + grid[r][c]) : '.');
+      os << (grid[r][c] ? static_cast<char>('0' + grid[r][c]) : '.');
     }
-    std::clog << '\n';
+    os << '\n';
   }
-  std::clog << std::endl;
+  os << std::endl;
 }
