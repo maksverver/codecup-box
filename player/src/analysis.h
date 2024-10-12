@@ -11,8 +11,12 @@ std::vector<Placement> GeneratePlacements(const grid_t &grid);
 // a future move, or 1 if they are fixed, because no valid move overlaps.
 grid_t CalcFixed(const grid_t &grid);
 
-// Evaluates the score for all cores.
+// Evaluates the score for all colors.
 void EvaluateAllColors(const grid_t &grid, const grid_t &fixed, std::array<int, COLORS> &scores);
+
+// Evaluates the score for two colors, and returns the difference of my score
+// minus his score.
+int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int his_color);
 
 // Evaluates the points awared for squares only. This corresponds with the final
 // score of the game, but it's not very useful for an intermediate evaluation

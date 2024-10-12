@@ -47,11 +47,21 @@ int main(int argc, char *argv[]) {
     std::array<int, COLORS> scores = {};
     EvaluateAllColors(grid, fixed, scores);
     std::cerr << scores << '\n';
+
+    for (int i = 1; i < COLORS; ++i) {
+      for (int j = i + 1; j < COLORS; ++j) {
+        std::cerr << i << ' ' << j << ' ' << EvaluateTwoColors(grid, fixed, i, j) << ' ' << scores[i - 1] - scores[j - 1] << '\n';
+        assert(EvaluateTwoColors(grid, fixed, i, j) == scores[i - 1] - scores[j - 1]);
+      }
+    }
   }
 
   if (!GeneratePlacements(grid).empty()) {
     std::cerr << "Game is not over!\n";
   }
+
+  std::cerr << '\n';
+  DebugDumpGrid(grid, std::cerr);
 
   std::cerr << "\nFinal scores:\n";
   std::array<int, COLORS> scores = {};

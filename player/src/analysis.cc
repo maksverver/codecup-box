@@ -116,6 +116,81 @@ void EvaluateAllColors(const grid_t &grid, const grid_t &fixed, std::array<int, 
   }
 }
 
+int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int his_color) {
+  int res = 0;
+  for (int r = 0; r < HEIGHT; ++r) {
+    for (int c = 0; c < WIDTH; ++c) {
+      if (grid[r][c] == my_color) {
+        ++res;
+      } else if (grid[r][c] == his_color) {
+        --res;
+      }
+    }
+  }
+  for (int r1 = 0; r1 < HEIGHT; ++r1) {
+    for (int c1 = 0; c1 < WIDTH; ++c1) {
+      if (grid[r1][c1] == my_color) {
+        //  xx  x.   x.
+        //  ..  x.   .x
+        //
+        //  xx  x.   xx
+        //  x.  xx   .x
+        //
+        for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
+          res += EvaluateRectangle(grid, fixed, my_color, r1, c1, r2, c2);
+        }
+        //  ..   .x   .x
+        //  xx   .x   x.
+        //
+        //  .x
+        //  xx
+        //
+        for (int r2 = r1 - 1, c2 = c1 + 1; r2 >= 0 && c2 < WIDTH; --r2, ++c2) {
+          if (grid[r2][c1] != my_color) {
+            res += EvaluateRectangle(grid, fixed, my_color, r2, c1, r1, c2);
+          }
+        }
+        //  ..   .x
+        //  xx   .x
+        for (int r2 = r1 - 1, c2 = c1 - 1; r2 >= 0 && c2 >=0; --r2, --c2) {
+          if (grid[r2][c2] != my_color && ((grid[r1][c2] == my_color) ^ (grid[r2][c1] == my_color))) {
+            res += EvaluateRectangle(grid, fixed, my_color, r2, c2, r1, c1);
+          }
+        }
+      } else if (grid[r1][c1] == his_color) {
+        //  xx  x.   x.
+        //  ..  x.   .x
+        //
+        //  xx  x.   xx
+        //  x.  xx   .x
+        //
+        for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
+          res -= EvaluateRectangle(grid, fixed, his_color, r1, c1, r2, c2);
+        }
+        //  ..   .x   .x
+        //  xx   .x   x.
+        //
+        //  .x
+        //  xx
+        //
+        for (int r2 = r1 - 1, c2 = c1 + 1; r2 >= 0 && c2 < WIDTH; --r2, ++c2) {
+          if (grid[r2][c1] != his_color) {
+            res -= EvaluateRectangle(grid, fixed, his_color, r2, c1, r1, c2);
+          }
+        }
+        //  ..   .x
+        //  xx   .x
+        for (int r2 = r1 - 1, c2 = c1 - 1; r2 >= 0 && c2 >=0; --r2, --c2) {
+          if (grid[r2][c2] != his_color && ((grid[r1][c2] == his_color) ^ (grid[r2][c1] == his_color))) {
+            res -= EvaluateRectangle(grid, fixed, his_color, r2, c2, r1, c1);
+          }
+        }
+      }
+     }
+   }
+   return res;
+ }
+
 void EvaluateFinalScore(const grid_t &grid, std::array<int, COLORS> &scores) {
   scores = {};
   for (int r1 = 0; r1 < HEIGHT; ++r1) {
