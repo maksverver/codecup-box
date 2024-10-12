@@ -24,6 +24,9 @@ const std::string player_name = "L7";
 DECLARE_OPTION(bool, arg_help, false, "help",
     "show usage information");
 
+DECLARE_OPTION(bool, arg_deep, false, "deep",
+    "Search deeper (2 ply instead of default 1)");
+
 DECLARE_OPTION(std::string, arg_seed, "", "seed",
     "Random seed in hexadecimal format. If empty, pick randomly. "
     "The chosen seed will be logged to stderr for reproducibility.");
@@ -114,6 +117,81 @@ Move ReadMove() {
   exit(1);
 }
 
+int Evaluate(int my_color, const grid_t &grid) {
+  std::array<int, COLORS> scores = {};
+  grid_t fixed = CalcFixed(grid);
+  EvaluateAllColors(grid, fixed, scores);
+  int my_score = scores[my_color - 1];
+  int max_other_score = 0;
+  for (int c = 1; c <= COLORS; ++c) {
+    if (c != my_color && scores[c - 1] > max_other_score) {
+      max_other_score = scores[c - 1];
+    }
+  }
+  return my_score - max_other_score;
+}
+
+int Evaluate(int my_color, int his_color, const grid_t &grid) {
+  std::array<int, COLORS> scores = {};
+  grid_t fixed = CalcFixed(grid);
+  EvaluateAllColors(grid, fixed, scores);
+  // Sanity check. Delete this to make it slightly faster.
+  assert(scores[my_color - 1] - scores[his_color - 1] == EvaluateTwoColors(grid, fixed, my_color, his_color));
+  return scores[my_color - 1] - scores[his_color - 1];
+}
+
+int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
+  std::vector<Placement> all_placements = GeneratePlacements(grid);
+  if (all_placements.empty()) {
+    // No more moves.
+    grid_t fixed;
+    for (int r = 0; r < HEIGHT; ++r) {
+      for (int c = 0; c < WIDTH; ++c) {
+        fixed[r][c] = 1;
+      }
+    }
+    return 6 * 5 * EvaluateTwoColors(grid, fixed, my_color, his_color);
+  }
+
+  int total_score = 0;
+  for (int i = 0; i < 6; ++i) {
+    for (int j = 0; j < 6; ++j) {
+      if (i == j) continue;
+      int next_color = 1;
+      while (next_color == my_color || next_color == his_color) ++next_color;
+      tile_t tile;
+      for (int k = 0; k < 6; ++k) {
+        if (k == i) {
+          tile[k] = my_color;
+        } else if (k == j) {
+          tile[k] = his_color;
+        } else {
+          tile[k] = next_color++;
+          while (next_color == my_color || next_color == his_color) ++next_color;
+        }
+      }
+      assert(next_color == 7);
+
+      int best_score = std::numeric_limits<int>::max();
+      for (Placement placement : all_placements) {
+        grid_t copy = grid;
+        ExecuteMove(copy, tile, placement);
+        int score;
+        if (false) {
+          // Slow version.
+          score = Evaluate(my_color, his_color, copy);
+        } else {
+          grid_t fixed = CalcFixed(copy);
+          score = EvaluateTwoColors(copy, fixed, my_color, his_color);
+        }
+        best_score = std::min(best_score, score);
+      }
+      total_score += best_score;
+    }
+  }
+  return total_score;
+}
+
 Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, rng_t &rng) {
   int best_score = std::numeric_limits<int>::min();
   std::vector<Placement> all_placements = GeneratePlacements(grid);
@@ -121,19 +199,15 @@ Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, 
   for (Placement placement : all_placements) {
     grid_t copy = grid;
     ExecuteMove(copy, tile, placement);
-    std::array<int, COLORS> scores = {};
-    grid_t fixed = CalcFixed(copy);
-    EvaluateAllColors(copy, fixed, scores);
-
-    int my_score = scores[my_color - 1];
-    int max_other_score = 0;
-    for (int c = 1; c <= COLORS; ++c) {
-      if (c != my_color && scores[c - 1] > max_other_score) {
-        max_other_score = scores[c - 1];
+    int score = std::numeric_limits<int>::max();
+    if (arg_deep) {
+      for (int his_color = 1; his_color <= 6; ++his_color) {
+        if (his_color == my_color) continue;
+        score = std::min(score, EvaluateSecondPly(my_color, his_color, copy));
       }
+    } else {
+      score = Evaluate(my_color, copy);
     }
-
-    int score = my_score - max_other_score;
 
     if (score > best_score) {
       best_placements.clear();
