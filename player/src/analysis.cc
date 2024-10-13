@@ -85,11 +85,9 @@ static int EvaluateRectangle(const grid_t &grid, const grid_t &fixed, color_t co
       (a && b && !fc && !fd) ||
       (a && c && !fb && !fd) ||
       (a && d && !fb && !fc) ||
-      (b && c && !fa && !fd)
-    // These are excluded to avoid double-processing as edges a-b and a-c
-    // (b && d && !fa && !fc) ||
-    // (c && d && !fa && !fb)
-  ) {
+      (b && c && !fa && !fd) ||
+      (b && d && !fa && !fc) ||
+      (c && d && !fa && !fb)) {
     // Two points aligned horizontally, vertically, or diagonally.
     // Maybe: assign a different score for the diagonal version?
     score += 10 + 1*num_fixed + 1*size;
@@ -139,8 +137,8 @@ int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int
         for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
           res += EvaluateRectangle(grid, fixed, my_color, r1, c1, r2, c2);
         }
-        //  ..   .x   .x
-        //  xx   .x   x.
+        //  .x ..
+        //  x. xx
         //
         //  .x
         //  xx
@@ -150,10 +148,10 @@ int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int
             res += EvaluateRectangle(grid, fixed, my_color, r2, c1, r1, c2);
           }
         }
-        //  ..   .x
-        //  xx   .x
+        //  .x
+        //  .x
         for (int r2 = r1 - 1, c2 = c1 - 1; r2 >= 0 && c2 >=0; --r2, --c2) {
-          if (grid[r2][c2] != my_color && ((grid[r1][c2] == my_color) ^ (grid[r2][c1] == my_color))) {
+          if (grid[r1][c2] != my_color && grid[r2][c2] != my_color) {
             res += EvaluateRectangle(grid, fixed, my_color, r2, c2, r1, c1);
           }
         }
@@ -167,8 +165,8 @@ int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int
         for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
           res -= EvaluateRectangle(grid, fixed, his_color, r1, c1, r2, c2);
         }
-        //  ..   .x   .x
-        //  xx   .x   x.
+        //  .x  ..
+        //  x.  xx
         //
         //  .x
         //  xx
@@ -178,10 +176,10 @@ int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int
             res -= EvaluateRectangle(grid, fixed, his_color, r2, c1, r1, c2);
           }
         }
-        //  ..   .x
-        //  xx   .x
+        //  .x
+        //  .x
         for (int r2 = r1 - 1, c2 = c1 - 1; r2 >= 0 && c2 >=0; --r2, --c2) {
-          if (grid[r2][c2] != his_color && ((grid[r1][c2] == his_color) ^ (grid[r2][c1] == his_color))) {
+          if (grid[r1][c2] != his_color && grid[r2][c2] != his_color) {
             res -= EvaluateRectangle(grid, fixed, his_color, r2, c2, r1, c1);
           }
         }
