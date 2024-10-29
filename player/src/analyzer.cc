@@ -50,7 +50,6 @@ int main(int argc, char *argv[]) {
 
     for (int i = 1; i < COLORS; ++i) {
       for (int j = i + 1; j < COLORS; ++j) {
-        std::cerr << i << ' ' << j << ' ' << EvaluateTwoColors(grid, fixed, i, j) << ' ' << scores[i - 1] - scores[j - 1] << '\n';
         assert(EvaluateTwoColors(grid, fixed, i, j) == scores[i - 1] - scores[j - 1]);
       }
     }
