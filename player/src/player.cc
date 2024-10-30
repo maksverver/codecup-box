@@ -27,6 +27,9 @@ DECLARE_OPTION(bool, arg_help, false, "help",
 DECLARE_OPTION(bool, arg_deep, false, "deep",
     "Search deeper (2 ply instead of default 1)");
 
+DECLARE_OPTION(bool, arg_guess, false, "guess",
+    "Guess opponent's secret color (instead of considering all possibilities)");
+
 DECLARE_OPTION(std::string, arg_seed, "", "seed",
     "Random seed in hexadecimal format. If empty, pick randomly. "
     "The chosen seed will be logged to stderr for reproducibility.");
@@ -140,6 +143,34 @@ int Evaluate(int my_color, int his_color, const grid_t &grid) {
   return scores[my_color - 1] - scores[his_color - 1];
 }
 
+// Generates the tiles that differ only in the position of the two given colors,
+// with other colors in an arbitrary location. (This is a bit more complicated
+// than it needs to be because I currently generate the lexicographical minimal
+// tiles. Maybe I can simplify/optimize it later, if it matters.)
+void GenerateRelevantTiles(int my_color, int his_color, std::array<tile_t, 6*5> &tiles) {
+  size_t pos = 0;
+  for (int i = 0; i < 6; ++i) {
+    for (int j = 0; j < 6; ++j) {
+      if (i == j) continue;
+      int next_color = 1;
+      while (next_color == my_color || next_color == his_color) ++next_color;
+      tile_t &tile = tiles[pos++];
+      for (int k = 0; k < 6; ++k) {
+        if (k == i) {
+          tile[k] = my_color;
+        } else if (k == j) {
+          tile[k] = his_color;
+        } else {
+          tile[k] = next_color++;
+          while (next_color == my_color || next_color == his_color) ++next_color;
+        }
+      }
+      assert(next_color == 7);
+    }
+  }
+  assert(pos == 6*5);
+}
+
 int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
   std::vector<Placement> all_placements = GeneratePlacements(grid);
   if (all_placements.empty()) {
@@ -153,46 +184,30 @@ int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
     return 6 * 5 * EvaluateTwoColors(grid, fixed, my_color, his_color);
   }
 
-  int total_score = 0;
-  for (int i = 0; i < 6; ++i) {
-    for (int j = 0; j < 6; ++j) {
-      if (i == j) continue;
-      int next_color = 1;
-      while (next_color == my_color || next_color == his_color) ++next_color;
-      tile_t tile;
-      for (int k = 0; k < 6; ++k) {
-        if (k == i) {
-          tile[k] = my_color;
-        } else if (k == j) {
-          tile[k] = his_color;
-        } else {
-          tile[k] = next_color++;
-          while (next_color == my_color || next_color == his_color) ++next_color;
-        }
-      }
-      assert(next_color == 7);
+  std::array<tile_t, 6*5> tiles;
+  GenerateRelevantTiles(my_color, his_color, tiles);
 
-      int best_score = std::numeric_limits<int>::max();
-      for (Placement placement : all_placements) {
-        grid_t copy = grid;
-        ExecuteMove(copy, tile, placement);
-        int score;
-        if (false) {
-          // Slow version.
-          score = Evaluate(my_color, his_color, copy);
-        } else {
-          grid_t fixed = CalcFixed(copy);
-          score = EvaluateTwoColors(copy, fixed, my_color, his_color);
-        }
-        best_score = std::min(best_score, score);
+  int total_score = 0;
+  for (tile_t tile : tiles) {
+    int best_score = std::numeric_limits<int>::max();
+    for (Placement placement : all_placements) {
+      grid_t copy = grid;
+      ExecuteMove(copy, tile, placement);
+      int score;
+      if (false) {
+        // Slow version.
+        score = Evaluate(my_color, his_color, copy);
+      } else {
+        score = EvaluateTwoColors(copy, CalcFixed(copy), my_color, his_color);
       }
-      total_score += best_score;
+      best_score = std::min(best_score, score);
     }
+    total_score += best_score;
   }
   return total_score;
 }
 
-Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, rng_t &rng) {
+Placement GreedyPlacement(int my_color, int his_color, const grid_t &grid, const tile_t &tile, rng_t &rng) {
   int best_score = std::numeric_limits<int>::min();
   std::vector<Placement> all_placements = GeneratePlacements(grid);
   std::vector<Placement> best_placements;
@@ -201,12 +216,20 @@ Placement GreedyPlacement(int my_color, const grid_t &grid, const tile_t &tile, 
     ExecuteMove(copy, tile, placement);
     int score = std::numeric_limits<int>::max();
     if (arg_deep) {
-      for (int his_color = 1; his_color <= 6; ++his_color) {
-        if (his_color == my_color) continue;
+      if (his_color == 0) {
+        for (int c = 1; c <= 6; ++c) {
+          if (c == my_color) continue;
+          score = std::min(score, EvaluateSecondPly(my_color, c, copy));
+        }
+      } else {
         score = std::min(score, EvaluateSecondPly(my_color, his_color, copy));
       }
     } else {
-      score = Evaluate(my_color, copy);
+      if (his_color == 0) {
+        score = Evaluate(my_color, copy);
+      } else {
+        score = EvaluateTwoColors(copy, CalcFixed(copy), my_color, his_color);
+      }
     }
 
     if (score > best_score) {
@@ -237,7 +260,21 @@ void PlayGame(rng_t &rng) {
   std::string input = ReadInputLine();
   const int my_player = (input == "Start" ? 0 : 1);
 
+  SecretColorGuesser guesser;
+  std::array<int, COLORS> last_scores;
+
   for (int turn = 0; !IsGameOver(grid); ++turn) {
+
+    if (arg_guess) {
+      std::array<int, COLORS> scores;
+      EvaluateAllColors(grid, CalcFixed(grid), scores);
+      if (turn > 0 && turn % 2 == my_player) {
+        guesser.Update(last_scores, scores);
+        LogGuess(guesser.Color());
+      }
+      last_scores = scores;
+    }
+
     if (turn % 2 == my_player) {
       // My turn! Read input.
       tile_t tile = ReadTile();
@@ -245,7 +282,8 @@ void PlayGame(rng_t &rng) {
       LogPause(pause_duration, timer.Elapsed(false));
 
       // Calculate my move.
-      Placement placement = GreedyPlacement(my_secret_color, grid, tile, rng);
+      int his_secret_color = turn > 0 && arg_guess ? guesser.Color() : 0;
+      Placement placement = GreedyPlacement(my_secret_color, his_secret_color, grid, tile, rng);
       Move move = {tile, placement};
       assert(move.IsValid(grid));
       move.Execute(grid);

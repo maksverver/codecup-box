@@ -131,4 +131,9 @@ inline void LogMoveCount(int total_moves, int best_moves, int best_score) {
   LogStream("MOVES") << total_moves << ' ' << best_moves << ' ' << best_score;
 }
 
+// Logs the best guess of the opponent's secret color.
+inline void LogGuess(int color) {
+  LogStream("GUESS") << color;
+}
+
 #endif  // ndef LOGGING_H_INCLUDED
