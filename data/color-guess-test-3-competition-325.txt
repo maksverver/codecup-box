@@ -1,0 +1,46 @@
+ 0.013   1.000 80 Maks Verver
+ 0.200  16.000 80 Marc Oldenhof
+ 0.250  20.000 80 Thijs Marinussen
+ 0.318   7.000 22 Henk Koops
+ 0.375  30.000 80 Marty McScan
+ 0.409   9.000 22 Wouter van der Meer
+ 0.438  35.000 80 Boris de Wilde
+ 0.550  44.000 80 Matthias Gelbmann
+ 0.588  47.000 80 Jeremy Sawicki
+ 0.637  51.000 80 Vasilii Kuporosov
+ 0.675  54.000 80 Jan Nunnink
+ 0.738  59.000 80 Pardhav Maradani
+ 0.762  61.000 80 Jelmer Firet
+ 0.875  70.000 80 Rens van der Avoird
+ 0.988  79.000 80 Erik Kvanli
+ 1.000  80.000 80 Tim Brouwer
+ 1.113  89.000 80 Tomek Czajka
+ 1.163  93.000 80 Jorn Hoofwijk
+ 1.163  93.000 80 Matthijs Tijink
+ 1.200  96.000 80 Frank Meert
+ 1.363 109.000 80 Louis Verhaard
+ 1.675 134.000 80 Alvaro Carrera
+ 1.773  39.000 22 Pepijn Overbeeke
+ 1.818  40.000 22 Léo Jean
+ 1.900 152.000 80 Mark ter Brugge
+ 2.175 174.000 80 Alvaro Begue
+ 2.455  54.000 22 Ad van der Hoeven
+ 2.525 202.000 80 Niklas Een
+ 2.625 210.000 80 Fakih Karademir
+ 3.013 241.000 80 Abdessamad El Kasimi
+ 3.237 259.000 80 Jelle van der Drift
+ 4.075 326.000 80 Tapani Utriainen
+ 4.688 375.000 80 Corniel Nobel
+ 5.612 449.000 80 Marcel Vlastuin
+ 7.727 170.000 22 Florian Molanus
+ 7.737 619.000 80 Tobias van der Meer
+ 8.636 190.000 22 Bart Mol
+11.000 242.000 22 Joe Rahn
+11.727 258.000 22 Leopold Tschanter
+11.818 260.000 22 Bas van der Ven
+11.864 261.000 22 Sergei Budkov
+13.000 286.000 22 Kirk Brown
+13.000 286.000 22 Test Player A
+13.091 288.000 22 R4N4R4M4 
+13.136 289.000 22 Nikita Kurgin
+13.182 290.000 22 Ludo Pulles

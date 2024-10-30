@@ -1,0 +1,30 @@
+ 0.309   1.235  4 Jelmer Firet
+ 0.347   0.695  2 Vasilii Kuporosov
+ 0.372   0.744  2 Marc Oldenhof
+ 0.379   0.757  2 Rens van der Avoird
+ 0.396   0.792  2 Boris de Wilde
+ 0.396   1.585  4 Louis Verhaard
+ 0.414   1.658  4 Jeremy Sawicki
+ 0.463   0.926  2 Matthias Gelbmann
+ 0.491   0.982  2 Jorn Hoofwijk
+ 0.636   2.543  4 Marty McScan
+ 0.773   1.547  2 Frank Meert
+ 0.786   3.144  4 Fakih Karademir
+ 0.904   1.808  2 Henk Koops
+ 1.072   2.144  2 Tobias van der Meer
+ 1.123   4.494  4 Tim Brouwer
+ 2.547  10.190  4 Pardhav Maradani
+ 4.329   8.657  2 Thijs Marinussen
+ 6.580  13.160  2 Niklas Een
+ 6.807  27.228  4 Marcel Vlastuin
+11.476  22.952  2 Mark ter Brugge
+13.839  27.679  2 Tapani Utriainen
+14.341  28.681  2 Erik Kvanli
+14.855  59.419  4 Alvaro Begue
+17.431  34.863  2 Matthijs Tijink
+17.485  34.970  2 Abdessamad El Kasimi
+19.038  76.154  4 Jan Nunnink
+22.177  44.355  2 Jelle van der Drift
+23.631  47.261  2 Tomek Czajka
+28.718  57.435  2 Alvaro Carrera
+29.870  59.741  2 Corniel Nobel
