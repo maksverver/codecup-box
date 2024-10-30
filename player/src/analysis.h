@@ -24,4 +24,20 @@ int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int
 // doesn't distinguish between fixed and non-fixed cells.
 void EvaluateFinalScore(const grid_t &grid, std::array<int, COLORS> &scores);
 
+struct SecretColorGuesser {
+  std::array<int, COLORS> diff = {};
+
+  void Update(
+      const std::array<int, COLORS> &prev_scores,
+      const std::array<int, COLORS> &next_scores) {
+    for (int c = 0; c < COLORS; ++c) {
+      diff[c] += next_scores[c] - prev_scores[c];
+    }
+  }
+
+  int Color() const {
+    return std::max_element(diff.begin(), diff.end()) - diff.begin() + 1;
+  }
+};
+
 #endif // ndef ANALYSIS_H_DEFINED
