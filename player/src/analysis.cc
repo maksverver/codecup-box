@@ -184,10 +184,10 @@ int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int
           }
         }
       }
-     }
-   }
-   return res;
- }
+    }
+  }
+  return res;
+}
 
 void EvaluateFinalScore(const grid_t &grid, std::array<int, COLORS> &scores) {
   scores = {};
