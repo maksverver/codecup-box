@@ -3,7 +3,9 @@
 # Calculates my opponent's pause times from my player logs. Pause times indicate
 # how long an opponent spends thinking during the game.
 
-COMPETITION=test-3-competition-325
+COMPETITION=$(basename $(ls competition-results/*-transcripts.csv | tail -1) -transcripts.csv)
+
+echo "Analyzing $COMPETITION" >&2
 
 #
 # Extracts the "PAUSE <duration_ms> <total_ms>" lines from the corresponding

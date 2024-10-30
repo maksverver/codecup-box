@@ -3,7 +3,9 @@
 # Calculates how quickly each player's secret color can be guessed.
 
 ANALYZER=player/output/release/analyzer
-COMPETITION=test-3-competition-325
+COMPETITION=$(basename $(ls competition-results/*-transcripts.csv | tail -1) -transcripts.csv)
+
+echo "Analyzing $COMPETITION" >&2
 
 # Runs analyzer to calculate from point in the game each player's secret color
 # can be accurately guessed.
