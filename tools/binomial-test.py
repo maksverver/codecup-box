@@ -7,7 +7,8 @@
 # is better than the other. Example:
 #
 #   % tools/binomial-test.py 35 14
-#   Player 1 is better than Player 2 (p=0.00190083)
+#   Player 1 is better than Player 2 (p=0.00190083, winrate=0.714286, n=49,
+#   95% CI=[0.567,0.817])
 #
 # The p-value is the probability that the null-hypothesis holds, assuming
 # that the players are equally matched, so lower p-values mean greater
@@ -19,6 +20,10 @@
 #
 # It also prints the 95% confidence interval of the true winrate (i.e.
 # probability that player 1 defeats player 2, when they do not tie).
+#
+# More specifically, the interval is such that the odds of the true probability
+# being lower than the lower bound are 2.5% and likewise for the upper bound.
+# That means if the lower bound > 0.5 then p < 0.025 and vice versa.
 
 from functools import cache
 import sys
