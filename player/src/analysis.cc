@@ -57,6 +57,98 @@ grid_t CalcFixed(const grid_t &grid) {
   return fixed;
 }
 
+static int EvalSquarePoints(
+    bool a, bool b, bool c, bool d,
+    bool fa, bool fb, bool fc, bool fd,
+    int size) {
+  int num_fixed = fa + fb + fc + fd;
+  if (a && b && c && d) {
+    // Square!
+    return 1000 + 100*num_fixed + 100*size;
+  } else if (
+        (a && b && c && !fd) ||
+        (a && b && d && !fc) ||
+        (a && c && d && !fb) ||
+        (b && c && d && !fa)) {
+    // One cell short of a square.
+    return 100 + 10*num_fixed + 10*size;
+  } else if (
+      (a && b && !fc && !fd) ||
+      (a && c && !fb && !fd) ||
+      (a && d && !fb && !fc) ||
+      (b && c && !fa && !fd) ||
+      (b && d && !fa && !fc) ||
+      (c && d && !fa && !fb)) {
+    // Two points aligned horizontally, vertically, or diagonally.
+    // Maybe: assign a different score for the diagonal version?
+    return 10 + 1*num_fixed + 1*size;
+  } else {
+    return 0;
+  }
+}
+
+static struct {
+  short base, by_size;
+} square_points_memo[2][2][2][2][2][2][2][2];
+
+bool InitializeSquarePointsMemo() {
+  for (int a = 0; a < 2; ++a) {
+    for (int b = 0; b < 2; ++b) {
+      for (int c = 0; c < 2; ++c) {
+        for (int d = 0; d < 2; ++d) {
+          for (int fa = 0; fa < 2; ++fa) {
+            for (int fb = 0; fb < 2; ++fb) {
+              for (int fc = 0; fc < 2; ++fc) {
+                for (int fd = 0; fd < 2; ++fd) {
+                  auto &[base, by_size] = square_points_memo[a][b][c][d][fa][fb][fc][fd];
+                  int num_fixed = fa + fb + fc + fd;
+                  if (a && b && c && d) {
+                    // Square!
+                    base = 1000 + 100*num_fixed;
+                    by_size = 100;
+                  } else if (
+                        (a && b && c && !fd) ||
+                        (a && b && d && !fc) ||
+                        (a && c && d && !fb) ||
+                        (b && c && d && !fa)) {
+                    // One cell short of a square.
+                    base = 100 + 10*num_fixed;
+                    by_size = 10;
+                  } else if (
+                      (a && b && !fc && !fd) ||
+                      (a && c && !fb && !fd) ||
+                      (a && d && !fb && !fc) ||
+                      (b && c && !fa && !fd) ||
+                      (b && d && !fa && !fc) ||
+                      (c && d && !fa && !fb)) {
+                    // Two points aligned horizontally, vertically, or diagonally.
+                    // Maybe: assign a different score for the diagonal version?
+                    base = 10 + 1*num_fixed;
+                    by_size = 1;
+                  } else {
+                    base = by_size = 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return true;
+}
+
+const bool square_points_memo_initialized = InitializeSquarePointsMemo();
+
+static int EvalSquarePointsMemoized(
+    bool a, bool b, bool c, bool d,
+    bool fa, bool fb, bool fc, bool fd,
+    int size) {
+  auto [base, by_size] = square_points_memo[a][b][c][d][fa][fb][fc][fd];
+  return base + by_size * size;
+}
+
 int EvaluateRectangle(const grid_t &grid, const grid_t &fixed, color_t color, int r1, int c1, int r2, int c2) {
   //  a  b
   //  c  d
@@ -68,31 +160,10 @@ int EvaluateRectangle(const grid_t &grid, const grid_t &fixed, color_t color, in
   bool fb = fixed[r1][c2];
   bool fc = fixed[r2][c1];
   bool fd = fixed[r2][c2];
-  int size = r2 - r1;
-  int num_fixed = fa + fb + fc + fd;
-  int score = 0;
-  if (a && b && c && d) {
-    // Square!
-    score += 1000 + 100*num_fixed + 100*size;
-  } else if (
-        (a && b && c && !fd) ||
-        (a && b && d && !fc) ||
-        (a && c && d && !fb) ||
-        (b && c && d && !fa)) {
-    // One cell short of a square.
-    score += 100 + 10*num_fixed + 10*size;
-  } else if (
-      (a && b && !fc && !fd) ||
-      (a && c && !fb && !fd) ||
-      (a && d && !fb && !fc) ||
-      (b && c && !fa && !fd) ||
-      (b && d && !fa && !fc) ||
-      (c && d && !fa && !fb)) {
-    // Two points aligned horizontally, vertically, or diagonally.
-    // Maybe: assign a different score for the diagonal version?
-    score += 10 + 1*num_fixed + 1*size;
-  }
-  return score;
+  return EvalSquarePointsMemoized(a, b, c, d, fa, fb, fc, fd, r2 - r1);
+  // int res = EvalSquarePointsMemoized(a, b, c, d, fa, fb, fc, fd, r2 - r1);
+  // assert(res == EvalSquarePoints(a, b, c, d, fa, fb, fc, fd, r2 - r1));
+  // return res;
 }
 
 void EvaluateAllColors(const grid_t &grid, const grid_t &fixed, std::array<int, COLORS> &scores) {
