@@ -57,7 +57,7 @@ grid_t CalcFixed(const grid_t &grid) {
   return fixed;
 }
 
-static int EvaluateRectangle(const grid_t &grid, const grid_t &fixed, color_t color, int r1, int c1, int r2, int c2) {
+int EvaluateRectangle(const grid_t &grid, const grid_t &fixed, color_t color, int r1, int c1, int r2, int c2) {
   //  a  b
   //  c  d
   bool a = grid[r1][c1] == color;

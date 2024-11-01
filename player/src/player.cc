@@ -171,9 +171,10 @@ void GenerateRelevantTiles(int my_color, int his_color, std::array<tile_t, 6*5> 
   assert(pos == 6*5);
 }
 
+// Slower version of EvaluateSecondPly2().
 int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
-  std::vector<Placement> all_placements = GeneratePlacements(grid);
-  if (all_placements.empty()) {
+  std::vector<Placement> placements = GeneratePlacements(grid);
+  if (placements.empty()) {
     // No more moves.
     grid_t fixed;
     for (int r = 0; r < HEIGHT; ++r) {
@@ -190,7 +191,7 @@ int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
   int total_score = 0;
   for (tile_t tile : tiles) {
     int best_score = std::numeric_limits<int>::max();
-    for (Placement placement : all_placements) {
+    for (Placement placement : placements) {
       grid_t copy = grid;
       ExecuteMove(copy, tile, placement);
       int score;
@@ -207,7 +208,110 @@ int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
   return total_score;
 }
 
-Placement GreedyPlacement(int my_color, int his_color, const grid_t &grid, const tile_t &tile, rng_t &rng) {
+// During the second ply, the opponent gets a random tile, then choses a
+// placement. Since the tile is random, we can average the outcome over all
+// possibilities (or equivalently, since the number of possible tiles is
+// constant, calculate the sum, which is what we do below).
+//
+// Since the opponent wants us to lose, he will chose the placement that leads
+// to a minimum score for us:
+//
+//                 state                |
+//               /   |   \              |
+//             /    avg    \            |
+//           /       |        \         |
+//      tile1      tile2       tile3    |
+//       /|\        /|\         /|\     |
+//      /min\      /min\       /min\    |
+//     /  |  \    /  |  \     /  |  \   |
+//    place1..N  place1..N   place1..N  |
+//
+// Note that the placements are the same for all tiles, so we can calculate
+// the list of placements up front. For a given placement, we can also
+// precalculate part of the score, since only the squares that partially overlap
+// with the newly-placed square are affected by which square is drawn!
+//
+int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input_grid) {
+  std::vector<Placement> placements = GeneratePlacements(original_input_grid);
+  if (placements.empty()) {
+    // No more moves.
+    grid_t fixed;
+    for (int r = 0; r < HEIGHT; ++r) {
+      for (int c = 0; c < WIDTH; ++c) {
+        fixed[r][c] = 1;
+      }
+    }
+    return 6 * 5 * EvaluateTwoColors(original_input_grid, fixed, my_color, his_color);
+  }
+
+  struct Square {
+    int r1, c1, r2, c2;
+  };
+
+  struct ExtraData {
+    Placement placement;
+    grid_t fixed;
+    int base_score;
+    std::vector<Square> undecided_squares;
+  };
+
+  std::vector<ExtraData> extra_data;
+  extra_data.reserve(placements.size());
+
+  const color_t placeholder_color = COLORS + 1;
+  tile_t tile;
+  std::ranges::fill(tile, placeholder_color);
+  for (const Placement &placement : placements) {
+    grid_t copy = original_input_grid;
+    ExecuteMove(copy, tile, placement);
+    grid_t fixed = CalcFixed(copy);
+
+    int base_score = 0;
+    std::vector<Square> undecided_squares;
+    for (int r1 = 0; r1 < HEIGHT; ++r1) {
+      for (int c1 = 0; c1 < WIDTH; ++c1) {
+        if (copy[r1][c1] == my_color)  base_score += 1;
+        if (copy[r1][c1] == his_color) base_score -= 1;
+
+        for (int r2, c2, size = 1; (r2 = r1 + size) < HEIGHT && (c2 = c1 + size) < WIDTH; ++size) {
+          if (copy[r1][c1] == placeholder_color ||
+              copy[r1][c2] == placeholder_color ||
+              copy[r2][c1] == placeholder_color ||
+              copy[r2][c2] == placeholder_color) {
+            undecided_squares.push_back({r1, c1, r2, c2});
+          } else {
+            base_score += EvaluateRectangle(copy, fixed, my_color,  r1, c1, r2, c2);
+            base_score -= EvaluateRectangle(copy, fixed, his_color, r1, c1, r2, c2);
+          }
+        }
+      }
+    }
+    extra_data.push_back({placement, fixed, base_score, std::move(undecided_squares)});
+  }
+  assert(extra_data.size() == placements.size());
+
+  std::array<tile_t, 6*5> tiles;
+  GenerateRelevantTiles(my_color, his_color, tiles);
+
+  int total_score = 0;
+  for (tile_t tile : tiles) {
+    int best_score = std::numeric_limits<int>::max();
+    for (const ExtraData &extra : extra_data) {
+      grid_t copy = original_input_grid;
+      ExecuteMove(copy, tile, extra.placement);
+      int score = extra.base_score;
+      for (auto [r1, c1, r2, c2] : extra.undecided_squares) {
+        score += EvaluateRectangle(copy, extra.fixed, my_color,  r1, c1, r2, c2);
+        score -= EvaluateRectangle(copy, extra.fixed, his_color, r1, c1, r2, c2);
+      }
+      best_score = std::min(best_score, score);
+    }
+    total_score += best_score;
+  }
+  return total_score;
+}
+
+Placement FindBestPlacement(int my_color, int his_color, const grid_t &grid, const tile_t &tile, rng_t &rng) {
   int best_score = std::numeric_limits<int>::min();
   std::vector<Placement> all_placements = GeneratePlacements(grid);
   std::vector<Placement> best_placements;
@@ -219,10 +323,17 @@ Placement GreedyPlacement(int my_color, int his_color, const grid_t &grid, const
       if (his_color == 0) {
         for (int c = 1; c <= 6; ++c) {
           if (c == my_color) continue;
-          score = std::min(score, EvaluateSecondPly(my_color, c, copy));
+          int s = EvaluateSecondPly2(my_color, c, copy);
+          // int t = EvaluateSecondPly(my_color, c, copy);
+          // std::cerr << s << ' ' << t << '\n';
+          // assert(s == t);
+          score = std::min(score, s);
         }
       } else {
-        score = std::min(score, EvaluateSecondPly(my_color, his_color, copy));
+        score = EvaluateSecondPly2(my_color, his_color, copy);
+        // int tmp = EvaluateSecondPly(my_color, his_color, copy);
+        // std::cerr << score << ' ' << tmp << '\n';
+        // assert(score == tmp);
       }
     } else {
       if (his_color == 0) {
@@ -283,7 +394,7 @@ void PlayGame(rng_t &rng) {
 
       // Calculate my move.
       int his_secret_color = turn > 0 && arg_guess ? guesser.Color() : 0;
-      Placement placement = GreedyPlacement(my_secret_color, his_secret_color, grid, tile, rng);
+      Placement placement = FindBestPlacement(my_secret_color, his_secret_color, grid, tile, rng);
       Move move = {tile, placement};
       assert(move.IsValid(grid));
       move.Execute(grid);
