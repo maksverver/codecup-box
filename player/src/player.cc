@@ -421,6 +421,7 @@ void PlayGame(rng_t &rng) {
 
   SecretColorGuesser guesser;
   std::array<int, COLORS> last_scores;
+  int his_secret_color = 0;
 
   for (int turn = 0; !IsGameOver(grid); ++turn) {
 
@@ -429,7 +430,8 @@ void PlayGame(rng_t &rng) {
       EvaluateAllColors(grid, CalcFixed(grid), scores);
       if (turn > 0 && turn % 2 == my_player) {
         guesser.Update(last_scores, scores);
-        LogGuess(guesser.Color());
+        his_secret_color = guesser.Color(my_secret_color);
+        LogGuess(his_secret_color);
       }
       last_scores = scores;
     }
@@ -448,7 +450,6 @@ void PlayGame(rng_t &rng) {
         // the exact same options:
         //assert(best_placements == FindBestPlacements(my_secret_color, 0, grid, tile, GeneratePlacements(grid)).first);
       } else {
-        int his_secret_color = turn > 0 && arg_guess ? guesser.Color() : 0;
         std::vector<Placement> all_placements = GeneratePlacements(grid);
         auto res = FindBestPlacements(my_secret_color, his_secret_color, grid, tile, all_placements);
         best_placements = res.first;

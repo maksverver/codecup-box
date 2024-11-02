@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
     if (move_index > 0) {
       int player = (move_index - 1) % 2;
       guesser[player].Update(last_scores, scores);
-      if (guesser[player].Color() != (player == 0 ? color1 : color2)) {
+      if (guesser[player].Color(0) != (player == 0 ? color1 : color2)) {
         color_guess_last_incorrect[player] = move_index;
       }
     }

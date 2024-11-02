@@ -3,6 +3,8 @@
 
 #include "state.h"
 
+#include <limits>
+
 // Generates a list of all placements that are valid in the current grid,
 // in lexicographical order (row, column, orientation).
 std::vector<Placement> GeneratePlacements(const grid_t &grid);
@@ -35,8 +37,16 @@ struct SecretColorGuesser {
     }
   }
 
-  int Color() const {
-    return std::max_element(diff.begin(), diff.end()) - diff.begin() + 1;
+  int Color(int my_color) const {
+    int best_color = 0;
+    int max_diff = std::numeric_limits<int>::min();
+    for (int i = 0; i < COLORS; ++i) {
+      if (diff[i] > max_diff && (i + 1) != my_color) {
+        best_color = i + 1;
+        max_diff = diff[i];
+      }
+    }
+    return best_color;
   }
 };
 
