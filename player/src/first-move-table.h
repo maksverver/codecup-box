@@ -3,6 +3,6 @@
 
 #include "first-move.h"
 
-extern const BestFirstMove best_first_moves[9036];
+extern const BestFirstMove best_first_moves[8380];
 
 #endif // ndef FIRST_MOVE_TABLE_H_INCLUDED
