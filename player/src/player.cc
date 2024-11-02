@@ -1,9 +1,11 @@
 #include "analysis.h"
-#include "options.h"
+#include "first-move.h"
 #include "logging.h"
+#include "options.h"
 #include "random.h"
 #include "state.h"
 
+#include <algorithm>
 #include <cassert>
 #include <chrono>
 #include <cstdlib>
@@ -24,10 +26,10 @@ const std::string player_name = "L7";
 DECLARE_OPTION(bool, arg_help, false, "help",
     "show usage information");
 
-DECLARE_OPTION(bool, arg_deep, false, "deep",
+DECLARE_OPTION(bool, arg_deep, LOCAL_BUILD ? false : true, "deep",
     "Search deeper (2 ply instead of default 1)");
 
-DECLARE_OPTION(bool, arg_guess, false, "guess",
+DECLARE_OPTION(bool, arg_guess, LOCAL_BUILD ? false : true, "guess",
     "Guess opponent's secret color (instead of considering all possibilities)");
 
 DECLARE_OPTION(std::string, arg_seed, "", "seed",
@@ -39,6 +41,12 @@ DECLARE_OPTION(int, arg_time_limit, LOCAL_BUILD ? 0 : 28, "time-limit",
     "On each turn, the player uses a fraction of time remaining on analysis. "
     "Note that this should be slightly lower than the official time limit to "
     "account for overhead.");
+
+DECLARE_OPTION(bool, arg_precompute_first_moves, false, "precompute-first-moves",
+    "Precomputes first moves and outputs the resulting array.");
+
+DECLARE_OPTION(bool, arg_first_move_table, true, "first-move-table",
+    "Use the precomputed first move table.");
 
 // A simple timer. Can be running or paused. Tracks time both while running and
 // while paused. Use Elapsed() to query, Pause() and Resume() to switch states.
@@ -350,9 +358,10 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
   return total_score;
 }
 
-Placement FindBestPlacement(int my_color, int his_color, const grid_t &grid, const tile_t &tile, rng_t &rng) {
+std::pair<std::vector<Placement>, int> FindBestPlacements(
+    int my_color, int his_color, const grid_t &grid, const tile_t &tile,
+    const std::vector<Placement> &all_placements) {
   int best_score = std::numeric_limits<int>::min();
-  std::vector<Placement> all_placements = GeneratePlacements(grid);
   std::vector<Placement> best_placements;
   for (Placement placement : all_placements) {
     grid_t copy = grid;
@@ -390,8 +399,7 @@ Placement FindBestPlacement(int my_color, int his_color, const grid_t &grid, con
       best_placements.push_back(placement);
     }
   }
-  LogMoveCount(all_placements.size(), best_placements.size(), best_score);
-  return RandomSample(best_placements, rng);
+  return {std::move(best_placements), best_score};
 }
 
 void PlayGame(rng_t &rng) {
@@ -402,6 +410,7 @@ void PlayGame(rng_t &rng) {
 
   // Second line of input contains the first tile placed in the center.
   Move start_move = ReadMove();
+  assert(start_move.placement == initial_placement);
   grid_t grid = {};
   start_move.Execute(grid);
 
@@ -432,14 +441,26 @@ void PlayGame(rng_t &rng) {
       LogPause(pause_duration, timer.Elapsed(false));
 
       // Calculate my move.
-      int his_secret_color = turn > 0 && arg_guess ? guesser.Color() : 0;
-      Placement placement = FindBestPlacement(my_secret_color, his_secret_color, grid, tile, rng);
-      Move move = {tile, placement};
+      std::vector<Placement> best_placements;
+      if (turn == 0 && arg_first_move_table) {
+        best_placements = FindBestFirstMoves(my_secret_color, start_move, tile);
+        // Note: this is only expected to pass if the table was generated with
+        // the exact same options:
+        //assert(best_placements == FindBestPlacements(my_secret_color, 0, grid, tile, GeneratePlacements(grid)).first);
+      } else {
+        int his_secret_color = turn > 0 && arg_guess ? guesser.Color() : 0;
+        std::vector<Placement> all_placements = GeneratePlacements(grid);
+        auto res = FindBestPlacements(my_secret_color, his_secret_color, grid, tile, all_placements);
+        best_placements = res.first;
+        int best_score = res.second;
+        LogMoveCount(all_placements.size(), best_placements.size(), best_score);
+      }
+      Move move = {tile, RandomSample(best_placements, rng)};
       assert(move.IsValid(grid));
       move.Execute(grid);
 
       // Write output.
-      std::string output = FormatPlacement(placement);
+      std::string output = FormatPlacement(move.placement);
       LogSending(output);
       // Pause the timer just before writing the output line, since the referee
       // may suspend our process immediately after.
@@ -489,6 +510,16 @@ int main(int argc, char *argv[]) {
     os << "\nOptions:\n";
     PrintOptionUsage(os);
     return EXIT_FAILURE;
+  }
+
+  if (arg_precompute_first_moves) {
+    PrintBestFirstMoves(std::cout, CalculateBestFirstMoves(
+      [](int color, const grid_t &grid, const tile_t &tile,
+          const std::vector<Placement> &all_placements) {
+        return FindBestPlacements(color, 0, grid, tile, all_placements).first;
+      }
+    ));
+    return 0;
   }
 
   // Initialize RNG.

@@ -77,6 +77,8 @@ struct Placement {
   auto operator<=>(const Placement&) const = default;
 };
 
+const Placement initial_placement = Placement::Horizontal(7, 7);
+
 // Checks if the game is over.
 //
 // Currently this function is slow, so only suitable for calling in the outer

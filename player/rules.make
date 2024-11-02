@@ -4,9 +4,9 @@
 
 BINARIES=$(BIN)analyzer $(BIN)player
 
-COMMON_HDRS=$(SRC)analysis.h $(SRC)logging.h $(SRC)options.h $(SRC)random.h $(SRC)state.h
-COMMON_SRCS=$(SRC)analysis.cc $(SRC)options.h $(SRC)random.cc $(SRC)state.cc
-COMMON_OBJS=$(OBJ)analysis.o $(OBJ)options.o $(OBJ)random.o $(OBJ)state.o
+COMMON_HDRS=$(SRC)analysis.h $(SRC)logging.h $(SRC)first-move.h $(SRC)first-move-table.h $(SRC)options.h $(SRC)random.h $(SRC)state.h
+COMMON_SRCS=$(SRC)analysis.cc $(SRC)first-move.cc $(SRC)first-move-table.cc $(SRC)options.h $(SRC)random.cc $(SRC)state.cc
+COMMON_OBJS=$(OBJ)analysis.o $(OBJ)first-move.o $(OBJ)first-move-table.o $(OBJ)options.o $(OBJ)random.o $(OBJ)state.o
 ANALYZER_OBJS=$(OBJ)analyzer.o $(COMMON_OBJS)
 PLAYER_OBJS=$(OBJ)player.o $(COMMON_OBJS)
 
@@ -17,11 +17,19 @@ COMBINED_SRCS=\
 	$(SRC)state.h $(SRC)state.cc \
 	$(SRC)logging.h \
   $(SRC)analysis.h $(SRC)analysis.cc \
+  $(SRC)first-move.h $(SRC)first-move.cc \
+  $(SRC)first-move-table.h $(SRC)first-move-table.cc \
 	$(SRC)player.cc
 
 all: $(BINARIES)
 
 $(OBJ)analysis.o: $(SRC)analysis.cc $(SRC)analysis.h $(SRC)state.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJ)first-move.o: $(SRC)first-move.cc $(SRC)first-move.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJ)first-move-table.o: $(SRC)first-move-table.cc $(SRC)first-move-table.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ)options.o: $(SRC)options.cc $(SRC)options.h
