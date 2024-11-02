@@ -156,6 +156,10 @@ int Evaluate(int my_color, int his_color, const grid_t &grid) {
 // than it needs to be because I currently generate the lexicographical minimal
 // tiles. Maybe I can simplify/optimize it later, if it matters.)
 void GenerateRelevantTiles(int my_color, int his_color, std::array<tile_t, 6*5> &tiles) {
+  assert(
+    0 < my_color && my_color <= COLORS &&
+    0 < his_color && his_color <= COLORS &&
+    my_color != his_color);
   size_t pos = 0;
   for (int i = 0; i < 6; ++i) {
     for (int j = 0; j < 6; ++j) {
