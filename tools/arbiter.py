@@ -284,7 +284,7 @@ def RunGames(commands, names, rounds, logdir, executor=None):
         with (Tee(open(os.path.join(logdir, 'summary.txt'), 'wt')) if logdir else nullcontext()) as f:
             print('Player             Avg.Tm Max.Tm Tot. Wins Ties Loss Fail Points', file=f)
             print('------------------ ------ ------ ---- ---- ---- ---- ---- ------', file=f)
-            for p in sorted(range(P), key=lambda p: player_outcomes[p][Outcome.WIN], reverse=True):
+            for p in sorted(range(P), key=lambda p: (player_scores[p], player_outcomes[p][Outcome.WIN]), reverse=True):
                 print('%-18s %6.2f %6.2f %4d %4d %4d %4d %4d %6d' %
                     ( names[p],
                         player_time_total[p] / games_per_player,
