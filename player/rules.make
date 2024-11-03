@@ -16,9 +16,8 @@ COMBINED_SRCS=\
 	$(SRC)random.h $(SRC)random.cc \
 	$(SRC)state.h $(SRC)state.cc \
 	$(SRC)logging.h \
-  $(SRC)analysis.h $(SRC)analysis.cc \
-  $(SRC)first-move.h $(SRC)first-move.cc \
-  $(SRC)first-move-table.h $(SRC)first-move-table.cc \
+	$(SRC)analysis.h $(SRC)analysis.cc \
+	$(SRC)first-move.h $(SRC)first-move-table.h $(SRC)first-move-table.cc $(SRC)first-move.cc \
 	$(SRC)player.cc
 
 all: $(BINARIES)
