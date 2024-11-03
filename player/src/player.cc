@@ -36,11 +36,11 @@ DECLARE_OPTION(std::string, arg_seed, "", "seed",
     "Random seed in hexadecimal format. If empty, pick randomly. "
     "The chosen seed will be logged to stderr for reproducibility.");
 
-DECLARE_OPTION(int, arg_time_limit, LOCAL_BUILD ? 0 : 28, "time-limit",
-    "Time limit in seconds (or 0 to disable time-based performance). "
-    "On each turn, the player uses a fraction of time remaining on analysis. "
-    "Note that this should be slightly lower than the official time limit to "
-    "account for overhead.");
+// DECLARE_OPTION(int, arg_time_limit, LOCAL_BUILD ? 0 : 28, "time-limit",
+//     "Time limit in seconds (or 0 to disable time-based performance). "
+//     "On each turn, the player uses a fraction of time remaining on analysis. "
+//     "Note that this should be slightly lower than the official time limit to "
+//     "account for overhead.");
 
 DECLARE_OPTION(bool, arg_precompute_first_moves, false, "precompute-first-moves",
     "Precomputes first moves and outputs the resulting array.");
