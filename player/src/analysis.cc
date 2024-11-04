@@ -116,6 +116,12 @@ void InitializeSquarePointsMemo(const ScoreWeights &weights) {
                     // Two points aligned horizontally, vertically, or diagonally.
                     // Maybe: assign a different score for the diagonal version?
                     base = weights.base2 + weights.fixed2*num_fixed;
+                  } else if (
+                      (a && !fb && !fc && !fd) ||
+                      (b && !fa && !fc && !fd) ||
+                      (c && !fa && !fb && !fd) ||
+                      (d && !fa && !fb && !fc)) {
+                    base = weights.base1 + weights.fixed1*num_fixed;
                   } else {
                     base = 0;
                   }
@@ -225,9 +231,6 @@ void EvaluateAllColors(const grid_t &grid, const grid_t &fixed, std::array<int, 
     int score = 0;
     for (int r1 = 0; r1 < HEIGHT; ++r1) {
       for (int c1 = 0; c1 < WIDTH; ++c1) {
-        if (grid[r1][c1] == color) {
-          score += Evaluate1(fixed, r1, c1);
-        }
         for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
           score += EvaluateRectangle(grid, fixed, color, r1, c1, r2, c2);
         }
@@ -238,6 +241,7 @@ void EvaluateAllColors(const grid_t &grid, const grid_t &fixed, std::array<int, 
 }
 
 int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int his_color) {
+  assert(false);  // not updated yet
   int res = 0;
   for (int r = 0; r < HEIGHT; ++r) {
     for (int c = 0; c < WIDTH; ++c) {

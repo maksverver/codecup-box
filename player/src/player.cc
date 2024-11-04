@@ -250,6 +250,7 @@ int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
 // with the newly-placed square are affected by which square is drawn!
 //
 int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input_grid) {
+  assert(false);  // not updated yet
   std::vector<Placement> placements = GeneratePlacements(original_input_grid);
   if (placements.empty()) {
     // No more moves.
