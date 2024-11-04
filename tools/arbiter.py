@@ -156,7 +156,7 @@ def MakeLogfilenames(logdir, name1, name2, game_index, game_count):
 
 
 class Tee:
-    '''Writes output to a file, and also to stdout.'''
+    '''Writes output to a file, and also to stderr.'''
 
     def __init__(self, file):
         self.file = file
@@ -171,7 +171,7 @@ class Tee:
         self.file.close()
 
     def write(self, s):
-        sys.stdout.write(s)
+        sys.stderr.write(s)
         return self.file.write(s)
 
 
@@ -208,8 +208,8 @@ def RunGames(commands, names, rounds, logdir, executor=None):
     symlink_playerlogs = logdir and len(pairings) > 1
 
     if logdir:
-        print('Writing logs to directory', logdir)
-        print()
+        print('Writing logs to directory', logdir, file=sys.stderr)
+        print(file=sys.stderr)
 
     if symlink_playerlogs:
         playerlog_dirs = []
@@ -220,6 +220,8 @@ def RunGames(commands, names, rounds, logdir, executor=None):
 
     with (Tee(open(os.path.join(logdir, 'results.txt'), 'wt'))
                 if logdir and len(pairings) > 1 else nullcontext()) as f:
+        if f is None:
+            f = sys.stderr
 
         print('Game Player 1           Player 2           Sc1 Sc2 Outc1 Outc2 Pts1 Pts2 Time 1 Time 2', file=f)
         print('---- ------------------ ------------------ --- --- ----- ----- ---- ---- ------ ------', file=f)
@@ -280,8 +282,11 @@ def RunGames(commands, names, rounds, logdir, executor=None):
 
     # Print summary of players.
     if len(pairings) > 1:
-        print()
+        print(file=sys.stderr)
         with (Tee(open(os.path.join(logdir, 'summary.txt'), 'wt')) if logdir else nullcontext()) as f:
+            if f is None:
+                f = sys.stderr
+
             print('Player             Avg.Tm Max.Tm Tot. Wins Ties Loss Fail Points', file=f)
             print('------------------ ------ ------ ---- ---- ---- ---- ---- ------', file=f)
             for p in sorted(range(P), key=lambda p: (player_scores[p], player_outcomes[p][Outcome.WIN]), reverse=True):
@@ -296,6 +301,7 @@ def RunGames(commands, names, rounds, logdir, executor=None):
                         player_outcomes[p][Outcome.FAIL],
                         player_scores[p],
                     ), file=f)
+
             print('------------------ ------ ------ ---- ---- ---- ---- ---- ------', file=f)
             print('', file=f)
             print('Player command lines:', file=f)
@@ -303,8 +309,8 @@ def RunGames(commands, names, rounds, logdir, executor=None):
                 print('%4d. %s: %s' % (i, name, command), file=f)
 
     if logdir:
-        print()
-        print('Logs written to directory', logdir)
+        print(file=sys.stderr)
+        print('Logs written to directory', logdir, file=sys.stderr)
 
 
 def DeduplicateNames(names):
