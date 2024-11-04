@@ -2,13 +2,13 @@
 
 # Performs a binomial test to calculate which version of a player is better.
 #
-# To use this, run a competition between exactly two players, then pass the
-# number of wins to this script to calculate the probability that one player
-# is better than the other. Example:
+# To use this, run a competition between exactly two players, then call this
+# script with number of wins, ties, and losses, to calculate the probability
+# that one player is better than the other. Example:
 #
-#   % tools/binomial-test.py 35 14
-#   Player 1 is better than Player 2 (p=0.00190083, winrate=0.714286, n=49,
-#   95% CI=[0.567,0.817])
+#   % tools/binomial-test.py 35 1 14
+#   Player 1 is better than Player 2 (p=0.00330022, winrate=0.700000, n=50,
+#   95% CI=[0.554,0.805])
 #
 # The p-value is the probability that the null-hypothesis holds, assuming
 # that the players are equally matched, so lower p-values mean greater
@@ -59,7 +59,10 @@ def CalcCI(wins, games, confidence=0.95):
     hi_bound = BinarySearch(0.0, 1.0, 100, lambda v: CalcProb(wins, games, v) >= hi_prob)
     return (lo_bound, hi_bound)
 
-def Main(wins1, wins2):
+def Main(wins, ties, losses):
+    # Divide ties between both players (is this valid?)
+    wins1 = wins + ties // 2
+    wins2 = losses + (ties - ties // 2)
     confidence = 0.95
     name1, name2 = 'Player 1', 'Player 2'
     if wins1 < wins2:
@@ -76,10 +79,10 @@ def Main(wins1, wins2):
             (p, wins1 / games, games, confidence * 100, ci_lo, ci_hi))
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        print('Usage', sys.argv[0], '<wins1>', '<wins2>')
+    if len(sys.argv) != 4:
+        print('Usage', sys.argv[0], '<wins>', '<ties>', '<losses>')
         sys.exit(1)
 
     sys.setrecursionlimit(25000)
-    wins1, wins2 = map(int, sys.argv[1:])
-    Main(wins1, wins2)
+    wins, ties, losses = map(int, sys.argv[1:])
+    Main(wins, ties, losses)
