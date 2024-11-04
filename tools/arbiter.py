@@ -297,6 +297,10 @@ def RunGames(commands, names, rounds, logdir, executor=None):
                         player_scores[p],
                     ), file=f)
             print('------------------ ------ ------ ---- ---- ---- ---- ---- ------', file=f)
+            print('', file=f)
+            print('Player command lines:', file=f)
+            for i, (name, command) in enumerate(zip(names, commands), 1):
+                print('%4d. %s: %s' % (i, name, command), file=f)
 
     if logdir:
         print()
