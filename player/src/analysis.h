@@ -3,7 +3,12 @@
 
 #include "state.h"
 
+#include <array>
 #include <limits>
+
+// Initializes the analysis module. Must be called before any of the other
+// functions, but after parsing options.
+void InitializeAnalysis();
 
 // Generates a list of all placements that are valid in the current grid,
 // in lexicographical order (row, column, orientation).

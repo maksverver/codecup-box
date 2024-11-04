@@ -34,6 +34,8 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
+  InitializeAnalysis();
+
   SecretColorGuesser guesser[2] = {};
   int color_guess_last_incorrect[2] = {};
   std::array<int, COLORS> last_scores = {};

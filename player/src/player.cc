@@ -517,6 +517,8 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
+  InitializeAnalysis();
+
   if (arg_precompute_first_moves) {
     PrintBestFirstMoves(std::cout, CalculateBestFirstMoves(
       [](int color, const grid_t &grid, const tile_t &tile,

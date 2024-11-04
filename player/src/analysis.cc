@@ -1,6 +1,150 @@
 #include "analysis.h"
 
+#include "options.h"
 #include "state.h"
+
+#include <cstdio>
+#include <string>
+#include <vector>
+
+namespace {
+
+const struct ScoreWeights {
+  int base4, fixed4, size4;
+  int base3, fixed3, size3;
+  int base2, fixed2, size2;
+} default_score_weights = {
+  1000, 100, 100,
+   100,  10,  10,
+    10,   1,   1,
+};
+
+bool ParseScoreWeights(std::string_view s, ScoreWeights &weights) {
+  size_t i = -1;
+  return sscanf(std::string(s).c_str(), "%d,%d,%d,%d,%d,%d,%d,%d,%d%zn",
+    &weights.base4, &weights.fixed4, &weights.size4,
+    &weights.base3, &weights.fixed3, &weights.size3,
+    &weights.base2, &weights.fixed2, &weights.size2,
+    &i) == 9 && i == s.size();
+}
+
+std::string FormatScoreWeights(const ScoreWeights &weights) {
+  char buf[180];
+  snprintf(buf, sizeof(buf), "%d,%d,%d,%d,%d,%d,%d,%d,%d",
+    weights.base4, weights.fixed4, weights.size4,
+    weights.base3, weights.fixed3, weights.size3,
+    weights.base2, weights.fixed2, weights.size2);
+  return buf;
+}
+
+ScoreWeights arg_score_weights =
+  (RegisterOption(
+      "score-weights",
+      "Weights used by the evaluation function.",
+      FormatScoreWeights(default_score_weights),
+      [](std::string_view s) {
+        return ParseScoreWeights(s, arg_score_weights);
+      }),
+  default_score_weights);
+
+// For reference, the original evaluation function
+// (now superceded by square_points_memo):
+#if 0
+int EvalSquarePoints(
+    bool a, bool b, bool c, bool d,
+    bool fa, bool fb, bool fc, bool fd,
+    int size) {
+  int num_fixed = fa + fb + fc + fd;
+  if (a && b && c && d) {
+    // Square!
+    return 1000 + 100*num_fixed + 100*size;
+  } else if (
+        (a && b && c && !fd) ||
+        (a && b && d && !fc) ||
+        (a && c && d && !fb) ||
+        (b && c && d && !fa)) {
+    // One cell short of a square.
+    return 100 + 10*num_fixed + 10*size;
+  } else if (
+      (a && b && !fc && !fd) ||
+      (a && c && !fb && !fd) ||
+      (a && d && !fb && !fc) ||
+      (b && c && !fa && !fd) ||
+      (b && d && !fa && !fc) ||
+      (c && d && !fa && !fb)) {
+    // Two points aligned horizontally, vertically, or diagonally.
+    // Maybe: assign a different score for the diagonal version?
+    return 10 + 1*num_fixed + 1*size;
+  } else {
+    return 0;
+  }
+}
+#endif
+
+static struct {
+  short base, by_size;
+} square_points_memo[2][2][2][2][2][2][2][2];
+
+void InitializeSquarePointsMemo(const ScoreWeights &weights) {
+  for (int a = 0; a < 2; ++a) {
+    for (int b = 0; b < 2; ++b) {
+      for (int c = 0; c < 2; ++c) {
+        for (int d = 0; d < 2; ++d) {
+          for (int fa = 0; fa < 2; ++fa) {
+            for (int fb = 0; fb < 2; ++fb) {
+              for (int fc = 0; fc < 2; ++fc) {
+                for (int fd = 0; fd < 2; ++fd) {
+                  auto &[base, by_size] = square_points_memo[a][b][c][d][fa][fb][fc][fd];
+                  int num_fixed = fa + fb + fc + fd;
+                  if (a && b && c && d) {
+                    // Square!
+                    base = weights.base4 + weights.fixed4*num_fixed;
+                    by_size = weights.size4;
+                  } else if (
+                        (a && b && c && !fd) ||
+                        (a && b && d && !fc) ||
+                        (a && c && d && !fb) ||
+                        (b && c && d && !fa)) {
+                    // One cell short of a square.
+                    base = weights.base3 + weights.fixed3*num_fixed;
+                    by_size = weights.size3;
+                  } else if (
+                      (a && b && !fc && !fd) ||
+                      (a && c && !fb && !fd) ||
+                      (a && d && !fb && !fc) ||
+                      (b && c && !fa && !fd) ||
+                      (b && d && !fa && !fc) ||
+                      (c && d && !fa && !fb)) {
+                    // Two points aligned horizontally, vertically, or diagonally.
+                    // Maybe: assign a different score for the diagonal version?
+                    base = weights.base2 + weights.fixed2*num_fixed;
+                    by_size = weights.size2;
+                  } else {
+                    base = by_size = 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+static int EvalSquarePointsMemoized(
+    bool a, bool b, bool c, bool d,
+    bool fa, bool fb, bool fc, bool fd,
+    int size) {
+  auto [base, by_size] = square_points_memo[a][b][c][d][fa][fb][fc][fd];
+  return base + by_size * size;
+}
+
+}  // namespace
+
+void InitializeAnalysis() {
+  InitializeSquarePointsMemo(arg_score_weights);
+}
 
 std::vector<Placement> GeneratePlacements(const grid_t &grid) {
   std::vector<Placement> placements;
@@ -55,98 +199,6 @@ grid_t CalcFixed(const grid_t &grid) {
     }
   }
   return fixed;
-}
-
-static int EvalSquarePoints(
-    bool a, bool b, bool c, bool d,
-    bool fa, bool fb, bool fc, bool fd,
-    int size) {
-  int num_fixed = fa + fb + fc + fd;
-  if (a && b && c && d) {
-    // Square!
-    return 1000 + 100*num_fixed + 100*size;
-  } else if (
-        (a && b && c && !fd) ||
-        (a && b && d && !fc) ||
-        (a && c && d && !fb) ||
-        (b && c && d && !fa)) {
-    // One cell short of a square.
-    return 100 + 10*num_fixed + 10*size;
-  } else if (
-      (a && b && !fc && !fd) ||
-      (a && c && !fb && !fd) ||
-      (a && d && !fb && !fc) ||
-      (b && c && !fa && !fd) ||
-      (b && d && !fa && !fc) ||
-      (c && d && !fa && !fb)) {
-    // Two points aligned horizontally, vertically, or diagonally.
-    // Maybe: assign a different score for the diagonal version?
-    return 10 + 1*num_fixed + 1*size;
-  } else {
-    return 0;
-  }
-}
-
-static struct {
-  short base, by_size;
-} square_points_memo[2][2][2][2][2][2][2][2];
-
-bool InitializeSquarePointsMemo() {
-  for (int a = 0; a < 2; ++a) {
-    for (int b = 0; b < 2; ++b) {
-      for (int c = 0; c < 2; ++c) {
-        for (int d = 0; d < 2; ++d) {
-          for (int fa = 0; fa < 2; ++fa) {
-            for (int fb = 0; fb < 2; ++fb) {
-              for (int fc = 0; fc < 2; ++fc) {
-                for (int fd = 0; fd < 2; ++fd) {
-                  auto &[base, by_size] = square_points_memo[a][b][c][d][fa][fb][fc][fd];
-                  int num_fixed = fa + fb + fc + fd;
-                  if (a && b && c && d) {
-                    // Square!
-                    base = 1000 + 100*num_fixed;
-                    by_size = 100;
-                  } else if (
-                        (a && b && c && !fd) ||
-                        (a && b && d && !fc) ||
-                        (a && c && d && !fb) ||
-                        (b && c && d && !fa)) {
-                    // One cell short of a square.
-                    base = 100 + 10*num_fixed;
-                    by_size = 10;
-                  } else if (
-                      (a && b && !fc && !fd) ||
-                      (a && c && !fb && !fd) ||
-                      (a && d && !fb && !fc) ||
-                      (b && c && !fa && !fd) ||
-                      (b && d && !fa && !fc) ||
-                      (c && d && !fa && !fb)) {
-                    // Two points aligned horizontally, vertically, or diagonally.
-                    // Maybe: assign a different score for the diagonal version?
-                    base = 10 + 1*num_fixed;
-                    by_size = 1;
-                  } else {
-                    base = by_size = 0;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  return true;
-}
-
-const bool square_points_memo_initialized = InitializeSquarePointsMemo();
-
-static int EvalSquarePointsMemoized(
-    bool a, bool b, bool c, bool d,
-    bool fa, bool fb, bool fc, bool fd,
-    int size) {
-  auto [base, by_size] = square_points_memo[a][b][c][d][fa][fb][fc][fd];
-  return base + by_size * size;
 }
 
 int EvaluateRectangle(const grid_t &grid, const grid_t &fixed, color_t color, int r1, int c1, int r2, int c2) {
