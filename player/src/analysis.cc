@@ -10,30 +10,29 @@
 namespace {
 
 const struct ScoreWeights {
-  int base4, fixed4, size4;
-  int base3, fixed3, size3;
-  int base2, fixed2, size2;
+  int base4, fixed4;
+  int base3, fixed3;
+  int base2, fixed2;
 } default_score_weights = {
-  1000, 100, 100,
-   100,  10,  10,
-    10,   1,   1,
-};
+    25, 250,
+    10, 100,
+     1,  10};
 
 bool ParseScoreWeights(std::string_view s, ScoreWeights &weights) {
   size_t i = -1;
-  return sscanf(std::string(s).c_str(), "%d,%d,%d,%d,%d,%d,%d,%d,%d%zn",
-    &weights.base4, &weights.fixed4, &weights.size4,
-    &weights.base3, &weights.fixed3, &weights.size3,
-    &weights.base2, &weights.fixed2, &weights.size2,
+  return sscanf(std::string(s).c_str(), "%d,%d,%d,%d,%d,%d%zn",
+    &weights.base4, &weights.fixed4,
+    &weights.base3, &weights.fixed3,
+    &weights.base2, &weights.fixed2,
     &i) == 9 && i == s.size();
 }
 
 std::string FormatScoreWeights(const ScoreWeights &weights) {
   char buf[180];
-  snprintf(buf, sizeof(buf), "%d,%d,%d,%d,%d,%d,%d,%d,%d",
-    weights.base4, weights.fixed4, weights.size4,
-    weights.base3, weights.fixed3, weights.size3,
-    weights.base2, weights.fixed2, weights.size2);
+  snprintf(buf, sizeof(buf), "%d,%d,%d,%d,%d,%d",
+    weights.base4, weights.fixed4,
+    weights.base3, weights.fixed3,
+    weights.base2, weights.fixed2);
   return buf;
 }
 
@@ -81,9 +80,7 @@ int EvalSquarePoints(
 }
 #endif
 
-static struct {
-  short base, by_size;
-} square_points_memo[2][2][2][2][2][2][2][2];
+short square_points_memo[2][2][2][2][2][2][2][2];
 
 void InitializeSquarePointsMemo(const ScoreWeights &weights) {
   for (int a = 0; a < 2; ++a) {
@@ -94,12 +91,11 @@ void InitializeSquarePointsMemo(const ScoreWeights &weights) {
             for (int fb = 0; fb < 2; ++fb) {
               for (int fc = 0; fc < 2; ++fc) {
                 for (int fd = 0; fd < 2; ++fd) {
-                  auto &[base, by_size] = square_points_memo[a][b][c][d][fa][fb][fc][fd];
+                  auto &base = square_points_memo[a][b][c][d][fa][fb][fc][fd];
                   int num_fixed = fa + fb + fc + fd;
                   if (a && b && c && d) {
                     // Square!
                     base = weights.base4 + weights.fixed4*num_fixed;
-                    by_size = weights.size4;
                   } else if (
                         (a && b && c && !fd) ||
                         (a && b && d && !fc) ||
@@ -107,7 +103,6 @@ void InitializeSquarePointsMemo(const ScoreWeights &weights) {
                         (b && c && d && !fa)) {
                     // One cell short of a square.
                     base = weights.base3 + weights.fixed3*num_fixed;
-                    by_size = weights.size3;
                   } else if (
                       (a && b && !fc && !fd) ||
                       (a && c && !fb && !fd) ||
@@ -118,9 +113,8 @@ void InitializeSquarePointsMemo(const ScoreWeights &weights) {
                     // Two points aligned horizontally, vertically, or diagonally.
                     // Maybe: assign a different score for the diagonal version?
                     base = weights.base2 + weights.fixed2*num_fixed;
-                    by_size = weights.size2;
                   } else {
-                    base = by_size = 0;
+                    base = 0;
                   }
                 }
               }
@@ -136,8 +130,8 @@ static int EvalSquarePointsMemoized(
     bool a, bool b, bool c, bool d,
     bool fa, bool fb, bool fc, bool fd,
     int size) {
-  auto [base, by_size] = square_points_memo[a][b][c][d][fa][fb][fc][fd];
-  return base + by_size * size;
+  int base = square_points_memo[a][b][c][d][fa][fb][fc][fd];
+  return base * (size + 4);  // +4 determined empirically, though effect is small
 }
 
 }  // namespace
