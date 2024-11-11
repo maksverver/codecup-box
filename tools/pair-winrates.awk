@@ -17,7 +17,16 @@
 # victories (which could be interesting, too).
 
 BEGIN {
+    expected_header = "Game Player 1           Player 2           Sc1 Sc2 Outc1 Outc2 Pts1 Pts2 Time 1 Time 2"
     player_count = 0;
+    total_matches = 0;
+}
+
+NR == 1 && $0 != expected_header {
+    print "Invalid header row!"
+    print "Expected", expected_header
+    print "Received", $0
+    exit 1
 }
 
 function registerPlayer(name) {
@@ -29,16 +38,16 @@ function registerPlayer(name) {
     return player_index[name];
 }
 
-$4 == "WIN" || $5 == "WIN" || ($4 == "TIE" && $5 == "TIE") {
+$6 == "WIN" || $7 == "WIN" || ($6 == "TIE" && $7 == "TIE") {
     player1 = $2;
     player2 = $3;
     registerPlayer(player1);
     registerPlayer(player2);
     matches[player1 "/" player2] += 1;
     matches[player2 "/" player1] += 1;
-    if ($4 == "WIN") { wins[player1 "/" player2] += 1 }
-    if ($5 == "WIN") { wins[player2 "/" player1] += 1 }
-    total_matches += 1
+    if ($6 == "WIN") { wins[player1 "/" player2] += 1 }
+    if ($7 == "WIN") { wins[player2 "/" player1] += 1 }
+    total_matches += 1;
 }
 
 END {
