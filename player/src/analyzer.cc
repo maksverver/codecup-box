@@ -2,7 +2,6 @@
 #include "options.h"
 #include "state.h"
 
-#include <algorithm>
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
