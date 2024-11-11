@@ -67,7 +67,8 @@ int main(int argc, char *argv[]) {
 
     for (int i = 1; i < COLORS; ++i) {
       for (int j = i + 1; j < COLORS; ++j) {
-        assert(EvaluateTwoColors(grid, fixed, i, j) == scores[i - 1] - scores[j - 1]);
+        int score = EvaluateTwoColors(grid, fixed, i, j);
+        assert(score == scores[i - 1] - scores[j - 1]);
       }
     }
   }
