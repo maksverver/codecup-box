@@ -45,6 +45,10 @@ inline bool IsVertical(const Orientation &ori) {
   return ori == Orientation::VERTICAL;
 }
 
+struct Rect {
+  coord_t r1, c1, r2, c2;
+};
+
 struct Placement {
   coord_t row, col;
   Orientation ori;
@@ -73,6 +77,12 @@ struct Placement {
         .col = static_cast<coord_t>(col),
         .ori = Orientation::VERTICAL};
   }
+
+  Rect GetBounds() const {
+    coord_t r2 = row + (IsHorizontal(ori) ? 2 : COLORS);
+    coord_t c2 = col + (IsHorizontal(ori) ? COLORS : 2);
+    return {row, col, r2, c2};
+  };
 
   auto operator<=>(const Placement&) const = default;
 };
