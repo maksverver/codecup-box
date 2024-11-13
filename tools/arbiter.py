@@ -257,7 +257,7 @@ def RunGames(commands, names, rounds, logdir, executor=None):
                 # Print start of row first and flush, so the user can see which players
                 # are competing while the game is in progress.
                 PrintRowStart(game_index, name1, name2)
-                sys.stdout.flush()
+                sys.stderr.flush()
                 results = run()
                 PrintRowFinish(results)
                 AddStatistics(i, j, results)
