@@ -50,3 +50,9 @@ AFTER THE COMPETITION
   - tools/fetch-competition-transcripts.py tmp/cache/ \
       competition-results/test-X-competition-YYY.csv \
       competition-results/test-X-competition-YYY-transcripts.csv
+
+
+RANDOM OBSERVATIONS / POSSIBLE LEADS
+
+  - rect1 (b4dbbfb) is significantly faster than master (f7962b0) when running
+    without --deep or --guess, despite the implementation being very similar. Why?
