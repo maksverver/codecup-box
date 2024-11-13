@@ -250,7 +250,6 @@ int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
 // with the newly-placed square are affected by which square is drawn!
 //
 int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input_grid) {
-  assert(false);  // not updated yet
   std::vector<Placement> placements = GeneratePlacements(original_input_grid);
   if (placements.empty()) {
     // No more moves.
@@ -270,6 +269,8 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
   struct ExtraData {
     Placement placement;
     grid_t fixed;
+    std::array<std::array<int, WIDTH>, HEIGHT> my_diff;
+    std::array<std::array<int, WIDTH>, HEIGHT> his_diff;
     int base_score;
     std::vector<Square> undecided_my_color;
     std::vector<Square> undecided_his_color;
@@ -287,54 +288,90 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
     grid_t fixed = CalcFixed(copy);
 
     int base_score = 0;
+    std::array<std::array<int, WIDTH>, HEIGHT> my_diff = {};
+    std::array<std::array<int, WIDTH>, HEIGHT> his_diff = {};
     std::vector<Square> undecided_my_color;
     std::vector<Square> undecided_his_color;
     for (int r1 = 0; r1 < HEIGHT; ++r1) {
       for (int c1 = 0; c1 < WIDTH; ++c1) {
-        if (copy[r1][c1] == my_color)  base_score += Evaluate1(fixed, r1, c1);
-        if (copy[r1][c1] == his_color) base_score -= Evaluate1(fixed, r1, c1);
         for (int r2, c2, size = 1; (r2 = r1 + size) < HEIGHT && (c2 = c1 + size) < WIDTH; ++size) {
-          if (copy[r1][c1] == placeholder_color ||
-              copy[r1][c2] == placeholder_color ||
-              copy[r2][c1] == placeholder_color ||
-              copy[r2][c2] == placeholder_color) {
-            // Square contains a placeholder. Leave it as undecided for now.
-            if (copy[r1][c1] == placeholder_color &&
-                copy[r2][c2] == placeholder_color) {
-              // Special case: square covers placeholder tile entirely.
-              // TODO: limit this to the central square of the tile only, which is the only one
-              // that can contain two digits of the same color.
-              undecided_my_color.push_back({r1, c1, r2, c2});
-              undecided_his_color.push_back({r1, c1, r2, c2});
-            } else {
-              // Otherwise, only need to score this square if it already contains one point
-              // of a player's color, and the other points are not fixed to something other
-              // than my color/placeholder.
-              if ((copy[r1][c1] == my_color ||
-                   copy[r1][c2] == my_color ||
-                   copy[r2][c1] == my_color ||
-                   copy[r2][c2] == my_color) &&
-                  (!fixed[r1][c1] || copy[r1][c1] == my_color || copy[r1][c1] == placeholder_color) &&
-                  (!fixed[r1][c2] || copy[r1][c2] == my_color || copy[r1][c2] == placeholder_color) &&
-                  (!fixed[r2][c1] || copy[r2][c1] == my_color || copy[r2][c1] == placeholder_color) &&
-                  (!fixed[r2][c2] || copy[r2][c2] == my_color || copy[r2][c2] == placeholder_color)) {
-                undecided_my_color.push_back({r1, c1, r2, c2});
-              }
-              if ((copy[r1][c1] == his_color ||
-                   copy[r1][c2] == his_color ||
-                   copy[r2][c1] == his_color ||
-                   copy[r2][c2] == his_color) &&
-                  (!fixed[r1][c1] || copy[r1][c1] == his_color || copy[r1][c1] == placeholder_color) &&
-                  (!fixed[r1][c2] || copy[r1][c2] == his_color || copy[r1][c2] == placeholder_color) &&
-                  (!fixed[r2][c1] || copy[r2][c1] == his_color || copy[r2][c1] == placeholder_color) &&
-                  (!fixed[r2][c2] || copy[r2][c2] == his_color || copy[r2][c2] == placeholder_color)) {
-                undecided_his_color.push_back({r1, c1, r2, c2});
-              }
-            }
-          } else {
+          bool can_be_my_color =
+              (!fixed[r1][c1] || copy[r1][c1] == my_color || copy[r1][c1] == placeholder_color) &&
+              (!fixed[r1][c2] || copy[r1][c2] == my_color || copy[r1][c2] == placeholder_color) &&
+              (!fixed[r2][c1] || copy[r2][c1] == my_color || copy[r2][c1] == placeholder_color) &&
+              (!fixed[r2][c2] || copy[r2][c2] == my_color || copy[r2][c2] == placeholder_color);
+          bool can_be_his_color =
+              (!fixed[r1][c1] || copy[r1][c1] == his_color || copy[r1][c1] == placeholder_color) &&
+              (!fixed[r1][c2] || copy[r1][c2] == his_color || copy[r1][c2] == placeholder_color) &&
+              (!fixed[r2][c1] || copy[r2][c1] == his_color || copy[r2][c1] == placeholder_color) &&
+              (!fixed[r2][c2] || copy[r2][c2] == his_color || copy[r2][c2] == placeholder_color);
+
+          if (!can_be_my_color && !can_be_his_color) continue;
+
+          int num_placeholders =
+              (copy[r1][c1] == placeholder_color) +
+              (copy[r1][c2] == placeholder_color) +
+              (copy[r2][c1] == placeholder_color) +
+              (copy[r2][c2] == placeholder_color);
+
+          if (num_placeholders == 0) {
             // Square contains no placeholders, so we can score it in advance.
             base_score += EvaluateRectangle(copy, fixed, my_color,  r1, c1, r2, c2);
             base_score -= EvaluateRectangle(copy, fixed, his_color, r1, c1, r2, c2);
+          } else if (num_placeholders == 1) {
+            // Square contains exactly one placeholder. Determine its location:
+            int r, c;
+            if (copy[r1][c1] == placeholder_color) {
+              r = r1, c = c1;
+            } else if (copy[r1][c2] == placeholder_color) {
+              r = r1, c = c2;
+            } else if (copy[r2][c1] == placeholder_color) {
+              r = r2, c = c1;
+            } else if (copy[r2][c2] == placeholder_color) {
+              r = r2, c = c2;
+            } else {
+              assert(false);
+            }
+
+            // Now there are three possibilities:
+            //
+            //  - the placeholder is filled with my color
+            //  - the placeholder is filled with my opponent's color
+            //  - the placeholder is filled with an unrelated color
+            //
+            // We can precompute the scores in all cases.
+
+            copy[r][c] = my_color;
+            int score_if_my_color =
+                EvaluateRectangle(copy, fixed, my_color,  r1, c1, r2, c2) -
+                EvaluateRectangle(copy, fixed, his_color, r1, c1, r2, c2);
+
+            copy[r][c] = his_color;
+            int score_if_his_color =
+                EvaluateRectangle(copy, fixed, my_color,  r1, c1, r2, c2) -
+                EvaluateRectangle(copy, fixed, his_color, r1, c1, r2, c2);
+
+            copy[r][c] = placeholder_color;
+            int score_if_neither =
+                EvaluateRectangle(copy, fixed, my_color,  r1, c1, r2, c2) -
+                EvaluateRectangle(copy, fixed, his_color, r1, c1, r2, c2);
+
+            base_score     += score_if_neither;
+            my_diff[r][c]  += score_if_my_color  - score_if_neither;
+            his_diff[r][c] += score_if_his_color - score_if_neither;
+          } else {
+            // Square contains two or more placeholders. This case is tricky
+            // because there are several ways these can be filled in. Instead of
+            // trying to precompute, just defer computation until later.
+            //
+            // Maybe TODO: remove a few cases if any of the placeholder cells
+            // are fixed, because then only 1 of them can become my color?
+            if (can_be_my_color) {
+              undecided_my_color.push_back({r1, c1, r2, c2});
+            }
+            if (can_be_his_color) {
+              undecided_his_color.push_back({r1, c1, r2, c2});
+            }
           }
         }
       }
@@ -342,7 +379,7 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
     //total_square_count += undecided_my_color.size();
     //total_square_count += undecided_his_color.size();
     extra_data.push_back({
-      placement, fixed, base_score,
+      placement, fixed, my_diff, his_diff, base_score,
       std::move(undecided_my_color),
       std::move(undecided_his_color)});
   }
@@ -358,13 +395,19 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
       grid_t copy = original_input_grid;
       ExecuteMove(copy, tile, extra.placement);
       int score = extra.base_score;
+
+      // This can be sped up.
       Rect tile_bounds = extra.placement.GetBounds();
       for (int r = tile_bounds.r1; r < tile_bounds.r2; ++r) {
         for (int c = tile_bounds.c1; c < tile_bounds.c2; ++c) {
-          if (copy[r][c] == my_color)  score += Evaluate1(extra.fixed, r, c);
-          if (copy[r][c] == his_color) score -= Evaluate1(extra.fixed, r, c);
+          if (copy[r][c] == my_color) {
+            score += extra.my_diff[r][c];
+          } else if (copy[r][c] == his_color) {
+            score += extra.his_diff[r][c];  // note: + instead of - is correct
+          }
         }
       }
+
       for (auto [r1, c1, r2, c2] : extra.undecided_my_color) {
         score += EvaluateRectangle(copy, extra.fixed, my_color,  r1, c1, r2, c2);
       }
