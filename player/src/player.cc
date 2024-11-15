@@ -385,38 +385,60 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
   }
   assert(extra_data.size() == placements.size());
 
-  std::array<tile_t, 6*5> tiles;
-  GenerateRelevantTiles(my_color, his_color, tiles);
-
   int total_score = 0;
-  for (tile_t tile : tiles) {
-    int best_score = std::numeric_limits<int>::max();
-    for (const ExtraData &extra : extra_data) {
-      grid_t copy = original_input_grid;
-      ExecuteMove(copy, tile, extra.placement);
-      int score = extra.base_score;
+  for (int i = 0; i < 6; ++i) {
+    for (int jx = 0; jx < 5; ++jx) {
+      int j = jx;
+      if (j >= i) ++j;
 
-      // This can be sped up.
-      Rect tile_bounds = extra.placement.GetBounds();
-      for (int r = tile_bounds.r1; r < tile_bounds.r2; ++r) {
-        for (int c = tile_bounds.c1; c < tile_bounds.c2; ++c) {
-          if (copy[r][c] == my_color) {
-            score += extra.my_diff[r][c];
-          } else if (copy[r][c] == his_color) {
-            score += extra.his_diff[r][c];  // note: + instead of - is correct
-          }
+      tile_t tile = placeholder_tile;
+      tile[i] = my_color;
+      tile[j] = his_color;
+
+      int best_score = std::numeric_limits<int>::max();
+      for (const ExtraData &extra : extra_data) {
+        grid_t grid = original_input_grid;
+        ExecuteMove(grid, tile, extra.placement);
+
+        int score = 0;
+
+        if (IsHorizontal(extra.placement.ori)) {
+          int ir1 = extra.placement.row;
+          int ic1 = extra.placement.col + i;
+          int ir2 = extra.placement.row + 1;
+          int ic2 = extra.placement.col + COLORS - 1 - i;
+          score += extra.my_diff [ir1][ic1] + extra.my_diff [ir2][ic2];
+
+          int jr1 = extra.placement.row;
+          int jc1 = extra.placement.col + j;
+          int jr2 = extra.placement.row + 1;
+          int jc2 = extra.placement.col + COLORS - 1 - j;
+          score += extra.his_diff[jr1][jc1] + extra.his_diff[jr2][jc2];
+        } else {
+          int ir1 = extra.placement.row + COLORS - 1 - i;
+          int ic1 = extra.placement.col;
+          int ir2 = extra.placement.row + i;
+          int ic2 = extra.placement.col + 1;
+          score += extra.my_diff [ir1][ic1] + extra.my_diff [ir2][ic2];
+
+          int jr1 = extra.placement.row + COLORS - 1 - j;
+          int jc1 = extra.placement.col;
+          int jr2 = extra.placement.row + j;
+          int jc2 = extra.placement.col + 1;
+          score += extra.his_diff[jr1][jc1] + extra.his_diff[jr2][jc2];
         }
-      }
 
-      for (auto [r1, c1, r2, c2] : extra.undecided_my_color) {
-        score += EvaluateRectangle(copy, extra.fixed, my_color,  r1, c1, r2, c2);
+        score += extra.base_score;
+        for (auto [r1, c1, r2, c2] : extra.undecided_my_color) {
+          score += EvaluateRectangle(grid, extra.fixed, my_color,  r1, c1, r2, c2);
+        }
+        for (auto [r1, c1, r2, c2] : extra.undecided_his_color) {
+          score -= EvaluateRectangle(grid, extra.fixed, his_color, r1, c1, r2, c2);
+        }
+        best_score = std::min(best_score, score);
       }
-      for (auto [r1, c1, r2, c2] : extra.undecided_his_color) {
-        score -= EvaluateRectangle(copy, extra.fixed, his_color, r1, c1, r2, c2);
-      }
-      best_score = std::min(best_score, score);
+      total_score += best_score;
     }
-    total_score += best_score;
   }
   return total_score;
 }
