@@ -92,6 +92,9 @@ private:
   clock_t::duration elapsed[2] = {clock_t::duration{0}, clock_t::duration{0}};
 };
 
+// For debugging: count total number of squares generated in EvaluateTwoPly2().
+//static int64_t total_square_count;
+
 std::string ReadInputLine() {
   std::string s;
   if (!std::getline(std::cin, s)) {
@@ -101,6 +104,7 @@ std::string ReadInputLine() {
   LogReceived(s);
   if (s == "Quit") {
     LogInfo() << "Exiting.";
+    //LogInfo() << "total_square_count=" << total_square_count;
     exit(0);
   }
   return s;
@@ -332,6 +336,8 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
         }
       }
     }
+    //total_square_count += undecided_my_color.size();
+    //total_square_count += undecided_his_color.size();
     extra_data.push_back({
       placement, fixed, base_score,
       std::move(undecided_my_color),
@@ -488,6 +494,7 @@ void PlayGame(rng_t &rng) {
     }
   }
   LogInfo() << "Game over.";
+  //LogInfo() << "total_square_count=" << total_square_count;
 }
 
 bool InitializeSeed(rng_seed_t &seed, std::string_view hex_string) {
