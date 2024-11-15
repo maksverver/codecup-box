@@ -14,9 +14,9 @@ const struct ScoreWeights {
   int base3, fixed3;
   int base2, fixed2;
 } default_score_weights = {
-    25, 250,
-    10, 100,
-     1,  10};
+    250, 2500,
+    100, 1000,
+     10,  100};
 
 bool ParseScoreWeights(std::string_view s, ScoreWeights &weights) {
   size_t i = -1;

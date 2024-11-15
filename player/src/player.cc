@@ -226,6 +226,9 @@ int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
 }
 #endif
 
+// TODO: unify with analysis.cc and make configurable
+const int fixed_weight = 10;
+
 // During the second ply, the opponent gets a random tile, then choses a
 // placement. Since the tile is random, we can average the outcome over all
 // possibilities (or equivalently, since the number of possible tiles is
@@ -290,8 +293,8 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
     std::vector<Square> undecided_his_color;
     for (int r1 = 0; r1 < HEIGHT; ++r1) {
       for (int c1 = 0; c1 < WIDTH; ++c1) {
-        if (copy[r1][c1] == my_color)  base_score += 1;
-        if (copy[r1][c1] == his_color) base_score -= 1;
+        if (copy[r1][c1] == my_color)  base_score += fixed[r1][c1] ? fixed_weight : 1;
+        if (copy[r1][c1] == his_color) base_score -= fixed[r1][c1] ? fixed_weight : 1;
         for (int r2, c2, size = 1; (r2 = r1 + size) < HEIGHT && (c2 = c1 + size) < WIDTH; ++size) {
           if (copy[r1][c1] == placeholder_color ||
               copy[r1][c2] == placeholder_color ||
@@ -357,6 +360,13 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
       grid_t copy = original_input_grid;
       ExecuteMove(copy, tile, extra.placement);
       int score = extra.base_score;
+      Rect tile_bounds = extra.placement.GetBounds();
+      for (int r = tile_bounds.r1; r < tile_bounds.r2; ++r) {
+        for (int c = tile_bounds.c1; c < tile_bounds.c2; ++c) {
+          if (copy[r][c] == my_color)  score += extra.fixed[r][c] ? fixed_weight : 1;
+          if (copy[r][c] == his_color) score -= extra.fixed[r][c] ? fixed_weight : 1;
+        }
+      }
       for (auto [r1, c1, r2, c2] : extra.undecided_my_color) {
         score += EvaluateRectangle(copy, extra.fixed, my_color,  r1, c1, r2, c2);
       }
