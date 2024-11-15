@@ -132,29 +132,6 @@ Move ReadMove() {
   exit(1);
 }
 
-int Evaluate(int my_color, const grid_t &grid) {
-  std::array<int, COLORS> scores = {};
-  grid_t fixed = CalcFixed(grid);
-  EvaluateAllColors(grid, fixed, scores);
-  int my_score = scores[my_color - 1];
-  int max_other_score = 0;
-  for (int c = 1; c <= COLORS; ++c) {
-    if (c != my_color && scores[c - 1] > max_other_score) {
-      max_other_score = scores[c - 1];
-    }
-  }
-  return my_score - max_other_score;
-}
-
-int Evaluate(int my_color, int his_color, const grid_t &grid) {
-  std::array<int, COLORS> scores = {};
-  grid_t fixed = CalcFixed(grid);
-  EvaluateAllColors(grid, fixed, scores);
-  // Sanity check. Delete this to make it slightly faster.
-  assert(scores[my_color - 1] - scores[his_color - 1] == EvaluateTwoColors(grid, fixed, my_color, his_color));
-  return scores[my_color - 1] - scores[his_color - 1];
-}
-
 // Generates the tiles that differ only in the position of the two given colors,
 // with other colors in an arbitrary location. (This is a bit more complicated
 // than it needs to be because I currently generate the lexicographical minimal
@@ -185,6 +162,30 @@ void GenerateRelevantTiles(int my_color, int his_color, std::array<tile_t, 6*5> 
     }
   }
   assert(pos == 6*5);
+}
+
+int Evaluate(int my_color, const grid_t &grid) {
+  std::array<int, COLORS> scores = {};
+  grid_t fixed = CalcFixed(grid);
+  EvaluateAllColors(grid, fixed, scores);
+  int my_score = scores[my_color - 1];
+  int max_other_score = 0;
+  for (int c = 1; c <= COLORS; ++c) {
+    if (c != my_color && scores[c - 1] > max_other_score) {
+      max_other_score = scores[c - 1];
+    }
+  }
+  return my_score - max_other_score;
+}
+
+#if 0
+int Evaluate(int my_color, int his_color, const grid_t &grid) {
+  std::array<int, COLORS> scores = {};
+  grid_t fixed = CalcFixed(grid);
+  EvaluateAllColors(grid, fixed, scores);
+  // Sanity check. Delete this to make it slightly faster.
+  assert(scores[my_color - 1] - scores[his_color - 1] == EvaluateTwoColors(grid, fixed, my_color, his_color));
+  return scores[my_color - 1] - scores[his_color - 1];
 }
 
 // Slower version of EvaluateSecondPly2().
@@ -223,6 +224,7 @@ int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
   }
   return total_score;
 }
+#endif
 
 // During the second ply, the opponent gets a random tile, then choses a
 // placement. Since the tile is random, we can average the outcome over all
