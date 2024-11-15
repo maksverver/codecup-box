@@ -30,6 +30,43 @@ My current player is quite good at spoiling the opponent's squares, keeping
 scores very low for both players.
 
 
+FIRST MOVE TABLE
+
+The player contains an opening book of first moves only (more is infeasiable due
+to the random tiles causing a large number of possibly states after one move).
+
+The state before the first move consists of three parts:
+
+  1. the player's secret color
+  2. the initial tile (always placed in the middle of the board)
+  3. the given tile (to be placed by the player)
+
+We can normalize the initial tile to 123456 and permute the given tile and secret
+color accordingly, to reduce the state to just a pair of secret color and given tile.
+This leads to 6 × 6! = 4320 possible start states. We can calculate the best opening
+move for each state.
+
+
+REGENERATING THE FIRST MOVE TABLE
+
+The first move table is stored in player/src/first-move-table.cc. For each possible
+state it lists all the best moves (of which one is chosen at random, as usual), so
+the total number of entries is larger than 4320 (about twice as large, currently,
+due to symmetry).
+
+Regenerate the table with something like:
+
+% player/output/release/player --precompute-first-moves --deep >new-first-moves.txt
+
+Use the options that give the best possible result while still running in a
+reasonable time (e.g., if computing a move with --deep takes 3 seconds, then
+calculating all first moves takes about 3 * 4320 / 3600 = 3.6 hours).
+
+Copy/paste the contents of new-first-moves.txt to player/src/first-move-table.cc,
+and edit it a bit to take less space (see existing format).
+
+Edit player/src/first-move-table.h to update the number of entries too.
+
 
 RELEASE INSTRUCTIONS
 
