@@ -55,6 +55,8 @@ struct SecretColorGuesser {
   }
 };
 
+int Evaluate1(const grid_t &grid, int r, int c);
+
 int EvaluateRectangle(const grid_t &grid, const grid_t &fixed, color_t color, int r1, int c1, int r2, int c2);
 
 #endif // ndef ANALYSIS_H_DEFINED

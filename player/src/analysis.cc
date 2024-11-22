@@ -13,26 +13,29 @@ const struct ScoreWeights {
   int base4, fixed4;
   int base3, fixed3;
   int base2, fixed2;
+  int base1, fixed1;
 } default_score_weights = {
     250, 2500,
     100, 1000,
-     10,  100};
+     10,  100,
+      1,   10};
 
 bool ParseScoreWeights(std::string_view s, ScoreWeights &weights) {
   size_t i = -1;
-  return sscanf(std::string(s).c_str(), "%d,%d,%d,%d,%d,%d%zn",
+  return sscanf(std::string(s).c_str(), "%d,%d,%d,%d,%d,%d,%d,%d%zn",
     &weights.base4, &weights.fixed4,
     &weights.base3, &weights.fixed3,
     &weights.base2, &weights.fixed2,
-    &i) == 9 && i == s.size();
+    &weights.base1, &weights.fixed1, &i) == 8 && i == s.size();
 }
 
 std::string FormatScoreWeights(const ScoreWeights &weights) {
   char buf[180];
-  snprintf(buf, sizeof(buf), "%d,%d,%d,%d,%d,%d",
+  snprintf(buf, sizeof(buf), "%d,%d,%d,%d,%d,%d,%d,%d",
     weights.base4, weights.fixed4,
     weights.base3, weights.fixed3,
-    weights.base2, weights.fixed2);
+    weights.base2, weights.fixed2,
+    weights.base1, weights.fixed1);
   return buf;
 }
 
@@ -195,6 +198,10 @@ grid_t CalcFixed(const grid_t &grid) {
   return fixed;
 }
 
+int Evaluate1(const grid_t &fixed, int r, int c) {
+  return fixed[r][c] ? arg_score_weights.fixed1 : arg_score_weights.base1;
+}
+
 int EvaluateRectangle(const grid_t &grid, const grid_t &fixed, color_t color, int r1, int c1, int r2, int c2) {
   //  a  b
   //  c  d
@@ -219,8 +226,7 @@ void EvaluateAllColors(const grid_t &grid, const grid_t &fixed, std::array<int, 
     for (int r1 = 0; r1 < HEIGHT; ++r1) {
       for (int c1 = 0; c1 < WIDTH; ++c1) {
         if (grid[r1][c1] == color) {
-          // Always assign a point to each cell.
-          score += 1;
+          score += Evaluate1(fixed, r1, c1);
         }
         for (int r2 = r1 + 1, c2 = c1 + 1; r2 < HEIGHT && c2 < WIDTH; ++r2, ++c2) {
           score += EvaluateRectangle(grid, fixed, color, r1, c1, r2, c2);
@@ -236,9 +242,9 @@ int EvaluateTwoColors(const grid_t &grid, const grid_t &fixed, int my_color, int
   for (int r = 0; r < HEIGHT; ++r) {
     for (int c = 0; c < WIDTH; ++c) {
       if (grid[r][c] == my_color) {
-        ++res;
+        res += Evaluate1(fixed, r, c);
       } else if (grid[r][c] == his_color) {
-        --res;
+        res -= Evaluate1(fixed, r, c);
       }
     }
   }
