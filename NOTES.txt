@@ -68,6 +68,44 @@ and edit it a bit to take less space (see existing format).
 Edit player/src/first-move-table.h to update the number of entries too.
 
 
+SERVER SPEED
+
+I compared the CodeCup server speed relative to my own machines, by replaying
+logs from test competition 4 and comparing the time taken with the total time
+reported by the CodeCup server which is stored in the player log.
+
+Methodology:
+
+% time tools/replay-log.sh \
+    playerlogs/test-4-competition-326/game-270264.txt \
+    player/backups/5d0f830/release/combined-player
+
+I used user time, rather than real time, but they should be close.
+
+Results:
+
+                        official           lethe    styx (2 GHz)
+---------------- --------------- --------------- ---------------
+game-270215.txt           12.692           6.204          11.187
+game-270216.txt           18.964           8.947          16.576
+game-270263.txt           21.630          10.203          19.280
+game-270264.txt           22.017          10.660          19.951
+---------------- --------------- --------------- ---------------
+total                     75.303          36.014          66.994
+percentage                  100%             48%             89%
+
+official: Intel(R) Xeon(R) CPU E5-2620 0 @ 2.00GHz
+lethe:    Intel(R) Core(TM) i7-7560U CPU @ 2.40GHz (boost up to 3.80 GHz)
+styx:     Intel(R) Core(TM) i5-8259U CPU @ 2.30GHz (fixed to 2.00 GHz)
+
+As a rule of thumb, Lethe is twice as fast as the CodeCup system (so player
+times must remain under 15 s), and styx is about 10% faster (player times should
+remain under 27 s).
+
+These differences may vary between submissions due to hardware and compiler
+differences. Still, it's good to have some guidelines.
+
+
 RELEASE INSTRUCTIONS
 
   1. `git status` # Make sure all changes are commited!
