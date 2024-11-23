@@ -112,6 +112,10 @@ struct Move {
 
 // I/O support
 
+// Debug-prints the digits in the grid, one line per row, no spaces between digits.
+void DebugDumpGridCompact(grid_t grid, std::ostream &os = std::clog);
+
+// Debug-prints the digits in the grid, with spaces between digits, and with grid coordinates.
 void DebugDumpGrid(grid_t grid, std::ostream &os = std::clog);
 
 std::optional<color_t> ParseColor(char ch);

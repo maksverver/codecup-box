@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
   std::cerr << '\n';
   DebugDumpGrid(grid, std::cerr);
 
-  std::cerr << "Final scores:\n";
+  std::cerr << "Final scores:\n\n";
   std::array<int, COLORS> scores = {};
   EvaluateFinalScore(grid, scores);
   std::cerr << scores << '\n';

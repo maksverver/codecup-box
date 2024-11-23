@@ -185,7 +185,7 @@ std::ostream &operator<<(std::ostream &os, Move move) {
       << (IsHorizontal(move.placement.ori) ? 'h' : 'v');
 }
 
-void DebugDumpGrid(grid_t grid, std::ostream &os) {
+void DebugDumpGridCompact(grid_t grid, std::ostream &os) {
   for (int r = 0; r < HEIGHT; ++r) {
     for (int c = 0; c < WIDTH; ++c) {
       os << (grid[r][c] ? static_cast<char>('0' + grid[r][c]) : '.');
@@ -193,4 +193,24 @@ void DebugDumpGrid(grid_t grid, std::ostream &os) {
     os << '\n';
   }
   os << std::endl;
+}
+
+void DebugDumpGrid(grid_t grid, std::ostream &os) {
+  os << "   ";
+  for (int c = 0; c < WIDTH; ++c) {
+    os << ' ' << static_cast<char>('a' + c);
+  }
+  os << "\n\n";
+  for (int r = 0; r < HEIGHT; ++r) {
+    os << ' ' << static_cast<char>('A' + r) << ' ';
+    for (int c = 0; c < WIDTH; ++c) {
+      os << ' ' << (grid[r][c] ? static_cast<char>('0' + grid[r][c]) : '.');
+    }
+    os << "  " << r << '\n';
+  }
+  os << "\n   ";
+  for (int c = 0; c < WIDTH; ++c) {
+    os << ' ' << static_cast<char>('0' + c%10);
+  }
+  os << '\n' << std::endl;
 }
