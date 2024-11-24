@@ -2,6 +2,17 @@
   font: 12pt sans-serif;
 }
 
+#competition-table th, td {
+  padding: 2px 8px;
+}
+
+#competition-table td {
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .clickable {
   cursor: pointer;
 }
