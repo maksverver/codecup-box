@@ -269,13 +269,14 @@ function updateHashParams(updates) {
     sep = hash.length;
     hash += '?';
   }
-  window.location.hash =
-      hash.substring(0, sep + 1) +
+  const newUrl = hash.substring(0, sep + 1) +
       encodeHashParams(
           Object.entries({
               ...Object.fromEntries(decodeHashParams(hash.substring(sep + 1))),
               ...updates})
           .filter(([_, v]) => v !== undefined));
+  // Use history.replaceState() to prevent creating a new history entry.
+  history.replaceState(null, '', newUrl);
 }
 
 function initialize(playerNames, secretColors, moveStrings, initialSelectedMoveIndex) {
