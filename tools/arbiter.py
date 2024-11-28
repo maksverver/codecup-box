@@ -312,6 +312,8 @@ def RunGames(commands, names, rounds, logdir, executor=None):
         print(file=sys.stderr)
         print('Logs written to directory', logdir, file=sys.stderr)
 
+    return player_scores
+
 
 def DeduplicateNames(names):
     unique_names = []
