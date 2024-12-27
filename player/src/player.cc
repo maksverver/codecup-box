@@ -259,7 +259,19 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
         fixed[r][c] = 1;
       }
     }
-    return 6 * 5 * EvaluateTwoColors(original_input_grid, fixed, my_color, his_color);
+    if (true) {
+      // Just evaluate normally and multiply by the 6 * 5 weight that would
+      // apply when considering all next possible placements.
+      return 6 * 5 * EvaluateTwoColors(original_input_grid, fixed, my_color, his_color);
+    } else {
+      // We could evaluate by final score instead, since partial squares are
+      // worthless at this point. However, empirically it doesn't seem to make
+      // a significant difference, which makes sense because at this point all
+      // squares are fixed anyway, and the total score is dominated by squares.
+      std::array<int, COLORS> scores;
+      EvaluateFinalScore(original_input_grid, scores);
+      return 1000000*(scores[my_color] - scores[his_color]);
+    }
   }
 
   struct Square {
