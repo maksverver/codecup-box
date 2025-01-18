@@ -26,10 +26,10 @@ const std::string player_name = "L7";
 DECLARE_OPTION(bool, arg_help, false, "help",
     "show usage information");
 
-DECLARE_OPTION(bool, arg_deep, LOCAL_BUILD ? false : true, "deep",
+DECLARE_OPTION(bool, arg_deep, true, "deep",
     "Search deeper (2 ply instead of default 1)");
 
-DECLARE_OPTION(bool, arg_guess, LOCAL_BUILD ? false : true, "guess",
+DECLARE_OPTION(bool, arg_guess, true, "guess",
     "Guess opponent's secret color (instead of considering all possibilities)");
 
 DECLARE_OPTION(std::string, arg_seed, "", "seed",
