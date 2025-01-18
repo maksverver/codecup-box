@@ -36,17 +36,20 @@ DECLARE_OPTION(std::string, arg_seed, "", "seed",
     "Random seed in hexadecimal format. If empty, pick randomly. "
     "The chosen seed will be logged to stderr for reproducibility.");
 
-// DECLARE_OPTION(int, arg_time_limit, LOCAL_BUILD ? 0 : 28, "time-limit",
-//     "Time limit in seconds (or 0 to disable time-based performance). "
-//     "On each turn, the player uses a fraction of time remaining on analysis. "
-//     "Note that this should be slightly lower than the official time limit to "
-//     "account for overhead.");
+DECLARE_OPTION(int, arg_time_limit, LOCAL_BUILD ? 0 : 25, "time-limit",
+    "Time limit in seconds (or 0 to disable time-based performance). "
+    "On each turn, the player uses a fraction of time remaining on analysis. "
+    "Note that this should be slightly lower than the official time limit to "
+    "account for overhead.");
 
 DECLARE_OPTION(bool, arg_precompute_first_moves, false, "precompute-first-moves",
     "Precomputes first moves and outputs the resulting array.");
 
 DECLARE_OPTION(bool, arg_first_move_table, true, "first-move-table",
     "Use the precomputed first move table.");
+
+DECLARE_OPTION(int, arg_extra_ply, 0, "extra-ply",
+    "Insert an extra search ply if remaining placements is strictly less than this value");
 
 // A simple timer. Can be running or paused. Tracks time both while running and
 // while paused. Use Elapsed() to query, Pause() and Resume() to switch states.
@@ -58,7 +61,7 @@ public:
   bool Paused() const { return !running; }
 
   // Returns how much time passed in the given state, in total.
-  log_duration_t Elapsed(bool while_running = true) {
+  log_duration_t Elapsed(bool while_running = true) const {
     clock_t::duration d = elapsed[while_running];
     if (running == while_running) d += clock_t::now() - start;
     return std::chrono::duration_cast<log_duration_t>(d);
@@ -226,6 +229,29 @@ int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
 }
 #endif
 
+int EvaluateEndOfGame(int my_color, int his_color, const grid_t &original_input_grid) {
+  // No more moves.
+  grid_t fixed;
+  for (int r = 0; r < HEIGHT; ++r) {
+    for (int c = 0; c < WIDTH; ++c) {
+      fixed[r][c] = 1;
+    }
+  }
+  if (true) {
+    // Just evaluate normally and multiply by the 6 * 5 weight that would
+    // apply when considering all next possible placements.
+    return 6 * 5 * EvaluateTwoColors(original_input_grid, fixed, my_color, his_color);
+  } else {
+    // We could evaluate by final score instead, since partial squares are
+    // worthless at this point. However, empirically it doesn't seem to make
+    // a significant difference, which makes sense because at this point all
+    // squares are fixed anyway, and the total score is dominated by squares.
+    std::array<int, COLORS> scores;
+    EvaluateFinalScore(original_input_grid, scores);
+    return 1000000*(scores[my_color] - scores[his_color]);
+  }
+}
+
 // During the second ply, the opponent gets a random tile, then choses a
 // placement. Since the tile is random, we can average the outcome over all
 // possibilities (or equivalently, since the number of possible tiles is
@@ -252,26 +278,7 @@ int EvaluateSecondPly(int my_color, int his_color, const grid_t &grid) {
 int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input_grid) {
   std::vector<Placement> placements = GeneratePlacements(original_input_grid);
   if (placements.empty()) {
-    // No more moves.
-    grid_t fixed;
-    for (int r = 0; r < HEIGHT; ++r) {
-      for (int c = 0; c < WIDTH; ++c) {
-        fixed[r][c] = 1;
-      }
-    }
-    if (true) {
-      // Just evaluate normally and multiply by the 6 * 5 weight that would
-      // apply when considering all next possible placements.
-      return 6 * 5 * EvaluateTwoColors(original_input_grid, fixed, my_color, his_color);
-    } else {
-      // We could evaluate by final score instead, since partial squares are
-      // worthless at this point. However, empirically it doesn't seem to make
-      // a significant difference, which makes sense because at this point all
-      // squares are fixed anyway, and the total score is dominated by squares.
-      std::array<int, COLORS> scores;
-      EvaluateFinalScore(original_input_grid, scores);
-      return 1000000*(scores[my_color] - scores[his_color]);
-    }
+    return EvaluateEndOfGame(my_color, his_color, original_input_grid);
   }
 
   struct Square {
@@ -389,16 +396,60 @@ int EvaluateSecondPly2(int my_color, int his_color, const grid_t &original_input
   return total_score;
 }
 
+int EvaluateExtraPly(int my_color, int his_color, const grid_t &original_input_grid) {
+  std::vector<Placement> placements = GeneratePlacements(original_input_grid);
+  if (placements.empty()) {
+    return EvaluateEndOfGame(my_color, his_color, original_input_grid);
+  }
+
+  std::array<tile_t, 6*5> tiles;
+  GenerateRelevantTiles(my_color, his_color, tiles);
+  int total_score = 0;
+  for (tile_t tile : tiles) {
+    int best_score = std::numeric_limits<int>::max();
+    for (Placement placement : placements) {
+      grid_t copy = original_input_grid;
+      ExecuteMove(copy, tile, placement);
+      int score = -EvaluateSecondPly2(his_color, my_color, copy);
+      if (score < best_score) {
+        best_score = score;
+      }
+    }
+    total_score += best_score;
+  }
+  return total_score;
+}
+
 std::pair<std::vector<Placement>, int> FindBestPlacements(
     int my_color, int his_color, const grid_t &grid, const tile_t &tile,
-    const std::vector<Placement> &all_placements) {
+    const std::vector<Placement> &all_placements, const Timer *timer) {
   int best_score = std::numeric_limits<int>::min();
+  bool extra_ply = false;
+  if (arg_extra_ply > 0 && (int) all_placements.size() < arg_extra_ply) {
+    size_t p = all_placements.size();
+    if (arg_time_limit == 0) {
+      // No time limit set.
+      extra_ply = true;
+      LogExtraPly(p, extra_ply);
+    } else {
+      // Estimated time needed for the extra ply as p^4 / 50 milliseconds,
+      // where p = all_placements.size().
+      auto time_needed = std::chrono::milliseconds((int64_t) p * p * p * p / 50);
+      using namespace std::chrono;
+      auto time_left = std::chrono::seconds(arg_time_limit) - timer->Elapsed();
+      extra_ply = time_needed < time_left;
+      LogExtraPly(p, extra_ply, time_needed, time_left);
+    }
+  }
   std::vector<Placement> best_placements;
   for (Placement placement : all_placements) {
     grid_t copy = grid;
     ExecuteMove(copy, tile, placement);
     int score = std::numeric_limits<int>::max();
-    if (arg_deep) {
+    if (extra_ply) {
+      assert(his_color);
+      score = EvaluateExtraPly(my_color, his_color, copy);
+    } else if (arg_deep) {
       if (his_color == 0) {
         for (int c = 1; c <= 6; ++c) {
           if (c == my_color) continue;
@@ -482,7 +533,7 @@ void PlayGame(rng_t &rng) {
         //assert(best_placements == FindBestPlacements(my_secret_color, 0, grid, tile, GeneratePlacements(grid)).first);
       } else {
         std::vector<Placement> all_placements = GeneratePlacements(grid);
-        auto res = FindBestPlacements(my_secret_color, his_secret_color, grid, tile, all_placements);
+        auto res = FindBestPlacements(my_secret_color, his_secret_color, grid, tile, all_placements, &timer);
         best_placements = res.first;
         int best_score = res.second;
         LogMoveCount(all_placements.size(), best_placements.size(), best_score);
@@ -545,13 +596,18 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
+  if (arg_extra_ply > 0 && !(arg_deep && arg_guess)) {
+    std::cerr << "--extra-ply requires --deep and --guess\n";
+    return EXIT_FAILURE;
+  }
+
   InitializeAnalysis();
 
   if (arg_precompute_first_moves) {
     PrintBestFirstMoves(std::cout, CalculateBestFirstMoves(
       [](int color, const grid_t &grid, const tile_t &tile,
           const std::vector<Placement> &all_placements) {
-        return FindBestPlacements(color, 0, grid, tile, all_placements).first;
+        return FindBestPlacements(color, 0, grid, tile, all_placements, nullptr).first;
       }
     ));
     return 0;

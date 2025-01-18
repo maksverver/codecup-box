@@ -136,4 +136,14 @@ inline void LogGuess(int color) {
   LogStream("GUESS") << color;
 }
 
+// Logs whether to enable an extra search ply, and data associated with the decision
+inline void LogExtraPly(int placements, bool enabled) {
+  LogStream("EXTRA_PLY") << placements << ' ' << (int) enabled;
+}
+
+inline void LogExtraPly(int placements, bool enabled,
+    log_duration_t time_needed, log_duration_t time_left) {
+  LogStream("EXTRA_PLY") << placements << ' ' << (int) enabled << ' ' << time_needed << ' ' << time_left;
+}
+
 #endif  // ndef LOGGING_H_INCLUDED
