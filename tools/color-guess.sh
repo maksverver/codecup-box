@@ -3,7 +3,8 @@
 # Calculates how quickly each player's secret color can be guessed.
 
 ANALYZER=player/output/release/analyzer
-COMPETITION=$(basename $(ls competition-results/*-transcripts.csv | tail -1) -transcripts.csv)
+#COMPETITION=$(basename $(ls competition-results/*-transcripts.csv | tail -1) -transcripts.csv)
+COMPETITION=final-competition-322
 
 echo "Analyzing $COMPETITION" >&2
 
@@ -34,10 +35,11 @@ process_logs | awk -F, '
   cnt[$1]++;
 }
 END {
+  printf("%6s %6s %2s %s\n", "Avg", "Sum", "Cnt", "User")
   for (user in sum) {
     t=sum[user]
     n=cnt[user]
-    printf("%6.3f %7.3f %2d %s\n", t/n, t, n, user)
+    printf("%6.3f %6d %2d %s\n", t/n, t, n, user)
   }
 }
 ' | sort -n;

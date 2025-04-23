@@ -50,7 +50,6 @@ def RankUsers(scores_by_user):
             start=1):
         if score == last_score:
             rank = last_rank
-            assert False  # does this ever happen?
         else:
             last_score = score
             last_rank = rank
@@ -85,14 +84,18 @@ def CalculateScores(transcripts_filename, top_users=None):
 
 
 def Main():
-    if len(sys.argv) != 2:
-        print(f'Usage: {sys.argv[0]} <transcripts.csv>')
+    if not (2 <= len(sys.argv) <= 3):
+        print(f'Usage: {sys.argv[0]} <transcripts.csv> [<N>]')
         sys.exit(1)
     transcripts_filename = sys.argv[1]
+    if len(sys.argv) > 2:
+        TOP_N = int(sys.argv[2])
 
     # Calculate all scores to determine the top users
     scores_by_user = CalculateScores(transcripts_filename)
     top_users = [user for rank, score, user in sorted(RankUsers(scores_by_user)) if rank <= TOP_N]
+
+    assert 2 <= TOP_N <= len(top_users)
 
     # Calculate the scores if only the top users participated
     scores_by_top_user = CalculateScores(transcripts_filename, top_users=top_users)
